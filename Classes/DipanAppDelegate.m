@@ -107,6 +107,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	// Init MobClick
 	[self initMobClick];
+    
+    // test GIT 
 	
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
