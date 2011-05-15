@@ -14,8 +14,6 @@
 #import "AboutViewController.h"
 #import "PPViewController.h"
 #import "TestPPViewController.h"
-#import "SettingDefinitionManager.h"
-#import "SettingViewController.h"
 #import "SelectItemViewController.h"
 #import "FlurryAPI.h"
 
@@ -101,11 +99,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[MobClick appLaunched];	
 }
 
-- (void)initSettingManager
-{
-	[SettingDefinitionManager createAppSettingFromString:@"testSetting"];
-	[SettingDefinitionManager getAllSettingGroups];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     	

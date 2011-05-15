@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -264,38 +266,21 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>8239C2E2125313460007CBBB</string>
-								<string>8239C463125337260007CBBB</string>
+								<string>CAAFFEC0137FE02E00E56503</string>
+								<string>CA5D44A9136A63A200B9ECF2</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>8239C3FC125318180007CBBB</string>
-								<string>CAD19B0A137A6A3500A8817B</string>
-								<string>CAD19B1A137A6A3500A8817B</string>
-								<string>CAD19B09137A69D700A8817B</string>
-								<string>CAD19B08137A69B600A8817B</string>
-								<string>CAD19B07137A69AC00A8817B</string>
-								<string>CA1DA2671255AF190071F74B</string>
-								<string>CAD19B7A137A756100A8817B</string>
-								<string>CAD19BB3137A812600A8817B</string>
-								<string>CAD19B86137A773C00A8817B</string>
-								<string>CAD19B87137A773C00A8817B</string>
-								<string>CAD19B8A137A773C00A8817B</string>
-								<string>8239C3FB125318140007CBBB</string>
-								<string>CAD19B31137A6FAB00A8817B</string>
-								<string>CAD19B32137A6FAB00A8817B</string>
-								<string>CAD19B33137A6FAB00A8817B</string>
-								<string>CAD19B34137A6FAB00A8817B</string>
+								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>30</integer>
-									<integer>4</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 359}, {287, 597}}</string>
+							<string>{{0, 0}, {287, 597}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -325,14 +310,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FeedbackController.h</string>
+								<string>DipanAppDelegate.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -340,11 +323,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>FeedbackController.h</string>
+										<string>DipanAppDelegate.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CA94B941137BB04800273836</string>
+										<string>CA933EB6137FE6D9001E0D1E</string>
 										<key>history</key>
 										<array>
 											<string>CA1DA22E1255ABCD0071F74B</string>
@@ -416,13 +399,11 @@
 											<string>CAD19B8F137A776800A8817B</string>
 											<string>CAD19B90137A776800A8817B</string>
 											<string>CAD19B91137A776800A8817B</string>
-											<string>CAD19BD9137A83E900A8817B</string>
 											<string>CAD19BDB137A83E900A8817B</string>
 											<string>CAD19BF4137A85E800A8817B</string>
 											<string>CAD19BF6137A85E800A8817B</string>
 											<string>CAD19C04137A87CE00A8817B</string>
 											<string>CAD19C05137A87CE00A8817B</string>
-											<string>CAD19C0A137BA78100A8817B</string>
 											<string>CAD19C0B137BA78100A8817B</string>
 											<string>CAD19C0C137BA78100A8817B</string>
 											<string>CAD19C0D137BA78100A8817B</string>
@@ -440,7 +421,8 @@
 											<string>CA94B93E137BB04800273836</string>
 											<string>CA94B93F137BB04800273836</string>
 											<string>CA94B940137BB04800273836</string>
-											<string>CAD19B69137A73F500A8817B</string>
+											<string>CA933EB5137FE6D9001E0D1E</string>
+											<string>CAD19C0A137BA78100A8817B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -452,14 +434,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {958, 519}}</string>
+								<string>{{0, 0}, {958, 516}}</string>
 								<key>RubberWindowFrame</key>
 								<string>2 120 1267 656 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>519pt</string>
+							<string>516pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -472,14 +454,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 524}, {958, 91}}</string>
+								<string>{{0, 521}, {958, 94}}</string>
 								<key>RubberWindowFrame</key>
 								<string>2 120 1267 656 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>91pt</string>
+							<string>94pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -498,9 +480,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CA94B92F137BB00100273836</string>
+				<string>CA933EB7137FE6D9001E0D1E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CA94B930137BB00100273836</string>
+				<string>CA933EB8137FE6D9001E0D1E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -638,9 +620,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CA1DA1F21254E1B60071F74B</string>
-		<string>/Developer/Gancheng/Dipan/Dipan.xcodeproj</string>
+		<string>/gitdata/Place_Iphone/Dipan.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>2 120 1267 656 0 0 1280 778 </string>
@@ -671,16 +652,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1195, 322}}</string>
+								<string>{{0, 0}, {1195, 259}}</string>
 								<key>RubberWindowFrame</key>
 								<string>31 147 1195 604 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>322pt</string>
+							<string>259pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -695,14 +678,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 327}, {1195, 236}}</string>
+								<string>{{0, 264}, {1195, 299}}</string>
 								<key>RubberWindowFrame</key>
 								<string>31 147 1195 604 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>236pt</string>
+							<string>299pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -720,7 +703,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CA1DA1F21254E1B60071F74B</string>
-				<string>CA94B931137BB00100273836</string>
+				<string>CA933EA3137FE6A7001E0D1E</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -733,7 +716,7 @@
 			<key>WindowToolGUID</key>
 			<string>CA1DA1F21254E1B60071F74B</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
