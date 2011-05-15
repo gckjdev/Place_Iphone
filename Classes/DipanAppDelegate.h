@@ -1,0 +1,29 @@
+//
+//  DipanAppDelegate.h
+//  Dipan
+//
+//  Created by qqn_pipi on 11-4-30.
+//  Copyright QQN-PIPI.com 2011. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "CoreDataUtil.h"
+#import "PPApplication.h"
+#import "MobClick.h"
+
+#define _THREE20_		1
+#define kAppId			@"388419035"					// To be changed for each project
+#define kMobClickKey	@"4dba296b112cf77d98000015"		// To be changed for each project
+
+@interface DipanAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate, MobClickDelegate> {
+
+    UIWindow			*window;
+    UITabBarController	*tabBarController;
+	CoreDataManager		*dataManager;	
+}
+
+@property (nonatomic, retain) IBOutlet UIWindow				*window;
+@property (nonatomic, retain) IBOutlet UITabBarController	*tabBarController;
+@property (nonatomic, retain) CoreDataManager				*dataManager;
+
+@end
