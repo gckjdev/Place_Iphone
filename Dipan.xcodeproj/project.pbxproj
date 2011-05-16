@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* DipanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DipanAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -61,6 +60,7 @@
 		CA5D44EC136A63A300B9ECF2 /* ProjectApiKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5D44D9136A63A200B9ECF2 /* ProjectApiKey.txt */; };
 		CA5D44ED136A63A300B9ECF2 /* RELEASE_NOTES.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5D44DA136A63A200B9ECF2 /* RELEASE_NOTES.txt */; };
 		CA5D45DE136A87EB00B9ECF2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D45DD136A87EB00B9ECF2 /* iAd.framework */; };
+		CA7C70A213811BC60030442D /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7C70A113811BC60030442D /* LocalDataService.m */; };
 		CA7F9CD6137D5B530033FE12 /* PlaceLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */; };
 		CA7F9CD7137D5B530033FE12 /* PlaceLocationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */; };
 		CA7F9CDA137D62000033FE12 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD9137D62000033FE12 /* Place.m */; };
@@ -70,8 +70,6 @@
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
 		CA96731A137E59210038CC44 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967319137E59210038CC44 /* Post.m */; };
 		CA96731D137E593B0038CC44 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96731C137E593B0038CC44 /* PostManager.m */; };
-		CA97B4771380F88D00391AE9 /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA97B4761380F88C00391AE9 /* GetUserPlaceRequest.m */; };
-		CA97B47A1380FCB600391AE9 /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA97B4791380FCB600391AE9 /* LocalDataService.m */; };
 		CAAA41E4137CDBAA00FB7C25 /* CreatePlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */; };
 		CAAA41E5137CDBAA00FB7C25 /* CreatePlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */; };
 		CAAA41EA137CDC6F00FB7C25 /* CreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E8137CDC6F00FB7C25 /* CreatePostController.m */; };
@@ -184,6 +182,7 @@
 		CAAF0301137FE03200E56503 /* UIHideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0168137FE03100E56503 /* UIHideButton.m */; };
 		CAAF0302137FE03200E56503 /* UIIconSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016A137FE03100E56503 /* UIIconSelectView.m */; };
 		CAAF0303137FE03200E56503 /* UIIconSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */; };
+		CAAF0304137FE03200E56503 /* UINavigationBarExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016E137FE03100E56503 /* UINavigationBarExt.m */; };
 		CAAF0305137FE03200E56503 /* UINavigationItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0170137FE03100E56503 /* UINavigationItemExt.m */; };
 		CAAF0306137FE03200E56503 /* UINavTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0172137FE03100E56503 /* UINavTableViewController.m */; };
 		CAAF0307137FE03200E56503 /* UINumberAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0174137FE03100E56503 /* UINumberAccessoryView.m */; };
@@ -207,12 +206,14 @@
 		CAD19B25137A6A3500A8817B /* MyInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B16137A6A3500A8817B /* MyInfoController.xib */; };
 		CAD19B26137A6A3500A8817B /* PlaceMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B18137A6A3500A8817B /* PlaceMainController.m */; };
 		CAD19B27137A6A3500A8817B /* PlaceMainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B19137A6A3500A8817B /* PlaceMainController.xib */; };
-		CAD19B28137A6A3500A8817B /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B1C137A6A3500A8817B /* RegisterController.m */; };
-		CAD19B29137A6A3500A8817B /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B1D137A6A3500A8817B /* RegisterController.xib */; };
 		CAD19B37137A6FAB00A8817B /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B36137A6FAB00A8817B /* UserManager.m */; };
 		CAD19B40137A6FFB00A8817B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B3F137A6FFB00A8817B /* User.m */; };
 		CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19BB6137A812600A8817B /* NetworkRequest.m */; };
 		CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */; };
+		FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */; };
+		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
+		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
+		FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,8 +368,6 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* DipanAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DipanAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* DipanAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DipanAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Dipan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dipan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -450,6 +449,8 @@
 		CA5D4516136A6DD100B9ECF2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA5D4517136A6DE300B9ECF2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA5D45DD136A87EB00B9ECF2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		CA7C70A013811BC60030442D /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
+		CA7C70A113811BC60030442D /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
 		CA7F9CD3137D5B530033FE12 /* PlaceLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceLocationController.h; sourceTree = "<group>"; };
 		CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceLocationController.m; sourceTree = "<group>"; };
 		CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceLocationController.xib; sourceTree = "<group>"; };
@@ -465,10 +466,6 @@
 		CA967319137E59210038CC44 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		CA96731B137E593B0038CC44 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
 		CA96731C137E593B0038CC44 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
-		CA97B4751380F88C00391AE9 /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
-		CA97B4761380F88C00391AE9 /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
-		CA97B4781380FCB600391AE9 /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalDataService.h; path = Dipan.xcodeproj/LocalDataService.h; sourceTree = SOURCE_ROOT; };
-		CA97B4791380FCB600391AE9 /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalDataService.m; path = Dipan.xcodeproj/LocalDataService.m; sourceTree = SOURCE_ROOT; };
 		CAAA41E1137CDBAA00FB7C25 /* CreatePlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceController.h; sourceTree = "<group>"; };
 		CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceController.m; sourceTree = "<group>"; };
 		CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlaceController.xib; sourceTree = "<group>"; };
@@ -599,6 +596,8 @@
 		CAAF016A137FE03100E56503 /* UIIconSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIIconSelectView.m; sourceTree = "<group>"; };
 		CAAF016B137FE03100E56503 /* UIIconSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIIconSelectViewController.h; sourceTree = "<group>"; };
 		CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIIconSelectViewController.m; sourceTree = "<group>"; };
+		CAAF016D137FE03100E56503 /* UINavigationBarExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarExt.h; sourceTree = "<group>"; };
+		CAAF016E137FE03100E56503 /* UINavigationBarExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarExt.m; sourceTree = "<group>"; };
 		CAAF016F137FE03100E56503 /* UINavigationItemExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationItemExt.h; sourceTree = "<group>"; };
 		CAAF0170137FE03100E56503 /* UINavigationItemExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationItemExt.m; sourceTree = "<group>"; };
 		CAAF0171137FE03100E56503 /* UINavTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavTableViewController.h; sourceTree = "<group>"; };
@@ -711,9 +710,6 @@
 		CAD19B17137A6A3500A8817B /* PlaceMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMainController.h; sourceTree = "<group>"; };
 		CAD19B18137A6A3500A8817B /* PlaceMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMainController.m; sourceTree = "<group>"; };
 		CAD19B19137A6A3500A8817B /* PlaceMainController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceMainController.xib; sourceTree = "<group>"; };
-		CAD19B1B137A6A3500A8817B /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
-		CAD19B1C137A6A3500A8817B /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
-		CAD19B1D137A6A3500A8817B /* RegisterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
 		CAD19B35137A6FAB00A8817B /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		CAD19B36137A6FAB00A8817B /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		CAD19B3E137A6FFB00A8817B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -725,6 +721,13 @@
 		CAD19BCA137A832900A8817B /* VariableConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableConstants.h; sourceTree = "<group>"; };
 		CAF26C12137EC6DE00E30001 /* CreatePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePostRequest.h; sourceTree = "<group>"; };
 		CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
+		FB51D2B61380D3D2001D5AC5 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
+		FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
+		FB51D2CB13810DA8001D5AC5 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		FB51D2CC13810DA8001D5AC5 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
+		FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DipanAppDelegate.h; sourceTree = "<group>"; };
+		FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DipanAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,12 +773,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CA7C709F13811BC60030442D /* Service */,
 				8239C3FC125318180007CBBB /* Controller */,
-				CA1DA2671255AF190071F74B /* Service */,
 				CAD19B7A137A756100A8817B /* Network */,
 				8239C3FB125318140007CBBB /* Model */,
-				1D3623240D0F684500981E51 /* DipanAppDelegate.h */,
-				1D3623250D0F684500981E51 /* DipanAppDelegate.m */,
+				FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */,
+				FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 			);
 			path = Classes;
@@ -972,15 +975,6 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		CA1DA2671255AF190071F74B /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CA97B4781380FCB600391AE9 /* LocalDataService.h */,
-				CA97B4791380FCB600391AE9 /* LocalDataService.m */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		CA5D44A9136A63A200B9ECF2 /* 3PP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1099,15 @@
 			name = FlurryLib;
 			path = /3PP/Flurry/FlurryLib;
 			sourceTree = "<absolute>";
+		};
+		CA7C709F13811BC60030442D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CA7C70A013811BC60030442D /* LocalDataService.h */,
+				CA7C70A113811BC60030442D /* LocalDataService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
 		};
 		CAAA41E6137CDC3B00FB7C25 /* Post */ = {
 			isa = PBXGroup;
@@ -1302,6 +1305,8 @@
 				CAAF016A137FE03100E56503 /* UIIconSelectView.m */,
 				CAAF016B137FE03100E56503 /* UIIconSelectViewController.h */,
 				CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */,
+				CAAF016D137FE03100E56503 /* UINavigationBarExt.h */,
+				CAAF016E137FE03100E56503 /* UINavigationBarExt.m */,
 				CAAF016F137FE03100E56503 /* UINavigationItemExt.h */,
 				CAAF0170137FE03100E56503 /* UINavigationItemExt.m */,
 				CAAF0171137FE03100E56503 /* UINavTableViewController.h */,
@@ -1592,9 +1597,11 @@
 		CAD19B1A137A6A3500A8817B /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				CAD19B1B137A6A3500A8817B /* RegisterController.h */,
-				CAD19B1C137A6A3500A8817B /* RegisterController.m */,
-				CAD19B1D137A6A3500A8817B /* RegisterController.xib */,
+				FB51D2CB13810DA8001D5AC5 /* RegisterController.h */,
+				FB51D2CC13810DA8001D5AC5 /* RegisterController.m */,
+				FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */,
+				FB51D2B61380D3D2001D5AC5 /* OAuthCore.h */,
+				FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1665,8 +1672,6 @@
 			children = (
 				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
-				CA97B4751380F88C00391AE9 /* GetUserPlaceRequest.h */,
-				CA97B4761380F88C00391AE9 /* GetUserPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -1906,7 +1911,6 @@
 				CAD19B23137A6A3500A8817B /* InviteController.xib in Resources */,
 				CAD19B25137A6A3500A8817B /* MyInfoController.xib in Resources */,
 				CAD19B27137A6A3500A8817B /* PlaceMainController.xib in Resources */,
-				CAD19B29137A6A3500A8817B /* RegisterController.xib in Resources */,
 				CAAA41E5137CDBAA00FB7C25 /* CreatePlaceController.xib in Resources */,
 				CAAA41EB137CDC6F00FB7C25 /* CreatePostController.xib in Resources */,
 				CAAA41F0137CDE1900FB7C25 /* PostMainController.xib in Resources */,
@@ -1940,6 +1944,7 @@
 				CAAF0261137FE03200E56503 /* Help.txt in Resources */,
 				CAAF02A7137FE03200E56503 /* SpecialCharacters.txt in Resources */,
 				CAAF02C9137FE03200E56503 /* ReviewRequest.strings in Resources */,
+				FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1951,7 +1956,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* DipanAppDelegate.m in Sources */,
 				CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */,
 				CA5D44DC136A63A300B9ECF2 /* AdViewController.m in Sources */,
 				CA5D44DD136A63A300B9ECF2 /* CDataScanner.m in Sources */,
@@ -1969,7 +1973,6 @@
 				CAD19B22137A6A3500A8817B /* InviteController.m in Sources */,
 				CAD19B24137A6A3500A8817B /* MyInfoController.m in Sources */,
 				CAD19B26137A6A3500A8817B /* PlaceMainController.m in Sources */,
-				CAD19B28137A6A3500A8817B /* RegisterController.m in Sources */,
 				CAD19B37137A6FAB00A8817B /* UserManager.m in Sources */,
 				CAD19B40137A6FFB00A8817B /* User.m in Sources */,
 				CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */,
@@ -2064,6 +2067,7 @@
 				CAAF0301137FE03200E56503 /* UIHideButton.m in Sources */,
 				CAAF0302137FE03200E56503 /* UIIconSelectView.m in Sources */,
 				CAAF0303137FE03200E56503 /* UIIconSelectViewController.m in Sources */,
+				CAAF0304137FE03200E56503 /* UINavigationBarExt.m in Sources */,
 				CAAF0305137FE03200E56503 /* UINavigationItemExt.m in Sources */,
 				CAAF0306137FE03200E56503 /* UINavTableViewController.m in Sources */,
 				CAAF0307137FE03200E56503 /* UINumberAccessoryView.m in Sources */,
@@ -2076,8 +2080,10 @@
 				CAAF030E137FE03200E56503 /* UITextTableViewCell.m in Sources */,
 				CAAF030F137FE03200E56503 /* UIToolBarCell.m in Sources */,
 				CAAF0310137FE03200E56503 /* UIWebViewUtil.m in Sources */,
-				CA97B4771380F88D00391AE9 /* GetUserPlaceRequest.m in Sources */,
-				CA97B47A1380FCB600391AE9 /* LocalDataService.m in Sources */,
+				FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */,
+				FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */,
+				FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */,
+				CA7C70A213811BC60030442D /* LocalDataService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
