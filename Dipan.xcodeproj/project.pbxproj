@@ -213,6 +213,7 @@
 		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
 		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
 		FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */; };
+		FB753275138116F100C1DB1C /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB753274138116F100C1DB1C /* GetUserPlaceRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -725,6 +726,8 @@
 		FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
 		FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DipanAppDelegate.h; sourceTree = "<group>"; };
 		FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DipanAppDelegate.m; sourceTree = "<group>"; };
+		FB753273138116F100C1DB1C /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
+		FB753274138116F100C1DB1C /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1665,6 +1668,8 @@
 		CAD19B87137A773C00A8817B /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				FB753273138116F100C1DB1C /* GetUserPlaceRequest.h */,
+				FB753274138116F100C1DB1C /* GetUserPlaceRequest.m */,
 				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
 			);
@@ -2078,6 +2083,7 @@
 				FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */,
 				FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */,
 				FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */,
+				FB753275138116F100C1DB1C /* GetUserPlaceRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
