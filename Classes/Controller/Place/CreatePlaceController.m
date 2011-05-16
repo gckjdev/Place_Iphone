@@ -353,18 +353,24 @@ enum
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save place data locally
-                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude createUser:output.createUser];
+                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
+                               createUser:output.createUser
+                             followUserId:userId];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
                 // for test, TO BE REMOVED
-                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude createUser:output.createUser];
+                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
+                               createUser:output.createUser
+                             followUserId:userId];
                 
             }
             else{
                 // other error TBD
                 // for test, TO BE REMOVED
-                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude createUser:output.createUser];
+                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
+                               createUser:output.createUser
+                               followUserId:userId];
             }
         });        
     });    

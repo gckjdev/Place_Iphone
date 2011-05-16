@@ -99,17 +99,19 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[MobClick appLaunched];	
 }
 
+- (void)initLocalDataService
+{
+    localDataService = [[LocalDataService alloc] initWithDelegate:self];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     	
 	NSLog(@"Application starts, launch option = %@", [launchOptions description]);	
 	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);	
 	
-	// Init MobClick
 	[self initMobClick];
+    [self initLocalDataService];    
     
-    // test GIT 
-	
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
 		
@@ -122,7 +124,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[ReviewRequest startReviewRequest:kAppId appName:GlobalGetAppName() isTest:NO];
 
 	// Test
-	// [RegisterUserRequest test];
+	[RegisterUserRequest test];
 	
     return YES;
 }
@@ -168,6 +170,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	NSLog(@"applicationWillEnterForeground");	
 	
 	[self initMobClick];
+    [localDataService requestDataWhileEnterForeground];
 }
 
 
@@ -255,6 +258,12 @@ void uncaughtExceptionHandler(NSException *exception) {
 	return kMobClickKey;	// shall be changed for each application
 }
 
+#pragma Local Data Service Delegate
+
+- (void)followPlaceDataRefresh
+{
+    NSLog(@"<followPlaceDataRefresh>");
+}
 
 
 @end

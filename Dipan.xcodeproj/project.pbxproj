@@ -70,6 +70,8 @@
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
 		CA96731A137E59210038CC44 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967319137E59210038CC44 /* Post.m */; };
 		CA96731D137E593B0038CC44 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96731C137E593B0038CC44 /* PostManager.m */; };
+		CA97B4771380F88D00391AE9 /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA97B4761380F88C00391AE9 /* GetUserPlaceRequest.m */; };
+		CA97B47A1380FCB600391AE9 /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA97B4791380FCB600391AE9 /* LocalDataService.m */; };
 		CAAA41E4137CDBAA00FB7C25 /* CreatePlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */; };
 		CAAA41E5137CDBAA00FB7C25 /* CreatePlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */; };
 		CAAA41EA137CDC6F00FB7C25 /* CreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E8137CDC6F00FB7C25 /* CreatePostController.m */; };
@@ -182,7 +184,6 @@
 		CAAF0301137FE03200E56503 /* UIHideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0168137FE03100E56503 /* UIHideButton.m */; };
 		CAAF0302137FE03200E56503 /* UIIconSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016A137FE03100E56503 /* UIIconSelectView.m */; };
 		CAAF0303137FE03200E56503 /* UIIconSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */; };
-		CAAF0304137FE03200E56503 /* UINavigationBarExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016E137FE03100E56503 /* UINavigationBarExt.m */; };
 		CAAF0305137FE03200E56503 /* UINavigationItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0170137FE03100E56503 /* UINavigationItemExt.m */; };
 		CAAF0306137FE03200E56503 /* UINavTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0172137FE03100E56503 /* UINavTableViewController.m */; };
 		CAAF0307137FE03200E56503 /* UINumberAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0174137FE03100E56503 /* UINumberAccessoryView.m */; };
@@ -464,6 +465,10 @@
 		CA967319137E59210038CC44 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		CA96731B137E593B0038CC44 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
 		CA96731C137E593B0038CC44 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
+		CA97B4751380F88C00391AE9 /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
+		CA97B4761380F88C00391AE9 /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
+		CA97B4781380FCB600391AE9 /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalDataService.h; path = Dipan.xcodeproj/LocalDataService.h; sourceTree = SOURCE_ROOT; };
+		CA97B4791380FCB600391AE9 /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalDataService.m; path = Dipan.xcodeproj/LocalDataService.m; sourceTree = SOURCE_ROOT; };
 		CAAA41E1137CDBAA00FB7C25 /* CreatePlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceController.h; sourceTree = "<group>"; };
 		CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceController.m; sourceTree = "<group>"; };
 		CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlaceController.xib; sourceTree = "<group>"; };
@@ -594,8 +599,6 @@
 		CAAF016A137FE03100E56503 /* UIIconSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIIconSelectView.m; sourceTree = "<group>"; };
 		CAAF016B137FE03100E56503 /* UIIconSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIIconSelectViewController.h; sourceTree = "<group>"; };
 		CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIIconSelectViewController.m; sourceTree = "<group>"; };
-		CAAF016D137FE03100E56503 /* UINavigationBarExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarExt.h; sourceTree = "<group>"; };
-		CAAF016E137FE03100E56503 /* UINavigationBarExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarExt.m; sourceTree = "<group>"; };
 		CAAF016F137FE03100E56503 /* UINavigationItemExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationItemExt.h; sourceTree = "<group>"; };
 		CAAF0170137FE03100E56503 /* UINavigationItemExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationItemExt.m; sourceTree = "<group>"; };
 		CAAF0171137FE03100E56503 /* UINavTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavTableViewController.h; sourceTree = "<group>"; };
@@ -972,6 +975,8 @@
 		CA1DA2671255AF190071F74B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				CA97B4781380FCB600391AE9 /* LocalDataService.h */,
+				CA97B4791380FCB600391AE9 /* LocalDataService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1297,8 +1302,6 @@
 				CAAF016A137FE03100E56503 /* UIIconSelectView.m */,
 				CAAF016B137FE03100E56503 /* UIIconSelectViewController.h */,
 				CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */,
-				CAAF016D137FE03100E56503 /* UINavigationBarExt.h */,
-				CAAF016E137FE03100E56503 /* UINavigationBarExt.m */,
 				CAAF016F137FE03100E56503 /* UINavigationItemExt.h */,
 				CAAF0170137FE03100E56503 /* UINavigationItemExt.m */,
 				CAAF0171137FE03100E56503 /* UINavTableViewController.h */,
@@ -1662,6 +1665,8 @@
 			children = (
 				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
+				CA97B4751380F88C00391AE9 /* GetUserPlaceRequest.h */,
+				CA97B4761380F88C00391AE9 /* GetUserPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2059,7 +2064,6 @@
 				CAAF0301137FE03200E56503 /* UIHideButton.m in Sources */,
 				CAAF0302137FE03200E56503 /* UIIconSelectView.m in Sources */,
 				CAAF0303137FE03200E56503 /* UIIconSelectViewController.m in Sources */,
-				CAAF0304137FE03200E56503 /* UINavigationBarExt.m in Sources */,
 				CAAF0305137FE03200E56503 /* UINavigationItemExt.m in Sources */,
 				CAAF0306137FE03200E56503 /* UINavTableViewController.m in Sources */,
 				CAAF0307137FE03200E56503 /* UINumberAccessoryView.m in Sources */,
@@ -2072,6 +2076,8 @@
 				CAAF030E137FE03200E56503 /* UITextTableViewCell.m in Sources */,
 				CAAF030F137FE03200E56503 /* UIToolBarCell.m in Sources */,
 				CAAF0310137FE03200E56503 /* UIWebViewUtil.m in Sources */,
+				CA97B4771380F88D00391AE9 /* GetUserPlaceRequest.m in Sources */,
+				CA97B47A1380FCB600391AE9 /* LocalDataService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,8 +14,11 @@
 }
 
 + (BOOL)createPlace:(NSString*)placeId name:(NSString*)name desc:(NSString*)desc
-          longitude:(double)longitude latitude:(double)latitude createUser:(NSString*)createUser;
+          longitude:(double)longitude latitude:(double)latitude 
+         createUser:(NSString*)createUser followUserId:(NSString*)followUserId;
 
-+ (NSArray*)getAllPlaces;
++ (NSArray*)getAllPlacesByFollowUser:(NSString*)followUserId;
+
++ (BOOL)deletePlaceByFollowUser:(NSString*)followUserId;
 
 @end
