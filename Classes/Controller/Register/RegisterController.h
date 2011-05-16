@@ -10,7 +10,12 @@
 #import "PPViewController.h"
 
 @interface RegisterController : PPViewController {
-
+    UITextField *loginidField;
 }
+
+@property (nonatomic, retain) IBOutlet UITextField *loginidField;
+
+- (IBAction)clickRegister:(id)sender;
+- (IBAction)clickSinaLogin:(id)sender;
 
 @end
