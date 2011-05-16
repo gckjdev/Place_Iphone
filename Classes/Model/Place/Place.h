@@ -19,5 +19,5 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSString * createUser;
-
+@property (nonatomic, retain) NSString * followUser;
 @end

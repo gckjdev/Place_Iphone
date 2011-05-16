@@ -13,7 +13,8 @@
 @implementation PlaceManager
 
 + (BOOL)createPlace:(NSString*)placeId name:(NSString*)name desc:(NSString*)desc
-          longitude:(double)longitude latitude:(double)latitude createUser:(NSString*)createUser
+          longitude:(double)longitude latitude:(double)latitude 
+         createUser:(NSString*)createUser  followUserId:(NSString*)followUserId
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
     
@@ -24,16 +25,29 @@
     place.longitude = [NSNumber numberWithDouble:longitude];
     place.latitude = [NSNumber numberWithDouble:latitude];
     place.createUser = createUser;
+    place.followUser = followUserId;
     
     NSLog(@"Create Place: %@", [place description]);
     
     return [dataManager save];
 }
 
-+ (NSArray*)getAllPlaces
++ (NSArray*)getAllPlacesByFollowUser:(NSString*)followUserId
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    return [dataManager execute:@"getAllPlaces"];
+    return [dataManager execute:@"getAllPlacesByFollowUser" forKey:@"followUserId" value:followUserId sortBy:@"name" ascending:YES];
+}
+
++ (BOOL)deletePlaceByFollowUser:(NSString*)followUserId
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getAllPlacesByFollowUser" forKey:@"followUserId" value:followUserId sortBy:@"placeId" ascending:YES];
+    
+    for (Place* place in placeArray){
+        [dataManager del:place];
+    }
+    
+    return [dataManager save];
 }
 
 @end

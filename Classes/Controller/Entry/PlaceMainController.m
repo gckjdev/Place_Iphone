@@ -44,7 +44,8 @@
 
 - (void)loadDataList
 {
-    self.dataList = [PlaceManager getAllPlaces];
+    NSString* userId = @"test_user_id";
+    self.dataList = [PlaceManager getAllPlacesByFollowUser:userId];
     if (self.dataList == nil || [self.dataList count] == 0){
         dataTableView.hidden = YES;
         createPlaceButton.hidden = NO;

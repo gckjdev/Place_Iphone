@@ -16,5 +16,6 @@
 @dynamic longitude;
 @dynamic latitude;
 @dynamic createUser;
+@dynamic followUser;
 
 @end

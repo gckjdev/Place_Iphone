@@ -10,16 +10,18 @@
 #import "CoreDataUtil.h"
 #import "PPApplication.h"
 #import "MobClick.h"
+#import "LocalDataService.h"
 
 #define _THREE20_		1
 #define kAppId			@"388419035"					// To be changed for each project
 #define kMobClickKey	@"4dba296b112cf77d98000015"		// To be changed for each project
 
-@interface DipanAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate, MobClickDelegate> {
+@interface DipanAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate, MobClickDelegate, LocalDataServiceDelegate> {
 
     UIWindow			*window;
     UITabBarController	*tabBarController;
 	CoreDataManager		*dataManager;	
+    LocalDataService    *localDataService;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow				*window;

@@ -10,6 +10,7 @@
 #define METHOD_REGISTRATION @"reg"
 #define METHOD_CREATEPOST @"cp"
 #define METHOD_CREATEPLACE @"cpl"
+#define METHOD_GETUSERPLACES @"gup"
 
 // request parameters
 
@@ -41,6 +42,8 @@
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid" 
 
+#define PARA_CREATE_USERID @"cuid"
+
 #define PARA_STATUS @"s"
 
 #define PARA_TIMESTAMP @"ts"
@@ -51,6 +54,8 @@
 #define PARA_LONGTITUDE @"lo"
 #define PARA_LATITUDE @"lat"
 #define PARA_MESSAGETEXT @"t"
+
+#define PARA_VERSION @"v"
 
 // response parameters
 

@@ -54,6 +54,16 @@
 	return retUrl;
 }
 
++ (NSString*)appendVersion:(NSString*)url
+{
+	NSString* retUrl = url;
+	
+	retUrl = [retUrl stringByAddQueryParameter:PARA_VERSION	value:[CURRENT_VERSION encodedURLParameterString]];	
+	
+	return retUrl;
+}
+
+
 - (BOOL)sendRequest:(NSObject*)input output:(NSObject*)output
 {
 	NSString* urlString = [self getRequestUrlString:input];	
@@ -63,6 +73,7 @@
 	}
 	
 	urlString = [NetworkRequest appendTimeStampAndMacToURL:urlString];
+    urlString = [NetworkRequest appendVersion:urlString];
 	
 	BOOL result = NO;	
 	NSURL* url = [NSURL URLWithString:urlString];	
