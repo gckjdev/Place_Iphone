@@ -210,6 +210,7 @@
 		CAD19B40137A6FFB00A8817B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B3F137A6FFB00A8817B /* User.m */; };
 		CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19BB6137A812600A8817B /* NetworkRequest.m */; };
 		CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */; };
+		FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB326BC313811BC80073368D /* GetUserPlaceRequest.m */; };
 		FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */; };
 		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
 		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
@@ -721,6 +722,8 @@
 		CAD19BCA137A832900A8817B /* VariableConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableConstants.h; sourceTree = "<group>"; };
 		CAF26C12137EC6DE00E30001 /* CreatePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePostRequest.h; sourceTree = "<group>"; };
 		CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
+		FB326BC213811BC80073368D /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
+		FB326BC313811BC80073368D /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
 		FB51D2B61380D3D2001D5AC5 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
 		FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
 		FB51D2CB13810DA8001D5AC5 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
@@ -1670,6 +1673,8 @@
 		CAD19B87137A773C00A8817B /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				FB326BC213811BC80073368D /* GetUserPlaceRequest.h */,
+				FB326BC313811BC80073368D /* GetUserPlaceRequest.m */,
 				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
 			);
@@ -2084,6 +2089,7 @@
 				FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */,
 				FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */,
 				CA7C70A213811BC60030442D /* LocalDataService.m in Sources */,
+				FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
