@@ -11,6 +11,7 @@
 #define METHOD_CREATEPOST @"cp"
 #define METHOD_CREATEPLACE @"cpl"
 #define METHOD_GETUSERPLACES @"gup"
+#define METHOD_GETPLACEPOST @"gpp"
 
 // request parameters
 
@@ -34,10 +35,18 @@
 #define PARA_POSTTYPE @"pt"
 #define PARA_NAME @"na"
 #define PARA_DESC @"de"
+#define PARA_AFTER_TIMESTAMP @"at"
+#define PARA_TOTAL_VIEW     @"tv"
+#define PARA_TOTAL_FORWARD  @"tf"
+#define PARA_TOTAL_QUOTE    @"tq"
+#define PARA_TOTAL_REPLY    @"tr"
+#define PARA_CREATE_DATE    @"cd"
 
-#define PARA_CONTENT_TYPE @"ct"
-#define PARA_TEXT_CONTENT @"t"
-#define PARA_USER_LATITUDE @"ula"
+#define PARA_POSTID         @"pi"
+#define PARA_IMAGE_URL      @"iu"
+#define PARA_CONTENT_TYPE   @"ct"
+#define PARA_TEXT_CONTENT   @"t"
+#define PARA_USER_LATITUDE  @"ula"
 #define PARA_USER_LONGITUDE @"ulo"
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid" 

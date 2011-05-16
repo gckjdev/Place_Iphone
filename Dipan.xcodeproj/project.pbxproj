@@ -37,6 +37,7 @@
 		82B52DB012548339003E64D0 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B52DAF12548339003E64D0 /* CoreAudio.framework */; };
 		82B52E001254838E003E64D0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B52DFF1254838E003E64D0 /* MediaPlayer.framework */; };
 		CA0A56BE137BAF1F003CD06C /* RegisterUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */; };
+		CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */; };
 		CA15FB43137CF7CA000D2457 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB42137CF7CA000D2457 /* Friend.m */; };
 		CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */; };
 		CA5D43C8136A561E00B9ECF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */; };
@@ -406,6 +407,8 @@
 		8D1107310486CEB800E47090 /* Dipan-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dipan-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CA0A56BC137BAF1F003CD06C /* RegisterUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequest.h; sourceTree = "<group>"; };
 		CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequest.m; sourceTree = "<group>"; };
+		CA0BFA8C1381538600A9633F /* GetPlacePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlacePostRequest.h; sourceTree = "<group>"; };
+		CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlacePostRequest.m; sourceTree = "<group>"; };
 		CA15FB41137CF7CA000D2457 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		CA15FB42137CF7CA000D2457 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceRequest.h; sourceTree = "<group>"; };
@@ -1684,6 +1687,8 @@
 		CAD19B88137A773C00A8817B /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				CA0BFA8C1381538600A9633F /* GetPlacePostRequest.h */,
+				CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */,
 				CAF26C12137EC6DE00E30001 /* CreatePostRequest.h */,
 				CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */,
 			);
@@ -2090,6 +2095,7 @@
 				FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */,
 				CA7C70A213811BC60030442D /* LocalDataService.m in Sources */,
 				FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */,
+				CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
