@@ -60,6 +60,7 @@
 		CA5D44EC136A63A300B9ECF2 /* ProjectApiKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5D44D9136A63A200B9ECF2 /* ProjectApiKey.txt */; };
 		CA5D44ED136A63A300B9ECF2 /* RELEASE_NOTES.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5D44DA136A63A200B9ECF2 /* RELEASE_NOTES.txt */; };
 		CA5D45DE136A87EB00B9ECF2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D45DD136A87EB00B9ECF2 /* iAd.framework */; };
+		CA7C70A213811BC60030442D /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7C70A113811BC60030442D /* LocalDataService.m */; };
 		CA7F9CD6137D5B530033FE12 /* PlaceLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */; };
 		CA7F9CD7137D5B530033FE12 /* PlaceLocationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */; };
 		CA7F9CDA137D62000033FE12 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD9137D62000033FE12 /* Place.m */; };
@@ -213,7 +214,6 @@
 		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
 		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
 		FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */; };
-		FB753275138116F100C1DB1C /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB753274138116F100C1DB1C /* GetUserPlaceRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,6 +449,8 @@
 		CA5D4516136A6DD100B9ECF2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA5D4517136A6DE300B9ECF2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA5D45DD136A87EB00B9ECF2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		CA7C70A013811BC60030442D /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
+		CA7C70A113811BC60030442D /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
 		CA7F9CD3137D5B530033FE12 /* PlaceLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceLocationController.h; sourceTree = "<group>"; };
 		CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceLocationController.m; sourceTree = "<group>"; };
 		CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceLocationController.xib; sourceTree = "<group>"; };
@@ -726,8 +728,6 @@
 		FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
 		FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DipanAppDelegate.h; sourceTree = "<group>"; };
 		FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DipanAppDelegate.m; sourceTree = "<group>"; };
-		FB753273138116F100C1DB1C /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
-		FB753274138116F100C1DB1C /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -773,8 +773,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CA7C709F13811BC60030442D /* Service */,
 				8239C3FC125318180007CBBB /* Controller */,
-				CA1DA2671255AF190071F74B /* Service */,
 				CAD19B7A137A756100A8817B /* Network */,
 				8239C3FB125318140007CBBB /* Model */,
 				FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */,
@@ -975,13 +975,6 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		CA1DA2671255AF190071F74B /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		CA5D44A9136A63A200B9ECF2 /* 3PP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,6 +1099,15 @@
 			name = FlurryLib;
 			path = /3PP/Flurry/FlurryLib;
 			sourceTree = "<absolute>";
+		};
+		CA7C709F13811BC60030442D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CA7C70A013811BC60030442D /* LocalDataService.h */,
+				CA7C70A113811BC60030442D /* LocalDataService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
 		};
 		CAAA41E6137CDC3B00FB7C25 /* Post */ = {
 			isa = PBXGroup;
@@ -1668,8 +1670,6 @@
 		CAD19B87137A773C00A8817B /* Place */ = {
 			isa = PBXGroup;
 			children = (
-				FB753273138116F100C1DB1C /* GetUserPlaceRequest.h */,
-				FB753274138116F100C1DB1C /* GetUserPlaceRequest.m */,
 				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
 			);
@@ -2083,7 +2083,7 @@
 				FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */,
 				FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */,
 				FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */,
-				FB753275138116F100C1DB1C /* GetUserPlaceRequest.m in Sources */,
+				CA7C70A213811BC60030442D /* LocalDataService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
