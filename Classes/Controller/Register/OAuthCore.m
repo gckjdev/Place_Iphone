@@ -13,7 +13,9 @@
 
 - (NSString *)urlencodeWithUTF8
 {
-    return [GTMBase64 stringByWebSafeEncodingData:[self dataUsingEncoding:NSUTF8StringEncoding] padded:NO];
+    CFStringRef forceEscaped = CFSTR("!*'();:@&=+$,/?%#[]");
+	NSString *escapedStr = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, nil, forceEscaped, kCFStringEncodingUTF8);
+    return [escapedStr autorelease];
 }
 
 @end
@@ -90,7 +92,6 @@ NSInteger SortParameter(NSString *key1, NSString *key2, void *context) {
                                      [normalizedParameterString urlencodeWithUTF8]];
 	
 	NSString *key = [NSString stringWithFormat:@"%@&%@", consumerSecret, nil == tokenSecret ? @"" : tokenSecret];
-	NSLog(@"signature key:%@", key);
     
 	NSData *signature = [OAuthCore hmacSHA1WithString:signatureBaseString key:key];
 	NSString *base64Signature = [GTMBase64 stringByWebSafeEncodingData:signature padded:NO];

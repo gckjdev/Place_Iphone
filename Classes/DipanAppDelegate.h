@@ -11,6 +11,7 @@
 #import "PPApplication.h"
 #import "MobClick.h"
 #import "LocalDataService.h"
+#import "RegisterController.h"
 
 #define _THREE20_		1
 #define kAppId			@"388419035"					// To be changed for each project
@@ -21,11 +22,19 @@
     UIWindow			*window;
     UITabBarController	*tabBarController;
 	CoreDataManager		*dataManager;	
+    
     LocalDataService    *localDataService;
+    RegisterController *registerController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow				*window;
 @property (nonatomic, retain) IBOutlet UITabBarController	*tabBarController;
 @property (nonatomic, retain) CoreDataManager				*dataManager;
+
+- (void)addRegisterView;
+- (void)removeRegisterView;
+- (void)addMainView;
+- (void)removeMainView;
+
 
 @end

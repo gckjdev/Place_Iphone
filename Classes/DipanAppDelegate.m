@@ -23,6 +23,8 @@
 #import "PlaceMainController.h"
 #import "PostMainController.h"
 
+#import "UserManager.h"
+#import "RegisterController.h"
 #import "RegisterUserRequest.h"
 
 #define kDbFileName			@"AppDB"
@@ -115,9 +117,12 @@ void uncaughtExceptionHandler(NSException *exception) {
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
 		
-	// Init tab bar and window
-	[self initTabViewControllers];		
-    [window addSubview:tabBarController.view];
+    if ([UserManager isUserRegistered] == NO){
+        [self addRegisterView];
+    } else {
+        [self addMainView];
+    }
+    
     [window makeKeyAndVisible];
 	
 	// Ask For Review
@@ -194,6 +199,30 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	[MobClick appTerminated];
 }
+
+#pragma Register View Management
+
+- (void)addRegisterView {
+    registerController = [[RegisterController alloc] init];
+    [window addSubview:registerController.view];
+}
+
+- (void)removeRegisterView {
+    [registerController.view removeFromSuperview];
+    [registerController release];
+    registerController = nil;
+}
+
+- (void)addMainView {
+    // Init tab bar and window
+	[self initTabViewControllers];
+	[window addSubview:tabBarController.view];
+}
+
+- (void)removeMainView {
+    [tabBarController.view removeFromSuperview];
+}
+
 
 #pragma mark Local Notification Handler
 
