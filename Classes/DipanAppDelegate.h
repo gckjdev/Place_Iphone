@@ -30,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow				*window;
 @property (nonatomic, retain) IBOutlet UITabBarController	*tabBarController;
 @property (nonatomic, retain) CoreDataManager				*dataManager;
+@property (nonatomic, retain) LocalDataService              *localDataService;
 
 - (void)addRegisterView;
 - (void)removeRegisterView;
@@ -38,3 +39,5 @@
 
 
 @end
+
+extern LocalDataService*  GlobalGetLocalDataService();

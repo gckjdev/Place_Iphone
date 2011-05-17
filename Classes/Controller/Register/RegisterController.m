@@ -75,13 +75,15 @@
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
     dispatch_async(workingQueue, ^{
         RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL loginId:loginId loginIdType:loginIdType deviceToken:deviceToken appId:appId];
-        output.resultCode = ERROR_SUCCESS;
+//        output.resultCode = ERROR_SUCCESS;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){
                 // save user data locally
-                [UserManager setUser:loginId];
+                [UserManager setUser:loginId 
+                         loginIdType:loginIdType 
+                              userId:output.userId];
                 
                 // show main tab view
                 DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;

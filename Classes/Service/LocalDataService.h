@@ -10,7 +10,10 @@
 
 @protocol LocalDataServiceDelegate <NSObject>
 
+@optional
+
 - (void)followPlaceDataRefresh;
+- (void)placePostDataRefresh;
 
 @end
 
@@ -25,6 +28,8 @@
 
 - (id)initWithDelegate:(id<LocalDataServiceDelegate>)delegate;
 - (void)requestPlaceData;
+- (void)requestLatestPlacePostData:(id<LocalDataServiceDelegate>)delegateObject 
+                     placeId:(NSString*)placeId;
 - (void)requestDataWhileEnterForeground;
 - (void)requestDataWhileLaunch;
 

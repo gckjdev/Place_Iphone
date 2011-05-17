@@ -10,6 +10,8 @@
 #import "PostListController.h"
 #import "PostManager.h"
 #import "Post.h"
+#import "LocalDataService.h"
+#import "DipanAppDelegate.h"
 
 @implementation PostListController
 
@@ -48,7 +50,15 @@
     self.dataList = [PostManager getPostByPlace:placeId];
     if (self.dataList == nil){
         // if no data, try to load from server
+        LocalDataService* dataService = GlobalGetLocalDataService();
+        [dataService requestLatestPlacePostData:self placeId:place.placeId];
     }
+}
+
+- (void)placePostDataRefresh
+{
+    self.dataList = [PostManager getPostByPlace:placeId];
+    [self.dataTableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -59,6 +69,12 @@
     [self loadPostList];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self loadPostList];
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload
@@ -176,10 +192,11 @@
 		return cell;
 	}
 	
-	[self setCellBackground:cell row:row count:count];
-	
-	// NSObject* dataObject = [dataList objectAtIndex:row];
-	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
+//	[self setCellBackground:cell row:row count:count];
+    
+    Post* post = [dataList objectAtIndex:row];
+    cell.textLabel.text = post.textContent;
+    cell.detailTextLabel.text = post.userId;    // need to be user display name
 	
 	return cell;
 	

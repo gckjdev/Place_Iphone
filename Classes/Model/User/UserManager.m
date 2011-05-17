@@ -22,12 +22,17 @@ UserManager* userManager;
 	return ( user != nil );
 }
 
-+ (BOOL)setUser:(NSString*)loginId
++ (BOOL)setUser:(NSString*)loginId loginIdType:(int)loginIdType userId:(NSString*)userId
 {
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();
 	User* user = [dataManager insert:@"User"];
 	user.loginId = loginId;
 	user.queryId = DEFAULT_USER_QUERY_ID;
+    user.userId = userId;
+    user.loginIdType = [NSNumber numberWithInt:loginIdType];
+    
+    NSLog(@"<setUser> user=%@", [user description]);
+    
 	return [dataManager save];
 }
 

@@ -112,8 +112,9 @@
 		if (obj.resultCode == 0){			
 
 			// TODO
-			// obj.userId = xxxx			
-			NSLog(@"RegisterUserRequest result=%d, data=%@", obj.resultCode, [obj description]);						
+            NSDictionary* data = [obj dictionaryDataFromJSON:textData];
+			obj.userId = [data objectForKey:PARA_USERID];
+			NSLog(@"RegisterUserRequest result=%d, data=%@", obj.resultCode, [data description]);						
 			return YES;
 		}
 		else {
@@ -149,6 +150,9 @@
 	input.language = [LocaleUtils getLanguageCode];
 	input.deviceToken = deviceToken;	
 	
+    // for test, to be removed
+    input.deviceId = [NSString stringWithInt:time(0)];
+    
 	if ([[RegisterUserRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
 	}

@@ -13,5 +13,7 @@
 
 @dynamic loginId;
 @dynamic queryId;
+@dynamic userId;
+@dynamic loginIdType;
 
 @end

@@ -29,11 +29,19 @@
 
 #define kDbFileName			@"AppDB"
 
+LocalDataService* GlobalGetLocalDataService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    return [delegate localDataService];
+}
+
 @implementation DipanAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
 @synthesize dataManager;
+@synthesize localDataService;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -103,7 +111,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)initLocalDataService
 {
-    localDataService = [[LocalDataService alloc] initWithDelegate:self];
+    self.localDataService = [[LocalDataService alloc] initWithDelegate:self];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
@@ -129,7 +137,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[ReviewRequest startReviewRequest:kAppId appName:GlobalGetAppName() isTest:NO];
 
 	// Test
-	[RegisterUserRequest test];
+	// [RegisterUserRequest test];
 	
     return YES;
 }
@@ -276,6 +284,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	// release data objects
 	[dataManager release];
+    [localDataService release];
 	
     [super dealloc];
 }

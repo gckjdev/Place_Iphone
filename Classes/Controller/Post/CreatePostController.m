@@ -8,6 +8,7 @@
 
 #import "CreatePostController.h"
 #import "CreatePostRequest.h"
+#import "PostManager.h"
 
 @implementation CreatePostController
 @synthesize syncSNSButton;
@@ -124,11 +125,20 @@
         
         // For Test Only
         output.postId = [NSString stringWithInt:time(0)];
+        output.imageURL = @"test_image_url";
+        output.createDate = [NSDate date];
+        output.totalView = 0;
+        output.totalReply = 0;
+        output.totalQuote = 0;
+        output.totalForward = 0;
+        
+        output.resultCode = ERROR_SUCCESS;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
+                [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
