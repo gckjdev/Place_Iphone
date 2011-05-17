@@ -40,7 +40,7 @@
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
 	str = [str stringByAddQueryParameter:PARA_LONGTITUDE doubleValue:longtitude];
 	str = [str stringByAddQueryParameter:PARA_LATITUDE doubleValue:latitude];
-	str = [str stringByAddQueryParameter:PARA_RADIUS doubleValue:radius];
+	str = [str stringByAddQueryParameter:PARA_RADIUS intValue:radius];
 	str = [str stringByAddQueryParameter:PARA_POSTTYPE intValue:postType];
 	str = [str stringByAddQueryParameter:PARA_NAME value:name];
 	str = [str stringByAddQueryParameter:PARA_DESC value:description];
@@ -53,12 +53,12 @@
 @implementation CreatePlaceOutput
 
 @synthesize placeId;
-@synthesize createUser;
+//@synthesize createUser;
 
 - (void)dealloc
 {
 	[placeId release];
-    [createUser release];
+//    [createUser release];
 	[super dealloc];	
 }
 
@@ -112,6 +112,9 @@
 			// TODO
 			// obj.placeId = xxxx	
             // obj.createUser = xxx
+            NSDictionary* data = [obj dictionaryDataFromJSON:textData];
+            obj.placeId = [data objectForKey:PARA_PLACEID];
+            
 			NSLog(@"CreatePlaceRequest result=%d, data=%@", obj.resultCode, [obj description]);						
 			return YES;
 		}

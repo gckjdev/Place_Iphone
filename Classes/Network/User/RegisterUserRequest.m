@@ -21,6 +21,7 @@
 @synthesize countryCode;
 @synthesize language;
 @synthesize deviceToken;
+@synthesize nickName;
 
 - (void)dealloc
 {
@@ -31,6 +32,7 @@
 	[countryCode release];
 	[language release];
 	[deviceToken release];
+    [nickName release];
 	[super dealloc];	
 }
 
@@ -48,6 +50,7 @@
 	str = [str stringByAddQueryParameter:PARA_COUNTRYCODE value:countryCode];
 	str = [str stringByAddQueryParameter:PARA_LANGUAGE value:language];
 	str = [str stringByAddQueryParameter:PARA_DEVICETOKEN value:deviceToken];
+    str = [str stringByAddQueryParameter:PARA_NICKNAME value:nickName];
 	
 	return str;
 }
@@ -133,7 +136,7 @@
 	return OS_IOS;
 }
 
-+ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken appId:(NSString*)appId
++ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken nickName:(NSString*)nickName appId:(NSString*)appId
 {
 	int result = ERROR_SUCCESS;
 	RegisterUserInput* input = [[RegisterUserInput alloc] init];
@@ -167,7 +170,7 @@
 
 + (void)test
 {
-	[RegisterUserRequest send:SERVER_URL loginId:@"benson" loginIdType:LOGINID_OWN deviceToken:@"test_device_token" appId:@"test_app_id"];
+	[RegisterUserRequest send:SERVER_URL loginId:@"benson" loginIdType:LOGINID_OWN deviceToken:@"test_device_token" nickName:@"benson" appId:@"test_app_id"];
 }
 
 @end

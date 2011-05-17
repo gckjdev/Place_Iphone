@@ -16,5 +16,6 @@
 + (BOOL)isUserRegistered;
 + (BOOL)setUser:(NSString*)loginId loginIdType:(int)loginIdType userId:(NSString*)userId;
 + (User*)getUser;
++ (NSString*)getUserId;
 
 @end

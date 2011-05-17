@@ -26,6 +26,7 @@
 #define PARA_DEVICEMODEL @"dm"
 #define PARA_DEVICEOS @"dos"
 #define PARA_DEVICETOKEN @"dto"
+#define PARA_NICKNAME @"nn"
 
 #define PARA_COUNTRYCODE @"cc"
 #define PARA_LANGUAGE @"lang"

@@ -11,7 +11,7 @@
 #define LOGINID_OWN                 1
 #define LOGINID_SINA                2
 
-#define DEFAULT_PLACE_RADIUS        (500.0f)
+#define DEFAULT_PLACE_RADIUS        500
 
 #define PLACE_POST_TYPE_OPEN        0
 

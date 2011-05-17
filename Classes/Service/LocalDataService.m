@@ -126,7 +126,7 @@
                 
                 // notify UI to refresh data
                 if (delegateObject != nil && [delegateObject respondsToSelector:@selector(placePostDataRefresh)]){
-                    [delegate placePostDataRefresh];
+                    [delegateObject placePostDataRefresh];
                 }
             });
         }

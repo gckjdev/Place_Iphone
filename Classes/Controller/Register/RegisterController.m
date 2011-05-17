@@ -67,14 +67,14 @@
     [super dealloc];
 }
 
-- (void)registerUser:(NSString*)loginId loginIdType:(int)loginIdType
+- (void)registerUser:(NSString*)loginId loginIdType:(int)loginIdType nickName:(NSString*)nickName
 {
     NSString* appId = @"test_app_id";
     NSString* deviceToken = @"";
     
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
     dispatch_async(workingQueue, ^{
-        RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL loginId:loginId loginIdType:loginIdType deviceToken:deviceToken appId:appId];
+        RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL loginId:loginId loginIdType:loginIdType deviceToken:deviceToken nickName:nickName appId:appId];
 //        output.resultCode = ERROR_SUCCESS;
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -102,7 +102,9 @@
 }
 
 - (IBAction)clickRegister:(id)sender {
-    [self registerUser:loginidField.text loginIdType:LOGINID_OWN];    
+    [self registerUser:loginidField.text 
+           loginIdType:LOGINID_OWN 
+              nickName:loginidField.text];    
 
 }
 
@@ -115,7 +117,7 @@
                                            consumerSecret:kOAuthConsumerSecret
                                                     token:nil
                                               tokenSecret:nil];
-    NSLog(@"queryString: %@", queryString);
+    NSLog(@"<clickSinaLogin> queryString: %@", queryString);
 }
 
 @end

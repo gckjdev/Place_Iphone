@@ -17,7 +17,7 @@
     double          longtitude;
     double          latitude;
     NSString*       appId;
-    double          radius;
+    int             radius;
     int             postType;
         
 }
@@ -28,7 +28,7 @@
 @property (nonatomic, assign) double        longtitude;
 @property (nonatomic, assign) double        latitude;
 @property (nonatomic, retain) NSString*     appId;
-@property (nonatomic, assign) double        radius;
+@property (nonatomic, assign) int           radius;
 @property (nonatomic, assign) int           postType;
 
 @end
@@ -36,11 +36,11 @@
 @interface CreatePlaceOutput : CommonOutput
 {
 	NSString	*placeId;
-    NSString    *createUser;
+//    NSString    *createUser;
 }
 
 @property (nonatomic, retain) NSString	*placeId;
-@property (nonatomic, retain) NSString	*createUser;
+//@property (nonatomic, retain) NSString	*createUser;
 
 
 @end

@@ -11,6 +11,7 @@
 #import "PPApplication.h"
 #import "MobClick.h"
 #import "LocalDataService.h"
+#import "LocationService.h"
 #import "RegisterController.h"
 
 #define _THREE20_		1
@@ -24,6 +25,7 @@
 	CoreDataManager		*dataManager;	
     
     LocalDataService    *localDataService;
+    LocationService     *locationService;
     RegisterController *registerController;
 }
 
@@ -31,6 +33,7 @@
 @property (nonatomic, retain) IBOutlet UITabBarController	*tabBarController;
 @property (nonatomic, retain) CoreDataManager				*dataManager;
 @property (nonatomic, retain) LocalDataService              *localDataService;
+@property (nonatomic, retain) LocationService               *locationService;
 
 - (void)addRegisterView;
 - (void)removeRegisterView;
@@ -41,3 +44,4 @@
 @end
 
 extern LocalDataService*  GlobalGetLocalDataService();
+extern LocationService*   GlobalGetLocationService();

@@ -56,6 +56,8 @@
     post.totalQuote = [NSNumber numberWithInt:totalQuote];
     post.totalReply = [NSNumber numberWithInt:totalReply];
     
+    NSLog(@"<createPost> post=%@", [post description]);
+    
     return [dataManager save];
 }
 

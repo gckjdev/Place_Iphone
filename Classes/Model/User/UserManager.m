@@ -43,4 +43,11 @@ UserManager* userManager;
 	return user;
 }
 
++ (NSString*)getUserId
+{
+	CoreDataManager* dataManager = GlobalGetCoreDataManager();
+	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
+	return user.userId;    
+}
+
 @end

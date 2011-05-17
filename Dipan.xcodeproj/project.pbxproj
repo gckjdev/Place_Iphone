@@ -71,6 +71,7 @@
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
 		CA96731A137E59210038CC44 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967319137E59210038CC44 /* Post.m */; };
 		CA96731D137E593B0038CC44 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96731C137E593B0038CC44 /* PostManager.m */; };
+		CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2FB9A13826DBA00DE820F /* LocationService.m */; };
 		CAAA41E4137CDBAA00FB7C25 /* CreatePlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */; };
 		CAAA41E5137CDBAA00FB7C25 /* CreatePlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */; };
 		CAAA41EA137CDC6F00FB7C25 /* CreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E8137CDC6F00FB7C25 /* CreatePostController.m */; };
@@ -470,6 +471,8 @@
 		CA967319137E59210038CC44 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		CA96731B137E593B0038CC44 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
 		CA96731C137E593B0038CC44 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
+		CAA2FB9913826DB900DE820F /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		CAA2FB9A13826DBA00DE820F /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		CAAA41E1137CDBAA00FB7C25 /* CreatePlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceController.h; sourceTree = "<group>"; };
 		CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceController.m; sourceTree = "<group>"; };
 		CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlaceController.xib; sourceTree = "<group>"; };
@@ -1111,6 +1114,8 @@
 			children = (
 				CA7C70A013811BC60030442D /* LocalDataService.h */,
 				CA7C70A113811BC60030442D /* LocalDataService.m */,
+				CAA2FB9913826DB900DE820F /* LocationService.h */,
+				CAA2FB9A13826DBA00DE820F /* LocationService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2096,6 +2101,7 @@
 				CA7C70A213811BC60030442D /* LocalDataService.m in Sources */,
 				FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */,
 				CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */,
+				CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

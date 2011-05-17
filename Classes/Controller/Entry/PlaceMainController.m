@@ -11,6 +11,7 @@
 #import "PlaceManager.h"
 #import "Place.h"
 #import "PostListController.h"
+#import "UserManager.h"
 
 @implementation PlaceMainController
 
@@ -44,7 +45,7 @@
 
 - (void)loadDataList
 {
-    NSString* userId = @"test_user_id";
+    NSString* userId = [UserManager getUserId];;
     self.dataList = [PlaceManager getAllPlacesByFollowUser:userId];
     if (self.dataList == nil || [self.dataList count] == 0){
         dataTableView.hidden = YES;

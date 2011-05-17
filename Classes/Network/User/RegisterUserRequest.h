@@ -20,6 +20,7 @@
 	NSString*		countryCode;
 	NSString*		language;
 	NSString*		deviceToken;	
+    NSString*       nickName;
 }
 
 @property (nonatomic, retain) NSString*		loginId;
@@ -31,6 +32,8 @@
 @property (nonatomic, retain) NSString*		language;
 @property (nonatomic, retain) NSString*		appId;
 @property (nonatomic, retain) NSString*		deviceToken;
+@property (nonatomic, retain) NSString*       nickName;
+
 @end
 
 @interface RegisterUserOutput : CommonOutput
@@ -46,7 +49,7 @@
 	
 }
 
-+ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken appId:(NSString*)appId;
++ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken nickName:(NSString*)nickName appId:(NSString*)appId;
 + (void)test;
 
 @end

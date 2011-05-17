@@ -36,12 +36,21 @@ LocalDataService* GlobalGetLocalDataService()
     return [delegate localDataService];
 }
 
+LocationService*   GlobalGetLocationService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    return [delegate locationService];
+
+}
+
 @implementation DipanAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
 @synthesize dataManager;
 @synthesize localDataService;
+@synthesize locationService;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -114,6 +123,12 @@ void uncaughtExceptionHandler(NSException *exception) {
     self.localDataService = [[LocalDataService alloc] initWithDelegate:self];
 }
 
+- (void)initLocationService
+{
+    self.locationService = [[LocationService alloc] init];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     	
 	NSLog(@"Application starts, launch option = %@", [launchOptions description]);	
@@ -121,6 +136,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	[self initMobClick];
     [self initLocalDataService];    
+    [self initLocationService];
+    
+//    [locationService syncGetLocation];
     
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
@@ -285,6 +303,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	// release data objects
 	[dataManager release];
     [localDataService release];
+    [locationService release];
 	
     [super dealloc];
 }
