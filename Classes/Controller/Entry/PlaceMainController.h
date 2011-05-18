@@ -9,15 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "CreatePlaceController.h"
+#import "LocalDataService.h"
 
-@interface PlaceMainController : PPTableViewController {
+@interface PlaceMainController : PPTableViewController <LocalDataServiceDelegate> {
 
     IBOutlet UIButton       *createPlaceButton;
     CreatePlaceController    *createPlaceController;
+    
+    int                     segSelectIndex;
+    BOOL                    loadingUser;
+    
+    NSArray                 *nearbyPlaceList;
+    NSArray                 *userPlaceList;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton       *createPlaceButton;
 @property (nonatomic, retain) CreatePlaceController   *createPlaceController;
+
+@property (nonatomic, retain) NSArray                 *nearbyPlaceList;
+@property (nonatomic, retain) NSArray                 *userPlaceList;
+
 
 - (IBAction)clickCreatePlaceButton:(id)sender;
 

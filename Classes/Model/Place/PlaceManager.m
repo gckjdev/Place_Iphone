@@ -10,6 +10,7 @@
 #import "Place.h"
 #import "CoreDataUtil.h"
 
+
 @implementation PlaceManager
 
 + (BOOL)createPlace:(NSString*)placeId name:(NSString*)name desc:(NSString*)desc
@@ -48,6 +49,21 @@
     }
     
     return [dataManager save];
+}
+
++ (BOOL)deleteNearbyPlaces
+{
+    return [PlaceManager deletePlaceByFollowUser:NEARBY_USER_ID];
+}
+
++ (NSArray*)getAllPlacesNearby
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getAllPlacesByFollowUser" forKey:@"followUserId" value:NEARBY_USER_ID sortBy:@"placeId" ascending:YES];
+    
+    // need to return and sort by sequence TBD
+    
+    return placeArray;
 }
 
 @end

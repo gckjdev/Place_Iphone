@@ -11,6 +11,7 @@
 #import "PlaceManager.h"
 #import "PostManager.h"
 #import "GetPlacePostRequest.h"
+#import "GetNearbyPlaceRequest.h"
 
 @implementation LocalDataService
 
@@ -24,6 +25,59 @@
     self.workingQueue = dispatch_queue_create("local data service queue", NULL);
     
     return self;
+}
+
+- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegateObject
+{
+    NSString* userId = @"test_user_id";
+    NSString* appId = @"test_app_id";
+    double longitude = 111.22;
+    double latitude = 233.44;
+    
+    dispatch_async(workingQueue, ^{
+        
+        // fetch user place data from server
+        GetNearbyPlaceOutput* output = [GetNearbyPlaceRequest send:SERVER_URL userId:userId appId:appId
+                                        longitude:longitude latitude:latitude];
+        
+        // For test
+//        output.resultCode = ERROR_SUCCESS;
+        
+        // if succeed, clean local data and save new data
+        if (output.resultCode == ERROR_SUCCESS){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                // delete all old data
+                [PlaceManager deleteNearbyPlaces];
+                
+                // insert new data
+                NSArray* placeArray = output.placeArray;
+                for (NSDictionary* place in placeArray){
+                    // save place into DB
+                    NSString* placeId = [output placeId:place];
+                    NSString* name = [output name:place];
+                    NSString* desc = [output description:place];
+                    double latitude = [output latitude:place];
+                    double lonitude = [output longitude:place];
+                    NSString* createUserId = [output createUserId:place];
+                    NSString* followUserId = NEARBY_USER_ID;
+                    
+                    [PlaceManager createPlace:placeId name:name desc:desc longitude:lonitude latitude:latitude createUser:createUserId followUserId:followUserId];
+                }
+                
+                // notify UI to refresh data
+                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(nearbyPlaceDataRefresh)]){
+                    [delegateObject nearbyPlaceDataRefresh];
+                }
+            });
+        }
+        else {
+            // otherwize do nothing        
+            NSLog(@"<requestPlaceData> failure, result code=%d", output.resultCode);
+        }
+        
+    });
+    
 }
 
 - (void)requestPlaceData

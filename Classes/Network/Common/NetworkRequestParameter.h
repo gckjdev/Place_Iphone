@@ -12,6 +12,7 @@
 #define METHOD_CREATEPLACE @"cpl"
 #define METHOD_GETUSERPLACES @"gup"
 #define METHOD_GETPLACEPOST @"gpp"
+#define METHOD_GETNEARBYPLACE @"gnp"
 
 // request parameters
 
@@ -44,6 +45,7 @@
 #define PARA_TOTAL_QUOTE    @"tq"
 #define PARA_TOTAL_REPLY    @"tr"
 #define PARA_CREATE_DATE    @"cd"
+#define PARA_SEQ            @"sq"
 
 #define PARA_POSTID         @"pi"
 #define PARA_IMAGE_URL      @"iu"
@@ -53,6 +55,10 @@
 #define PARA_USER_LONGITUDE @"ulo"
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid" 
+
+
+
+
 
 #define PARA_CREATE_USERID @"cuid"
 

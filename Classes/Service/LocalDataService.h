@@ -14,6 +14,7 @@
 
 - (void)followPlaceDataRefresh;
 - (void)placePostDataRefresh;
+- (void)nearbyPlaceDataRefresh;
 
 @end
 
@@ -28,6 +29,7 @@
 
 - (id)initWithDelegate:(id<LocalDataServiceDelegate>)delegate;
 - (void)requestPlaceData;
+- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegate;;
 - (void)requestLatestPlacePostData:(id<LocalDataServiceDelegate>)delegateObject 
                      placeId:(NSString*)placeId;
 - (void)requestDataWhileEnterForeground;

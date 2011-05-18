@@ -40,6 +40,7 @@
 		CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */; };
 		CA15FB43137CF7CA000D2457 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB42137CF7CA000D2457 /* Friend.m */; };
 		CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */; };
+		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
 		CA5D43C8136A561E00B9ECF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */; };
 		CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */; };
 		CA5D44DB136A63A200B9ECF2 /* libAdMob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D44B0136A63A200B9ECF2 /* libAdMob.a */; };
@@ -414,6 +415,8 @@
 		CA15FB42137CF7CA000D2457 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceRequest.h; sourceTree = "<group>"; };
 		CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceRequest.m; sourceTree = "<group>"; };
+		CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
+		CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
 		CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA5D44AC136A63A200B9ECF2 /* AdMobDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdMobDelegateProtocol.h; path = /3PP/AdMob/AdMob/AdMobDelegateProtocol.h; sourceTree = "<absolute>"; };
 		CA5D44AD136A63A200B9ECF2 /* AdMobInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdMobInterstitialAd.h; path = /3PP/AdMob/AdMob/AdMobInterstitialAd.h; sourceTree = "<absolute>"; };
@@ -1685,6 +1688,8 @@
 				FB326BC313811BC80073368D /* GetUserPlaceRequest.m */,
 				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
+				CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */,
+				CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2102,6 +2107,7 @@
 				FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */,
 				CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */,
 				CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */,
+				CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

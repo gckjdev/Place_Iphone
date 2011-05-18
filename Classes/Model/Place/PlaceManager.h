@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define NEARBY_USER_ID      @"$$NEARBY_USER_ID$$"       // it's just for internal implementation usage
+
 
 @interface PlaceManager : NSObject {
     
@@ -20,5 +22,8 @@
 + (NSArray*)getAllPlacesByFollowUser:(NSString*)followUserId;
 
 + (BOOL)deletePlaceByFollowUser:(NSString*)followUserId;
++ (BOOL)deleteNearbyPlaces;
+
++ (NSArray*)getAllPlacesNearby;
 
 @end
