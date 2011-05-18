@@ -13,6 +13,7 @@
 #define METHOD_GETUSERPLACES @"gup"
 #define METHOD_GETPLACEPOST @"gpp"
 #define METHOD_GETNEARBYPLACE @"gnp"
+#define METHOD_USERFOLLOWPLACE @"ufp"
 
 // request parameters
 

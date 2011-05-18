@@ -9,13 +9,15 @@
 #import "CreatePostController.h"
 #import "PostListController.h"
 #import "PostManager.h"
+#import "UserManager.h"
+#import "PlaceManager.h"
 #import "Post.h"
 #import "LocalDataService.h"
 #import "DipanAppDelegate.h"
+#import "UserFollowPlaceRequest.h"
 
 @implementation PostListController
 
-@synthesize placeId;
 @synthesize place;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,7 +31,6 @@
 
 - (void)dealloc
 {
-    [placeId release];
     [place release];
     [super dealloc];
 }
@@ -47,7 +48,7 @@
 - (void)loadPostList
 {
     // load post list from local DB
-    self.dataList = [PostManager getPostByPlace:placeId];
+    self.dataList = [PostManager getPostByPlace:place.placeId];
     if (self.dataList == nil){
         // if no data, try to load from server
         LocalDataService* dataService = GlobalGetLocalDataService();
@@ -57,7 +58,7 @@
 
 - (void)placePostDataRefresh
 {
-    self.dataList = [PostManager getPostByPlace:placeId];
+    self.dataList = [PostManager getPostByPlace:place.placeId];
     [self.dataTableView reloadData];
 }
 
@@ -238,6 +239,41 @@
     vc.place = self.place;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
+}
+
+- (void)followPlace:(NSString*)userId placeId:(NSString*)placeId
+{
+    NSString* appId = @"test_app_id";
+    
+    [self showActivityWithText:NSLS(@"kFollowingPlace")];
+    dispatch_async(workingQueue, ^{
+        
+        UserFollowPlaceOutput* output = [UserFollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
+                
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){               
+                // save place data locally
+                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId];
+            }
+            else if (output.resultCode == ERROR_NETWORK){
+                [UIUtils alert:NSLS(@"kSystemFailure")];
+                // for test, TO BE REMOVED
+                
+            }
+            else{
+                // other error TBD
+                // for test, TO BE REMOVED
+            }
+        });        
+    });    
+    
+}
+
+- (IBAction)clickFollow:(id)sender
+{
+    NSString* userId = [UserManager getUserId];
+    [self followPlace:userId placeId:place.placeId];
 }
 
 @end

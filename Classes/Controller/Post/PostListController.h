@@ -13,11 +13,11 @@
 
 @interface PostListController : PPTableViewController <LocalDataServiceDelegate> {
     
-    NSString    *placeId;
     Place       *place;
 }
 
-@property (nonatomic, retain) NSString    *placeId;
 @property (nonatomic, retain) Place       *place;
+
+- (IBAction)clickFollow:(id)sender;
 
 @end

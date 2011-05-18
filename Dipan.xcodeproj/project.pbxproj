@@ -38,6 +38,7 @@
 		82B52E001254838E003E64D0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B52DFF1254838E003E64D0 /* MediaPlayer.framework */; };
 		CA0A56BE137BAF1F003CD06C /* RegisterUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */; };
 		CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */; };
+		CA0C2722138409560097931C /* UserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C2721138409560097931C /* UserFollowPlaceRequest.m */; };
 		CA15FB43137CF7CA000D2457 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB42137CF7CA000D2457 /* Friend.m */; };
 		CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */; };
 		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
@@ -411,6 +412,8 @@
 		CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequest.m; sourceTree = "<group>"; };
 		CA0BFA8C1381538600A9633F /* GetPlacePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlacePostRequest.h; sourceTree = "<group>"; };
 		CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlacePostRequest.m; sourceTree = "<group>"; };
+		CA0C2720138409560097931C /* UserFollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFollowPlaceRequest.h; sourceTree = "<group>"; };
+		CA0C2721138409560097931C /* UserFollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFollowPlaceRequest.m; sourceTree = "<group>"; };
 		CA15FB41137CF7CA000D2457 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		CA15FB42137CF7CA000D2457 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceRequest.h; sourceTree = "<group>"; };
@@ -1690,6 +1693,8 @@
 				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
 				CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */,
 				CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */,
+				CA0C2720138409560097931C /* UserFollowPlaceRequest.h */,
+				CA0C2721138409560097931C /* UserFollowPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2108,6 +2113,7 @@
 				CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */,
 				CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */,
 				CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */,
+				CA0C2722138409560097931C /* UserFollowPlaceRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

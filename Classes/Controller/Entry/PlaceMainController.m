@@ -273,7 +273,6 @@ enum SELECT_INDEX {
 	Place* place = [dataList objectAtIndex:indexPath.row];
     
     PostListController* postListController = [[PostListController alloc] init];
-    postListController.placeId = place.placeId;
     postListController.place = place;
     [self.navigationController pushViewController:postListController animated:YES];
     [postListController release];
