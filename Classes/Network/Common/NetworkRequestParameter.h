@@ -37,6 +37,8 @@
 #define PARA_NAME @"na"
 #define PARA_DESC @"de"
 #define PARA_AFTER_TIMESTAMP @"at"
+#define PARA_MAX_COUNT @"mc"
+
 #define PARA_TOTAL_VIEW     @"tv"
 #define PARA_TOTAL_FORWARD  @"tf"
 #define PARA_TOTAL_QUOTE    @"tq"

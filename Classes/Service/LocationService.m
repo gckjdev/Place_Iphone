@@ -8,7 +8,7 @@
 
 #import "LocationService.h"
 
-#define kLocationUpdateTimeOut      30
+#define kLocationUpdateTimeOut      120
 #define kTimeOutObjectString		@"Location Update Time out"
 
 @implementation LocationService
@@ -21,6 +21,7 @@
     self.locationManager = [[CLLocationManager alloc] init];		
     self.waitLock = [[NSCondition alloc] init];
     refreshing = NO;
+    workingQueue = dispatch_queue_create("location queue", NULL);
 	return self;
 }
 
@@ -49,13 +50,16 @@
  *      accuracy, or both together.
  */
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    // notif all waiting threads
-    [waitLock broadcast];
 
+    NSLog(@"<didUpdateToLocation> New location is %@", [newLocation description]);
+
+    // If the time interval is older than 10 seconds, then it's an older location.  Ignore it.
+    if ([newLocation.timestamp timeIntervalSinceNow] < -10) {
+        return;
+    }
+    
     // save to current location
     self.currentLocation = newLocation;
-	NSLog(@"Current location is %@", [self.currentLocation description]);
 	    
 	// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:kTimeOutObjectString];
@@ -64,8 +68,7 @@
 	[self stopUpdatingLocation:NSLocalizedString(@"Acquired Location", @"Acquired Location")];
 	
 	// translate location to address
-	[self reverseGeocodeCurrentLocation:self.currentLocation];
-    
+	[self reverseGeocodeCurrentLocation:self.currentLocation];    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -115,6 +118,9 @@
 
 - (void)dealloc
 {
+    dispatch_release(workingQueue);
+    workingQueue = NULL;
+    
 	[locationManager release];
 	[reverseGeocoder release];
 	[currentLocation release];
@@ -178,27 +184,12 @@
 	return str;
 }
 
-- (CLLocationCoordinate2D)syncGetLocation
+- (CLLocationCoordinate2D)asyncGetLocation
 {
-    CLLocationCoordinate2D coordinate;    
-    const int WAIT_TIMEOUT = 60;    
-    
+    __block CLLocationCoordinate2D coordinate;    
     
     needGetAddress = NO;
-    [self refreshLocation];
-    [waitLock lock];
-    while (YES){
-        BOOL signal = [waitLock waitUntilDate:[NSDate dateWithTimeIntervalSinceNow:WAIT_TIMEOUT]];        
-        if (signal == YES){
-            NSLog(@"<syncGetLocation> location got");
-        }
-        else {
-            NSLog(@"<syncGetLocation> get location time out");
-        }
-    }
-    [waitLock unlock];        
-    coordinate = self.currentLocation.coordinate;    
-    
+    [self refreshLocation];        
     
     return coordinate;
 }

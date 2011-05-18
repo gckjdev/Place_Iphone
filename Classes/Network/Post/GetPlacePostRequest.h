@@ -15,12 +15,14 @@
     NSString*       appId;
     NSString*       placeId;
     NSString*       afterTimeStamp;
+    int             maxCount;
 }
 
 @property (nonatomic, retain) NSString*		userId;
 @property (nonatomic, retain) NSString*     appId;
 @property (nonatomic, retain) NSString*     placeId;
 @property (nonatomic, retain) NSString*     afterTimeStamp;
+@property (nonatomic, assign) int           maxCount;
 
 @end
 

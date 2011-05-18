@@ -21,6 +21,7 @@
     BOOL                    refreshing;
     
     NSCondition             *waitLock;
+    dispatch_queue_t        workingQueue;
 }
 @property (nonatomic, retain) CLLocationManager		*locationManager;
 @property (nonatomic, copy)	  CLLocation			*currentLocation;
@@ -29,7 +30,7 @@
 @property (nonatomic, retain) NSCondition           *waitLock;
 
 // public methods
-- (CLLocationCoordinate2D)syncGetLocation;
+- (CLLocationCoordinate2D)asyncGetLocation;
 - (CLLocationCoordinate2D)syncGetLocationAndAddress;
 - (CLLocationCoordinate2D)getLatestLocation;
 - (void)updateLocationAndAddress;

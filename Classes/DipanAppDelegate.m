@@ -138,7 +138,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self initLocalDataService];    
     [self initLocationService];
     
-//    [locationService syncGetLocation];
+    [locationService asyncGetLocation];
     
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];

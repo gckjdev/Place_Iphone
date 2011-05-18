@@ -16,6 +16,7 @@
 @synthesize appId;
 @synthesize placeId;
 @synthesize afterTimeStamp;
+@synthesize maxCount;
 
 - (void)dealloc
 {
@@ -35,6 +36,7 @@
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
 	str = [str stringByAddQueryParameter:PARA_PLACEID value:placeId];
 	str = [str stringByAddQueryParameter:PARA_AFTER_TIMESTAMP value:afterTimeStamp];
+	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
 	
 	return str;
 }
@@ -194,6 +196,8 @@
 
 + (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId afterTimeStamp:(NSString*)afterTimeStamp
 {
+    const int kMaxCount = 30;
+    
 	int result = ERROR_SUCCESS;
 	GetPlacePostInput* input = [[GetPlacePostInput alloc] init];
 	GetPlacePostOutput* output = [[[GetPlacePostOutput alloc] init] autorelease];
@@ -203,6 +207,7 @@
 	input.appId = appId;
     input.placeId = placeId;
     input.afterTimeStamp = afterTimeStamp;
+    input.maxCount = kMaxCount;
 	
 	if ([[GetPlacePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
