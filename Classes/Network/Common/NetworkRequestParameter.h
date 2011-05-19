@@ -14,6 +14,8 @@
 #define METHOD_GETPLACEPOST @"gpp"
 #define METHOD_GETNEARBYPLACE @"gnp"
 #define METHOD_USERFOLLOWPLACE @"ufp"
+#define METHOD_GETUSERFOLLOWPOSTS @"guf"
+#define METHOD_GETNEARBYPOSTS @"gne"
 
 // request parameters
 
@@ -39,6 +41,7 @@
 #define PARA_NAME @"na"
 #define PARA_DESC @"de"
 #define PARA_AFTER_TIMESTAMP @"at"
+#define PARA_BEFORE_TIMESTAMP @"bt"
 #define PARA_MAX_COUNT @"mc"
 
 #define PARA_TOTAL_VIEW     @"tv"

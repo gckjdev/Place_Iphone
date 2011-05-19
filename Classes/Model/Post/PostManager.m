@@ -61,5 +61,13 @@
     return [dataManager save];
 }
 
++ (NSArray*)getAllFollowPost:(NSString*)userId
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();
+    return [dataManager execute:@"getFollowPostByUser" 
+                         sortBy:@"createDate" 
+                      ascending:YES];
+    
+}
 
 @end

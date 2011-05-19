@@ -12,6 +12,7 @@
 #import "PostManager.h"
 #import "GetPlacePostRequest.h"
 #import "GetNearbyPlaceRequest.h"
+#import "TimeUtils.h"
 
 @implementation LocalDataService
 
@@ -154,7 +155,6 @@
                 for (NSDictionary* post in postArray){
                     // save place into DB
                     
-                    NSString* placeId = placeId;
                     NSString* postId = [output postId:post];
                     NSString* userId = [output userId:post];
                     double latitude = [output latitude:post];

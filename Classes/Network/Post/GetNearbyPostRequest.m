@@ -1,29 +1,29 @@
 //
-//  GetPlacePost.m
+//  GetNearbyPost.m
 //  FacetimeAnyone
 //
 //  Created by Peng Lingzhe on 10/11/10.
 //  Copyright 2010 Ericsson. All rights reserved.
 //
 
-#import "GetPlacePostRequest.h"
+#import "GetNearbyPostRequest.h"
 #import "TimeUtils.h"
 #import "LocaleUtils.h"
 
-@implementation GetPlacePostInput
+@implementation GetNearbyPostInput
 
 @synthesize userId;
 @synthesize appId;
-@synthesize placeId;
-@synthesize afterTimeStamp;
+@synthesize beforeTimeStamp;
 @synthesize maxCount;
+@synthesize longitude;
+@synthesize latitude;
 
 - (void)dealloc
 {
 	[appId release];
     [userId release];    
-    [afterTimeStamp release];
-    [placeId release];
+    [beforeTimeStamp release];
 	[super dealloc];	
 }
 
@@ -31,19 +31,20 @@
 {
 	NSString* str = [NSString stringWithString:baseURL];
 	
-	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETPLACEPOST];	
+	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETNEARBYPOSTS];	
 	str = [str stringByAddQueryParameter:PARA_USERID value:userId];
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
-	str = [str stringByAddQueryParameter:PARA_PLACEID value:placeId];
-	str = [str stringByAddQueryParameter:PARA_AFTER_TIMESTAMP value:afterTimeStamp];
+	str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:beforeTimeStamp];
 	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
+    str = [str stringByAddQueryParameter:PARA_LONGTITUDE doubleValue:longitude];
+    str = [str stringByAddQueryParameter:PARA_LATITUDE doubleValue:latitude];
 	
 	return str;
 }
 
 @end
 
-@implementation GetPlacePostOutput
+@implementation GetNearbyPostOutput
 
 @synthesize postArray;
 
@@ -105,7 +106,6 @@
 
 - (NSDate*)createDate:(NSDictionary*)post
 {
-    // TBD
     return dateFromUTCStringByFormat([post objectForKey:PARA_CREATE_DATE], DEFAULT_DATE_FORMAT);
 }
 
@@ -133,11 +133,11 @@
 
 @end
 
-@implementation GetPlacePostRequest
+@implementation GetNearbyPostRequest
 
 + (id)requestWithURL:(NSString*)urlString
 {
-	NetworkRequest* request = [[[GetPlacePostRequest alloc] init] autorelease];
+	NetworkRequest* request = [[[GetNearbyPostRequest alloc] init] autorelease];
 	request.serverURL = urlString;
 	return request;
 }
@@ -145,8 +145,8 @@
 // virtual method
 - (NSString*)getRequestUrlString:(NSObject*)input
 {	
-	if ([input isKindOfClass:[GetPlacePostInput class]]){
-		GetPlacePostInput* obj = (GetPlacePostInput*)input;
+	if ([input isKindOfClass:[GetNearbyPostInput class]]){
+		GetNearbyPostInput* obj = (GetNearbyPostInput*)input;
 		NSString* url = [obj createUrlString:[self getBaseUrlString]];		
 		return [url stringByURLEncode];
 	}
@@ -161,11 +161,11 @@
 {
 	const void* bytes = [data bytes];
 	NSString* textData = [[[NSString alloc] initWithBytes:bytes length:[data length] encoding:NSUTF8StringEncoding] autorelease];		
-	NSLog(@"GetPlacePostRequest receive data=%@", textData);
+	NSLog(@"GetNearbyPostRequest receive data=%@", textData);
 	
-	if ([output isKindOfClass:[GetPlacePostOutput class]]){
+	if ([output isKindOfClass:[GetNearbyPostOutput class]]){
 		
-		GetPlacePostOutput* obj = (GetPlacePostOutput*)output;
+		GetNearbyPostOutput* obj = (GetNearbyPostOutput*)output;
 		
 		// get result code and message
 		[obj resultFromJSON:textData];										
@@ -173,11 +173,11 @@
             
 			// TODO         
             obj.postArray = [obj arrayFromJSON:textData];
-			NSLog(@"GetPlacePostRequest result=%d, data=%@", obj.resultCode, [obj description]);						
+			NSLog(@"GetNearbyPostRequest result=%d, data=%@", obj.resultCode, [obj description]);						
 			return YES;
 		}
 		else {
-			NSLog(@"GetPlacePostRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
+			NSLog(@"GetNearbyPostRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
 			return NO;		
 		}
 	}
@@ -193,22 +193,21 @@
 	return OS_IOS;
 }
 
-+ (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId afterTimeStamp:(NSString*)afterTimeStamp
++ (GetNearbyPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
     const int kMaxCount = 30;
     
 	int result = ERROR_SUCCESS;
-	GetPlacePostInput* input = [[GetPlacePostInput alloc] init];
-	GetPlacePostOutput* output = [[[GetPlacePostOutput alloc] init] autorelease];
+	GetNearbyPostInput* input = [[GetNearbyPostInput alloc] init];
+	GetNearbyPostOutput* output = [[[GetNearbyPostOutput alloc] init] autorelease];
 	
 	// initlize all input data
 	input.userId = userId;
 	input.appId = appId;
-    input.placeId = placeId;
-    input.afterTimeStamp = afterTimeStamp;
+    input.beforeTimeStamp = beforeTimeStamp;
     input.maxCount = kMaxCount;
 	
-	if ([[GetPlacePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
+	if ([[GetNearbyPostRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
 	}
 	else{
@@ -222,8 +221,8 @@
 
 + (void)test
 {
-	[GetPlacePostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-     placeId:@"test_place_id" afterTimeStamp:@""];
+	[GetNearbyPostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
+                   beforeTimeStamp:@""];
 }
 
 @end

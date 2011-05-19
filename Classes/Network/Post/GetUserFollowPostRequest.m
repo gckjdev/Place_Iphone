@@ -1,29 +1,27 @@
 //
-//  GetPlacePost.m
+//  GetUserFollowPost.m
 //  FacetimeAnyone
 //
 //  Created by Peng Lingzhe on 10/11/10.
 //  Copyright 2010 Ericsson. All rights reserved.
 //
 
-#import "GetPlacePostRequest.h"
+#import "GetUserFollowPostRequest.h"
 #import "TimeUtils.h"
 #import "LocaleUtils.h"
 
-@implementation GetPlacePostInput
+@implementation GetUserFollowPostInput
 
 @synthesize userId;
 @synthesize appId;
-@synthesize placeId;
-@synthesize afterTimeStamp;
+@synthesize beforeTimeStamp;
 @synthesize maxCount;
 
 - (void)dealloc
 {
 	[appId release];
     [userId release];    
-    [afterTimeStamp release];
-    [placeId release];
+    [beforeTimeStamp release];
 	[super dealloc];	
 }
 
@@ -31,11 +29,10 @@
 {
 	NSString* str = [NSString stringWithString:baseURL];
 	
-	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETPLACEPOST];	
+	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETUSERFOLLOWPOSTS];	
 	str = [str stringByAddQueryParameter:PARA_USERID value:userId];
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
-	str = [str stringByAddQueryParameter:PARA_PLACEID value:placeId];
-	str = [str stringByAddQueryParameter:PARA_AFTER_TIMESTAMP value:afterTimeStamp];
+	str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:beforeTimeStamp];
 	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
 	
 	return str;
@@ -43,7 +40,7 @@
 
 @end
 
-@implementation GetPlacePostOutput
+@implementation GetUserFollowPostOutput
 
 @synthesize postArray;
 
@@ -105,7 +102,6 @@
 
 - (NSDate*)createDate:(NSDictionary*)post
 {
-    // TBD
     return dateFromUTCStringByFormat([post objectForKey:PARA_CREATE_DATE], DEFAULT_DATE_FORMAT);
 }
 
@@ -133,11 +129,11 @@
 
 @end
 
-@implementation GetPlacePostRequest
+@implementation GetUserFollowPostRequest
 
 + (id)requestWithURL:(NSString*)urlString
 {
-	NetworkRequest* request = [[[GetPlacePostRequest alloc] init] autorelease];
+	NetworkRequest* request = [[[GetUserFollowPostRequest alloc] init] autorelease];
 	request.serverURL = urlString;
 	return request;
 }
@@ -145,8 +141,8 @@
 // virtual method
 - (NSString*)getRequestUrlString:(NSObject*)input
 {	
-	if ([input isKindOfClass:[GetPlacePostInput class]]){
-		GetPlacePostInput* obj = (GetPlacePostInput*)input;
+	if ([input isKindOfClass:[GetUserFollowPostInput class]]){
+		GetUserFollowPostInput* obj = (GetUserFollowPostInput*)input;
 		NSString* url = [obj createUrlString:[self getBaseUrlString]];		
 		return [url stringByURLEncode];
 	}
@@ -161,11 +157,11 @@
 {
 	const void* bytes = [data bytes];
 	NSString* textData = [[[NSString alloc] initWithBytes:bytes length:[data length] encoding:NSUTF8StringEncoding] autorelease];		
-	NSLog(@"GetPlacePostRequest receive data=%@", textData);
+	NSLog(@"GetUserFollowPostRequest receive data=%@", textData);
 	
-	if ([output isKindOfClass:[GetPlacePostOutput class]]){
+	if ([output isKindOfClass:[GetUserFollowPostOutput class]]){
 		
-		GetPlacePostOutput* obj = (GetPlacePostOutput*)output;
+		GetUserFollowPostOutput* obj = (GetUserFollowPostOutput*)output;
 		
 		// get result code and message
 		[obj resultFromJSON:textData];										
@@ -173,11 +169,11 @@
             
 			// TODO         
             obj.postArray = [obj arrayFromJSON:textData];
-			NSLog(@"GetPlacePostRequest result=%d, data=%@", obj.resultCode, [obj description]);						
+			NSLog(@"GetUserFollowPostRequest result=%d, data=%@", obj.resultCode, [obj description]);						
 			return YES;
 		}
 		else {
-			NSLog(@"GetPlacePostRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
+			NSLog(@"GetUserFollowPostRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
 			return NO;		
 		}
 	}
@@ -193,22 +189,21 @@
 	return OS_IOS;
 }
 
-+ (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId afterTimeStamp:(NSString*)afterTimeStamp
++ (GetUserFollowPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
     const int kMaxCount = 30;
     
 	int result = ERROR_SUCCESS;
-	GetPlacePostInput* input = [[GetPlacePostInput alloc] init];
-	GetPlacePostOutput* output = [[[GetPlacePostOutput alloc] init] autorelease];
+	GetUserFollowPostInput* input = [[GetUserFollowPostInput alloc] init];
+	GetUserFollowPostOutput* output = [[[GetUserFollowPostOutput alloc] init] autorelease];
 	
 	// initlize all input data
 	input.userId = userId;
 	input.appId = appId;
-    input.placeId = placeId;
-    input.afterTimeStamp = afterTimeStamp;
+    input.beforeTimeStamp = beforeTimeStamp;
     input.maxCount = kMaxCount;
 	
-	if ([[GetPlacePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
+	if ([[GetUserFollowPostRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
 	}
 	else{
@@ -222,8 +217,8 @@
 
 + (void)test
 {
-	[GetPlacePostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-     placeId:@"test_place_id" afterTimeStamp:@""];
+	[GetUserFollowPostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
+                      beforeTimeStamp:@""];
 }
 
 @end

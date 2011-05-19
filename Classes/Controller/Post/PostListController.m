@@ -49,11 +49,11 @@
 {
     // load post list from local DB
     self.dataList = [PostManager getPostByPlace:place.placeId];
-    if (self.dataList == nil){
+//    if (self.dataList == nil || [self.dataList count] == 0){
         // if no data, try to load from server
         LocalDataService* dataService = GlobalGetLocalDataService();
         [dataService requestLatestPlacePostData:self placeId:place.placeId];
-    }
+//    }
 }
 
 - (void)placePostDataRefresh
@@ -67,10 +67,12 @@
     [self setNavigationRightButton:NSLS(@"kNewPost") action:@selector(clickCreatePost:)];
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
-    [self loadPostList];
+//    [self loadPostList];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -275,5 +277,4 @@
     NSString* userId = [UserManager getUserId];
     [self followPlace:userId placeId:place.placeId];
 }
-
 @end

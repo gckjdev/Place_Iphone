@@ -23,4 +23,6 @@
          totalView:(int)totalView totalForward:(int)totalForward
         totalQuote:(int)totalQuote totalReply:(int)totalReply;
 
++ (NSArray*)getAllFollowPost:(NSString*)userId;
+
 @end
