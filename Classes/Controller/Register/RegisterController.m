@@ -117,7 +117,8 @@
                                            consumerSecret:kOAuthConsumerSecret
                                                     token:nil
                                               tokenSecret:nil];
-    NSLog(@"<clickSinaLogin> queryString: %@", queryString);
+    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+    NSLog(@"<clickSinaLogin> queryString: %@", url);
 }
 
 @end
