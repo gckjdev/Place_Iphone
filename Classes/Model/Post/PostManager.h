@@ -14,5 +14,15 @@
 }
 
 + (NSArray*)getPostByPlace:(NSString*)placeId;
++ (BOOL)deletePostByPlace:(NSString*)placeId;
++ (BOOL)createPost:(NSString*)postId placeId:(NSString*)placeId userId:(NSString*)userId
+       textContent:(NSString*)textContent imageURL:(NSString*)imageURL 
+       contentType:(int)contentType createDate:(NSDate*)createDate
+          longitude:(double)longitude latitude:(double)latitude
+          userLongitude:(double)userLongitude userLatitude:(double)userLatitude
+         totalView:(int)totalView totalForward:(int)totalForward
+        totalQuote:(int)totalQuote totalReply:(int)totalReply;
+
++ (NSArray*)getAllFollowPost:(NSString*)userId;
 
 @end

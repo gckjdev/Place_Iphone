@@ -11,6 +11,11 @@
 #define METHOD_CREATEPOST @"cp"
 #define METHOD_CREATEPLACE @"cpl"
 #define METHOD_GETUSERPLACES @"gup"
+#define METHOD_GETPLACEPOST @"gpp"
+#define METHOD_GETNEARBYPLACE @"gnp"
+#define METHOD_USERFOLLOWPLACE @"ufp"
+#define METHOD_GETUSERFOLLOWPOSTS @"guf"
+#define METHOD_GETNEARBYPOSTS @"gne"
 
 // request parameters
 
@@ -25,6 +30,7 @@
 #define PARA_DEVICEMODEL @"dm"
 #define PARA_DEVICEOS @"dos"
 #define PARA_DEVICETOKEN @"dto"
+#define PARA_NICKNAME @"nn"
 
 #define PARA_COUNTRYCODE @"cc"
 #define PARA_LANGUAGE @"lang"
@@ -34,13 +40,29 @@
 #define PARA_POSTTYPE @"pt"
 #define PARA_NAME @"na"
 #define PARA_DESC @"de"
+#define PARA_AFTER_TIMESTAMP @"at"
+#define PARA_BEFORE_TIMESTAMP @"bt"
+#define PARA_MAX_COUNT @"mc"
 
-#define PARA_CONTENT_TYPE @"ct"
-#define PARA_TEXT_CONTENT @"t"
-#define PARA_USER_LATITUDE @"ula"
+#define PARA_TOTAL_VIEW     @"tv"
+#define PARA_TOTAL_FORWARD  @"tf"
+#define PARA_TOTAL_QUOTE    @"tq"
+#define PARA_TOTAL_REPLY    @"tr"
+#define PARA_CREATE_DATE    @"cd"
+#define PARA_SEQ            @"sq"
+
+#define PARA_POSTID         @"pi"
+#define PARA_IMAGE_URL      @"iu"
+#define PARA_CONTENT_TYPE   @"ct"
+#define PARA_TEXT_CONTENT   @"t"
+#define PARA_USER_LATITUDE  @"ula"
 #define PARA_USER_LONGITUDE @"ulo"
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid" 
+
+
+
+
 
 #define PARA_CREATE_USERID @"cuid"
 

@@ -39,9 +39,21 @@
 @interface CreatePostOutput : CommonOutput
 {
 	NSString	*postId;
+	NSString	*imageURL;
+    int         totalView;
+    int         totalReply;
+    int         totalQuote;
+    int         totalForward;
+    NSDate      *createDate;
 }
 
-@property (nonatomic, retain) NSString	*postId;
+@property (nonatomic, retain) NSString	  *postId;
+@property (nonatomic, retain) NSString	  *imageURL;
+@property (nonatomic, assign) int         totalView;
+@property (nonatomic, assign) int         totalReply;
+@property (nonatomic, assign) int         totalQuote;
+@property (nonatomic, assign) int         totalForward;
+@property (nonatomic, retain) NSDate      *createDate;
 
 @end
 

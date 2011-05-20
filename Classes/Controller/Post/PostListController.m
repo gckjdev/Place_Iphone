@@ -9,11 +9,15 @@
 #import "CreatePostController.h"
 #import "PostListController.h"
 #import "PostManager.h"
+#import "UserManager.h"
+#import "PlaceManager.h"
 #import "Post.h"
+#import "LocalDataService.h"
+#import "DipanAppDelegate.h"
+#import "UserFollowPlaceRequest.h"
 
 @implementation PostListController
 
-@synthesize placeId;
 @synthesize place;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,7 +31,6 @@
 
 - (void)dealloc
 {
-    [placeId release];
     [place release];
     [super dealloc];
 }
@@ -45,10 +48,18 @@
 - (void)loadPostList
 {
     // load post list from local DB
-    self.dataList = [PostManager getPostByPlace:placeId];
-    if (self.dataList == nil){
+    self.dataList = [PostManager getPostByPlace:place.placeId];
+//    if (self.dataList == nil || [self.dataList count] == 0){
         // if no data, try to load from server
-    }
+        LocalDataService* dataService = GlobalGetLocalDataService();
+        [dataService requestLatestPlacePostData:self placeId:place.placeId];
+//    }
+}
+
+- (void)placePostDataRefresh
+{
+    self.dataList = [PostManager getPostByPlace:place.placeId];
+    [self.dataTableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -56,9 +67,17 @@
     [self setNavigationRightButton:NSLS(@"kNewPost") action:@selector(clickCreatePost:)];
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
-    [self loadPostList];
+//    [self loadPostList];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self loadPostList];
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload
@@ -176,10 +195,11 @@
 		return cell;
 	}
 	
-	[self setCellBackground:cell row:row count:count];
-	
-	// NSObject* dataObject = [dataList objectAtIndex:row];
-	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
+//	[self setCellBackground:cell row:row count:count];
+    
+    Post* post = [dataList objectAtIndex:row];
+    cell.textLabel.text = post.textContent;
+    cell.detailTextLabel.text = post.userId;    // need to be user display name
 	
 	return cell;
 	
@@ -223,4 +243,38 @@
     [vc release];
 }
 
+- (void)followPlace:(NSString*)userId placeId:(NSString*)placeId
+{
+    NSString* appId = @"test_app_id";
+    
+    [self showActivityWithText:NSLS(@"kFollowingPlace")];
+    dispatch_async(workingQueue, ^{
+        
+        UserFollowPlaceOutput* output = [UserFollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
+                
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){               
+                // save place data locally
+                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId];
+            }
+            else if (output.resultCode == ERROR_NETWORK){
+                [UIUtils alert:NSLS(@"kSystemFailure")];
+                // for test, TO BE REMOVED
+                
+            }
+            else{
+                // other error TBD
+                // for test, TO BE REMOVED
+            }
+        });        
+    });    
+    
+}
+
+- (IBAction)clickFollow:(id)sender
+{
+    NSString* userId = [UserManager getUserId];
+    [self followPlace:userId placeId:place.placeId];
+}
 @end

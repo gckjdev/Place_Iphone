@@ -8,6 +8,8 @@
 
 #import "CreatePostController.h"
 #import "CreatePostRequest.h"
+#import "PostManager.h"
+#import "UserManager.h"
 
 @implementation CreatePostController
 @synthesize syncSNSButton;
@@ -104,7 +106,7 @@
                       syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
 {
     // TODO
-    NSString* userId = @"test_user_id";
+    NSString* userId = [UserManager getUserId];
     NSString* appId = @"test_app_id";
     
     [self showActivityWithText:NSLS(@"kCreatingPost")];
@@ -123,12 +125,21 @@
                                                     placeId:placeId];
         
         // For Test Only
-        output.postId = [NSString stringWithInt:time(0)];
+//        output.postId = [NSString stringWithInt:time(0)];
+//        output.imageURL = @"test_image_url";
+//        output.createDate = [NSDate date];
+//        output.totalView = 0;
+//        output.totalReply = 0;
+//        output.totalQuote = 0;
+//        output.totalForward = 0;
+        
+        output.resultCode = ERROR_SUCCESS;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
+                [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];

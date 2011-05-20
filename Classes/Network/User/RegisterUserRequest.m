@@ -21,6 +21,7 @@
 @synthesize countryCode;
 @synthesize language;
 @synthesize deviceToken;
+@synthesize nickName;
 
 - (void)dealloc
 {
@@ -31,6 +32,7 @@
 	[countryCode release];
 	[language release];
 	[deviceToken release];
+    [nickName release];
 	[super dealloc];	
 }
 
@@ -48,6 +50,7 @@
 	str = [str stringByAddQueryParameter:PARA_COUNTRYCODE value:countryCode];
 	str = [str stringByAddQueryParameter:PARA_LANGUAGE value:language];
 	str = [str stringByAddQueryParameter:PARA_DEVICETOKEN value:deviceToken];
+    str = [str stringByAddQueryParameter:PARA_NICKNAME value:nickName];
 	
 	return str;
 }
@@ -112,8 +115,9 @@
 		if (obj.resultCode == 0){			
 
 			// TODO
-			// obj.userId = xxxx			
-			NSLog(@"RegisterUserRequest result=%d, data=%@", obj.resultCode, [obj description]);						
+            NSDictionary* data = [obj dictionaryDataFromJSON:textData];
+			obj.userId = [data objectForKey:PARA_USERID];
+			NSLog(@"RegisterUserRequest result=%d, data=%@", obj.resultCode, [data description]);						
 			return YES;
 		}
 		else {
@@ -132,7 +136,7 @@
 	return OS_IOS;
 }
 
-+ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken appId:(NSString*)appId
++ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken nickName:(NSString*)nickName appId:(NSString*)appId
 {
 	int result = ERROR_SUCCESS;
 	RegisterUserInput* input = [[RegisterUserInput alloc] init];
@@ -149,6 +153,9 @@
 	input.language = [LocaleUtils getLanguageCode];
 	input.deviceToken = deviceToken;	
 	
+    // for test, to be removed
+    input.deviceId = [NSString stringWithInt:time(0)];
+    
 	if ([[RegisterUserRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
 	}
@@ -163,7 +170,7 @@
 
 + (void)test
 {
-	[RegisterUserRequest send:SERVER_URL loginId:@"benson" loginIdType:LOGINID_OWN deviceToken:@"test_device_token" appId:@"test_app_id"];
+	[RegisterUserRequest send:SERVER_URL loginId:@"benson" loginIdType:LOGINID_OWN deviceToken:@"test_device_token" nickName:@"benson" appId:@"test_app_id"];
 }
 
 @end

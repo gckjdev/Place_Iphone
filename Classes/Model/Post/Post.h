@@ -26,5 +26,7 @@
 @property (nonatomic, retain) NSNumber * totalForward;
 @property (nonatomic, retain) NSNumber * totalQuote;
 @property (nonatomic, retain) NSNumber * totalReply;
+@property (nonatomic, retain) NSNumber * userLongitude;
+@property (nonatomic, retain) NSNumber * userLatitude;
 
 @end

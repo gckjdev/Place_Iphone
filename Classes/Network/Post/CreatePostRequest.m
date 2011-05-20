@@ -56,10 +56,18 @@
 @implementation CreatePostOutput
 
 @synthesize postId;
+@synthesize imageURL;
+@synthesize totalView;
+@synthesize totalReply;
+@synthesize totalQuote;
+@synthesize totalForward;
+@synthesize createDate;
 
 - (void)dealloc
 {
 	[postId release];
+    [createDate release];
+    [imageURL release];    
 	[super dealloc];	
 }
 

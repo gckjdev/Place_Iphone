@@ -11,11 +11,20 @@
 #import "PlaceManager.h"
 #import "Place.h"
 #import "PostListController.h"
+#import "UserManager.h"
+#import "DipanAppDelegate.h"
+
+enum SELECT_INDEX {
+    SELECT_NEARBY = 0,
+    SELECT_MINE = 1
+};
 
 @implementation PlaceMainController
 
 @synthesize createPlaceButton;
 @synthesize createPlaceController;
+@synthesize nearbyPlaceList;
+@synthesize userPlaceList;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -34,6 +43,8 @@
     UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:items];
     
     segControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segSelectIndex = SELECT_NEARBY;
+    segControl.selectedSegmentIndex = segSelectIndex;
     [segControl addTarget:self 
                    action:@selector(clickSegControl:) 
          forControlEvents:UIControlEventValueChanged];
@@ -42,10 +53,35 @@
     [segControl release];
 }
 
+- (void)nearbyPlaceDataRefresh
+{
+    self.nearbyPlaceList = [PlaceManager getAllPlacesNearby];
+    self.dataList = nearbyPlaceList;
+    [self.dataTableView reloadData];
+}
+
+- (void)getNearbyPlace:(NSString*)userId
+{
+    LocalDataService* dataService = GlobalGetLocalDataService();
+    [dataService requestNearbyPlaceData:self];
+}
+
 - (void)loadDataList
 {
-    NSString* userId = @"test_user_id";
-    self.dataList = [PlaceManager getAllPlacesByFollowUser:userId];
+    NSString* userId = [UserManager getUserId];;
+    
+    if (segSelectIndex == SELECT_NEARBY){
+        self.nearbyPlaceList = [PlaceManager getAllPlacesNearby];
+        self.dataList = nearbyPlaceList;
+        if (self.dataList == nil || [self.dataList count] == 0){
+            [self getNearbyPlace:userId];
+        }        
+    }
+    else{
+        self.userPlaceList = [PlaceManager getAllPlacesByFollowUser:userId];
+        self.dataList = userPlaceList;
+    }
+
     if (self.dataList == nil || [self.dataList count] == 0){
         dataTableView.hidden = YES;
         createPlaceButton.hidden = NO;
@@ -54,6 +90,7 @@
         dataTableView.hidden = NO;
         createPlaceButton.hidden = YES;
     }
+
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -104,6 +141,8 @@
 - (void)dealloc {
     [createPlaceButton release];
     [createPlaceController release];
+    [nearbyPlaceList release];
+    [userPlaceList release];
     [super dealloc];
 }
 
@@ -234,7 +273,6 @@
 	Place* place = [dataList objectAtIndex:indexPath.row];
     
     PostListController* postListController = [[PostListController alloc] init];
-    postListController.placeId = place.placeId;
     postListController.place = place;
     [self.navigationController pushViewController:postListController animated:YES];
     [postListController release];
@@ -260,7 +298,13 @@
 
 - (void)clickSegControl:(id)sender
 {
-    NSLog(@"click seg control");
+//    NSLog(@"click seg control");
+    
+    UISegmentedControl* segControl = sender;
+    segSelectIndex = segControl.selectedSegmentIndex;
+    
+    [self loadDataList];
+    [self.dataTableView reloadData];
 }
 
 - (void)clickCreatePlaceButton:(id)sender

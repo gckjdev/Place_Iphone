@@ -15,6 +15,9 @@
 
 @property (nonatomic, retain) NSString *loginId;
 @property (nonatomic, retain) NSString *queryId;
+@property (nonatomic, retain) NSString *userId;
+@property (nonatomic, retain) NSNumber *loginIdType;
+
 
 @end
 

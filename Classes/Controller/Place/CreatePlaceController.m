@@ -12,6 +12,7 @@
 #import "PlaceLocationController.h"
 #import "PlaceManager.h"
 #import "Place.h"
+#import "UserManager.h"
 
 enum
 {
@@ -338,7 +339,7 @@ enum
 - (void)createPlace:(NSString*)name description:(NSString*)description longitude:(double)longitude latitude:(double)latitude
 {
     // TODO
-    NSString* userId = @"test_user_id";
+    NSString* userId = [UserManager getUserId];
     NSString* appId = kAppId;
 
     [self showActivityWithText:NSLS(@"kCreatingPlace")];
@@ -347,30 +348,30 @@ enum
         CreatePlaceOutput* output = [CreatePlaceRequest send:SERVER_URL userId:userId appId:appId name:name description:description longtitude:longitude latitude:latitude];
    
         // For Test Only
-        output.placeId = [NSString stringWithInt:time(0)];
+        // output.placeId = [NSString stringWithInt:time(0)];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save place data locally
                 [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
-                               createUser:output.createUser
+                               createUser:userId
                              followUserId:userId];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
-                // for test, TO BE REMOVED
-                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
-                               createUser:output.createUser
-                             followUserId:userId];
+//                // for test, TO BE REMOVED
+//                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
+//                               createUser:output.createUser
+//                             followUserId:userId];
                 
             }
             else{
                 // other error TBD
                 // for test, TO BE REMOVED
-                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
-                               createUser:output.createUser
-                               followUserId:userId];
+//                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
+//                               createUser:output.createUser
+//                               followUserId:userId];
             }
         });        
     });    
