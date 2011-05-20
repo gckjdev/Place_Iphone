@@ -113,7 +113,8 @@
                                            consumerSecret:kOAuthConsumerSecret
                                                     token:nil
                                               tokenSecret:nil];
-    NSLog(@"queryString: %@", queryString);
+    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+    NSLog(@"queryString: %@", url);
 }
 
 @end
