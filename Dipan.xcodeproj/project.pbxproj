@@ -2231,9 +2231,6 @@
 				INFOPLIST_FILE = "Dipan-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/AdMob/AdMob\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLibWithLocation\"",
 					/3PP/AdMob/AdMob,
 					/3PP/Analytics_iPhone_SDK_1.6_for_iOS3.2.x_iOS4.x,
 					/3PP/Flurry/FlurryLib,
@@ -2253,9 +2250,6 @@
 				INFOPLIST_FILE = "Dipan-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/AdMob/AdMob\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLibWithLocation\"",
 					/3PP/AdMob/AdMob,
 					/3PP/Analytics_iPhone_SDK_1.6_for_iOS3.2.x_iOS4.x,
 					/3PP/Flurry/FlurryLib,
@@ -2335,9 +2329,6 @@
 				INFOPLIST_FILE = "Dipan-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/AdMob/AdMob\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLibWithLocation\"",
 					/3PP/AdMob/AdMob,
 					/3PP/Analytics_iPhone_SDK_1.6_for_iOS3.2.x_iOS4.x,
 					/3PP/Flurry/FlurryLib,
