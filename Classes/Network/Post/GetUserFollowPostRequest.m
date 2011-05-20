@@ -60,6 +60,11 @@
     return [post objectForKey:PARA_POSTID];
 }
 
+- (NSString*)placeId:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_PLACEID];
+}
+
 - (NSString*)userId:(NSDictionary*)post
 {
     return [post objectForKey:PARA_USERID];    

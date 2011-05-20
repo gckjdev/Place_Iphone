@@ -37,6 +37,8 @@
       userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
         totalQuote:(int)totalQuote totalReply:(int)totalReply
+            useFor:(int)useFor
+
 {
     CoreDataManager* dataManager = GlobalGetCoreDataManager();
     Post* post = [dataManager insert:@"Post"];
@@ -55,6 +57,7 @@
     post.totalForward = [NSNumber numberWithInt:totalForward];
     post.totalQuote = [NSNumber numberWithInt:totalQuote];
     post.totalReply = [NSNumber numberWithInt:totalReply];
+    post.useFor = [NSNumber numberWithInt:useFor];
     
     NSLog(@"<createPost> post=%@", [post description]);
     
@@ -69,5 +72,42 @@
                       ascending:YES];
     
 }
+
++ (BOOL)deleteUserFollowPost
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getFollowPostByUser" 
+                                        sortBy:@"createDate" 
+                                     ascending:YES]; 
+    
+    for (Post* post in placeArray){
+        [dataManager del:post];
+    }
+    
+    return [dataManager save];    
+}
+
++ (NSArray*)getAllNearbyPost:(NSString*)userId
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();
+    return [dataManager execute:@"getNearbyPost" 
+                         sortBy:@"createDate" 
+                      ascending:YES];    
+}
+
++ (BOOL)deleteAllNearbyPost
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getNearbyPost" 
+                                        sortBy:@"createDate" 
+                                     ascending:YES]; 
+    
+    for (Post* post in placeArray){
+        [dataManager del:post];
+    }
+    
+    return [dataManager save];     
+}
+
 
 @end

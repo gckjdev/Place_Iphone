@@ -15,6 +15,8 @@
 - (void)followPlaceDataRefresh;
 - (void)placePostDataRefresh;
 - (void)nearbyPlaceDataRefresh;
+- (void)followPostDataRefresh;
+- (void)nearbyPostDataRefresh;
 
 @end
 

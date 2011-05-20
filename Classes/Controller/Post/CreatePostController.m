@@ -10,6 +10,7 @@
 #import "CreatePostRequest.h"
 #import "PostManager.h"
 #import "UserManager.h"
+#import "Post.h"
 
 @implementation CreatePostController
 @synthesize syncSNSButton;
@@ -139,7 +140,7 @@
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
-                [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply];
+                [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply useFor:POST_FOR_PLACE];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];

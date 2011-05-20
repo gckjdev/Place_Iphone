@@ -21,8 +21,15 @@
           longitude:(double)longitude latitude:(double)latitude
           userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
-        totalQuote:(int)totalQuote totalReply:(int)totalReply;
+        totalQuote:(int)totalQuote totalReply:(int)totalReply
+            useFor:(int)useFor;
+
+
++ (NSArray*)getAllNearbyPost:(NSString*)userId;
++ (BOOL)deleteAllNearbyPost;
+
 
 + (NSArray*)getAllFollowPost:(NSString*)userId;
++ (BOOL)deleteUserFollowPost;
 
 @end

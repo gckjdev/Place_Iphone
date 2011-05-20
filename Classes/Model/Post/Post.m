@@ -25,5 +25,6 @@
 @dynamic totalReply;
 @dynamic userLongitude;
 @dynamic userLatitude;
+@dynamic useFor;
 
 @end
