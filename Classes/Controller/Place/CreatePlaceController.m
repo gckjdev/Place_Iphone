@@ -284,7 +284,7 @@ enum
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
+	if (indexPath.row > [dataList count] - 1)
 		return;
 	
 	[self updateSelectSectionAndRow:indexPath];
@@ -303,7 +303,7 @@ enum
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		
-		if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
+		if (indexPath.row > [dataList count] - 1)
 			return;
         
 		// take delete action below, update data list
@@ -356,7 +356,8 @@ enum
                 // save place data locally
                 [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
                                createUser:userId
-                             followUserId:userId];
+                             followUserId:userId
+                                   useFor:PLACE_USE_FOLLOW];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];

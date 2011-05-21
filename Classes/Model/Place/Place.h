@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+enum PLACE_USE_FOR {
+    PLACE_USE_NEARBY = 0,
+    PLACE_USE_FOLLOW,
+    PLACE_USE_SEARCH
+};
+
 
 @interface Place : NSManagedObject {
 @private
@@ -20,4 +26,6 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSString * createUser;
 @property (nonatomic, retain) NSString * followUser;
+@property (nonatomic, assign) NSNumber * useFor;
+
 @end

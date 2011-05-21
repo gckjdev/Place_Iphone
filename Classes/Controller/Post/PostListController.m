@@ -256,7 +256,8 @@
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save place data locally
-                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId];
+                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId
+                                   useFor:PLACE_USE_FOLLOW];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
