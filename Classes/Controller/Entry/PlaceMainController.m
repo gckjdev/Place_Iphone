@@ -14,6 +14,9 @@
 #import "UserManager.h"
 #import "DipanAppDelegate.h"
 
+#define kNearbyUpdateDate           @"kNearbyUpdateDate"
+#define kUserPlaceUpdateDate        @"kUserPlaceUpdateDate"
+
 enum SELECT_INDEX {
     SELECT_NEARBY = 0,
     SELECT_FOLLOW = 1
@@ -25,6 +28,8 @@ enum SELECT_INDEX {
 @synthesize createPlaceController;
 @synthesize nearbyPlaceList;
 @synthesize userPlaceList;
+@synthesize nearbyUpdateDate;
+@synthesize userPlaceUpdateDate;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -63,21 +68,58 @@ enum SELECT_INDEX {
         dataTableView.hidden = NO;
         createPlaceButton.hidden = YES;
     }
+}
 
+// set the right data source and reload table view
+- (void)setDataListBySelection
+{
+    if (segSelectIndex == SELECT_FOLLOW){
+        self.dataList = self.userPlaceList;
+    }
+    else{
+        self.dataList = self.nearbyPlaceList;
+    }
+}
+
+- (void)updateTableRefreshViewDate
+{
+    if (segSelectIndex == SELECT_FOLLOW){
+        [refreshHeaderView setLastRefreshDate:userPlaceUpdateDate];
+    }
+    else{
+        [refreshHeaderView setLastRefreshDate:nearbyUpdateDate];
+    }    
+}
+
+- (void)saveNearbyUpdateDate
+{
+    self.nearbyUpdateDate = [NSDate date];
+    [[NSUserDefaults standardUserDefaults] setObject:nearbyUpdateDate forKey:kNearbyUpdateDate];
+}
+
+- (void)saveUserPlaceUpdateDate
+{
+    self.userPlaceUpdateDate = [NSDate date];
+    [[NSUserDefaults standardUserDefaults] setObject:userPlaceUpdateDate forKey:kUserPlaceUpdateDate];
 }
 
 - (void)nearbyPlaceDataRefresh:(int)result // refresh done
 {
     NSLog(@"nearbyPlaceDataRefresh, result=%d", result);    
-    if (result == 0){   // success
+    if (result == 0){   // success        
+        [self saveNearbyUpdateDate];                                
         self.nearbyPlaceList = [PlaceManager getAllPlacesNearby];
-        self.dataList = nearbyPlaceList;
-        [self showTableOrButton];
+        [self setDataListBySelection];
     }
     
-    [refreshHeaderView setCurrentDate];  	
-    if ([self isReloading]){
+    // refresh UI    
+    [self updateTableRefreshViewDate];
+    if ([self isReloading] && segSelectIndex == SELECT_NEARBY){
         [self dataSourceDidFinishLoadingNewData];
+        [self.dataTableView reloadData];
+    }
+    else if (segSelectIndex == SELECT_NEARBY){
+        [self.dataTableView reloadData];
     }
 }
 
@@ -85,6 +127,18 @@ enum SELECT_INDEX {
 {
     LocalDataService* dataService = GlobalGetLocalDataService();
     [dataService requestNearbyPlaceData:self];
+}
+
+- (void)loadData
+{
+    NSString* userId = [UserManager getUserId];
+    
+    self.userPlaceList = [PlaceManager getAllFollowPlaces:userId];
+    
+    self.nearbyPlaceList = [PlaceManager getAllPlacesNearby];
+    if (self.nearbyPlaceList == nil || [self.nearbyPlaceList count] == 0){
+        [self getNearbyPlace:userId];
+    }            
 }
 
 - (void)refreshDataListFromServer
@@ -97,22 +151,11 @@ enum SELECT_INDEX {
     }    
 }
 
-- (void)loadDataList
+- (void)initDataList
 {
-    NSString* userId = [UserManager getUserId];;
-    
-    if (segSelectIndex == SELECT_NEARBY){
-        self.nearbyPlaceList = [PlaceManager getAllPlacesNearby];
-        self.dataList = nearbyPlaceList;
-        if (self.dataList == nil || [self.dataList count] == 0){
-            [self getNearbyPlace:userId];
-        }        
-    }
-    else{
-        self.userPlaceList = [PlaceManager getAllFollowPlaces:userId];
-        self.dataList = userPlaceList;
-    }
-
+    [self loadData];
+    [self setDataListBySelection];
+    [self.dataTableView reloadData];
     [self showTableOrButton];
 }
 
@@ -127,8 +170,6 @@ enum SELECT_INDEX {
     [self createTitleToolbar];
     [self setNavigationRightButton:NSLS(@"kCreatePlace") action:@selector(clickCreatePlaceButton:)];
         
-    [self loadDataList];
-    
     [super viewDidLoad];
     
     
@@ -136,7 +177,7 @@ enum SELECT_INDEX {
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self loadDataList];
+    [self initDataList];
     [super viewDidAppear:animated];
 }
 
@@ -170,6 +211,8 @@ enum SELECT_INDEX {
     [createPlaceController release];
     [nearbyPlaceList release];
     [userPlaceList release];
+    [nearbyUpdateDate release];
+    [userPlaceUpdateDate release];
     [super dealloc];
 }
 
@@ -333,8 +376,12 @@ enum SELECT_INDEX {
     
     UISegmentedControl* segControl = sender;
     segSelectIndex = segControl.selectedSegmentIndex;
-    
-    [self loadDataList];
+
+    if ([self isReloading]){
+        [self dataSourceDidFinishLoadingNewData];
+    }
+
+    [self setDataListBySelection];
     [self.dataTableView reloadData];
 }
 

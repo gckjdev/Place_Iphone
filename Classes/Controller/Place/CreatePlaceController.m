@@ -66,13 +66,13 @@ enum
     [self setNavigationRightButton:NSLS(@"Save") action:@selector(clickSave:)];
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
-    [self initLocationManager];
+//    [self initLocationManager];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    hasLocationData = NO;
-    [self startUpdatingLocation];
+//    hasLocationData = NO;
+//    [self startUpdatingLocation];
     
     [super viewDidAppear:animated];
 }
@@ -202,7 +202,9 @@ enum
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    if (hasLocationData){
+    LocationService* locationService = GlobalGetLocationService();    
+    if ([locationService currentLocation] != nil){
+        location = [[locationService currentLocation] coordinate];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"(%3.2f, %3.2f)",
                                  location.longitude,
                                  location.latitude];
@@ -361,18 +363,10 @@ enum
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
-//                // for test, TO BE REMOVED
-//                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
-//                               createUser:output.createUser
-//                             followUserId:userId];
                 
             }
             else{
                 // other error TBD
-                // for test, TO BE REMOVED
-//                [PlaceManager createPlace:output.placeId name:name desc:description longitude:longitude latitude:latitude 
-//                               createUser:output.createUser
-//                               followUserId:userId];
             }
         });        
     });    
@@ -383,76 +377,82 @@ enum
     if ([self checkName] == NO){
         return;
     }
- 
-    [self createPlace:nameTextField.text description:descriptionTextField.text longitude:location.longitude latitude:location.latitude];
-}
-
-/*
- * We want to get and store a location measurement that meets the desired accuracy. For this example, we are
- *      going to use horizontal accuracy as the deciding factor. In other cases, you may wish to use vertical
- *      accuracy, or both together.
- */
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	
-    // save to current location
-    self.currentLocation = newLocation;
-	NSLog(@"Current location is %@, horizontalAccuracy=%f, timestamp=%@", [self.currentLocation description], [self.currentLocation horizontalAccuracy], [[currentLocation timestamp] description]);
-	
-	// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
-	// [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:kTimeOutObjectString];
-	
-	// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:kTimeOutObjectString];
-	
-	// IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
-	[self stopUpdatingLocation:NSLocalizedString(@"Acquired Location", @"Acquired Location")];
-	
-    self.location = newLocation.coordinate;
-    [self.dataTableView reloadData];
     
-    hasLocationData = YES;
-	// translate location to address
-	// [self reverseGeocodeCurrentLocation:self.currentLocation];
-	
+    LocationService* locationService = GlobalGetLocationService();
+    location = [[locationService currentLocation] coordinate];
+ 
+    [self createPlace:nameTextField.text 
+          description:descriptionTextField.text 
+            longitude:location.longitude 
+             latitude:location.latitude];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	
-    // The location "unknown" error simply means the manager is currently unable to get the location.
-    // We can ignore this error for the scenario of getting a single location fix, because we already have a 
-    // timeout that will stop the location manager to save power.
-    if ([error code] != kCLErrorLocationUnknown) {
-        [self stopUpdatingLocation:NSLocalizedString(@"Error", @"Error")];
-    }	
-}
-
-#pragma mark reverseGeocoder
-
-- (void)reverseGeocode:(CLLocationCoordinate2D)coordinate
-{
-    self.reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:coordinate];
-    reverseGeocoder.delegate = self;
-    [reverseGeocoder start];
-}
-
-- (void)reverseGeocodeCurrentLocation:(CLLocation *)theLocation
-{
-    self.reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:theLocation.coordinate];
-    reverseGeocoder.delegate = self;
-    [reverseGeocoder start];
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
-{
-    NSLog(@"MKReverseGeocoder has failed.");	
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
-{
-	self.currentPlacemark = placemark;
-	NSLog(@"reverseGeocoder finish, placemark=%@", [placemark description] );
-	//	NSLog(@"current country is %@, province is %@, city is %@, street is %@%@", self.currentPlacemark.country, currentPlacemark.administrativeArea, currentPlacemark.locality, placemark.thoroughfare, placemark.subThoroughfare);	
-}
+///*
+// * We want to get and store a location measurement that meets the desired accuracy. For this example, we are
+// *      going to use horizontal accuracy as the deciding factor. In other cases, you may wish to use vertical
+// *      accuracy, or both together.
+// */
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+//	
+//    // save to current location
+//    self.currentLocation = newLocation;
+//	NSLog(@"Current location is %@, horizontalAccuracy=%f, timestamp=%@", [self.currentLocation description], [self.currentLocation horizontalAccuracy], [[currentLocation timestamp] description]);
+//	
+//	// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
+//	// [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:kTimeOutObjectString];
+//	
+//	// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
+//	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:kTimeOutObjectString];
+//	
+//	// IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
+//	[self stopUpdatingLocation:NSLocalizedString(@"Acquired Location", @"Acquired Location")];
+//	
+//    self.location = newLocation.coordinate;
+//    [self.dataTableView reloadData];
+//    
+//    hasLocationData = YES;
+//	// translate location to address
+//	// [self reverseGeocodeCurrentLocation:self.currentLocation];
+//	
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+//	
+//    // The location "unknown" error simply means the manager is currently unable to get the location.
+//    // We can ignore this error for the scenario of getting a single location fix, because we already have a 
+//    // timeout that will stop the location manager to save power.
+//    if ([error code] != kCLErrorLocationUnknown) {
+//        [self stopUpdatingLocation:NSLocalizedString(@"Error", @"Error")];
+//    }	
+//}
+//
+//#pragma mark reverseGeocoder
+//
+//- (void)reverseGeocode:(CLLocationCoordinate2D)coordinate
+//{
+//    self.reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:coordinate];
+//    reverseGeocoder.delegate = self;
+//    [reverseGeocoder start];
+//}
+//
+//- (void)reverseGeocodeCurrentLocation:(CLLocation *)theLocation
+//{
+//    self.reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:theLocation.coordinate];
+//    reverseGeocoder.delegate = self;
+//    [reverseGeocoder start];
+//}
+//
+//- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
+//{
+//    NSLog(@"MKReverseGeocoder has failed.");	
+//}
+//
+//- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
+//{
+//	self.currentPlacemark = placemark;
+//	NSLog(@"reverseGeocoder finish, placemark=%@", [placemark description] );
+//	//	NSLog(@"current country is %@, province is %@, city is %@, street is %@%@", self.currentPlacemark.country, currentPlacemark.administrativeArea, currentPlacemark.locality, placemark.thoroughfare, placemark.subThoroughfare);	
+//}
 
 
 @end

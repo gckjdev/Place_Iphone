@@ -41,7 +41,6 @@
 		CA079EAB13876B9100C993FE /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA079EA313876B9100C993FE /* EGORefreshTableHeaderView.m */; };
 		CA079EAC13876B9100C993FE /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CA079EA513876B9100C993FE /* blackArrow.png */; };
 		CA079EAD13876B9100C993FE /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CA079EA613876B9100C993FE /* blueArrow.png */; };
-		CA079EAE13876B9100C993FE /* blueArrow_new.png in Resources */ = {isa = PBXBuildFile; fileRef = CA079EA713876B9100C993FE /* blueArrow_new.png */; };
 		CA079EAF13876B9100C993FE /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CA079EA813876B9100C993FE /* whiteArrow.png */; };
 		CA0A56BE137BAF1F003CD06C /* RegisterUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */; };
 		CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */; };
@@ -49,6 +48,8 @@
 		CA15FB43137CF7CA000D2457 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB42137CF7CA000D2457 /* Friend.m */; };
 		CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */; };
 		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
+		CA3D0F9E1388C92B00BD295F /* EGORefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3D0FA01388C92B00BD295F /* EGORefresh.strings */; };
+		CA3D0FA11388C93000BD295F /* blueArrow_new.png in Resources */ = {isa = PBXBuildFile; fileRef = CA3D0FA31388C93000BD295F /* blueArrow_new.png */; };
 		CA5D43C8136A561E00B9ECF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */; };
 		CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */; };
 		CA5D44DB136A63A200B9ECF2 /* libAdMob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D44B0136A63A200B9ECF2 /* libAdMob.a */; };
@@ -426,7 +427,6 @@
 		CA079EA313876B9100C993FE /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		CA079EA513876B9100C993FE /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		CA079EA613876B9100C993FE /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
-		CA079EA713876B9100C993FE /* blueArrow_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow_new.png; sourceTree = "<group>"; };
 		CA079EA813876B9100C993FE /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		CA0A56BC137BAF1F003CD06C /* RegisterUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequest.h; sourceTree = "<group>"; };
 		CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequest.m; sourceTree = "<group>"; };
@@ -440,6 +440,10 @@
 		CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceRequest.m; sourceTree = "<group>"; };
 		CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
 		CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
+		CA3D0F9F1388C92B00BD295F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EGORefresh.strings; sourceTree = "<group>"; };
+		CA3D0FA21388C93000BD295F /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/blueArrow_new.png; sourceTree = "<group>"; };
+		CA5611071388D51400BE3529 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
+		CA5611081388D51800BE3529 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
 		CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA5D44AC136A63A200B9ECF2 /* AdMobDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdMobDelegateProtocol.h; path = /3PP/AdMob/AdMob/AdMobDelegateProtocol.h; sourceTree = "<absolute>"; };
 		CA5D44AD136A63A200B9ECF2 /* AdMobInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdMobInterstitialAd.h; path = /3PP/AdMob/AdMob/AdMobInterstitialAd.h; sourceTree = "<absolute>"; };
@@ -1058,8 +1062,9 @@
 			children = (
 				CA079EA513876B9100C993FE /* blackArrow.png */,
 				CA079EA613876B9100C993FE /* blueArrow.png */,
-				CA079EA713876B9100C993FE /* blueArrow_new.png */,
+				CA3D0FA31388C93000BD295F /* blueArrow_new.png */,
 				CA079EA813876B9100C993FE /* whiteArrow.png */,
+				CA3D0FA01388C92B00BD295F /* EGORefresh.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1855,6 +1860,10 @@
 				zh_Hans,
 				zh_Hant,
 				ja,
+				"zh-Hans-CN",
+				"zh-Hant-TW",
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Dipan */;
 			projectDirPath = "";
@@ -2053,8 +2062,9 @@
 				CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */,
 				CA079EAC13876B9100C993FE /* blackArrow.png in Resources */,
 				CA079EAD13876B9100C993FE /* blueArrow.png in Resources */,
-				CA079EAE13876B9100C993FE /* blueArrow_new.png in Resources */,
+				CA3D0FA11388C93000BD295F /* blueArrow_new.png in Resources */,
 				CA079EAF13876B9100C993FE /* whiteArrow.png in Resources */,
+				CA3D0F9E1388C92B00BD295F /* EGORefresh.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2268,6 +2278,24 @@
 				CA5D4517136A6DE300B9ECF2 /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CA3D0FA01388C92B00BD295F /* EGORefresh.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA3D0F9F1388C92B00BD295F /* en */,
+				CA5611071388D51400BE3529 /* zh-Hans */,
+				CA5611081388D51800BE3529 /* zh-Hant */,
+			);
+			name = EGORefresh.strings;
+			sourceTree = "<group>";
+		};
+		CA3D0FA31388C93000BD295F /* blueArrow_new.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA3D0FA21388C93000BD295F /* en */,
+			);
+			name = blueArrow_new.png;
 			sourceTree = "<group>";
 		};
 		CAAF00F0137FE03100E56503 /* ReviewRequest.strings */ = {
