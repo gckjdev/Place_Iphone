@@ -143,7 +143,7 @@
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
         NSLog(@"RegisterController sina request token result: %@", result);
         if (200 == [response statusCode] && nil == error) {
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -159,24 +159,21 @@
             self.token = [dict objectForKey:@"oauth_token"];
             self.tokenSecret = [dict objectForKey:@"oauth_token_secret"];
             url = [NSURL URLWithString:sinaAuthorizeUrl];
-            [dict removeAllObjects];
-            NSString *queryString = [OAuthCore queryStringWithUrl:url
-                                                           method:@"GET"
-                                                       parameters:dict
-                                                      consumerKey:sinaAppKey
-                                                   consumerSecret:sinaAppSecret
-                                                            token:self.token
-                                                      tokenSecret:self.tokenSecret];
+            queryString = [OAuthCore queryStringWithUrl:url
+                                                 method:@"GET"
+                                             parameters:nil
+                                            consumerKey:sinaAppKey
+                                         consumerSecret:sinaAppSecret
+                                                  token:self.token
+                                            tokenSecret:self.tokenSecret];
             url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideActivity];
                 [[UIApplication sharedApplication] openURL:url];
             });
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideActivity];
-            });
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+        });
     });
 }
 
@@ -209,7 +206,7 @@
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
         NSLog(@"RegisterController sina access token result: %@", result);
         if (200 == [response statusCode] && nil == error) {
             pairs = [result componentsSeparatedByString:@"&"];
@@ -235,21 +232,21 @@
             request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
             [request setHTTPBody:[queryString dataUsingEncoding:NSUTF8StringEncoding]];
-            NSHTTPURLResponse *response = nil;
-            NSError *error = nil;
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            response = nil;
+            error = nil;
+            data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
             NSLog(@"RegisterController sina userinfo result: %@", result);
             if (200 == [response statusCode] && nil == error) {
                 NSDictionary *info = [[SBJsonParser new] objectWithString:result];
                 int userId = [[info objectForKey:@"id"] intValue];
                 NSString *nickname = [info objectForKey:@"screen_name"];
                 NSString *imageUrl = [info objectForKey:@"profile_image_url"];
-                url = [NSURL URLWithString:imageUrl];
+                NSURL *url = [NSURL URLWithString:imageUrl];
                 request = [NSURLRequest requestWithURL:url];
-                NSURLResponse *response = nil;
-                NSError *error = nil;
-                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+                response = nil;
+                error = nil;
+                data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
                 UIImage *image = [UIImage imageWithData:data];
                 [self registerUser:[NSString stringWithFormat:@"%i", userId] loginIdType:LOGINID_SINA nickName:nickname];
             }
@@ -276,7 +273,7 @@
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
         NSLog(@"RegisterController qq request token result: %@", result);
         if (200 == [response statusCode] && nil == error) {
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -291,24 +288,22 @@
             }
             self.token = [dict objectForKey:@"oauth_token"];
             self.tokenSecret = [dict objectForKey:@"oauth_token_secret"];
-            NSURL *url = [NSURL URLWithString:qqAuthorizeUrl];
-            NSString *queryString = [OAuthCore queryStringWithUrl:url
-                                                           method:@"GET"
-                                                       parameters:nil
-                                                      consumerKey:qqAppKey
-                                                   consumerSecret:qqAppSecret
-                                                            token:self.token
-                                                      tokenSecret:self.tokenSecret];
+            url = [NSURL URLWithString:qqAuthorizeUrl];
+            queryString = [OAuthCore queryStringWithUrl:url
+                                                 method:@"GET"
+                                             parameters:nil
+                                            consumerKey:qqAppKey
+                                         consumerSecret:qqAppSecret
+                                                  token:self.token
+                                            tokenSecret:self.tokenSecret];
             url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideActivity];
                 [[UIApplication sharedApplication] openURL:url];
             }); 
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideActivity];
-            }); 
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+        });
     });
 }
 
@@ -341,7 +336,7 @@
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
         NSLog(@"RegisterController qq access token result: %@", result);
         if (200 == [response statusCode] && nil == error) {
             pairs = [result componentsSeparatedByString:@"&"];
@@ -367,10 +362,10 @@
             request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
             [request setHTTPBody:[queryString dataUsingEncoding:NSUTF8StringEncoding]];
-            NSHTTPURLResponse *response = nil;
-            NSError *error = nil;
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            response = nil;
+            error = nil;
+            data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
             NSLog(@"RegisterController qq userinfo result: %@", result);
             if (200 == [response statusCode] && nil == error) {
                 NSDictionary *info = [[SBJsonParser new] objectWithString:result];

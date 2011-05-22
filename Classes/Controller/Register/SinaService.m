@@ -20,7 +20,7 @@
 {
     NSURL *url = [NSURL URLWithString:sinaCreateWeiboUrl];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"来自甘橙地盘" forKey:@"status"];
+    [dict setObject:content forKey:@"status"];
     NSString *queryString = [OAuthCore queryStringWithUrl:url
                                          method:@"POST"
                                      parameters:dict
@@ -34,7 +34,7 @@
     NSHTTPURLResponse *response = nil;
     NSError *error = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     NSLog(@"SinaService create weibo result: %@", result);
     if (200 == [response statusCode] && nil == error) {
         return YES;
