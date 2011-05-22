@@ -218,6 +218,8 @@
 		CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19BB6137A812600A8817B /* NetworkRequest.m */; };
 		CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */; };
 		FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB326BC313811BC80073368D /* GetUserPlaceRequest.m */; };
+		FB46E8421388BAED00576C82 /* SinaService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46E8411388BAED00576C82 /* SinaService.m */; };
+		FB46E8451388D7AC00576C82 /* QQService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46E8441388D7AC00576C82 /* QQService.m */; };
 		FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */; };
 		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
 		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
@@ -744,6 +746,10 @@
 		CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
 		FB326BC213811BC80073368D /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
 		FB326BC313811BC80073368D /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
+		FB46E8401388BAED00576C82 /* SinaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SinaService.h; path = ../Controller/Register/SinaService.h; sourceTree = "<group>"; };
+		FB46E8411388BAED00576C82 /* SinaService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SinaService.m; path = ../Controller/Register/SinaService.m; sourceTree = "<group>"; };
+		FB46E8431388D7AC00576C82 /* QQService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQService.h; sourceTree = "<group>"; };
+		FB46E8441388D7AC00576C82 /* QQService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQService.m; sourceTree = "<group>"; };
 		FB51D2B61380D3D2001D5AC5 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
 		FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
 		FB51D2CB13810DA8001D5AC5 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
@@ -1126,10 +1132,14 @@
 		CA7C709F13811BC60030442D /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FB46E8401388BAED00576C82 /* SinaService.h */,
+				FB46E8411388BAED00576C82 /* SinaService.m */,
 				CA7C70A013811BC60030442D /* LocalDataService.h */,
 				CA7C70A113811BC60030442D /* LocalDataService.m */,
 				CAA2FB9913826DB900DE820F /* LocationService.h */,
 				CAA2FB9A13826DBA00DE820F /* LocationService.m */,
+				FB46E8431388D7AC00576C82 /* QQService.h */,
+				FB46E8441388D7AC00576C82 /* QQService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2130,6 +2140,8 @@
 				CA0C2722138409560097931C /* UserFollowPlaceRequest.m in Sources */,
 				CA9E1FB913856FFC009D1D4F /* GetUserFollowPostRequest.m in Sources */,
 				CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */,
+				FB46E8421388BAED00576C82 /* SinaService.m in Sources */,
+				FB46E8451388D7AC00576C82 /* QQService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

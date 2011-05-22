@@ -226,6 +226,17 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[MobClick appTerminated];
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSString *host = [url host];
+    if ([host isEqualToString:@"sina"]) {
+        [registerController requestSinaAccessToken:[url query]];
+    } else if ([host isEqualToString:@"qq"]) {
+        [registerController requestQQAccessToken:[url query]];
+    }
+    
+    return YES;
+}
+
 #pragma Register View Management
 
 - (void)addRegisterView {

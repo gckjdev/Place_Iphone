@@ -7,6 +7,8 @@
 //
 
 #import "MyInfoController.h"
+#import "UserManager.h"
+#import "DipanAppDelegate.h"
 
 
 @implementation MyInfoController
@@ -55,5 +57,11 @@
     [super dealloc];
 }
 
+- (IBAction)clickLogout:(id)sender {
+    [UserManager delUser];
+    DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate removeMainView];
+    [delegate addRegisterView];
+}
 
 @end

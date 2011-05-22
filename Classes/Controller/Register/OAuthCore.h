@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GTMBase64.h"
 
 @interface NSString (OAuthCore)
 

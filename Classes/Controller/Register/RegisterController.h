@@ -11,11 +11,18 @@
 
 @interface RegisterController : PPViewController {
     UITextField *loginidField;
+    NSString *token;
+    NSString *tokenSecret;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *loginidField;
+@property (nonatomic, retain) NSString *token;
+@property (nonatomic, retain) NSString *tokenSecret;
 
 - (IBAction)clickRegister:(id)sender;
 - (IBAction)clickSinaLogin:(id)sender;
+- (void)requestSinaAccessToken:(NSString *)query;
+- (IBAction)clickQQLogin:(id)sender;
+- (void)requestQQAccessToken:(NSString *)query;
 
 @end

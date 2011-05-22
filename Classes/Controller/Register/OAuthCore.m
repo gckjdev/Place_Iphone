@@ -6,7 +6,6 @@
 //
 
 #import "OAuthCore.h"
-#import "GTMBase64.h"
 #import <CommonCrypto/CommonHMAC.h>
 
 @implementation NSString (OAuthCore)
@@ -44,8 +43,10 @@ NSInteger SortParameter(NSString *key1, NSString *key2, void *context) {
 {
     CFUUIDRef u = CFUUIDCreate(kCFAllocatorDefault);
 	CFStringRef s = CFUUIDCreateString(kCFAllocatorDefault, u);
+    NSString *result = [(NSString *)s stringByReplacingOccurrencesOfString:@"-" withString:@""];
 	CFRelease(u);
-	return [(NSString *)s autorelease];
+    CFRelease(s);
+	return result;
 }
 
 + (NSString *)queryStringWithUrl:(NSURL *)url
@@ -84,18 +85,16 @@ NSInteger SortParameter(NSString *key1, NSString *key2, void *context) {
 	}
 	NSString *normalizedParameterString = [parameterArray componentsJoinedByString:@"&"];
 	
-	NSString *normalizedURLString = [NSString stringWithFormat:@"%@://%@%@", [url scheme], [url host], [url path]];
-	
 	NSString *signatureBaseString = [NSString stringWithFormat:@"%@&%@&%@",
                                      method,
-                                     [normalizedURLString urlencodeWithUTF8],
+                                     [[url description] urlencodeWithUTF8],
                                      [normalizedParameterString urlencodeWithUTF8]];
 	
 	NSString *key = [NSString stringWithFormat:@"%@&%@", consumerSecret, nil == tokenSecret ? @"" : tokenSecret];
     
 	NSData *signature = [OAuthCore hmacSHA1WithString:signatureBaseString key:key];
-	NSString *base64Signature = [GTMBase64 stringByWebSafeEncodingData:signature padded:NO];
-	[authParameters setObject:base64Signature forKey:@"oauth_signature"];
+	NSString *base64Signature = [GTMBase64 stringByEncodingData:signature];
+	[authParameters setObject:[base64Signature urlencodeWithUTF8] forKey:@"oauth_signature"];
 	
 	NSMutableArray *queryItems = [NSMutableArray array];
 	for(NSString *key in authParameters) {

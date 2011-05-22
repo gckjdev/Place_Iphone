@@ -12,6 +12,7 @@
 
 #define LOGINID_OWN                 1
 #define LOGINID_SINA                2
+#define LOGINID_QQ                  3
     
 #define DEFAULT_PLACE_RADIUS        500
 

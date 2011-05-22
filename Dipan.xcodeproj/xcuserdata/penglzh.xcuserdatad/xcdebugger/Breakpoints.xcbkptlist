@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/Register/OAuthCore.m"
-         timestampString = "327230511.541065"
+         timestampString = "327581168.222141"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
          landmarkName = "+queryStringWithUrl:Parameters:consumerKey:consumerSecret:token:tokenSecret:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,12 +23,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/Register/RegisterController.m"
-         timestampString = "327229537.174316"
+         timestampString = "327737176.558824"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
          landmarkName = "-clickRegister:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/Controller/Register/RegisterController.m"
+         timestampString = "327737176.558824"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
+         landmarkName = "-clickSinaLogin:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

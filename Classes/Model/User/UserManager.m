@@ -25,7 +25,10 @@ UserManager* userManager;
 + (BOOL)setUser:(NSString*)loginId loginIdType:(int)loginIdType userId:(NSString*)userId
 {
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();
-	User* user = [dataManager insert:@"User"];
+	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
+    if (nil == user) {
+        user = [dataManager insert:@"User"];
+    }
 	user.loginId = loginId;
 	user.queryId = DEFAULT_USER_QUERY_ID;
     user.userId = userId;
@@ -41,6 +44,16 @@ UserManager* userManager;
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();
 	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
 	return user;
+}
+
++ (BOOL)delUser
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();
+    User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
+    if (nil != user) {
+        [dataManager del:user];
+    }
+    return [dataManager save]; 
 }
 
 + (NSString*)getUserId
