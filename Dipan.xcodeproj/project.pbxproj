@@ -120,7 +120,6 @@
 		CAAF0208137FE03200E56503 /* SelectCountryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAFFF7A137FE03000E56503 /* SelectCountryController.xib */; };
 		CAAF020C137FE03200E56503 /* CreateDesktopShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAFFF81137FE03000E56503 /* CreateDesktopShortcut.m */; };
 		CAAF020D137FE03200E56503 /* DesktopHTTPResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAFFF83137FE03000E56503 /* DesktopHTTPResponseHandler.m */; };
-		CAAF020E137FE03200E56503 /* DesktopShortcut.zip in Resources */ = {isa = PBXBuildFile; fileRef = CAAFFF84137FE03000E56503 /* DesktopShortcut.zip */; };
 		CAAF0210137FE03200E56503 /* GoogleTranslateAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAFFF89137FE03000E56503 /* GoogleTranslateAPI.m */; };
 		CAAF0232137FE03200E56503 /* ScheduleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAFFFD5137FE03000E56503 /* ScheduleManager.m */; };
 		CAAF0233137FE03200E56503 /* ScheduleManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAFFFD7137FE03000E56503 /* ScheduleManagerTest.m */; };
@@ -224,6 +223,14 @@
 		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
 		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
 		FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */; };
+		FB52F3F51388FA3100710F0C /* PullToRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB52F3E51388FA3100710F0C /* PullToRefreshTableViewController.m */; };
+		FB52F3F61388FA3100710F0C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB52F3E71388FA3100710F0C /* RootViewController.m */; };
+		FB52F3F71388FA3100710F0C /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB52F3EA1388FA3100710F0C /* EGORefreshTableHeaderView.m */; };
+		FB52F3F81388FA3100710F0C /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3EC1388FA3100710F0C /* blackArrow.png */; };
+		FB52F3F91388FA3100710F0C /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3ED1388FA3100710F0C /* blueArrow.png */; };
+		FB52F3FA1388FA3100710F0C /* blueArrow_new.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3EE1388FA3100710F0C /* blueArrow_new.png */; };
+		FB52F3FB1388FA3100710F0C /* EGORefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3F01388FA3100710F0C /* EGORefresh.strings */; };
+		FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3F21388FA3100710F0C /* whiteArrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -701,7 +708,6 @@
 		CAAFFF81137FE03000E56503 /* CreateDesktopShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateDesktopShortcut.m; sourceTree = "<group>"; };
 		CAAFFF82137FE03000E56503 /* DesktopHTTPResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopHTTPResponseHandler.h; sourceTree = "<group>"; };
 		CAAFFF83137FE03000E56503 /* DesktopHTTPResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopHTTPResponseHandler.m; sourceTree = "<group>"; };
-		CAAFFF84137FE03000E56503 /* DesktopShortcut.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = DesktopShortcut.zip; sourceTree = "<group>"; };
 		CAAFFF88137FE03000E56503 /* GoogleTranslateAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleTranslateAPI.h; sourceTree = "<group>"; };
 		CAAFFF89137FE03000E56503 /* GoogleTranslateAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleTranslateAPI.m; sourceTree = "<group>"; };
 		CAAFFFD4137FE03000E56503 /* ScheduleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleManager.h; sourceTree = "<group>"; };
@@ -757,6 +763,19 @@
 		FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
 		FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DipanAppDelegate.h; sourceTree = "<group>"; };
 		FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DipanAppDelegate.m; sourceTree = "<group>"; };
+		FB52F3E41388FA3100710F0C /* PullToRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshTableViewController.h; sourceTree = "<group>"; };
+		FB52F3E51388FA3100710F0C /* PullToRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshTableViewController.m; sourceTree = "<group>"; };
+		FB52F3E61388FA3100710F0C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		FB52F3E71388FA3100710F0C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		FB52F3E91388FA3100710F0C /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		FB52F3EA1388FA3100710F0C /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		FB52F3EC1388FA3100710F0C /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		FB52F3ED1388FA3100710F0C /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		FB52F3EF1388FA3100710F0C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/blueArrow_new.png; sourceTree = "<group>"; };
+		FB52F3F11388FA3100710F0C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EGORefresh.strings; sourceTree = "<group>"; };
+		FB52F3F21388FA3100710F0C /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		FB52F3F31388FA3100710F0C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
+		FB52F3F41388FA3100710F0C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1427,12 +1446,12 @@
 		CAAFFF2C137FE03000E56503 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FB52F3E11388FA3100710F0C /* EGOTableViewPullRefresh */,
 				CAAFFF36137FE03000E56503 /* About */,
 				CAAFFF5F137FE03000E56503 /* AdController */,
 				CAAFFF64137FE03000E56503 /* Contact */,
 				CAAFFF6A137FE03000E56503 /* CountryPicker */,
 				CAAFFF7B137FE03000E56503 /* DesktopShortcut */,
-				CAAFFF84137FE03000E56503 /* DesktopShortcut.zip */,
 				CAAFFF85137FE03000E56503 /* GoogleTranslation */,
 				CAAFFFCD137FE03000E56503 /* Schedule */,
 				CAAFFFDA137FE03000E56503 /* Search */,
@@ -1754,6 +1773,56 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		FB52F3E11388FA3100710F0C /* EGOTableViewPullRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				FB52F3E21388FA3100710F0C /* Classes */,
+				FB52F3EB1388FA3100710F0C /* Resources */,
+			);
+			path = EGOTableViewPullRefresh;
+			sourceTree = "<group>";
+		};
+		FB52F3E21388FA3100710F0C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FB52F3E31388FA3100710F0C /* Controller */,
+				FB52F3E81388FA3100710F0C /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FB52F3E31388FA3100710F0C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB52F3E41388FA3100710F0C /* PullToRefreshTableViewController.h */,
+				FB52F3E51388FA3100710F0C /* PullToRefreshTableViewController.m */,
+				FB52F3E61388FA3100710F0C /* RootViewController.h */,
+				FB52F3E71388FA3100710F0C /* RootViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB52F3E81388FA3100710F0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB52F3E91388FA3100710F0C /* EGORefreshTableHeaderView.h */,
+				FB52F3EA1388FA3100710F0C /* EGORefreshTableHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FB52F3EB1388FA3100710F0C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FB52F3EC1388FA3100710F0C /* blackArrow.png */,
+				FB52F3ED1388FA3100710F0C /* blueArrow.png */,
+				FB52F3EE1388FA3100710F0C /* blueArrow_new.png */,
+				FB52F3F01388FA3100710F0C /* EGORefresh.strings */,
+				FB52F3F21388FA3100710F0C /* whiteArrow.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1798,6 +1867,9 @@
 				zh_Hans,
 				zh_Hant,
 				ja,
+				en,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Dipan */;
 			projectDirPath = "";
@@ -1985,7 +2057,6 @@
 				CAAF01FE137FE03200E56503 /* SelectGroupController.xib in Resources */,
 				CAAF0206137FE03200E56503 /* countryTelPrefix.plist in Resources */,
 				CAAF0208137FE03200E56503 /* SelectCountryController.xib in Resources */,
-				CAAF020E137FE03200E56503 /* DesktopShortcut.zip in Resources */,
 				CAAF0237137FE03200E56503 /* CommonSearchController.xib in Resources */,
 				CAAF023B137FE03200E56503 /* SelectItemViewController.xib in Resources */,
 				CAAF0256137FE03200E56503 /* TextEditorViewController.xib in Resources */,
@@ -1994,6 +2065,11 @@
 				CAAF02C9137FE03200E56503 /* ReviewRequest.strings in Resources */,
 				FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */,
 				CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */,
+				FB52F3F81388FA3100710F0C /* blackArrow.png in Resources */,
+				FB52F3F91388FA3100710F0C /* blueArrow.png in Resources */,
+				FB52F3FA1388FA3100710F0C /* blueArrow_new.png in Resources */,
+				FB52F3FB1388FA3100710F0C /* EGORefresh.strings in Resources */,
+				FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2142,6 +2218,9 @@
 				CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */,
 				FB46E8421388BAED00576C82 /* SinaService.m in Sources */,
 				FB46E8451388D7AC00576C82 /* QQService.m in Sources */,
+				FB52F3F51388FA3100710F0C /* PullToRefreshTableViewController.m in Sources */,
+				FB52F3F61388FA3100710F0C /* RootViewController.m in Sources */,
+				FB52F3F71388FA3100710F0C /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2226,6 +2305,24 @@
 				CAAFFF5E137FE03000E56503 /* zh_Hant */,
 			);
 			name = AboutView.strings;
+			sourceTree = "<group>";
+		};
+		FB52F3EE1388FA3100710F0C /* blueArrow_new.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB52F3EF1388FA3100710F0C /* en */,
+			);
+			name = blueArrow_new.png;
+			sourceTree = "<group>";
+		};
+		FB52F3F01388FA3100710F0C /* EGORefresh.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB52F3F11388FA3100710F0C /* en */,
+				FB52F3F31388FA3100710F0C /* zh-Hans */,
+				FB52F3F41388FA3100710F0C /* zh-Hant */,
+			);
+			name = EGORefresh.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
