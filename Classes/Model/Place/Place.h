@@ -3,11 +3,17 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-13.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+
+enum PLACE_USE_FOR {
+    PLACE_USE_NEARBY = 0,
+    PLACE_USE_FOLLOW,
+    PLACE_USE_SEARCH
+};
 
 
 @interface Place : NSManagedObject {
@@ -20,4 +26,6 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSString * createUser;
 @property (nonatomic, retain) NSString * followUser;
+@property (nonatomic, assign) NSNumber * useFor;
+
 @end

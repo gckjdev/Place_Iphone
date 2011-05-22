@@ -3,13 +3,11 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-13.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-
-#define NEARBY_USER_ID      @"$$NEARBY_USER_ID$$"       // it's just for internal implementation usage
-
+#import "Place.h"
 
 @interface PlaceManager : NSObject {
     
@@ -17,13 +15,13 @@
 
 + (BOOL)createPlace:(NSString*)placeId name:(NSString*)name desc:(NSString*)desc
           longitude:(double)longitude latitude:(double)latitude 
-         createUser:(NSString*)createUser followUserId:(NSString*)followUserId;
+         createUser:(NSString*)createUser followUserId:(NSString*)followUserId
+             useFor:(int)useFor;
 
-+ (NSArray*)getAllPlacesByFollowUser:(NSString*)followUserId;
++ (NSArray*)getAllFollowPlaces:(NSString*)followUserId;
++ (BOOL)deleteAllFollowPlaces:(NSString*)followUserId;
 
-+ (BOOL)deletePlaceByFollowUser:(NSString*)followUserId;
-+ (BOOL)deleteNearbyPlaces;
-
++ (BOOL)deleteAllPlacesNearby;
 + (NSArray*)getAllPlacesNearby;
 
 @end

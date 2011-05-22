@@ -3,7 +3,7 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-13.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import "PlaceManager.h"
@@ -16,6 +16,7 @@
 + (BOOL)createPlace:(NSString*)placeId name:(NSString*)name desc:(NSString*)desc
           longitude:(double)longitude latitude:(double)latitude 
          createUser:(NSString*)createUser  followUserId:(NSString*)followUserId
+             useFor:(int)useFor
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
     
@@ -27,22 +28,25 @@
     place.latitude = [NSNumber numberWithDouble:latitude];
     place.createUser = createUser;
     place.followUser = followUserId;
+    place.useFor = [NSNumber numberWithInt:useFor];
     
     NSLog(@"Create Place: %@", [place description]);
     
     return [dataManager save];
 }
 
-+ (NSArray*)getAllPlacesByFollowUser:(NSString*)followUserId
++ (NSArray*)getAllFollowPlaces:(NSString*)followUserId
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    return [dataManager execute:@"getAllPlacesByFollowUser" forKey:@"followUserId" value:followUserId sortBy:@"name" ascending:YES];
+    return [dataManager execute:@"getAllFollowPlaces" 
+                         sortBy:@"name" 
+                      ascending:YES];
 }
 
-+ (BOOL)deletePlaceByFollowUser:(NSString*)followUserId
++ (BOOL)deleteAllFollowPlaces:(NSString*)followUserId
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    NSArray* placeArray = [dataManager execute:@"getAllPlacesByFollowUser" forKey:@"followUserId" value:followUserId sortBy:@"placeId" ascending:YES];
+    NSArray* placeArray = [PlaceManager getAllFollowPlaces:followUserId];
     
     for (Place* place in placeArray){
         [dataManager del:place];
@@ -51,19 +55,27 @@
     return [dataManager save];
 }
 
-+ (BOOL)deleteNearbyPlaces
++ (BOOL)deleteAllPlacesNearby
 {
-    return [PlaceManager deletePlaceByFollowUser:NEARBY_USER_ID];
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [PlaceManager getAllPlacesNearby];
+    
+    for (Place* place in placeArray){
+        [dataManager del:place];
+    }
+    
+    return [dataManager save];
 }
 
 + (NSArray*)getAllPlacesNearby
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    NSArray* placeArray = [dataManager execute:@"getAllPlacesByFollowUser" forKey:@"followUserId" value:NEARBY_USER_ID sortBy:@"placeId" ascending:YES];
-    
-    // need to return and sort by sequence TBD
+    NSArray* placeArray = [dataManager execute:@"getAllPlacesNearby" 
+                                        sortBy:@"placeId" 
+                                     ascending:YES];
     
     return placeArray;
 }
+
 
 @end

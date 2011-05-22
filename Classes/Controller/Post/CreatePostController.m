@@ -3,13 +3,14 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-13.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import "CreatePostController.h"
 #import "CreatePostRequest.h"
 #import "PostManager.h"
 #import "UserManager.h"
+#import "Post.h"
 
 @implementation CreatePostController
 @synthesize syncSNSButton;
@@ -101,9 +102,9 @@
 }
 
 - (void)createPost:(int)contentType textContent:(NSString*)textContent
-                     latitude:(double)latitude longitude:(double)longitude
-                 userLatitude:(double)userLatitude userLongitude:(double)userLongitude
-                      syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
+          latitude:(double)latitude longitude:(double)longitude
+      userLatitude:(double)userLatitude userLongitude:(double)userLongitude
+           syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
 {
     // TODO
     NSString* userId = [UserManager getUserId];
@@ -113,25 +114,25 @@
     dispatch_async(workingQueue, ^{
         
         CreatePostOutput* output = [CreatePostRequest send:SERVER_URL 
-                                                     userId:userId 
-                                                      appId:appId 
-                                                contentType:contentType 
-                                                textContent:textContent 
-                                                   latitude:latitude 
-                                                  longitude:longitude 
-                                               userLatitude:userLatitude 
-                                              userLongitude:userLongitude 
-                                                    syncSNS:syncSNS 
-                                                    placeId:placeId];
+                                                    userId:userId 
+                                                     appId:appId 
+                                               contentType:contentType 
+                                               textContent:textContent 
+                                                  latitude:latitude 
+                                                 longitude:longitude 
+                                              userLatitude:userLatitude 
+                                             userLongitude:userLongitude 
+                                                   syncSNS:syncSNS 
+                                                   placeId:placeId];
         
         // For Test Only
-//        output.postId = [NSString stringWithInt:time(0)];
-//        output.imageURL = @"test_image_url";
-//        output.createDate = [NSDate date];
-//        output.totalView = 0;
-//        output.totalReply = 0;
-//        output.totalQuote = 0;
-//        output.totalForward = 0;
+        //        output.postId = [NSString stringWithInt:time(0)];
+        //        output.imageURL = @"test_image_url";
+        //        output.createDate = [NSDate date];
+        //        output.totalView = 0;
+        //        output.totalReply = 0;
+        //        output.totalQuote = 0;
+        //        output.totalForward = 0;
         
         output.resultCode = ERROR_SUCCESS;
         
@@ -139,7 +140,7 @@
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
-                [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply];
+                [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply useFor:POST_FOR_PLACE];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];

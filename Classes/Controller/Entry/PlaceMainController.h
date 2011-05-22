@@ -12,7 +12,7 @@
 #import "LocalDataService.h"
 
 @interface PlaceMainController : PPTableViewController <LocalDataServiceDelegate> {
-
+    
     IBOutlet UIButton       *createPlaceButton;
     CreatePlaceController    *createPlaceController;
     
@@ -21,6 +21,9 @@
     
     NSArray                 *nearbyPlaceList;
     NSArray                 *userPlaceList;
+    
+    NSDate                  *nearbyUpdateDate;
+    NSDate                  *userPlaceUpdateDate;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton       *createPlaceButton;
@@ -28,6 +31,8 @@
 
 @property (nonatomic, retain) NSArray                 *nearbyPlaceList;
 @property (nonatomic, retain) NSArray                 *userPlaceList;
+@property (nonatomic, retain) NSDate                  *nearbyUpdateDate;
+@property (nonatomic, retain) NSDate                  *userPlaceUpdateDate;
 
 
 - (IBAction)clickCreatePlaceButton:(id)sender;

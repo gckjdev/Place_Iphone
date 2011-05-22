@@ -49,6 +49,7 @@
 - (int)totalForward:(NSDictionary*)post;
 - (int)totalQuote:(NSDictionary*)post;
 - (int)totalReply:(NSDictionary*)post;
+- (NSString*)placeId:(NSDictionary*)post;
 
 @end
 
@@ -56,7 +57,7 @@
 	
 }
 
-+ (GetNearbyPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp;
++ (GetNearbyPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp longitude:(double)longitude latitude:(double)latitude;
 
 + (void)test;
 

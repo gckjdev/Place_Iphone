@@ -3,7 +3,7 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-14.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import "Post.h"
@@ -25,5 +25,6 @@
 @dynamic totalReply;
 @dynamic userLongitude;
 @dynamic userLatitude;
+@dynamic useFor;
 
 @end

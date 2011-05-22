@@ -63,6 +63,11 @@
     return [post objectForKey:PARA_POSTID];
 }
 
+- (NSString*)placeId:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_PLACEID];
+}
+
 - (NSString*)userId:(NSDictionary*)post
 {
     return [post objectForKey:PARA_USERID];    
@@ -223,7 +228,7 @@
 + (void)test
 {
 	[GetPlacePostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-     placeId:@"test_place_id" afterTimeStamp:@""];
+                      placeId:@"test_place_id" afterTimeStamp:@""];
 }
 
 @end

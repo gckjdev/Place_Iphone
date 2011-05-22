@@ -69,6 +69,11 @@
     return [post objectForKey:PARA_USERID];    
 }
 
+- (NSString*)placeId:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_PLACEID];
+}
+
 - (double)longitude:(NSDictionary*)post
 {
     return [[post objectForKey:PARA_LONGTITUDE] doubleValue];        
@@ -193,7 +198,7 @@
 	return OS_IOS;
 }
 
-+ (GetNearbyPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp
++ (GetNearbyPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp longitude:(double)longitude latitude:(double)latitude
 {
     const int kMaxCount = 30;
     
@@ -206,6 +211,8 @@
 	input.appId = appId;
     input.beforeTimeStamp = beforeTimeStamp;
     input.maxCount = kMaxCount;
+    input.latitude = latitude;
+    input.longitude = longitude;
 	
 	if ([[GetNearbyPostRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
@@ -222,7 +229,7 @@
 + (void)test
 {
 	[GetNearbyPostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-                   beforeTimeStamp:@""];
+               beforeTimeStamp:@"" longitude:113.22 latitude:333.22];
 }
 
 @end

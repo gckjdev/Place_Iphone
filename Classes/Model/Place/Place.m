@@ -3,7 +3,7 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-13.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import "Place.h"
@@ -17,5 +17,6 @@
 @dynamic latitude;
 @dynamic createUser;
 @dynamic followUser;
+@dynamic useFor;
 
 @end

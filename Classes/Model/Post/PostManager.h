@@ -3,7 +3,7 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-14.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,11 +18,18 @@
 + (BOOL)createPost:(NSString*)postId placeId:(NSString*)placeId userId:(NSString*)userId
        textContent:(NSString*)textContent imageURL:(NSString*)imageURL 
        contentType:(int)contentType createDate:(NSDate*)createDate
-          longitude:(double)longitude latitude:(double)latitude
-          userLongitude:(double)userLongitude userLatitude:(double)userLatitude
+         longitude:(double)longitude latitude:(double)latitude
+     userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
-        totalQuote:(int)totalQuote totalReply:(int)totalReply;
+        totalQuote:(int)totalQuote totalReply:(int)totalReply
+            useFor:(int)useFor;
+
+
++ (NSArray*)getAllNearbyPost:(NSString*)userId;
++ (BOOL)deleteAllNearbyPost;
+
 
 + (NSArray*)getAllFollowPost:(NSString*)userId;
++ (BOOL)deleteUserFollowPost;
 
 @end

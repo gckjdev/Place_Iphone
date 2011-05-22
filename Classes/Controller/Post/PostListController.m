@@ -3,7 +3,7 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-14.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import "CreatePostController.h"
@@ -49,11 +49,11 @@
 {
     // load post list from local DB
     self.dataList = [PostManager getPostByPlace:place.placeId];
-//    if (self.dataList == nil || [self.dataList count] == 0){
-        // if no data, try to load from server
-        LocalDataService* dataService = GlobalGetLocalDataService();
-        [dataService requestLatestPlacePostData:self placeId:place.placeId];
-//    }
+    //    if (self.dataList == nil || [self.dataList count] == 0){
+    // if no data, try to load from server
+    LocalDataService* dataService = GlobalGetLocalDataService();
+    [dataService requestLatestPlacePostData:self placeId:place.placeId];
+    //    }
 }
 
 - (void)placePostDataRefresh
@@ -67,7 +67,7 @@
     [self setNavigationRightButton:NSLS(@"kNewPost") action:@selector(clickCreatePost:)];
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
-//    [self loadPostList];
+    //    [self loadPostList];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -195,7 +195,7 @@
 		return cell;
 	}
 	
-//	[self setCellBackground:cell row:row count:count];
+    //	[self setCellBackground:cell row:row count:count];
     
     Post* post = [dataList objectAtIndex:row];
     cell.textLabel.text = post.textContent;
@@ -251,12 +251,13 @@
     dispatch_async(workingQueue, ^{
         
         UserFollowPlaceOutput* output = [UserFollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
-                
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save place data locally
-                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId];
+                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId
+                                   useFor:PLACE_USE_FOLLOW];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];

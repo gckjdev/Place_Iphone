@@ -3,12 +3,17 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-14.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+enum {
+    POST_FOR_PLACE,
+    POST_FOR_NEARBY,
+    POST_FOR_FOLLOW,
+};
 
 @interface Post : NSManagedObject {
 @private
@@ -28,5 +33,7 @@
 @property (nonatomic, retain) NSNumber * totalReply;
 @property (nonatomic, retain) NSNumber * userLongitude;
 @property (nonatomic, retain) NSNumber * userLatitude;
+@property (nonatomic, retain) NSNumber * useFor;
+
 
 @end

@@ -4,24 +4,24 @@
 
 IN
 
-    Mandatory
+Mandatory
 
-        PARA_LOGINID
-        PARA_APPID
-        PARA_LOGINIDTYPE
-        PARA_DEVICEID
-        PARA_DEVICEMODEL
-        PARA_DEVICEOS
+PARA_LOGINID
+PARA_APPID
+PARA_LOGINIDTYPE
+PARA_DEVICEID
+PARA_DEVICEMODEL
+PARA_DEVICEOS
 
-    Optional
+Optional
 
-        PARA_COUNTRYCODE
-        PARA_LANGUAGE
-        PARA_DEVICETOKEN
+PARA_COUNTRYCODE
+PARA_LANGUAGE
+PARA_DEVICETOKEN
 
 OUT
 
-    PARA_USERID
+PARA_USERID
 
 
 2) METHOD_CREATEPLACE
@@ -29,23 +29,23 @@ OUT
 
 IN
 
-    Mandantory
+Mandantory
 
-        PARA_USERID          // string
-        PARA_APPID           // string
-        PARA_LONGTITUDE      // double
-        PARA_LATITUDE        // double
-        PARA_NAME            // string, unique in the city
-        PARA_RADIUS          // int
-        PARA_POSTTYPE        // int
+PARA_USERID          // string
+PARA_APPID           // string
+PARA_LONGTITUDE      // double
+PARA_LATITUDE        // double
+PARA_NAME            // string, unique in the city
+PARA_RADIUS          // int
+PARA_POSTTYPE        // int
 
-    Optional
+Optional
 
-        PARA_DESC            // string
+PARA_DESC            // string
 
 OUT
 
-    PARA_PLACEID         // string
+PARA_PLACEID         // string
 
 
 
@@ -56,39 +56,39 @@ OUT
 IN
 
 
-    Mandantory
+Mandantory
 
-        PARA_USERID               
-        PARA_APPID
-        PARA_CONTENT_TYPE          // int
-        PARA_TEXT_CONTENT          
-        PARA_LATITUDE
-        PARA_LONGTITUDE
+PARA_USERID               
+PARA_APPID
+PARA_CONTENT_TYPE          // int
+PARA_TEXT_CONTENT          
+PARA_LATITUDE
+PARA_LONGTITUDE
 
-        PARA_USER_LATITUDE
-        PARA_USER_LONGITUDE
-        PARA_PLACEID
+PARA_USER_LATITUDE
+PARA_USER_LONGITUDE
+PARA_PLACEID
 
 
-    Optional
+Optional
 
-        PARA_SYNC_SNS               // int
+PARA_SYNC_SNS               // int
 
 
 OUT
 
-    Mandantory
+Mandantory
 
-        PARA_POSTID
-        PARA_CREATE_DATE
+PARA_POSTID
+PARA_CREATE_DATE
 
-    Optional
+Optional
 
-        PARA_IMAGE_URL
-        PARA_TOTAL_VIEW               // int
-        PARA_TOTAL_REPLY              // int
-        PARA_TOTAL_QUOTE              // int
-        PARA_TOTAL_FORWARD            // int
+PARA_IMAGE_URL
+PARA_TOTAL_VIEW               // int
+PARA_TOTAL_REPLY              // int
+PARA_TOTAL_QUOTE              // int
+PARA_TOTAL_FORWARD            // int
 
 
 4) METHOD_GETUSERPLACES
@@ -97,96 +97,163 @@ In
 
 Mandantory
 
-    PARA_USERID
-    PARA_APPID
+PARA_USERID
+PARA_APPID
 
 Output
 
-    Place Array
+Place Array
 
-        PARA_PLACEID
-        PARA_CREATE_USERID          
-        PARA_LONGTITUDE      
+PARA_PLACEID
+PARA_CREATE_USERID          
+PARA_LONGTITUDE      
 
-        PARA_LATITUDE        
+PARA_LATITUDE        
 
-        PARA_NAME            
-        PARA_DESC
-        PARA_RADIUS          // int
+PARA_NAME            
+PARA_DESC
+PARA_RADIUS          // int
 
-        PARA_POSTTYPE        // int
+PARA_POSTTYPE        // int
 
 5) METHOD_GETPLACEPOST
 
 Input
 
-    Mandatory
+Mandatory
 
-        PARA_USERID
-        PARA_APPID
-        PARA_PLACEID
-        PARA_AFTER_TIMESTAMP          // int, empty means latest
-        PARA_MAX_COUNT                // int
+PARA_USERID
+PARA_APPID
+PARA_PLACEID
+PARA_AFTER_TIMESTAMP          // int, empty means latest
+PARA_MAX_COUNT                // int
 
 Output
 
-    Post Array
+Post Array
 
-        PARA_POSTID
-        PARA_USERID
-        PARA_LONGTITUDE
-        PARA_LATITUDE
-        PARA_USER_LONGITUDE
-        PARA_USER_LATITUDE
-        PARA_TEXT_CONTENT
-        PARA_IMAGE_URL
-        PARA_CONTENT_TYPE
-        PARA_CREATE_DATE
-        PARA_TOTAL_VIEW
-        PARA_TOTAL_FORWARD
-        PARA_TOTAL_QUOTE
-        PARA_TOTAL_REPLY
+PARA_POSTID
+PARA_USERID
+PARA_PLACEID
+PARA_LONGTITUDE
+PARA_LATITUDE
+PARA_USER_LONGITUDE
+PARA_USER_LATITUDE
+PARA_TEXT_CONTENT
+PARA_IMAGE_URL
+PARA_CONTENT_TYPE
+PARA_CREATE_DATE
+PARA_TOTAL_VIEW
+PARA_TOTAL_FORWARD
+PARA_TOTAL_QUOTE
+PARA_TOTAL_REPLY
+
 
 6) METHOD_GETNEARBYPLACE
 
 In
 
-    Mandantory
+Mandantory
 
-        PARA_USERID
-        PARA_APPID
-        PARA_LONGTITUDE
-        PARA_LATITUDE
+PARA_USERID
+PARA_APPID
+PARA_LONGTITUDE
+PARA_LATITUDE
 
 Output
 
-    Place Array
+Place Array
 
-        PARA_PLACEID
-        PARA_CREATE_USERID          
-        PARA_LONGTITUDE      
+PARA_PLACEID
+PARA_CREATE_USERID          
+PARA_LONGTITUDE      
 
-        PARA_LATITUDE        
+PARA_LATITUDE        
 
-        PARA_NAME            
-        PARA_DESC
-        PARA_RADIUS          // int
+PARA_NAME            
+PARA_DESC
+PARA_RADIUS          // int
 
-        PARA_POSTTYPE        // int
+PARA_POSTTYPE        // int
 
 
 7) METHOD_USERFOLLOWPLACE
 
 In
 
-    Mandantory
+Mandantory
 
-        PARA_USERID
-        PARA_APPID
-        PARA_PLACEID
+PARA_USERID
+PARA_APPID
+PARA_PLACEID
 
 Output
 
-    None
+None
 
+
+
+8) METHOD_GETNEARBYPOSTS
+
+Input
+
+Mandatory
+
+PARA_USERID
+PARA_APPID
+PARA_LONGTITUDE
+PARA_LATITUDE
+PARA_BEFORE_TIMESTAMP          // int, empty means latest
+PARA_MAX_COUNT                // int
+
+Output
+
+Post Array
+
+PARA_POSTID
+PARA_USERID
+PARA_PLACEID
+PARA_LONGTITUDE
+PARA_LATITUDE
+PARA_USER_LONGITUDE
+PARA_USER_LATITUDE
+PARA_TEXT_CONTENT
+PARA_IMAGE_URL
+PARA_CONTENT_TYPE
+PARA_CREATE_DATE
+PARA_TOTAL_VIEW
+PARA_TOTAL_FORWARD
+PARA_TOTAL_QUOTE
+PARA_TOTAL_REPLY
+
+9) METHOD_GETUSERFOLLOWPOSTS
+
+Input
+
+Mandatory
+
+PARA_USERID
+PARA_APPID
+PARA_AFTER_TIMESTAMP          // int, empty means latest
+PARA_MAX_COUNT                // int
+
+Output
+
+Post Array
+
+PARA_POSTID
+PARA_USERID
+PARA_PLACEID
+PARA_LONGTITUDE
+PARA_LATITUDE
+PARA_USER_LONGITUDE
+PARA_USER_LATITUDE
+PARA_TEXT_CONTENT
+PARA_IMAGE_URL
+PARA_CONTENT_TYPE
+PARA_CREATE_DATE
+PARA_TOTAL_VIEW
+PARA_TOTAL_FORWARD
+PARA_TOTAL_QUOTE
+PARA_TOTAL_REPLY
 

@@ -3,7 +3,7 @@
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-16.
-//  Copyright 2011年 __MyCompanyName__. All rights reserved.
+//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,12 +14,14 @@
 
 - (void)followPlaceDataRefresh;
 - (void)placePostDataRefresh;
-- (void)nearbyPlaceDataRefresh;
+- (void)nearbyPlaceDataRefresh:(int)result;
+- (void)followPostDataRefresh;
+- (void)nearbyPostDataRefresh;
 
 @end
 
 @interface LocalDataService : NSObject {
-
+    
     dispatch_queue_t                workingQueue;
     id<LocalDataServiceDelegate>    delegate;
 }
@@ -31,7 +33,7 @@
 - (void)requestPlaceData;
 - (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegate;;
 - (void)requestLatestPlacePostData:(id<LocalDataServiceDelegate>)delegateObject 
-                     placeId:(NSString*)placeId;
+                           placeId:(NSString*)placeId;
 - (void)requestDataWhileEnterForeground;
 - (void)requestDataWhileLaunch;
 

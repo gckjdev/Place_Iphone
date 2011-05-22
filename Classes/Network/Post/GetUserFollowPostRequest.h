@@ -45,6 +45,7 @@
 - (int)totalForward:(NSDictionary*)post;
 - (int)totalQuote:(NSDictionary*)post;
 - (int)totalReply:(NSDictionary*)post;
+- (NSString*)placeId:(NSDictionary*)post;
 
 @end
 

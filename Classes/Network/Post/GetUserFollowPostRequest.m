@@ -60,6 +60,11 @@
     return [post objectForKey:PARA_POSTID];
 }
 
+- (NSString*)placeId:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_PLACEID];
+}
+
 - (NSString*)userId:(NSDictionary*)post
 {
     return [post objectForKey:PARA_USERID];    
@@ -218,7 +223,7 @@
 + (void)test
 {
 	[GetUserFollowPostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-                      beforeTimeStamp:@""];
+                   beforeTimeStamp:@""];
 }
 
 @end
