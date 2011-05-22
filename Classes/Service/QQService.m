@@ -20,7 +20,7 @@
 {
     NSURL *url = [NSURL URLWithString:qqCreateWeiboUrl];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"来自甘橙地盘" forKey:@"content"];
+    [dict setObject:content forKey:@"content"];
     [dict setObject:@"json" forKey:@"format"];
     NSString *queryString = [OAuthCore queryStringWithUrl:url
                                          method:@"POST"
@@ -35,7 +35,7 @@
     NSHTTPURLResponse *response = nil;
     NSError *error = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     NSLog(@"QQService create weibo result: %@", result);
     if (nil != data) {
         return YES;
