@@ -13,11 +13,14 @@
 {
 }
 
-@property (nonatomic, retain) NSString *loginId;
-@property (nonatomic, retain) NSString *queryId;
 @property (nonatomic, retain) NSString *userId;
+@property (nonatomic, retain) NSString *loginId;
 @property (nonatomic, retain) NSNumber *loginIdType;
-
+@property (nonatomic, retain) NSString *queryId;
+@property (nonatomic, retain) NSString *nickname;
+@property (nonatomic, retain) NSString *accessToken;
+@property (nonatomic, retain) NSString *accessTokenSecret;
+@property (nonatomic, retain) NSData *avatar;
 
 @end
 

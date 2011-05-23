@@ -22,17 +22,27 @@ UserManager* userManager;
 	return ( user != nil );
 }
 
-+ (BOOL)setUser:(NSString*)loginId loginIdType:(int)loginIdType userId:(NSString*)userId
++ (BOOL)setUserWithUserId:(NSString*)userId
+                  loginId:(NSString*)loginId
+              loginIdType:(int)loginIdType
+                 nickname:(NSString *)nickname
+                   avatar:(NSData *)avatar
+              accessToken:(NSString *)accessToken
+        accessTokenSecret:(NSString *)accessTokenSecret
 {
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();
 	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
     if (nil == user) {
         user = [dataManager insert:@"User"];
     }
-	user.loginId = loginId;
-	user.queryId = DEFAULT_USER_QUERY_ID;
     user.userId = userId;
+	user.loginId = loginId;
     user.loginIdType = [NSNumber numberWithInt:loginIdType];
+    user.queryId = DEFAULT_USER_QUERY_ID;
+    user.nickname = nickname;
+    user.avatar = avatar;
+    user.accessToken = accessToken;
+    user.accessTokenSecret = accessTokenSecret;
     
     NSLog(@"<setUser> user=%@", [user description]);
     

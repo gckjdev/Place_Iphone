@@ -31,7 +31,8 @@
 #define renrenAppSecret                 @"60d5fe4a88b847be80cd7bd126cdfed2"
 
 @implementation RegisterController
-@synthesize loginidField;
+
+@synthesize loginIdField;
 @synthesize token;
 @synthesize tokenSecret;
 
@@ -72,37 +73,90 @@
 }
 
 - (void)viewDidUnload {
-    [self setLoginidField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.loginIdField = nil;
 }
 
 
 - (void)dealloc {
-    [loginidField release];
     [super dealloc];
+    [loginIdField release];
     [token release];
     [tokenSecret release];
 }
 
-- (void)registerUser:(NSString*)loginId loginIdType:(int)loginIdType nickName:(NSString*)nickName
+- (IBAction)textFieldDoneEditing:(id)sender {
+	[loginIdField resignFirstResponder];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:1.25f];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    [animation setType:kCATransitionPush];
+    [animation setSubtype: kCATransitionFromBottom];
+    [self.view.layer addAnimation:animation forKey:@"Reveal"];
+    CGRect frame = self.view.frame;
+    frame.origin.y = 20;
+    self.view.frame = frame;
+}
+
+- (IBAction)textFieldDidBeginEditing:(id)sender
+{
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:1.25f];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    [animation setType:kCATransitionPush];
+    [animation setSubtype: kCATransitionFromTop];
+    animation.fillMode = kCAFillModeForwards;
+    [self.view.layer addAnimation:animation forKey:@"Reveal"];
+    CGRect frame = self.view.frame;
+    frame.origin.y = -195;
+    self.view.frame = frame;
+}
+
+- (IBAction)textFieldDidEndEditing:(id)sender
+{
+}
+
+- (IBAction)backgroundTap:(id)sender {
+	[loginIdField resignFirstResponder];
+}
+
+- (void)registerUserWithLoginId:(NSString*)loginId
+                    loginIdType:(int)loginIdType
+                       nickname:(NSString*)nickname
+                         avatar:(NSData *)avatar
+                    accessToken:(NSString *)accessToken
+              accessTokenSecret:(NSString *)accessTokenSecret
 {
     NSString* appId = @"test_app_id";
     NSString* deviceToken = @"";
     
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
     dispatch_async(workingQueue, ^{
-        RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL loginId:loginId loginIdType:loginIdType deviceToken:deviceToken nickName:nickName appId:appId];
+        RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL 
+                                                       loginId:loginId
+                                                   loginIdType:loginIdType
+                                                   deviceToken:deviceToken
+                                                      nickName:nickname
+                                                        avatar:avatar
+                                                   accessToken:(NSString *)accessToken
+                                             accessTokenSecret:(NSString *)accessTokenSecret
+                                                         appId:appId];
         output.resultCode = ERROR_SUCCESS;
+        output.userId = loginId;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){
                 // save user data locally
-                [UserManager setUser:loginId 
-                         loginIdType:loginIdType 
-                              userId:nickName];
+                [UserManager setUserWithUserId:output.userId
+                                       loginId:loginId
+                                   loginIdType:loginIdType
+                                      nickname:nickname
+                                        avatar:avatar
+                                   accessToken:accessToken
+                             accessTokenSecret:accessTokenSecret];
                 
                 // show main tab view
                 DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
@@ -121,9 +175,12 @@
 }
 
 - (IBAction)clickRegister:(id)sender {
-    [self registerUser:loginidField.text 
-           loginIdType:LOGINID_OWN 
-              nickName:loginidField.text];    
+    [self registerUserWithLoginId:self.loginIdField.text
+                      loginIdType:LOGINID_OWN
+                         nickname:self.loginIdField.text
+                           avatar:nil
+                      accessToken:nil
+                accessTokenSecret:nil];
 
 }
 
@@ -239,7 +296,7 @@
             NSLog(@"RegisterController sina userinfo result: %@", result);
             if (200 == [response statusCode] && nil == error) {
                 NSDictionary *info = [[SBJsonParser new] objectWithString:result];
-                int userId = [[info objectForKey:@"id"] intValue];
+                int loginId = [[info objectForKey:@"id"] intValue];
                 NSString *nickname = [info objectForKey:@"screen_name"];
                 NSString *imageUrl = [info objectForKey:@"profile_image_url"];
                 NSURL *url = [NSURL URLWithString:imageUrl];
@@ -248,7 +305,12 @@
                 error = nil;
                 data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
                 UIImage *image = [UIImage imageWithData:data];
-                [self registerUser:[NSString stringWithFormat:@"%i", userId] loginIdType:LOGINID_SINA nickName:nickname];
+                [self registerUserWithLoginId:[NSString stringWithFormat:@"%i", loginId]
+                                  loginIdType:LOGINID_SINA
+                                     nickname:nickname
+                                       avatar:UIImagePNGRepresentation(image)
+                                  accessToken:token
+                            accessTokenSecret:tokenSecret];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -371,7 +433,7 @@
                 NSDictionary *info = [[SBJsonParser new] objectWithString:result];
                 if (0 == [[info objectForKey:@"ret"] intValue]) {
                     info = [info objectForKey:@"data"];
-                    int userId = [[info objectForKey:@"name"] intValue];
+                    NSString *loginId = [info objectForKey:@"name"];
                     NSString *nickname = [info objectForKey:@"nick"];
                     NSString *imageUrl = [info objectForKey:@"head"];
                     url = [NSURL URLWithString:imageUrl];
@@ -380,7 +442,12 @@
                     NSError *error = nil;
                     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
                     UIImage *image = [UIImage imageWithData:data];
-                    [self registerUser:[NSString stringWithFormat:@"%i", userId] loginIdType:LOGINID_QQ nickName:nickname];
+                    [self registerUserWithLoginId:loginId
+                                      loginIdType:LOGINID_QQ
+                                         nickname:nickname
+                                           avatar:UIImagePNGRepresentation(image)
+                                      accessToken:token
+                                accessTokenSecret:tokenSecret];
                 }
             }
         }

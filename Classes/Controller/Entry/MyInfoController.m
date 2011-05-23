@@ -9,9 +9,15 @@
 #import "MyInfoController.h"
 #import "UserManager.h"
 #import "DipanAppDelegate.h"
+#import "User.h"
 
 
 @implementation MyInfoController
+
+@synthesize loginIdLabel;
+@synthesize loginIdTypeLabel;
+@synthesize avatarView;
+@synthesize nicknameLabel;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -24,12 +30,15 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    User *user = [UserManager getUser];
+    loginIdLabel.text = user.loginId;
+    loginIdTypeLabel.text = [NSString stringWithFormat:@"%d",  [user.loginIdType intValue]];
+    avatarView.image = [UIImage imageWithData:user.avatar];
+    nicknameLabel.text = user.nickname;
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.

@@ -12,9 +12,8 @@
 
 - (NSString *)urlencodeWithUTF8
 {
-    CFStringRef forceEscaped = CFSTR("!*'();:@&=+$,/?%#[]");
-	NSString *escapedStr = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, nil, forceEscaped, kCFStringEncodingUTF8);
-    return [escapedStr autorelease];
+	NSString *escaped = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, nil, CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8);
+    return [escaped autorelease];
 }
 
 @end

@@ -10,15 +10,19 @@
 #import "PPViewController.h"
 
 @interface RegisterController : PPViewController {
-    UITextField *loginidField;
+    UITextField *loginIdField;
     NSString *token;
     NSString *tokenSecret;
 }
 
-@property (nonatomic, retain) IBOutlet UITextField *loginidField;
+@property (nonatomic, retain) IBOutlet UITextField *loginIdField;
 @property (nonatomic, retain) NSString *token;
 @property (nonatomic, retain) NSString *tokenSecret;
 
+- (IBAction)textFieldDoneEditing:(id)sender;
+- (IBAction)textFieldDidBeginEditing:(id)sender;
+- (IBAction)textFieldDidEndEditing:(id)sender;
+- (IBAction)backgroundTap:(id)sender;
 - (IBAction)clickRegister:(id)sender;
 - (IBAction)clickSinaLogin:(id)sender;
 - (void)requestSinaAccessToken:(NSString *)query;

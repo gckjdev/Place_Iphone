@@ -58,7 +58,10 @@
 #define PARA_USER_LATITUDE  @"ula"
 #define PARA_USER_LONGITUDE @"ulo"
 #define PARA_SYNC_SNS @"ss"
-#define PARA_PLACEID @"pid" 
+#define PARA_PLACEID @"pid"
+
+#define PARA_ACCESS_TOKEN               @"at"
+#define PARA_ACCESS_TOKEN_SECRET        @"ats"
 
 
 

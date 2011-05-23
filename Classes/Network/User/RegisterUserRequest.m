@@ -22,18 +22,20 @@
 @synthesize language;
 @synthesize deviceToken;
 @synthesize nickName;
+@synthesize accessToken;
+@synthesize accessTokenSecret;
 
 - (void)dealloc
 {
 	[appId release];
-	[loginId	release];
+	[loginId release];
 	[deviceId release];
 	[deviceModel release];
 	[countryCode release];
 	[language release];
 	[deviceToken release];
     [nickName release];
-	[super dealloc];	
+	[super dealloc];
 }
 
 - (NSString*)createUrlString:(NSString*)baseURL
@@ -51,6 +53,10 @@
 	str = [str stringByAddQueryParameter:PARA_LANGUAGE value:language];
 	str = [str stringByAddQueryParameter:PARA_DEVICETOKEN value:deviceToken];
     str = [str stringByAddQueryParameter:PARA_NICKNAME value:nickName];
+    str = [str stringByAddQueryParameter:PARA_ACCESS_TOKEN
+                                   value:accessToken];
+    str = [str stringByAddQueryParameter:PARA_ACCESS_TOKEN_SECRET
+                                   value:accessTokenSecret];
 	
 	return str;
 }
@@ -136,7 +142,15 @@
 	return OS_IOS;
 }
 
-+ (RegisterUserOutput*)send:(NSString*)serverURL loginId:(NSString*)loginId loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken nickName:(NSString*)nickName appId:(NSString*)appId
++ (RegisterUserOutput*)send:(NSString*)serverURL
+                    loginId:(NSString*)loginId
+                loginIdType:(int)loginIdType
+                deviceToken:(NSString*)deviceToken
+                   nickName:(NSString*)nickName
+                     avatar:(NSData *)avatar
+                accessToken:(NSString *)accessToken
+          accessTokenSecret:(NSString *)accessTokenSecret
+                      appId:(NSString*)appId
 {
 	int result = ERROR_SUCCESS;
 	RegisterUserInput* input = [[RegisterUserInput alloc] init];
@@ -151,7 +165,11 @@
 	input.deviceOS = [RegisterUserRequest getdeviceOS];
 	input.countryCode = [LocaleUtils getCountryCode];
 	input.language = [LocaleUtils getLanguageCode];
-	input.deviceToken = deviceToken;	
+	input.deviceToken = deviceToken;
+	input.nickName = nickName;
+    //input.avatar = avatar;
+    input.accessToken = accessToken;
+    input.accessTokenSecret = accessTokenSecret;
 	
     // for test, to be removed
     input.deviceId = [NSString stringWithInt:time(0)];
@@ -170,7 +188,15 @@
 
 + (void)test
 {
-	[RegisterUserRequest send:SERVER_URL loginId:@"benson" loginIdType:LOGINID_OWN deviceToken:@"test_device_token" nickName:@"benson" appId:@"test_app_id"];
+	[RegisterUserRequest send:SERVER_URL
+                      loginId:@"benson"
+                  loginIdType:LOGINID_OWN
+                  deviceToken:@"test_device_token"
+                     nickName:@"benson"
+                       avatar:nil
+                  accessToken:nil
+            accessTokenSecret:nil
+                        appId:@"test_app_id"];
 }
 
 @end

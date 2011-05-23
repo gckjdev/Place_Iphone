@@ -11,9 +11,13 @@
 
 @implementation User 
 
-@dynamic loginId;
-@dynamic queryId;
 @dynamic userId;
+@dynamic loginId;
 @dynamic loginIdType;
+@dynamic queryId;
+@dynamic nickname;
+@dynamic avatar;
+@dynamic accessToken;
+@dynamic accessTokenSecret;
 
 @end

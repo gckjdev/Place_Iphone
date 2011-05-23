@@ -14,7 +14,13 @@
 }
 
 + (BOOL)isUserRegistered;
-+ (BOOL)setUser:(NSString*)loginId loginIdType:(int)loginIdType userId:(NSString*)userId;
++ (BOOL)setUserWithUserId:(NSString*)userId
+                  loginId:(NSString*)loginId
+              loginIdType:(int)loginIdType
+                 nickname:(NSString *)nickname
+                   avatar:(NSData *)avatar
+              accessToken:(NSString *)accessToken
+        accessTokenSecret:(NSString *)accessTokenSecret;
 + (User*)getUser;
 + (BOOL)delUser;
 + (NSString*)getUserId;

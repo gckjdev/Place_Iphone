@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/Register/RegisterController.m"
-         timestampString = "327737176.558824"
+         timestampString = "327838164.158908"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
+         startingLineNumber = "155"
+         endingLineNumber = "155"
          landmarkName = "-clickRegister:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/Register/RegisterController.m"
-         timestampString = "327737176.558824"
+         timestampString = "327838164.158908"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
          landmarkName = "-clickSinaLogin:"
          landmarkType = "5">
       </FileBreakpoint>
