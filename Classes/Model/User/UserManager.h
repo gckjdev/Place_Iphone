@@ -17,7 +17,7 @@
 + (BOOL)setUserWithUserId:(NSString*)userId
                   loginId:(NSString*)loginId
               loginIdType:(int)loginIdType
-                 nickname:(NSString *)nickname
+                 nickName:(NSString *)nickName
                    avatar:(NSData *)avatar
               accessToken:(NSString *)accessToken
         accessTokenSecret:(NSString *)accessTokenSecret;

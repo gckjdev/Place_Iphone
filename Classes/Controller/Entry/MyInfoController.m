@@ -37,7 +37,7 @@
     loginIdLabel.text = user.loginId;
     loginIdTypeLabel.text = [NSString stringWithFormat:@"%d",  [user.loginIdType intValue]];
     avatarView.image = [UIImage imageWithData:user.avatar];
-    nicknameLabel.text = user.nickname;
+    nicknameLabel.text = user.nickName;
 }
 
 /*

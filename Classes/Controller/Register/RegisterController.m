@@ -124,7 +124,7 @@
 
 - (void)registerUserWithLoginId:(NSString*)loginId
                     loginIdType:(int)loginIdType
-                       nickname:(NSString*)nickname
+                       nickName:(NSString*)nickName
                          avatar:(NSData *)avatar
                     accessToken:(NSString *)accessToken
               accessTokenSecret:(NSString *)accessTokenSecret
@@ -138,7 +138,7 @@
                                                        loginId:loginId
                                                    loginIdType:loginIdType
                                                    deviceToken:deviceToken
-                                                      nickName:nickname
+                                                      nickName:nickName
                                                         avatar:avatar
                                                    accessToken:(NSString *)accessToken
                                              accessTokenSecret:(NSString *)accessTokenSecret
@@ -153,7 +153,7 @@
                 [UserManager setUserWithUserId:output.userId
                                        loginId:loginId
                                    loginIdType:loginIdType
-                                      nickname:nickname
+                                      nickName:nickName
                                         avatar:avatar
                                    accessToken:accessToken
                              accessTokenSecret:accessTokenSecret];
@@ -177,7 +177,7 @@
 - (IBAction)clickRegister:(id)sender {
     [self registerUserWithLoginId:self.loginIdField.text
                       loginIdType:LOGINID_OWN
-                         nickname:self.loginIdField.text
+                         nickName:self.loginIdField.text
                            avatar:nil
                       accessToken:nil
                 accessTokenSecret:nil];
@@ -307,7 +307,7 @@
                 UIImage *image = [UIImage imageWithData:data];
                 [self registerUserWithLoginId:[NSString stringWithFormat:@"%i", loginId]
                                   loginIdType:LOGINID_SINA
-                                     nickname:nickname
+                                     nickName:nickname
                                        avatar:UIImagePNGRepresentation(image)
                                   accessToken:token
                             accessTokenSecret:tokenSecret];
@@ -434,7 +434,7 @@
                 if (0 == [[info objectForKey:@"ret"] intValue]) {
                     info = [info objectForKey:@"data"];
                     NSString *loginId = [info objectForKey:@"name"];
-                    NSString *nickname = [info objectForKey:@"nick"];
+                    NSString *nickName = [info objectForKey:@"nick"];
                     NSString *imageUrl = [info objectForKey:@"head"];
                     url = [NSURL URLWithString:imageUrl];
                     request = [NSURLRequest requestWithURL:url];
@@ -444,7 +444,7 @@
                     UIImage *image = [UIImage imageWithData:data];
                     [self registerUserWithLoginId:loginId
                                       loginIdType:LOGINID_QQ
-                                         nickname:nickname
+                                         nickName:nickName
                                            avatar:UIImagePNGRepresentation(image)
                                       accessToken:token
                                 accessTokenSecret:tokenSecret];
