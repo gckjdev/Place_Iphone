@@ -46,7 +46,7 @@ PARA_DESC            // string
 OUT
 
 PARA_PLACEID         // string
-
+PARA_NICKNAME        // create user nickname
 
 
 
@@ -185,7 +185,7 @@ Mandantory
 
 PARA_USERID
 PARA_APPID
-PARA_PLACEID
+PARA_PLACEID	
 
 Output
 
@@ -234,7 +234,7 @@ Mandatory
 
 PARA_USERID
 PARA_APPID
-PARA_AFTER_TIMESTAMP          // int, empty means latest
+PARA_BEFORE_TIMESTAMP          // int, empty means latest
 PARA_MAX_COUNT                // int
 
 Output
@@ -256,4 +256,34 @@ PARA_TOTAL_VIEW
 PARA_TOTAL_FORWARD
 PARA_TOTAL_QUOTE
 PARA_TOTAL_REPLY
+
+10) METHOD_GETUSERFOLLOWPLACES
+
+Input
+
+Mandatory
+
+PARA_USERID
+PARA_APPID
+PARA_BEFORE_TIMESTAMP          // int, empty means latest
+PARA_MAX_COUNT                // int
+
+Output
+
+Place Array
+
+11) METHOD_USERUNFOLLOWPLACE
+
+In
+
+Mandantory
+
+PARA_USERID
+PARA_APPID
+PARA_PLACEID	
+
+Output
+
+None
+
 

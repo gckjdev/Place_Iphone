@@ -13,6 +13,7 @@
 #import "LocalDataService.h"
 #import "LocationService.h"
 #import "RegisterController.h"
+#import "AppManager.h"
 
 #define _THREE20_		1
 #define kAppId			@"388419035"					// To be changed for each project

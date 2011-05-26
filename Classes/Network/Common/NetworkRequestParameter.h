@@ -16,6 +16,7 @@
 #define METHOD_USERFOLLOWPLACE @"ufp"
 #define METHOD_GETUSERFOLLOWPOSTS @"guf"
 #define METHOD_GETNEARBYPOSTS @"gne"
+#define METHOD_GETUSERFOLLOWPLACES @"gufp"
 
 // request parameters
 

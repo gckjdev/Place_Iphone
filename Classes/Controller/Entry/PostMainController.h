@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
+#import "NearbyPostController.h"
+#import "FollowPostController.h"
 
-@interface PostMainController : PPTableViewController {
-    
+@interface PostMainController : PPViewController {
+    NearbyPostController    *nearbyPostController;
+    FollowPostController    *followPostController;
 }
+
+@property (nonatomic, retain) NearbyPostController    *nearbyPostController;
+@property (nonatomic, retain) FollowPostController    *followPostController;
 
 @end

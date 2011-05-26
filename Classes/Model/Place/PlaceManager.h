@@ -18,8 +18,8 @@
          createUser:(NSString*)createUser followUserId:(NSString*)followUserId
              useFor:(int)useFor;
 
-+ (NSArray*)getAllFollowPlaces:(NSString*)followUserId;
-+ (BOOL)deleteAllFollowPlaces:(NSString*)followUserId;
++ (NSArray*)getAllFollowPlaces;
++ (BOOL)deleteAllFollowPlaces;
 
 + (BOOL)deleteAllPlacesNearby;
 + (NSArray*)getAllPlacesNearby;

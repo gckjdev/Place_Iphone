@@ -129,7 +129,7 @@
                     accessToken:(NSString *)accessToken
               accessTokenSecret:(NSString *)accessTokenSecret
 {
-    NSString* appId = @"test_app_id";
+    NSString* appId = [AppManager getPlaceAppId];
     NSString* deviceToken = @"";
     
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
@@ -140,11 +140,11 @@
                                                    deviceToken:deviceToken
                                                       nickName:nickName
                                                         avatar:avatar
-                                                   accessToken:(NSString *)accessToken
-                                             accessTokenSecret:(NSString *)accessTokenSecret
+                                                   accessToken:accessToken
+                                             accessTokenSecret:accessTokenSecret
                                                          appId:appId];
-        output.resultCode = ERROR_SUCCESS;
-        output.userId = loginId;
+        // for test
+        // output.resultCode = ERROR_SUCCESS;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];

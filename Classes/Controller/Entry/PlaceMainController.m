@@ -123,17 +123,46 @@ enum SELECT_INDEX {
     }
 }
 
+- (void)followPlaceDataRefresh:(int)result // refresh done
+{
+    NSLog(@"followPlaceDataRefresh, result=%d", result);    
+    if (result == 0){   // success        
+        [self saveUserPlaceUpdateDate];                                
+        self.userPlaceList  = [PlaceManager getAllFollowPlaces];
+        [self setDataListBySelection];
+    }
+    
+    // refresh UI    
+    [self updateTableRefreshViewDate];
+    if ([self isReloading] && segSelectIndex == SELECT_FOLLOW){
+        [self dataSourceDidFinishLoadingNewData];
+        [self.dataTableView reloadData];
+    }
+    else if (segSelectIndex == SELECT_FOLLOW){
+        [self.dataTableView reloadData];
+    }
+    else{
+        // current UI is 
+    }        
+}
+
 - (void)getNearbyPlace:(NSString*)userId
 {
     LocalDataService* dataService = GlobalGetLocalDataService();
     [dataService requestNearbyPlaceData:self];
 }
 
+- (void)getFollowPlace:(NSString*)userId
+{
+    LocalDataService* dataService = GlobalGetLocalDataService();
+    [dataService requestUserFollowPlaceData:self];
+}
+
 - (void)loadData
 {
     NSString* userId = [UserManager getUserId];
     
-    self.userPlaceList = [PlaceManager getAllFollowPlaces:userId];
+    self.userPlaceList = [PlaceManager getAllFollowPlaces];
     
     self.nearbyPlaceList = [PlaceManager getAllPlacesNearby];
     if (self.nearbyPlaceList == nil || [self.nearbyPlaceList count] == 0){
@@ -148,6 +177,7 @@ enum SELECT_INDEX {
         [self getNearbyPlace:userId];
     }
     else{
+        [self getFollowPlace:userId];
     }    
 }
 

@@ -35,7 +35,7 @@
     return [dataManager save];
 }
 
-+ (NSArray*)getAllFollowPlaces:(NSString*)followUserId
++ (NSArray*)getAllFollowPlaces
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
     return [dataManager execute:@"getAllFollowPlaces" 
@@ -43,10 +43,10 @@
                       ascending:YES];
 }
 
-+ (BOOL)deleteAllFollowPlaces:(NSString*)followUserId
++ (BOOL)deleteAllFollowPlaces
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    NSArray* placeArray = [PlaceManager getAllFollowPlaces:followUserId];
+    NSArray* placeArray = [PlaceManager getAllFollowPlaces];
     
     for (Place* place in placeArray){
         [dataManager del:place];
