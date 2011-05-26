@@ -43,6 +43,11 @@
                      latitude:(double)latitude
                     cleanData:(BOOL)cleanData;
 
+- (void)requestUserFollowPostData:(id<LocalDataServiceDelegate>)delegateObject
+              beforeTimeStamp:(NSString*)beforeTimeStamp
+                    cleanData:(BOOL)cleanData;
+
+
 - (void)requestDataWhileEnterForeground;
 - (void)requestDataWhileLaunch;
 

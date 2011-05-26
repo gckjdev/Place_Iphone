@@ -61,7 +61,7 @@
     latitude = locationService.currentLocation.coordinate.latitude;
     
     LocalDataService* localService = GlobalGetLocalDataService();
-    [localService requestNearbyPostData:self beforeTimeStamp:nil longitude:longitude latitude:latitude cleanData:YES];
+    [localService requestUserFollowPostData:self beforeTimeStamp:nil cleanData:YES];
     
 }
 

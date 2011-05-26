@@ -105,10 +105,75 @@
     
 }
 
-- (void)requestFollowPostData:(id<LocalDataServiceDelegate>)delegateObject
+- (void)requestUserFollowPostData:(id<LocalDataServiceDelegate>)delegateObject
+                  beforeTimeStamp:(NSString*)beforeTimeStamp
+                        cleanData:(BOOL)cleanData
 {
+    if ([UserManager isUserRegistered] == NO)
+        return;
     
+    NSString* userId = [UserManager getUserId];
+    NSString* appId = [AppManager getPlaceAppId];
+    
+    dispatch_async(workingQueue, ^{
+        
+        // fetch user place data from server
+        GetUserFollowPostOutput* output = [GetUserFollowPostRequest send:SERVER_URL userId:userId appId:appId beforeTimeStamp:beforeTimeStamp];
+        
+        // if succeed, clean local data and save new data
+        if (output.resultCode == ERROR_SUCCESS){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                // delete all old data
+                if (cleanData){
+                    [PostManager deleteUserFollowPost];
+                }
+                
+                // insert new data
+                NSArray* postArray = output.postArray;
+                for (NSDictionary* post in postArray){
+                    // save place into DB                                        
+                    [PostManager createPost:[output postId:post] 
+                                    placeId:[output placeId:post] 
+                                     userId:userId 
+                                textContent:[output textContent:post]
+                                   imageURL:[output imageURL:post]
+                                contentType:[output contentType:post]
+                                 createDate:[output createDate:post] 
+                                  longitude:[output longitude:post] 
+                                   latitude:[output latitude:post]
+                              userLongitude:[output userLongitude:post]
+                               userLatitude:[output userLatitude:post]
+                                  totalView:[output totalView:post]
+                               totalForward:[output totalForward:post]
+                                 totalQuote:[output totalQuote:post]
+                                 totalReply:[output totalReply:post]
+                                     useFor:POST_FOR_FOLLOW];                    
+                }
+                
+                // notify UI to refresh data
+                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(followPostDataRefresh:)]){
+                    [delegateObject followPostDataRefresh:output.resultCode];
+                }
+            });
+        }
+        else {
+            // otherwize do nothing        
+            NSLog(@"<requestUserFollowPostData> failure, result code=%d", 
+                  output.resultCode);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // notify UI to refresh data
+                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(followPostDataRefresh:)]){
+                    [delegateObject followPostDataRefresh:output.resultCode];
+                }
+            });
+            
+        }
+        
+    });
+
 }
+
 
 - (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegateObject
 {
