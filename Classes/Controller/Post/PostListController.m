@@ -15,6 +15,7 @@
 #import "LocalDataService.h"
 #import "DipanAppDelegate.h"
 #import "UserFollowPlaceRequest.h"
+#import "PostController.h"
 
 @implementation PostListController
 
@@ -180,10 +181,10 @@
 			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
 		
 		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	
-	cell.accessoryView = accessoryView;
-	
+		
 	// set text label
 	int row = [indexPath row];	
 	int count = [dataList count];
@@ -207,11 +208,14 @@
 	if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
 		return;
 	
-	[self updateSelectSectionAndRow:indexPath];
-	[self reloadForSelectSectionAndRow:indexPath];	
-    
 	// do select row action
-	// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];
+    self.tabBarController.tabBar.hidden = YES;
+    self.tabBarController.hidesBottomBarWhenPushed = YES;
+    Post* post = [dataList objectAtIndex:indexPath.row];
+    PostController *vc = [[PostController alloc] init];
+    vc.post = post;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

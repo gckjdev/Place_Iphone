@@ -336,6 +336,7 @@ enum SELECT_INDEX {
 			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
 		
 		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	cell.accessoryView = accessoryView;

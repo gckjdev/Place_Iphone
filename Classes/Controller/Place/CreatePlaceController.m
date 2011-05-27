@@ -360,6 +360,9 @@ enum
                                createUser:userId
                              followUserId:userId
                                    useFor:PLACE_USE_FOLLOW];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
@@ -367,6 +370,7 @@ enum
             }
             else{
                 // other error TBD
+                [UIUtils alert:NSLS(@"kUnknowFailure")];
             }
         });        
     });    

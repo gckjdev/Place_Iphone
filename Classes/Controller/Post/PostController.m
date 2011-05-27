@@ -1,20 +1,24 @@
 //
-//  NearbyPostController.m
+//  PostController.m
 //  Dipan
 //
-//  Created by qqn_pipi on 11-5-26.
+//  Created by qqn_pipi on 11-5-27.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "NearbyPostController.h"
-#import "Post.h"
-#import "PostManager.h"
-#import "UserManager.h"
-#import "LocalDataService.h"
-#import "DipanAppDelegate.h"
-#import "NetworkRequestResultCode.h"
+#import "PostController.h"
 
-@implementation NearbyPostController
+enum{
+    SECTION_POST_ITSELF,
+    SECTION_RELATED_POST,
+    SECTION_NUM
+};
+
+
+@implementation PostController
+
+@synthesize actionToolbar;
+@synthesize post;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,8 @@
 
 - (void)dealloc
 {
+    [post release];
+    [actionToolbar release];
     [super dealloc];
 }
 
@@ -40,60 +46,30 @@
 
 #pragma mark - View lifecycle
 
-- (void)nearbyPostDataRefresh:(int)result
-{    
-    if (result == ERROR_SUCCESS){
-        self.dataList = [PostManager getAllNearbyPost:nil];        
-        [self.dataTableView reloadData];
-    }
-
-    if ([self isReloading]){
-        [self dataSourceDidFinishLoadingNewData];
-    }
-}
-
-- (void)requestPostListFromServer
-{
-    double longitude;
-    double latitude;
-    
-    LocationService* locationService = GlobalGetLocationService();
-    longitude = locationService.currentLocation.coordinate.longitude;
-    latitude = locationService.currentLocation.coordinate.latitude;
-    
-    LocalDataService* localService = GlobalGetLocalDataService();
-    [localService requestNearbyPostData:self beforeTimeStamp:nil longitude:longitude latitude:latitude cleanData:YES];
+- (void)initActionToolbar
+{	
+    UIBarButtonItem* replyButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+                                    UIBarButtonSystemItemReply target:self action:@selector(replyPost)] autorelease];
         
-}
-
-- (void)initDataList
-{
-    NSString* userId = [UserManager getUserId];
-    self.dataList = [PostManager getAllNearbyPost:userId];
-    [self requestPostListFromServer];    
+    UIBarItem* spaceButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+                         UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];    
+    
+    actionToolbar.items = [NSArray arrayWithObjects:replyButton, spaceButton, nil];
 }
 
 - (void)viewDidLoad
 {
-    supportRefreshHeader = YES;
+    self.view.frame = CGRectMake(0, 20, 320, 460);
     
-    [self initDataList];
-    
+    [self initActionToolbar];    
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [UIColor whiteColor];
-
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    self.dataList = [PostManager getAllNearbyPost:nil]; 
-    [super viewDidAppear:YES];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
 - (void)viewDidUnload
 {
+    
+    [self setActionToolbar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -104,6 +80,19 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = YES;
+    [super viewDidAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
+    [super viewDidDisappear:animated];
+}
+
 
 #pragma mark Table View Delegate
 
@@ -159,24 +148,40 @@
 //}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
-	// return cellImageHeight;
-	
-	return 55;
+{    
+    switch (indexPath.section) {
+        case SECTION_POST_ITSELF:
+            return 100;
+            
+        case SECTION_RELATED_POST:
+            return 100;
+            
+        default:            
+            return 0;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;		// default implementation
-	
-	// return [groupData totalSectionCount];
+
+    return SECTION_NUM;			
+
 }
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [dataList count];			// default implementation
-	
-	// return [groupData numberOfRowsInSection:section];
+    
+    switch (section) {
+        case SECTION_POST_ITSELF:
+            return 1;
+            break;
+            
+        case SECTION_RELATED_POST:
+            return [dataList count];
+            break;
+
+        default:            
+            return 0;
+    }    
 }
 
 
@@ -197,22 +202,45 @@
 		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
 	}
 	
-	cell.accessoryView = accessoryView;
-	
-	// set text label
-	int row = [indexPath row];	
-	int count = [dataList count];
-	if (row >= count){
-		NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
-		return cell;
-	}
-	
-    //	[self setCellBackground:cell row:row count:count];        
-	
-	Post* dataObject = [dataList objectAtIndex:row];
-    cell.textLabel.text = dataObject.textContent;
-    cell.detailTextLabel.text = dataObject.userId;
-	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
+    switch (indexPath.section) {
+        case SECTION_POST_ITSELF:
+        {
+            cell.textLabel.text = post.textContent;
+            cell.detailTextLabel.numberOfLines = 3;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
+                                         post.userId,
+                                         [post.createDate description],
+                                         [post.totalReply intValue]
+                                         ];
+        }
+            break;
+            
+        case SECTION_RELATED_POST:
+        {
+            int row = [indexPath row];	
+            int count = [dataList count];
+            if (row >= count){
+                NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
+                return cell;
+            }
+            
+            Post* postObj = [dataList objectAtIndex:row];
+
+            cell.textLabel.text = postObj.textContent;
+            cell.detailTextLabel.numberOfLines = 3;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
+                                         postObj.userId,
+                                         [postObj.createDate description],
+                                         [postObj.totalReply intValue]
+                                         ];
+        
+        }
+            break;
+            
+        default:            
+            break;
+    }    
+
 	
 	return cell;
 	
@@ -222,36 +250,21 @@
 	
 	if (indexPath.row > [dataList count] - 1)
 		return;
-	
-	[self updateSelectSectionAndRow:indexPath];
-	[self reloadForSelectSectionAndRow:indexPath];	
-	
-	// do select row action
-    //	Post* post = [dataList objectAtIndex:indexPath.row];
-    
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		if (indexPath.row > [dataList count] - 1)
-			return;
-		
-		// take delete action below, update data list
-		// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];		
-		
-		// update table view
-		
-	}
-	
+	    
 }
 
 #pragma Pull Refresh Delegate
 
 - (void) reloadTableViewDataSource
 {
-    [self requestPostListFromServer];
+//    [self requestPostListFromServer];
+}
+
+#pragma Button Actions
+
+- (void)replyPost
+{
+    
 }
 
 @end

@@ -12,15 +12,18 @@
 #import "UserManager.h"
 #import "NearbyPostController.h"
 
+
 enum SELECT_POST_TYPE {
     SELECT_NEARBY = 0,
-    SELECT_FOLLOW = 1
+    SELECT_FOLLOW = 1,
+    SELECT_PRIVATE_MESSAGE,
     };
 
 @implementation PostMainController
 
 @synthesize nearbyPostController;
 @synthesize followPostController;
+@synthesize privateMessageController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +38,7 @@ enum SELECT_POST_TYPE {
 {
     [nearbyPostController release];
     [followPostController release];
+    [privateMessageController release];
     [super dealloc];
 }
 
@@ -68,6 +72,18 @@ enum SELECT_POST_TYPE {
     
     [self.view bringSubviewToFront:followPostController.view];
     [followPostController viewDidAppear:NO];
+}
+
+- (void)showPrivateMessage
+{
+    if (self.privateMessageController == nil){
+        self.privateMessageController = [[PrivateMessageListController alloc] init];
+        [self.view addSubview:privateMessageController.view];                
+    }
+
+    [self.view bringSubviewToFront:privateMessageController.view];
+    [privateMessageController viewDidAppear:NO];
+
 }
 
 - (void)viewDidLoad
@@ -126,8 +142,11 @@ enum SELECT_POST_TYPE {
     if (segControl.selectedSegmentIndex == SELECT_FOLLOW){
         [self showFollowPost];
     }
-    else{
+    else if (segControl.selectedSegmentIndex == SELECT_NEARBY){
         [self showNearbyPost];
+    }
+    else{
+        [self showPrivateMessage];
     }
 }
 

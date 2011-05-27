@@ -48,6 +48,10 @@
 		CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */; };
 		CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */; };
 		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
+		CA4005A6138F47CA009B5BF9 /* PrivateMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4005A4138F47CA009B5BF9 /* PrivateMessageListController.m */; };
+		CA4005A7138F47CA009B5BF9 /* PrivateMessageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */; };
+		CA4005AB138F5852009B5BF9 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4005A9138F5850009B5BF9 /* PostController.m */; };
+		CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005AA138F5851009B5BF9 /* PostController.xib */; };
 		CA5D43C8136A561E00B9ECF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */; };
 		CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */; };
 		CA5D44DB136A63A200B9ECF2 /* libAdMob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D44B0136A63A200B9ECF2 /* libAdMob.a */; };
@@ -448,6 +452,12 @@
 		CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPostController.xib; sourceTree = "<group>"; };
 		CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
 		CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
+		CA4005A3138F47CA009B5BF9 /* PrivateMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageListController.h; sourceTree = "<group>"; };
+		CA4005A4138F47CA009B5BF9 /* PrivateMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageListController.m; sourceTree = "<group>"; };
+		CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageListController.xib; sourceTree = "<group>"; };
+		CA4005A8138F584E009B5BF9 /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
+		CA4005A9138F5850009B5BF9 /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
+		CA4005AA138F5851009B5BF9 /* PostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostController.xib; sourceTree = "<group>"; };
 		CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA5D44AC136A63A200B9ECF2 /* AdMobDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdMobDelegateProtocol.h; path = /3PP/AdMob/AdMob/AdMobDelegateProtocol.h; sourceTree = "<absolute>"; };
 		CA5D44AD136A63A200B9ECF2 /* AdMobInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdMobInterstitialAd.h; path = /3PP/AdMob/AdMob/AdMobInterstitialAd.h; sourceTree = "<absolute>"; };
@@ -1196,6 +1206,12 @@
 				CA2A0170138E2FD2007EBEA9 /* FollowPostController.h */,
 				CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */,
 				CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */,
+				CA4005A3138F47CA009B5BF9 /* PrivateMessageListController.h */,
+				CA4005A4138F47CA009B5BF9 /* PrivateMessageListController.m */,
+				CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */,
+				CA4005A8138F584E009B5BF9 /* PostController.h */,
+				CA4005A9138F5850009B5BF9 /* PostController.m */,
+				CA4005AA138F5851009B5BF9 /* PostController.xib */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -2098,6 +2114,8 @@
 				FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */,
 				CA2A016F138E2F87007EBEA9 /* NearbyPostController.xib in Resources */,
 				CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */,
+				CA4005A7138F47CA009B5BF9 /* PrivateMessageListController.xib in Resources */,
+				CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2253,6 +2271,8 @@
 				CA2A016A138E282A007EBEA9 /* AppManager.m in Sources */,
 				CA2A016E138E2F87007EBEA9 /* NearbyPostController.m in Sources */,
 				CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */,
+				CA4005A6138F47CA009B5BF9 /* PrivateMessageListController.m in Sources */,
+				CA4005AB138F5852009B5BF9 /* PostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

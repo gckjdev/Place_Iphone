@@ -135,13 +135,15 @@
         //        output.totalQuote = 0;
         //        output.totalForward = 0;
         
-        output.resultCode = ERROR_SUCCESS;
+        //output.resultCode = ERROR_SUCCESS;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
                 [PostManager createPost:output.postId placeId:placeId userId:userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply useFor:POST_FOR_PLACE];
+                
+                [self.navigationController popViewControllerAnimated:YES];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
@@ -149,6 +151,7 @@
                 
             }
             else{
+                [UIUtils alert:NSLS(@"kUnknowFailure")];
                 // other error TBD
                 // for test, TO BE REMOVED
             }
