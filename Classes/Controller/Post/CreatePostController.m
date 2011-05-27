@@ -11,6 +11,7 @@
 #import "PostManager.h"
 #import "UserManager.h"
 #import "Post.h"
+#import "AppManager.h"
 
 @implementation CreatePostController
 @synthesize syncSNSButton;
@@ -108,7 +109,7 @@
 {
     // TODO
     NSString* userId = [UserManager getUserId];
-    NSString* appId = @"test_app_id";
+    NSString* appId = [AppManager getPlaceAppId];
     
     [self showActivityWithText:NSLS(@"kCreatingPost")];
     dispatch_async(workingQueue, ^{

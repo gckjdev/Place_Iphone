@@ -25,7 +25,7 @@ UserManager* userManager;
 + (BOOL)setUserWithUserId:(NSString*)userId
                   loginId:(NSString*)loginId
               loginIdType:(int)loginIdType
-                 nickname:(NSString *)nickname
+                 nickName:(NSString *)nickName
                    avatar:(NSData *)avatar
               accessToken:(NSString *)accessToken
         accessTokenSecret:(NSString *)accessTokenSecret
@@ -39,7 +39,7 @@ UserManager* userManager;
 	user.loginId = loginId;
     user.loginIdType = [NSNumber numberWithInt:loginIdType];
     user.queryId = DEFAULT_USER_QUERY_ID;
-    user.nickname = nickname;
+    user.nickName = nickName;
     user.avatar = avatar;
     user.accessToken = accessToken;
     user.accessTokenSecret = accessTokenSecret;

@@ -342,7 +342,7 @@ enum
 {
     // TODO
     NSString* userId = [UserManager getUserId];
-    NSString* appId = kAppId;
+    NSString* appId = [AppManager getPlaceAppId];
     
     [self showActivityWithText:NSLS(@"kCreatingPlace")];
     dispatch_async(workingQueue, ^{

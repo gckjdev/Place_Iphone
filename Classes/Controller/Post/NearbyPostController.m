@@ -1,24 +1,20 @@
 //
-//  PostListController.m
+//  NearbyPostController.m
 //  Dipan
 //
-//  Created by qqn_pipi on 11-5-14.
-//  Copyright 2011骞�__MyCompanyName__. All rights reserved.
+//  Created by qqn_pipi on 11-5-26.
+//  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "CreatePostController.h"
-#import "PostListController.h"
+#import "NearbyPostController.h"
+#import "Post.h"
 #import "PostManager.h"
 #import "UserManager.h"
-#import "PlaceManager.h"
-#import "Post.h"
 #import "LocalDataService.h"
 #import "DipanAppDelegate.h"
-#import "UserFollowPlaceRequest.h"
+#import "NetworkRequestResultCode.h"
 
-@implementation PostListController
-
-@synthesize place;
+@implementation NearbyPostController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +27,6 @@
 
 - (void)dealloc
 {
-    [place release];
     [super dealloc];
 }
 
@@ -45,36 +40,53 @@
 
 #pragma mark - View lifecycle
 
-- (void)loadPostList
-{
-    // load post list from local DB
-    self.dataList = [PostManager getPostByPlace:place.placeId];
-    LocalDataService* dataService = GlobalGetLocalDataService();
-    [dataService requestLatestPlacePostData:self placeId:place.placeId];
+- (void)nearbyPostDataRefresh:(int)result
+{    
+    if (result == ERROR_SUCCESS){
+        self.dataList = [PostManager getAllNearbyPost:nil];        
+        [self.dataTableView reloadData];
+    }
+
+    if ([self isReloading]){
+        [self dataSourceDidFinishLoadingNewData];
+    }
 }
 
-- (void)placePostDataRefresh:(int)result
+- (void)requestPostListFromServer
 {
-    self.dataList = [PostManager getPostByPlace:place.placeId];
-    [self.dataTableView reloadData];
+    double longitude;
+    double latitude;
+    
+    LocationService* locationService = GlobalGetLocationService();
+    longitude = locationService.currentLocation.coordinate.longitude;
+    latitude = locationService.currentLocation.coordinate.latitude;
+    
+    LocalDataService* localService = GlobalGetLocalDataService();
+    [localService requestNearbyPostData:self beforeTimeStamp:nil longitude:longitude latitude:latitude cleanData:YES];
+        
+}
+
+- (void)initDataList
+{
+    NSString* userId = [UserManager getUserId];
+    self.dataList = [PostManager getAllNearbyPost:userId];
+    [self requestPostListFromServer];    
 }
 
 - (void)viewDidLoad
 {
-    [self setNavigationRightButton:NSLS(@"kNewPost") action:@selector(clickCreatePost:)];
-    [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    supportRefreshHeader = YES;
     
-    //    [self loadPostList];
+    [self initDataList];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-
-
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self loadPostList];
-    [super viewDidAppear:animated];
+    self.dataList = [PostManager getAllNearbyPost:nil]; 
+    [super viewDidAppear:YES];
 }
 
 - (void)viewDidUnload
@@ -112,13 +124,13 @@
 	
 	NSString *sectionHeader = [groupData titleForSection:section];	
 	
-    //	switch (section) {
-    //		case <#constant#>:
-    //			<#statements#>
-    //			break;
-    //		default:
-    //			break;
-    //	}
+	//	switch (section) {
+	//		case <#constant#>:
+	//			<#statements#>
+	//			break;
+	//		default:
+	//			break;
+	//	}
 	
 	return sectionHeader;
 }
@@ -192,11 +204,12 @@
 		return cell;
 	}
 	
-    //	[self setCellBackground:cell row:row count:count];
-    
-    Post* post = [dataList objectAtIndex:row];
-    cell.textLabel.text = post.textContent;
-    cell.detailTextLabel.text = post.userId;    // need to be user display name
+    //	[self setCellBackground:cell row:row count:count];        
+	
+	Post* dataObject = [dataList objectAtIndex:row];
+    cell.textLabel.text = dataObject.textContent;
+    cell.detailTextLabel.text = dataObject.userId;
+	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
 	
 	return cell;
 	
@@ -204,23 +217,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
+	if (indexPath.row > [dataList count] - 1)
 		return;
 	
 	[self updateSelectSectionAndRow:indexPath];
 	[self reloadForSelectSectionAndRow:indexPath];	
-    
+	
 	// do select row action
-	// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];
+    //	Post* post = [dataList objectAtIndex:indexPath.row];
+    
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		
-		if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
+		if (indexPath.row > [dataList count] - 1)
 			return;
-        
+		
 		// take delete action below, update data list
 		// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];		
 		
@@ -230,49 +244,11 @@
 	
 }
 
-#pragma Button Action
+#pragma Pull Refresh Delegate
 
-- (void)clickCreatePost:(id)sender
+- (void) reloadTableViewDataSource
 {
-    CreatePostController* vc = [[CreatePostController alloc] init];
-    vc.place = self.place;
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+    [self requestPostListFromServer];
 }
 
-- (void)followPlace:(NSString*)userId placeId:(NSString*)placeId
-{
-    NSString* appId = [AppManager getPlaceAppId];
-    
-    [self showActivityWithText:NSLS(@"kFollowingPlace")];
-    dispatch_async(workingQueue, ^{
-        
-        UserFollowPlaceOutput* output = [UserFollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideActivity];
-            if (output.resultCode == ERROR_SUCCESS){               
-                // save place data locally
-                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId
-                                   useFor:PLACE_USE_FOLLOW];
-            }
-            else if (output.resultCode == ERROR_NETWORK){
-                [UIUtils alert:NSLS(@"kSystemFailure")];
-                // for test, TO BE REMOVED
-                
-            }
-            else{
-                // other error TBD
-                // for test, TO BE REMOVED
-            }
-        });        
-    });    
-    
-}
-
-- (IBAction)clickFollow:(id)sender
-{
-    NSString* userId = [UserManager getUserId];
-    [self followPlace:userId placeId:place.placeId];
-}
 @end

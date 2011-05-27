@@ -41,6 +41,12 @@
 		CA0C2722138409560097931C /* UserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C2721138409560097931C /* UserFollowPlaceRequest.m */; };
 		CA15FB43137CF7CA000D2457 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB42137CF7CA000D2457 /* Friend.m */; };
 		CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */; };
+		CA2A0164138E2432007EBEA9 /* GetUserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */; };
+		CA2A016A138E282A007EBEA9 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0169138E282A007EBEA9 /* AppManager.m */; };
+		CA2A016E138E2F87007EBEA9 /* NearbyPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A016C138E2F86007EBEA9 /* NearbyPostController.m */; };
+		CA2A016F138E2F87007EBEA9 /* NearbyPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2A016D138E2F86007EBEA9 /* NearbyPostController.xib */; };
+		CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */; };
+		CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */; };
 		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
 		CA5D43C8136A561E00B9ECF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */; };
 		CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */; };
@@ -430,6 +436,16 @@
 		CA15FB42137CF7CA000D2457 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceRequest.h; sourceTree = "<group>"; };
 		CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceRequest.m; sourceTree = "<group>"; };
+		CA2A0162138E2432007EBEA9 /* GetUserFollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPlaceRequest.h; sourceTree = "<group>"; };
+		CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPlaceRequest.m; sourceTree = "<group>"; };
+		CA2A0168138E282A007EBEA9 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
+		CA2A0169138E282A007EBEA9 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
+		CA2A016B138E2F86007EBEA9 /* NearbyPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPostController.h; sourceTree = "<group>"; };
+		CA2A016C138E2F86007EBEA9 /* NearbyPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPostController.m; sourceTree = "<group>"; };
+		CA2A016D138E2F86007EBEA9 /* NearbyPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyPostController.xib; sourceTree = "<group>"; };
+		CA2A0170138E2FD2007EBEA9 /* FollowPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowPostController.h; sourceTree = "<group>"; };
+		CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowPostController.m; sourceTree = "<group>"; };
+		CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPostController.xib; sourceTree = "<group>"; };
 		CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
 		CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
 		CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -998,6 +1014,8 @@
 				CAD19B32137A6FAB00A8817B /* Place */,
 				CAD19B34137A6FAB00A8817B /* User */,
 				CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */,
+				CA2A0168138E282A007EBEA9 /* AppManager.h */,
+				CA2A0169138E282A007EBEA9 /* AppManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1172,6 +1190,12 @@
 				CA967313137E4DEF0038CC44 /* PostListController.h */,
 				CA967314137E4DEF0038CC44 /* PostListController.m */,
 				CA967315137E4DF00038CC44 /* PostListController.xib */,
+				CA2A016B138E2F86007EBEA9 /* NearbyPostController.h */,
+				CA2A016C138E2F86007EBEA9 /* NearbyPostController.m */,
+				CA2A016D138E2F86007EBEA9 /* NearbyPostController.xib */,
+				CA2A0170138E2FD2007EBEA9 /* FollowPostController.h */,
+				CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */,
+				CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1732,6 +1756,8 @@
 				CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */,
 				CA0C2720138409560097931C /* UserFollowPlaceRequest.h */,
 				CA0C2721138409560097931C /* UserFollowPlaceRequest.m */,
+				CA2A0162138E2432007EBEA9 /* GetUserFollowPlaceRequest.h */,
+				CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2070,6 +2096,8 @@
 				FB52F3FA1388FA3100710F0C /* blueArrow_new.png in Resources */,
 				FB52F3FB1388FA3100710F0C /* EGORefresh.strings in Resources */,
 				FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */,
+				CA2A016F138E2F87007EBEA9 /* NearbyPostController.xib in Resources */,
+				CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2221,6 +2249,10 @@
 				FB52F3F51388FA3100710F0C /* PullToRefreshTableViewController.m in Sources */,
 				FB52F3F61388FA3100710F0C /* RootViewController.m in Sources */,
 				FB52F3F71388FA3100710F0C /* EGORefreshTableHeaderView.m in Sources */,
+				CA2A0164138E2432007EBEA9 /* GetUserFollowPlaceRequest.m in Sources */,
+				CA2A016A138E282A007EBEA9 /* AppManager.m in Sources */,
+				CA2A016E138E2F87007EBEA9 /* NearbyPostController.m in Sources */,
+				CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2340,9 +2372,6 @@
 				INFOPLIST_FILE = "Dipan-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/AdMob/AdMob\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLibWithLocation\"",
 					/3PP/AdMob/AdMob,
 					/3PP/Analytics_iPhone_SDK_1.6_for_iOS3.2.x_iOS4.x,
 					/3PP/Flurry/FlurryLib,
@@ -2362,9 +2391,6 @@
 				INFOPLIST_FILE = "Dipan-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/AdMob/AdMob\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLibWithLocation\"",
 					/3PP/AdMob/AdMob,
 					/3PP/Analytics_iPhone_SDK_1.6_for_iOS3.2.x_iOS4.x,
 					/3PP/Flurry/FlurryLib,
@@ -2444,9 +2470,6 @@
 				INFOPLIST_FILE = "Dipan-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/AdMob/AdMob\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Project Templates/Application/My Application/Tab Bar iPhone Application/Flurry/FlurryLibWithLocation\"",
 					/3PP/AdMob/AdMob,
 					/3PP/Analytics_iPhone_SDK_1.6_for_iOS3.2.x_iOS4.x,
 					/3PP/Flurry/FlurryLib,

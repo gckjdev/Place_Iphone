@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "PostManager.h"
 #import "UserManager.h"
+#import "NearbyPostController.h"
 
 enum SELECT_POST_TYPE {
     SELECT_NEARBY = 0,
@@ -17,6 +18,9 @@ enum SELECT_POST_TYPE {
     };
 
 @implementation PostMainController
+
+@synthesize nearbyPostController;
+@synthesize followPostController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +33,8 @@ enum SELECT_POST_TYPE {
 
 - (void)dealloc
 {
+    [nearbyPostController release];
+    [followPostController release];
     [super dealloc];
 }
 
@@ -42,28 +48,41 @@ enum SELECT_POST_TYPE {
 
 #pragma mark - View lifecycle
 
-- (void)loadDataList
+- (void)showNearbyPost
 {
-    NSString* userId = [UserManager getUserId];
-    self.dataList = [PostManager getAllFollowPost:userId];
-    if (self.dataList == nil || [self.dataList count] == 0){
-        // use local data service to fetch from remote
-        
+    if (self.nearbyPostController == nil){
+        self.nearbyPostController = [[NearbyPostController alloc] init];
+        [self.view addSubview:nearbyPostController.view];        
     }
+    
+    [self.view bringSubviewToFront:nearbyPostController.view];
+    [nearbyPostController viewDidAppear:NO];
+}
+
+- (void)showFollowPost
+{
+    if (self.followPostController == nil){
+        self.followPostController = [[FollowPostController alloc] init];
+        [self.view addSubview:followPostController.view];        
+    }
+    
+    [self.view bringSubviewToFront:followPostController.view];
+    [followPostController viewDidAppear:NO];
 }
 
 - (void)viewDidLoad
 {
-    [self createNavigationTitleToolbar:[NSArray arrayWithObjects:NSLS(@"kNearbyPost"),
-                                        NSLS(@"kFollowPost"), nil]
-                    defaultSelectIndex:SELECT_NEARBY];
+    [self createNavigationTitleToolbar:
+                    [NSArray arrayWithObjects:NSLS(@"kNearbyPost"),
+                                              NSLS(@"kFollowPost"), nil]
+                    defaultSelectIndex:SELECT_NEARBY];    
+
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self showNearbyPost];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self loadDataList];
     [super viewDidAppear:animated];
 }
 
@@ -98,136 +117,18 @@ enum SELECT_POST_TYPE {
 //	return [groupData sectionForLetter:title];
 //}
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
-	NSString *sectionHeader = [groupData titleForSection:section];	
-	
-	//	switch (section) {
-	//		case <#constant#>:
-	//			<#statements#>
-	//			break;
-	//		default:
-	//			break;
-	//	}
-	
-	return sectionHeader;
-}
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//	return [self getSectionView:tableView section:section];
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//	return sectionImageHeight;
-//}
-
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-//	return [self getFooterView:tableView section:section];
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//	return footerImageHeight;
-//}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
-	// return cellImageHeight;
-	
-	return 55;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;		// default implementation
-	
-	// return [groupData totalSectionCount];
-}
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [dataList count];			// default implementation
-	
-	// return [groupData numberOfRowsInSection:section];
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;		
-		
-		if (cellTextLabelColor != nil)
-			cell.textLabel.textColor = cellTextLabelColor;
-		else
-			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
-		
-		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
-	}
-	
-	cell.accessoryView = accessoryView;
-	
-	// set text label
-	int row = [indexPath row];	
-	int count = [dataList count];
-	if (row >= count){
-		NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
-		return cell;
-	}
-	
-    //	[self setCellBackground:cell row:row count:count];        
-	
-	Post* dataObject = [dataList objectAtIndex:row];
-    cell.textLabel.text = dataObject.textContent;
-    cell.detailTextLabel.text = dataObject.userId;
-	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
-	
-	return cell;
-	
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	if (indexPath.row > [dataList count] - 1)
-		return;
-	
-	[self updateSelectSectionAndRow:indexPath];
-	[self reloadForSelectSectionAndRow:indexPath];	
-	
-	// do select row action
-//	Post* post = [dataList objectAtIndex:indexPath.row];
-    
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		if (indexPath.row > [dataList count] - 1)
-			return;
-		
-		// take delete action below, update data list
-		// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];		
-		
-		// update table view
-		
-	}
-	
-}
 
 #pragma Title ToolBar Button Actions
 
 - (void)clickSegControl:(id)sender
 {
-    [self loadDataList];
-    [self.dataTableView reloadData];
+    UISegmentedControl* segControl = sender;
+    if (segControl.selectedSegmentIndex == SELECT_FOLLOW){
+        [self showFollowPost];
+    }
+    else{
+        [self showNearbyPost];
+    }
 }
 
 @end

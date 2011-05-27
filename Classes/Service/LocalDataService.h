@@ -12,11 +12,11 @@
 
 @optional
 
-- (void)followPlaceDataRefresh;
-- (void)placePostDataRefresh;
+- (void)followPlaceDataRefresh:(int)result;
+- (void)placePostDataRefresh:(int)result;
 - (void)nearbyPlaceDataRefresh:(int)result;
-- (void)followPostDataRefresh;
-- (void)nearbyPostDataRefresh;
+- (void)followPostDataRefresh:(int)result;
+- (void)nearbyPostDataRefresh:(int)result;
 
 @end
 
@@ -31,9 +31,23 @@
 
 - (id)initWithDelegate:(id<LocalDataServiceDelegate>)delegate;
 - (void)requestPlaceData;
-- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegate;;
+- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegate;
+- (void)requestUserFollowPlaceData:(id<LocalDataServiceDelegate>)delegate;
+
 - (void)requestLatestPlacePostData:(id<LocalDataServiceDelegate>)delegateObject 
                            placeId:(NSString*)placeId;
+
+- (void)requestNearbyPostData:(id<LocalDataServiceDelegate>)delegateObject
+              beforeTimeStamp:(NSString*)beforeTimeStamp
+                    longitude:(double)longitude 
+                     latitude:(double)latitude
+                    cleanData:(BOOL)cleanData;
+
+- (void)requestUserFollowPostData:(id<LocalDataServiceDelegate>)delegateObject
+              beforeTimeStamp:(NSString*)beforeTimeStamp
+                    cleanData:(BOOL)cleanData;
+
+
 - (void)requestDataWhileEnterForeground;
 - (void)requestDataWhileLaunch;
 

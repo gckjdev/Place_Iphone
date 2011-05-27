@@ -15,7 +15,7 @@
 @dynamic loginId;
 @dynamic loginIdType;
 @dynamic queryId;
-@dynamic nickname;
+@dynamic nickName;
 @dynamic avatar;
 @dynamic accessToken;
 @dynamic accessTokenSecret;
