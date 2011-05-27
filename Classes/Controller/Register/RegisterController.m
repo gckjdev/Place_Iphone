@@ -90,10 +90,10 @@
 - (IBAction)textFieldDoneEditing:(id)sender {
 	[loginIdField resignFirstResponder];
     CATransition *animation = [CATransition animation];
-    [animation setDuration:1.25f];
+    [animation setDuration:0.5f];
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
     [animation setType:kCATransitionPush];
-    [animation setSubtype: kCATransitionFromBottom];
+    [animation setSubtype:kCATransitionFromBottom];
     [self.view.layer addAnimation:animation forKey:@"Reveal"];
     CGRect frame = self.view.frame;
     frame.origin.y = 20;
@@ -103,11 +103,11 @@
 - (IBAction)textFieldDidBeginEditing:(id)sender
 {
     CATransition *animation = [CATransition animation];
-    [animation setDuration:1.25f];
+    [animation setDuration:0.5f];
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
     [animation setType:kCATransitionPush];
-    [animation setSubtype: kCATransitionFromTop];
-    animation.fillMode = kCAFillModeForwards;
+    [animation setSubtype:kCATransitionFromTop];
+    animation.fillMode = kCAFillModeRemoved;
     [self.view.layer addAnimation:animation forKey:@"Reveal"];
     CGRect frame = self.view.frame;
     frame.origin.y = -195;
