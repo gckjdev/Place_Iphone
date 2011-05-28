@@ -34,6 +34,7 @@ enum {
 @property (nonatomic, retain) NSNumber * userLongitude;
 @property (nonatomic, retain) NSNumber * userLatitude;
 @property (nonatomic, retain) NSNumber * useFor;
+@property (nonatomic, retain) NSNumber * deleteFlag;
 
 
 @end

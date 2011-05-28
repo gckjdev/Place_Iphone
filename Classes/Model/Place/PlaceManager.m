@@ -29,6 +29,7 @@
     place.createUser = createUser;
     place.followUser = followUserId;
     place.useFor = [NSNumber numberWithInt:useFor];
+    place.deleteFlag = [NSNumber numberWithBool:NO];
     
     NSLog(@"Create Place: %@", [place description]);
     
@@ -49,7 +50,7 @@
     NSArray* placeArray = [PlaceManager getAllFollowPlaces];
     
     for (Place* place in placeArray){
-        [dataManager del:place];
+        place.deleteFlag = [NSNumber numberWithBool:YES];
     }
     
     return [dataManager save];
@@ -61,7 +62,7 @@
     NSArray* placeArray = [PlaceManager getAllPlacesNearby];
     
     for (Place* place in placeArray){
-        [dataManager del:place];
+        place.deleteFlag = [NSNumber numberWithBool:YES];
     }
     
     return [dataManager save];

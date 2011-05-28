@@ -98,6 +98,11 @@
     return [post objectForKey:PARA_TEXT_CONTENT];
 }
 
++ (NSString*)nickName:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_NICKNAME];
+}
+
 + (NSString*)imageURL:(NSDictionary*)post
 {
     return [post objectForKey:PARA_IMAGE_URL];

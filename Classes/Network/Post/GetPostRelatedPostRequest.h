@@ -48,6 +48,7 @@
 + (int)totalQuote:(NSDictionary*)post;
 + (int)totalReply:(NSDictionary*)post;
 + (NSString*)placeId:(NSDictionary*)post;
++ (NSString*)nickName:(NSDictionary*)post;
 
 @end 
 

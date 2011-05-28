@@ -26,5 +26,6 @@
 @dynamic userLongitude;
 @dynamic userLatitude;
 @dynamic useFor;
+@dynamic deleteFlag;
 
 @end

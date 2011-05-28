@@ -27,5 +27,6 @@ enum PLACE_USE_FOR {
 @property (nonatomic, retain) NSString * createUser;
 @property (nonatomic, retain) NSString * followUser;
 @property (nonatomic, assign) NSNumber * useFor;
+@property (nonatomic, assign) NSNumber * deleteFlag;
 
 @end

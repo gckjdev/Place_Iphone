@@ -18,5 +18,6 @@
 @dynamic createUser;
 @dynamic followUser;
 @dynamic useFor;
+@dynamic deleteFlag;
 
 @end

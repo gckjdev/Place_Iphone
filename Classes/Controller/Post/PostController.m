@@ -261,7 +261,7 @@ enum{
             
             NSDictionary* dict = [dataList objectAtIndex:row];
             
-            NSString* userId = [GetPostRelatedPostOutput userId:dict];
+            NSString* name = [GetPostRelatedPostOutput nickName:dict];
             NSString* textContent = [GetPostRelatedPostOutput textContent:dict];
             NSDate*   createDate = [GetPostRelatedPostOutput createDate:dict];
             int totalReply = [GetPostRelatedPostOutput totalReply:dict];
@@ -269,7 +269,7 @@ enum{
             cell.textLabel.text = textContent;
             cell.detailTextLabel.numberOfLines = 3;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
-                                         userId,
+                                         name,
                                          [createDate description],
                                          totalReply
                                          ];

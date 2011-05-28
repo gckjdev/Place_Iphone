@@ -24,7 +24,7 @@
     NSArray* postArray = [dataManager execute:@"getPostByPlace" forKey:@"placeId" value:placeId sortBy:@"createDate" ascending:YES];
     
     for (Post* post in postArray){
-        [dataManager del:post];
+        post.deleteFlag = [NSNumber numberWithBool:YES];
     }
     
     return [dataManager save];
@@ -58,6 +58,7 @@
     post.totalQuote = [NSNumber numberWithInt:totalQuote];
     post.totalReply = [NSNumber numberWithInt:totalReply];
     post.useFor = [NSNumber numberWithInt:useFor];
+    post.deleteFlag = [NSNumber numberWithBool:NO];
     
     NSLog(@"<createPost> post=%@", [post description]);
     
@@ -81,7 +82,7 @@
                                      ascending:YES]; 
     
     for (Post* post in placeArray){
-        [dataManager del:post];
+        post.deleteFlag = [NSNumber numberWithBool:YES];
     }
     
     return [dataManager save];    
@@ -103,7 +104,7 @@
                                      ascending:YES]; 
     
     for (Post* post in placeArray){
-        [dataManager del:post];
+        post.deleteFlag = [NSNumber numberWithBool:YES];
     }
     
     return [dataManager save];     
