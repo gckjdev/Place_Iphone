@@ -74,6 +74,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    self.hidesBottomBarWhenPushed = NO;
     [self loadPostList];
     [super viewDidAppear:animated];
 }
@@ -209,11 +210,10 @@
 		return;
 	
 	// do select row action
-    self.tabBarController.tabBar.hidden = YES;
-    self.tabBarController.hidesBottomBarWhenPushed = YES;
     Post* post = [dataList objectAtIndex:indexPath.row];
     PostController *vc = [[PostController alloc] init];
     vc.post = post;
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }
