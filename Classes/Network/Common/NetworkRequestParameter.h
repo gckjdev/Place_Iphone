@@ -18,6 +18,7 @@
 #define METHOD_GETNEARBYPOSTS @"gne"
 #define METHOD_GETUSERFOLLOWPLACES @"gufp"
 #define METHOD_DEVICELOGIN @"dl"
+#define METHOD_GETPOSTRELATEDPOST @"gpr"
 
 // request parameters
 
