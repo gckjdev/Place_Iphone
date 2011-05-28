@@ -142,7 +142,23 @@ void uncaughtExceptionHandler(NSException *exception) {
     
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
-		
+    
+//    RegisterUserOutput* output = [DeviceLoginRequest send:SERVER_URL 
+//                                                   loginId:loginId
+//                                               loginIdType:loginIdType
+//                                               deviceToken:deviceToken
+//                                                  nickName:nickName
+//                                                    avatar:avatar
+//                                               accessToken:accessToken
+//                                         accessTokenSecret:accessTokenSecret
+//                                                     appId:appId
+//                                                  province:province city:city 
+//                                                  location:location
+//                                                    gender:gender birthday:birthday
+//                                              sinaNickName:sinaNickName
+//                                                sinaDomain:sinaDomain
+//                                                qqNickName:qqNickName
+//                                                  qqDomain:qqDomain];
     if ([UserManager isUserRegistered] == NO){
         [self addRegisterView];
     } else {

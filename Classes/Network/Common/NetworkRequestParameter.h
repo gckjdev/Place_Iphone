@@ -17,6 +17,7 @@
 #define METHOD_GETUSERFOLLOWPOSTS @"guf"
 #define METHOD_GETNEARBYPOSTS @"gne"
 #define METHOD_GETUSERFOLLOWPLACES @"gufp"
+#define METHOD_DEVICELOGIN @"dl"
 
 // request parameters
 
@@ -36,6 +37,20 @@
 #define PARA_COUNTRYCODE @"cc"
 #define PARA_LANGUAGE @"lang"
 #define PARA_APPID @"app"
+
+#define PARA_NEED_RETURN_USER           @"r"
+#define PARA_AVATAR                     @"av"
+#define PARA_ACCESS_TOKEN               @"at"
+#define PARA_ACCESS_TOKEN_SECRET        @"ats"
+#define PARA_PROVINCE                   @"pro"
+#define PARA_CITY                       @"ci"
+#define PARA_LOCATION                   @"lo"
+#define PARA_GENDER                     @"ge"
+#define PARA_BIRTHDAY                   @"bi"
+#define PARA_SINA_NICKNAME              @"sn"
+#define PARA_SINA_DOMAIN                @"sd"
+#define PARA_QQ_NICKNAME                @"qn"
+#define PARA_QQ_DOMAIN                  @"qd"
 
 #define PARA_RADIUS @"ra"
 #define PARA_POSTTYPE @"pt"
@@ -61,11 +76,6 @@
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid"
 
-#define PARA_ACCESS_TOKEN               @"at"
-#define PARA_ACCESS_TOKEN_SECRET        @"ats"
-
-
-
 
 
 #define PARA_CREATE_USERID @"cuid"
@@ -88,5 +98,10 @@
 #define RET_MESSAGE @"msg"
 #define RET_CODE @"ret"
 #define RET_DATA @"dat"
+
+#define PARA_SINA_ACCESS_TOKEN          @"sat"
+#define PARA_SINA_ACCESS_TOKEN_SECRET   @"sats"
+#define PARA_QQ_ACCESS_TOKEN            @"qat"
+#define PARA_QQ_ACCESS_TOKEN_SECRET     @"qats"
 
 

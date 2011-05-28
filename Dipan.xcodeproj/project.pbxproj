@@ -241,6 +241,7 @@
 		FB52F3FA1388FA3100710F0C /* blueArrow_new.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3EE1388FA3100710F0C /* blueArrow_new.png */; };
 		FB52F3FB1388FA3100710F0C /* EGORefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3F01388FA3100710F0C /* EGORefresh.strings */; };
 		FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3F21388FA3100710F0C /* whiteArrow.png */; };
+		FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -802,6 +803,8 @@
 		FB52F3F21388FA3100710F0C /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		FB52F3F31388FA3100710F0C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
 		FB52F3F41388FA3100710F0C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
+		FBBDA05B138FEC4D00F16CFA /* DeviceLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLoginRequest.h; sourceTree = "<group>"; };
+		FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLoginRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1798,6 +1801,8 @@
 			children = (
 				CA0A56BC137BAF1F003CD06C /* RegisterUserRequest.h */,
 				CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */,
+				FBBDA05B138FEC4D00F16CFA /* DeviceLoginRequest.h */,
+				FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2273,6 +2278,7 @@
 				CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */,
 				CA4005A6138F47CA009B5BF9 /* PrivateMessageListController.m in Sources */,
 				CA4005AB138F5852009B5BF9 /* PostController.m in Sources */,
+				FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

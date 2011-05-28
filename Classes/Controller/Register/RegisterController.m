@@ -125,9 +125,18 @@
 - (void)registerUserWithLoginId:(NSString*)loginId
                     loginIdType:(int)loginIdType
                        nickName:(NSString*)nickName
-                         avatar:(NSData *)avatar
+                         avatar:(NSString *)avatar
                     accessToken:(NSString *)accessToken
               accessTokenSecret:(NSString *)accessTokenSecret
+                       province:(int)province
+                           city:(int)city
+                       location:(NSString *)location
+                         gender:(NSString *)gender
+                       birthday:(NSString *)birthday
+                   sinaNickName:(NSString *)sinaNickName
+                     sinaDomain:(NSString *)sinaDomain
+                     qqNickName:(NSString *)qqNickName
+                       qqDomain:(NSString *)qqDomain
 {
     NSString* appId = [AppManager getPlaceAppId];
     NSString* deviceToken = @"";
@@ -142,7 +151,14 @@
                                                         avatar:avatar
                                                    accessToken:accessToken
                                              accessTokenSecret:accessTokenSecret
-                                                         appId:appId];
+                                                         appId:appId
+                                                      province:province city:city 
+                                                      location:location
+                                                        gender:gender birthday:birthday
+                                                  sinaNickName:sinaNickName
+                                                    sinaDomain:sinaDomain
+                                                    qqNickName:qqNickName
+                                                      qqDomain:qqDomain];
         // for test
         // output.resultCode = ERROR_SUCCESS;
         
@@ -154,7 +170,7 @@
                                        loginId:loginId
                                    loginIdType:loginIdType
                                       nickName:nickName
-                                        avatar:avatar
+                                        avatar:nil
                                    accessToken:accessToken
                              accessTokenSecret:accessTokenSecret];
                 
@@ -180,7 +196,17 @@
                          nickName:self.loginIdField.text
                            avatar:nil
                       accessToken:nil
-                accessTokenSecret:nil];
+                accessTokenSecret:nil
+                         province:-1
+                             city:-1
+                         location:nil
+                           gender:nil
+                         birthday:nil
+                     sinaNickName:nil
+                       sinaDomain:nil
+                       qqNickName:nil
+                         qqDomain:nil
+     ];
 
 }
 
@@ -297,20 +323,28 @@
             if (200 == [response statusCode] && nil == error) {
                 NSDictionary *info = [[SBJsonParser new] objectWithString:result];
                 int loginId = [[info objectForKey:@"id"] intValue];
-                NSString *nickname = [info objectForKey:@"screen_name"];
-                NSString *imageUrl = [info objectForKey:@"profile_image_url"];
-                NSURL *url = [NSURL URLWithString:imageUrl];
-                request = [NSURLRequest requestWithURL:url];
-                response = nil;
-                error = nil;
-                data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-                UIImage *image = [UIImage imageWithData:data];
+                NSString *sinaNickName = [info objectForKey:@"screen_name"];
+                NSString *sinaDomain = [info objectForKey:@"domain"];
+                NSString *gender = [info objectForKey:@"gender"];
+                int province = [[info objectForKey:@"province"] intValue];
+                int city = [[info objectForKey:@"city"] intValue];
+                NSString *location = [info objectForKey:@"location"];
+                NSString *avatar = [info objectForKey:@"profile_image_url"];
                 [self registerUserWithLoginId:[NSString stringWithFormat:@"%i", loginId]
                                   loginIdType:LOGINID_SINA
-                                     nickName:nickname
-                                       avatar:UIImagePNGRepresentation(image)
+                                     nickName:sinaNickName
+                                       avatar:avatar
                                   accessToken:token
-                            accessTokenSecret:tokenSecret];
+                            accessTokenSecret:tokenSecret
+                                     province:province
+                                         city:city
+                                     location:location
+                                       gender:gender
+                                     birthday:nil
+                                 sinaNickName:sinaNickName
+                                   sinaDomain:sinaDomain
+                                   qqNickName:nil
+                                     qqDomain:nil];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -434,20 +468,32 @@
                 if (0 == [[info objectForKey:@"ret"] intValue]) {
                     info = [info objectForKey:@"data"];
                     NSString *loginId = [info objectForKey:@"name"];
-                    NSString *nickName = [info objectForKey:@"nick"];
-                    NSString *imageUrl = [info objectForKey:@"head"];
-                    url = [NSURL URLWithString:imageUrl];
-                    request = [NSURLRequest requestWithURL:url];
-                    NSURLResponse *response = nil;
-                    NSError *error = nil;
-                    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-                    UIImage *image = [UIImage imageWithData:data];
+                    NSString *qqNickName = [info objectForKey:@"nick"];
+                    NSString *gender = (1 == [[info objectForKey:@"sex"] intValue]) ? @"m" : @"f";
+                    int province = [[info objectForKey:@"province_code"] intValue];
+                    int city = [[info objectForKey:@"city_code"] intValue];
+                    NSString *location = [info objectForKey:@"location"];
+                    int day = [[info objectForKey:@"birth_day"] intValue];
+                    int month = [[info objectForKey:@"birth_month"] intValue];
+                    int year = [[info objectForKey:@"birth_year"] intValue];
+                    NSString *birthday = [NSString stringWithFormat:@"%d-%02d-%02d", year, month, day];
+                    NSString *avatar = [info objectForKey:@"head"];
+                    avatar = [NSString stringWithFormat:@"%@/%d", avatar, 100];
                     [self registerUserWithLoginId:loginId
                                       loginIdType:LOGINID_QQ
-                                         nickName:nickName
-                                           avatar:UIImagePNGRepresentation(image)
+                                         nickName:qqNickName
+                                           avatar:avatar
                                       accessToken:token
-                                accessTokenSecret:tokenSecret];
+                                accessTokenSecret:tokenSecret
+                                         province:province
+                                             city:city
+                                         location:location
+                                           gender:gender
+                                         birthday:birthday
+                                     sinaNickName:nil
+                                       sinaDomain:nil
+                                       qqNickName:qqNickName
+                                         qqDomain:loginId];
                 }
             }
         }

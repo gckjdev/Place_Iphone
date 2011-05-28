@@ -20,8 +20,18 @@
 	NSString*		language;
 	NSString*		deviceToken;	
     NSString*       nickName;
+    NSString*       avatar;
     NSString*       accessToken;
     NSString*       accessTokenSecret;
+    int             province;
+    int             city;
+    NSString*       location;
+    NSString*       gender;
+    NSString*       birthday;
+    NSString*       sinaNickName;
+    NSString*       sinaDomain;
+    NSString*       qqNickName;
+    NSString*       qqDomain;
 }
 
 @property (nonatomic, retain) NSString*		loginId;
@@ -34,8 +44,18 @@
 @property (nonatomic, retain) NSString*		appId;
 @property (nonatomic, retain) NSString*		deviceToken;
 @property (nonatomic, retain) NSString*     nickName;
+@property (nonatomic, retain) NSString*     avatar;
 @property (nonatomic, retain) NSString*     accessToken;
 @property (nonatomic, retain) NSString*     accessTokenSecret;
+@property (nonatomic, assign) int           province;
+@property (nonatomic, assign) int           city;
+@property (nonatomic, retain) NSString*     location;
+@property (nonatomic, retain) NSString*     gender;
+@property (nonatomic, retain) NSString*     birthday;
+@property (nonatomic, retain) NSString*     sinaNickName;
+@property (nonatomic, retain) NSString*     sinaDomain;
+@property (nonatomic, retain) NSString*     qqNickName;
+@property (nonatomic, retain) NSString*     qqDomain;
 
 @end
 
@@ -53,12 +73,21 @@
 
 + (RegisterUserOutput*)send:(NSString*)serverURL
                     loginId:(NSString*)loginId
-                loginIdType:(int)loginIdType deviceToken:(NSString*)deviceToken
+                loginIdType:(int)loginIdType
+                deviceToken:(NSString*)deviceToken
                    nickName:(NSString*)nickName
-                     avatar:(NSData *)avatar
+                     avatar:(NSString *)avatar
                 accessToken:(NSString *)accessToken
           accessTokenSecret:(NSString *)accessTokenSecret
-                      appId:(NSString*)appId;
-+ (void)test;
+                      appId:(NSString*)appId
+                   province:(int)province
+                       city:(int)city
+                   location:(NSString *)location
+                     gender:(NSString *)gender
+                   birthday:(NSString *)birthday
+               sinaNickName:(NSString *)sinaNickName
+                 sinaDomain:(NSString *)sinaDomain
+                 qqNickName:(NSString *)qqNickName
+                   qqDomain:(NSString *)qqDomain;
 
 @end
