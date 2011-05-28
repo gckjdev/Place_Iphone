@@ -83,6 +83,7 @@
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
 		CA96731A137E59210038CC44 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967319137E59210038CC44 /* Post.m */; };
 		CA96731D137E593B0038CC44 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96731C137E593B0038CC44 /* PostManager.m */; };
+		CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */; };
 		CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA9E1FB51385247E009D1D4F /* Server_Interface.txt */; };
 		CA9E1FB913856FFC009D1D4F /* GetUserFollowPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */; };
 		CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */; };
@@ -516,6 +517,8 @@
 		CA967319137E59210038CC44 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		CA96731B137E593B0038CC44 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
 		CA96731C137E593B0038CC44 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
+		CA96B39E1390BD0F00503786 /* GetPostRelatedPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPostRelatedPostRequest.h; sourceTree = "<group>"; };
+		CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPostRelatedPostRequest.m; sourceTree = "<group>"; };
 		CA9E1FB51385247E009D1D4F /* Server_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Server_Interface.txt; sourceTree = "<group>"; };
 		CA9E1FB713856FFB009D1D4F /* GetUserFollowPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPostRequest.h; sourceTree = "<group>"; };
 		CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPostRequest.m; sourceTree = "<group>"; };
@@ -1792,6 +1795,8 @@
 				CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */,
 				CA9E1FBA13857176009D1D4F /* GetNearbyPostRequest.h */,
 				CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */,
+				CA96B39E1390BD0F00503786 /* GetPostRelatedPostRequest.h */,
+				CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -2279,6 +2284,7 @@
 				CA4005A6138F47CA009B5BF9 /* PrivateMessageListController.m in Sources */,
 				CA4005AB138F5852009B5BF9 /* PostController.m in Sources */,
 				FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */,
+				CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

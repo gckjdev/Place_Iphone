@@ -8,6 +8,9 @@
 
 #import "PostController.h"
 #import "CreatePostController.h"
+#import "UserManager.h"
+#import "AppManager.h"
+#import "GetPostRelatedPostRequest.h"
 
 enum{
     SECTION_POST_ITSELF,
@@ -47,6 +50,34 @@ enum{
 
 #pragma mark - View lifecycle
 
+- (void)loadPostRelatedPost
+{
+    if ([UserManager isUserRegistered] == NO)
+        return;
+    
+    NSString* userId = [UserManager getUserId];
+    NSString* appId = [AppManager getPlaceAppId];
+    
+    dispatch_async(workingQueue, ^{        
+        GetPostRelatedPostOutput* output = [GetPostRelatedPostRequest send:SERVER_URL userId:userId 
+                                                                     appId:appId 
+                                                                    postId:self.post.postId 
+                                                           beforeTimeStamp:@""];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
+                self.dataList = output.postArray;
+                [self.dataTableView reloadData];
+            }
+            else{
+                NSLog(@"<requestNearbyPlaceData> failure, result code=%d", output.resultCode);            
+                
+            }                
+        });
+    });
+    
+}
+
 - (void)initActionToolbar
 {	
     UIBarButtonItem* replyButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
@@ -60,11 +91,15 @@ enum{
 
 - (void)viewDidLoad
 {
+    supportRefreshHeader = YES;    
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
     [self initActionToolbar];    
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    [self loadPostRelatedPost];
+
 }
 
 - (void)viewDidUnload
@@ -224,14 +259,19 @@ enum{
                 return cell;
             }
             
-            Post* postObj = [dataList objectAtIndex:row];
+            NSDictionary* dict = [dataList objectAtIndex:row];
+            
+            NSString* userId = [GetPostRelatedPostOutput userId:dict];
+            NSString* textContent = [GetPostRelatedPostOutput textContent:dict];
+            NSDate*   createDate = [GetPostRelatedPostOutput createDate:dict];
+            int totalReply = [GetPostRelatedPostOutput totalReply:dict];
 
-            cell.textLabel.text = postObj.textContent;
+            cell.textLabel.text = textContent;
             cell.detailTextLabel.numberOfLines = 3;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
-                                         postObj.userId,
-                                         [postObj.createDate description],
-                                         [postObj.totalReply intValue]
+                                         userId,
+                                         [createDate description],
+                                         totalReply
                                          ];
         
         }
@@ -257,7 +297,7 @@ enum{
 
 - (void) reloadTableViewDataSource
 {
-//    [self requestPostListFromServer];
+    [self loadPostRelatedPost];
 }
 
 #pragma Button Actions
