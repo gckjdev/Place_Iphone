@@ -17,7 +17,10 @@
 @dynamic queryId;
 @dynamic nickName;
 @dynamic avatar;
-@dynamic accessToken;
-@dynamic accessTokenSecret;
+@dynamic sinaAccessToken;
+@dynamic sinaAccessTokenSecret;
+@dynamic qqAccessToken;
+@dynamic qqAccessTokenSecret;
+@dynamic loginStatus;
 
 @end

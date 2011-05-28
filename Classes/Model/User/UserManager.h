@@ -18,9 +18,18 @@
                   loginId:(NSString*)loginId
               loginIdType:(int)loginIdType
                  nickName:(NSString *)nickName
-                   avatar:(NSData *)avatar
+                   avatar:(NSString *)avatar
               accessToken:(NSString *)accessToken
-        accessTokenSecret:(NSString *)accessTokenSecret;
+        accessTokenSecret:(NSString *)accessTokenSecret
+              loginStatus:(BOOL)loginStatus;
++ (BOOL)setUserWithUserId:(NSString*)userId
+                 nickName:(NSString *)nickName
+          sinaAccessToken:(NSString *)sinaAccessToken
+    sinaAccessTokenSecret:(NSString *)sinaAccessTokenSecret
+            qqAccessToken:(NSString *)qqAccessToken
+      qqAccessTokenSecret:(NSString *)qqAccessTokenSecret
+              loginStatus:(BOOL)loginStatus;
++ (BOOL)setUser:(User *)user;
 + (User*)getUser;
 + (BOOL)delUser;
 + (NSString*)getUserId;

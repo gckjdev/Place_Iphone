@@ -36,7 +36,6 @@
     User *user = [UserManager getUser];
     loginIdLabel.text = user.loginId;
     loginIdTypeLabel.text = [NSString stringWithFormat:@"%d",  [user.loginIdType intValue]];
-    avatarView.image = [UIImage imageWithData:user.avatar];
     nicknameLabel.text = user.nickName;
 }
 
@@ -67,7 +66,9 @@
 }
 
 - (IBAction)clickLogout:(id)sender {
-    [UserManager delUser];
+    User *user = [UserManager getUser];
+    user.loginStatus = [NSNumber numberWithBool:NO];
+    [UserManager setUser:user];
     DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate removeMainView];
     [delegate addRegisterView];

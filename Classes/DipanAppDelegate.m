@@ -25,7 +25,7 @@
 
 #import "UserManager.h"
 #import "RegisterController.h"
-#import "RegisterUserRequest.h"
+#import "DeviceLoginRequest.h"
 
 #define kDbFileName			@"AppDB"
 
@@ -143,27 +143,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
     
-//    RegisterUserOutput* output = [DeviceLoginRequest send:SERVER_URL 
-//                                                   loginId:loginId
-//                                               loginIdType:loginIdType
-//                                               deviceToken:deviceToken
-//                                                  nickName:nickName
-//                                                    avatar:avatar
-//                                               accessToken:accessToken
-//                                         accessTokenSecret:accessTokenSecret
-//                                                     appId:appId
-//                                                  province:province city:city 
-//                                                  location:location
-//                                                    gender:gender birthday:birthday
-//                                              sinaNickName:sinaNickName
-//                                                sinaDomain:sinaDomain
-//                                                qqNickName:qqNickName
-//                                                  qqDomain:qqDomain];
-    if ([UserManager isUserRegistered] == NO){
-        [self addRegisterView];
-    } else {
-        [self addMainView];
-    }
+    [self checkDevice];
     
     [window makeKeyAndVisible];
 	
@@ -251,6 +231,47 @@ void uncaughtExceptionHandler(NSException *exception) {
     }
     
     return YES;
+}
+
+- (void)checkDevice {
+    User *user = [UserManager getUser];
+    if (nil != user){
+        workingQueue = dispatch_queue_create([[NSString GetUUID] UTF8String], NULL);
+        dispatch_async(workingQueue, ^{
+            DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
+                                                           appId:[AppManager getPlaceAppId]
+                                                        deviceId:@"1306505352"
+                                                  needReturnUser:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (output.resultCode != ERROR_SUCCESS) {
+                    [self removeMainView];
+                    [self addRegisterView];
+                }
+            });
+        });
+        if ([user.loginStatus boolValue]) {
+            [self addMainView];
+        } else {
+            [self addRegisterView];
+        }
+    } else {
+        DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
+                                                       appId:[AppManager getPlaceAppId]
+                                                    deviceId:@"1306505352"
+                                              needReturnUser:YES];
+        if (output.resultCode == ERROR_SUCCESS) {
+            [UserManager setUserWithUserId:output.userId
+                                  nickName:output.nickName
+                           sinaAccessToken:output.sinaAccessToken
+                     sinaAccessTokenSecret:output.sinaAccessTokenSecret
+                             qqAccessToken:output.qqAccessToken
+                       qqAccessTokenSecret:output.qqAccessTokenSecret
+                               loginStatus:YES];
+            [self addMainView];
+        } else {
+            [self addRegisterView];
+        }
+    }
 }
 
 #pragma Register View Management

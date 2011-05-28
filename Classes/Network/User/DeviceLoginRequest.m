@@ -27,6 +27,8 @@
 {
 	NSString* str = [NSString stringWithString:baseURL];
 	
+    str = [str stringByAddQueryParameter:METHOD
+                                   value:METHOD_DEVICELOGIN];
 	str = [str stringByAddQueryParameter:PARA_APPID
                                    value:appId];
 	str = [str stringByAddQueryParameter:PARA_DEVICEID
@@ -146,9 +148,6 @@
 	input.appId = appId;	
 	input.deviceId = deviceId;
     input.needReturnUser = needReturnUser;
-	
-    // for test, to be removed
-    input.deviceId = [NSString stringWithInt:time(0)];
     
 	if ([[DeviceLoginRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;

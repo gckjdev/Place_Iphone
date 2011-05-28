@@ -63,7 +63,7 @@
 {
 	NSString* str = [NSString stringWithString:baseURL];
 	
-	str = [str stringByAddQueryParameter:METHOD value:METHOD_REGISTRATION];	
+	str = [str stringByAddQueryParameter:METHOD value:METHOD_REGISTRATION];
 	str = [str stringByAddQueryParameter:PARA_LOGINID value:loginId];
 	str = [str stringByAddQueryParameter:PARA_LOGINIDTYPE intValue:loginIdType];
 	str = [str stringByAddQueryParameter:PARA_DEVICEID value:deviceId];

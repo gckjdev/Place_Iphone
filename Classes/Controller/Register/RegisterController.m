@@ -172,7 +172,8 @@
                                       nickName:nickName
                                         avatar:nil
                                    accessToken:accessToken
-                             accessTokenSecret:accessTokenSecret];
+                             accessTokenSecret:accessTokenSecret
+                                   loginStatus:YES];
                 
                 // show main tab view
                 DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;

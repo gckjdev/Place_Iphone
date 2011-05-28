@@ -36,6 +36,7 @@
 @property (nonatomic, retain) LocalDataService              *localDataService;
 @property (nonatomic, retain) LocationService               *locationService;
 
+- (void)checkDevice;
 - (void)addRegisterView;
 - (void)removeRegisterView;
 - (void)addMainView;

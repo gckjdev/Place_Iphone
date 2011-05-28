@@ -18,9 +18,12 @@
 @property (nonatomic, retain) NSNumber *loginIdType;
 @property (nonatomic, retain) NSString *queryId;
 @property (nonatomic, retain) NSString *nickName;
-@property (nonatomic, retain) NSString *accessToken;
-@property (nonatomic, retain) NSString *accessTokenSecret;
-@property (nonatomic, retain) NSData *avatar;
+@property (nonatomic, retain) NSString *avatar;
+@property (nonatomic, retain) NSString *sinaAccessToken;
+@property (nonatomic, retain) NSString *sinaAccessTokenSecret;
+@property (nonatomic, retain) NSString *qqAccessToken;
+@property (nonatomic, retain) NSString *qqAccessTokenSecret;
+@property (nonatomic, assign) NSNumber *loginStatus;
 
 @end
 
