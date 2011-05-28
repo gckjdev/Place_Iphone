@@ -21,6 +21,7 @@
     BOOL            syncSNS;
     NSString*       placeId;        
 	NSString*		appId;
+    NSString*       srcPostId;
 }
 
 @property (nonatomic, retain) NSString*		userId;
@@ -33,7 +34,7 @@
 @property (nonatomic, assign) BOOL          syncSNS;
 @property (nonatomic, retain) NSString*     placeId;        
 @property (nonatomic, retain) NSString*		appId;
-
+@property (nonatomic, retain) NSString*     srcPostId;
 @end
 
 @interface CreatePostOutput : CommonOutput
@@ -65,7 +66,9 @@
               contentType:(int)contentType textContent:(NSString*)textContent
                  latitude:(double)latitude longitude:(double)longitude
                  userLatitude:(double)userLatitude userLongitude:(double)userLongitude
-                  syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId;
+                  syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
+                srcPostId:(NSString*)srcPostId;
+
 + (void)test;
 
 @end

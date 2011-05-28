@@ -13,6 +13,8 @@
 @interface CreatePostController : PPTableViewController {
     
     Place *place;
+    NSString *srcPostId;
+    NSString *srcPlaceId;
     
     UIButton *syncSNSButton;
     UIButton *selectPlaceButton;
@@ -30,6 +32,9 @@
 @property (nonatomic, retain) IBOutlet UITextView *contentTextView;
 
 @property (nonatomic, retain) Place *place;
+@property (nonatomic, retain) NSString *srcPostId;
+@property (nonatomic, retain) NSString *srcPlaceId;
+
 @property (nonatomic, retain) NSMutableArray *photoArray;
 
 @end

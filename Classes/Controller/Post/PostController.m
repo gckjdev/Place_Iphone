@@ -7,6 +7,7 @@
 //
 
 #import "PostController.h"
+#import "CreatePostController.h"
 
 enum{
     SECTION_POST_ITSELF,
@@ -59,7 +60,7 @@ enum{
 
 - (void)viewDidLoad
 {
-    self.view.frame = CGRectMake(0, 20, 320, 460);
+    [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
     [self initActionToolbar];    
     [super viewDidLoad];
@@ -83,16 +84,15 @@ enum{
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.hidden = YES;
+    self.hidesBottomBarWhenPushed = YES;
     [super viewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    self.tabBarController.tabBar.hidden = NO;
+    self.hidesBottomBarWhenPushed = NO;
     [super viewDidDisappear:animated];
 }
-
 
 #pragma mark Table View Delegate
 
@@ -264,7 +264,21 @@ enum{
 
 - (void)replyPost
 {
-    
+    CreatePostController* vc = [[CreatePostController alloc] init];
+    vc.srcPostId = post.postId;
+    vc.srcPlaceId = post.placeId;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+}
+
+- (void)clickBack:(id)sender
+{
+    int count = [self.navigationController.viewControllers count];
+    if (count >= 2){
+        UIViewController* vc = [self.navigationController.viewControllers objectAtIndex:count-2];
+        vc.hidesBottomBarWhenPushed = NO;
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

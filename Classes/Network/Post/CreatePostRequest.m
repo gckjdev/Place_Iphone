@@ -22,6 +22,7 @@
 @synthesize syncSNS;
 @synthesize placeId;        
 @synthesize appId;
+@synthesize srcPostId;
 
 - (void)dealloc
 {
@@ -29,6 +30,7 @@
 	[userId	release];
 	[textContent release];
 	[placeId release];
+    [srcPostId release];
 	[super dealloc];	
 }
 
@@ -47,6 +49,10 @@
 	str = [str stringByAddQueryParameter:PARA_USER_LONGITUDE doubleValue:userLongitude];
 	str = [str stringByAddQueryParameter:PARA_SYNC_SNS boolValue:syncSNS];
 	str = [str stringByAddQueryParameter:PARA_PLACEID value:placeId];
+
+    if (srcPostId != nil){
+        str = [str stringByAddQueryParameter:PARA_SRC_POSTID value:srcPostId];
+    }
 	
 	return str;
 }
@@ -144,6 +150,8 @@
                  latitude:(double)latitude longitude:(double)longitude
              userLatitude:(double)userLatitude userLongitude:(double)userLongitude
                   syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
+                srcPostId:(NSString*)srcPostId
+
 {
 	int result = ERROR_SUCCESS;
 	CreatePostInput* input = [[CreatePostInput alloc] init];
@@ -161,6 +169,7 @@
     input.userLongitude = userLongitude;
     input.syncSNS = syncSNS;
     input.placeId = placeId;
+    input.srcPostId = srcPostId;
 	
 	if ([[CreatePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
@@ -176,7 +185,7 @@
 
 + (void)test
 {
-	[CreatePostRequest send:SERVER_URL userId:@"benson" appId:@"appId" contentType:CONTENT_TYPE_TEXT textContent:@"hello, this is a 测试帖子" latitude:111.11f longitude:11133.f userLatitude:222.55f userLongitude:333.3f syncSNS:YES placeId:@"test_place_id"];
+	[CreatePostRequest send:SERVER_URL userId:@"benson" appId:@"appId" contentType:CONTENT_TYPE_TEXT textContent:@"hello, this is a 测试帖子" latitude:111.11f longitude:11133.f userLatitude:222.55f userLongitude:333.3f syncSNS:YES placeId:@"test_place_id" srcPostId:nil];
 }
 @end
 

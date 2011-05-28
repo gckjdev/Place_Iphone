@@ -21,6 +21,8 @@
 @synthesize contentTextView;
 @synthesize photoArray;
 @synthesize place;
+@synthesize srcPlaceId;
+@synthesize srcPostId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +36,8 @@
 - (void)dealloc
 {
     [place release];
+    [srcPlaceId release];
+    [srcPostId release];
     [photoArray release];
     [syncSNSButton release];
     [selectPlaceButton release];
@@ -106,6 +110,8 @@
           latitude:(double)latitude longitude:(double)longitude
       userLatitude:(double)userLatitude userLongitude:(double)userLongitude
            syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
+         srcPostId:(NSString*)srcPostIdVal
+
 {
     // TODO
     NSString* userId = [UserManager getUserId];
@@ -124,7 +130,8 @@
                                               userLatitude:userLatitude 
                                              userLongitude:userLongitude 
                                                    syncSNS:syncSNS 
-                                                   placeId:placeId];
+                                                   placeId:placeId
+                                                 srcPostId:srcPostIdVal];
         
         // For Test Only
         //        output.postId = [NSString stringWithInt:time(0)];
@@ -178,7 +185,15 @@
     double userLongitude = 113.11f;     // TBD
     double userLatitude = 153.22f;
     
-    [self createPost:contentType textContent:textContent latitude:[place.latitude doubleValue] longitude:[place.longitude doubleValue] userLatitude:userLatitude userLongitude:userLongitude syncSNS:syncSNSStatus placeId:place.placeId];
+    NSString* placeId = nil;
+    if (place != nil){
+        placeId = place.placeId;
+    }
+    else{
+        placeId = srcPlaceId;
+    }
+    
+    [self createPost:contentType textContent:textContent latitude:[place.latitude doubleValue] longitude:[place.longitude doubleValue] userLatitude:userLatitude userLongitude:userLongitude syncSNS:syncSNSStatus placeId:placeId srcPostId:srcPostId];
 }
 
 - (void)clickSegControl:(id)sender

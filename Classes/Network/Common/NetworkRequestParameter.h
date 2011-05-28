@@ -75,6 +75,7 @@
 #define PARA_USER_LONGITUDE @"ulo"
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid"
+#define PARA_SRC_POSTID @"spi"
 
 
 
