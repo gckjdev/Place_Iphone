@@ -27,12 +27,6 @@
 
 @property (nonatomic, retain) NSArray* placeArray;
 
-- (NSString*)name:(NSDictionary*)place;
-- (NSString*)description:(NSDictionary*)place;
-- (double)longitude:(NSDictionary*)place;
-- (double)latitude:(NSDictionary*)place;
-- (NSString*)createUserId:(NSDictionary*)place;
-- (NSString*)placeId:(NSDictionary*)place;
 
 @end
 

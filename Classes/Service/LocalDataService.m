@@ -19,19 +19,65 @@
 #import "TimeUtils.h"
 #import "Post.h"
 #import "AppManager.h"
+#import "ResultUtils.h"
 
 @implementation LocalDataService
 
 @synthesize workingQueue;
-@synthesize delegate;
+@synthesize defaultDelegate;
 
 - (id)initWithDelegate:(id<LocalDataServiceDelegate>)delegateVal
 {
     self = [super init];
-    self.delegate = delegateVal;
+    self.defaultDelegate = delegateVal;
     self.workingQueue = dispatch_queue_create("local data service queue", NULL);
     
     return self;
+}
+
+- (void)notifyDelegate:(id)delegate selector:(SEL)selector resultCode:(int)resultCode
+{
+    if (delegate != nil && [delegate respondsToSelector:selector]){
+        [delegate performSelector:selector withObject:(id)(&resultCode)];
+    }
+}
+
+- (void)createPost:(NSDictionary*)post userId:(NSString*)userId useFor:(int)useFor
+{
+    [PostManager createPost:[ResultUtils postId:post] 
+                    placeId:[ResultUtils placeId:post] 
+                     userId:userId 
+                textContent:[ResultUtils textContent:post]
+                   imageURL:[ResultUtils imageURL:post]
+                contentType:[ResultUtils contentType:post]
+                 createDate:[ResultUtils createDate:post] 
+                  longitude:[ResultUtils longitude:post] 
+                   latitude:[ResultUtils latitude:post]
+              userLongitude:[ResultUtils userLongitude:post]
+               userLatitude:[ResultUtils userLatitude:post]
+                  totalView:[ResultUtils totalView:post]
+               totalForward:[ResultUtils totalForward:post]
+                 totalQuote:[ResultUtils totalQuote:post]
+                 totalReply:[ResultUtils totalReply:post]
+                     useFor:useFor];                    
+    
+}
+
+- (void)createPlace:(NSDictionary*)place userId:(NSString*)userId useFor:(int)useFor
+{
+    NSString* placeId = [ResultUtils placeId:place];
+    NSString* name = [ResultUtils name:place];
+    NSString* desc = [ResultUtils description:place];
+    double latitude = [ResultUtils latitude:place];
+    double lonitude = [ResultUtils longitude:place];
+    NSString* createUserId = [ResultUtils createUserId:place];
+    NSString* followUserId = nil;
+    
+    [PlaceManager createPlace:placeId name:name desc:desc 
+                    longitude:lonitude latitude:latitude 
+                   createUser:createUserId followUserId:followUserId 
+                       useFor:useFor];
+
 }
 
 - (void)requestNearbyPostData:(id<LocalDataServiceDelegate>)delegateObject
@@ -53,9 +99,9 @@
         GetNearbyPostOutput* output = [GetNearbyPostRequest send:SERVER_URL userId:userId appId:appId beforeTimeStamp:beforeTimeStamp longitude:longitude latitude:latitude];
         
         // if succeed, clean local data and save new data
-        if (output.resultCode == ERROR_SUCCESS){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
+                    
                 // delete all old data
                 if (cleanData){
                     [PostManager deleteAllNearbyPost];
@@ -64,42 +110,14 @@
                 // insert new data
                 NSArray* postArray = output.postArray;
                 for (NSDictionary* post in postArray){
-                    // save place into DB                                        
-                    [PostManager createPost:[output postId:post] 
-                                    placeId:[output placeId:post] 
-                                     userId:userId 
-                                textContent:[output textContent:post]
-                                   imageURL:[output imageURL:post]
-                                contentType:[output contentType:post]
-                                 createDate:[output createDate:post] 
-                                  longitude:[output longitude:post] 
-                                   latitude:[output latitude:post]
-                              userLongitude:[output userLongitude:post]
-                               userLatitude:[output userLatitude:post]
-                                  totalView:[output totalView:post]
-                               totalForward:[output totalForward:post]
-                                 totalQuote:[output totalQuote:post]
-                                 totalReply:[output totalReply:post]
-                                     useFor:POST_FOR_NEARBY];                    
+                    [self createPost:post userId:userId useFor:POST_FOR_NEARBY];
                 }
+            }
                 
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(nearbyPostDataRefresh:)]){
-                    [delegateObject nearbyPostDataRefresh:output.resultCode];
-                }
-            });
-        }
-        else {
-            // otherwize do nothing        
-            NSLog(@"<requestNearbyPostData> failure, result code=%d", output.resultCode);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(nearbyPostDataRefresh:)]){
-                    [delegateObject nearbyPostDataRefresh:output.resultCode];
-                }
-            });
-
-        }
+            // notify UI to refresh data
+            NSLog(@"<requestNearbyPostData> result code=%d", output.resultCode);
+            [self notifyDelegate:delegateObject selector:@selector(nearbyPostDataRefresh:) resultCode:output.resultCode];
+        });
         
     });
     
@@ -121,9 +139,8 @@
         GetUserFollowPostOutput* output = [GetUserFollowPostRequest send:SERVER_URL userId:userId appId:appId beforeTimeStamp:beforeTimeStamp];
         
         // if succeed, clean local data and save new data
-        if (output.resultCode == ERROR_SUCCESS){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){                    
                 // delete all old data
                 if (cleanData){
                     [PostManager deleteUserFollowPost];
@@ -132,43 +149,16 @@
                 // insert new data
                 NSArray* postArray = output.postArray;
                 for (NSDictionary* post in postArray){
-                    // save place into DB                                        
-                    [PostManager createPost:[output postId:post] 
-                                    placeId:[output placeId:post] 
-                                     userId:userId 
-                                textContent:[output textContent:post]
-                                   imageURL:[output imageURL:post]
-                                contentType:[output contentType:post]
-                                 createDate:[output createDate:post] 
-                                  longitude:[output longitude:post] 
-                                   latitude:[output latitude:post]
-                              userLongitude:[output userLongitude:post]
-                               userLatitude:[output userLatitude:post]
-                                  totalView:[output totalView:post]
-                               totalForward:[output totalForward:post]
-                                 totalQuote:[output totalQuote:post]
-                                 totalReply:[output totalReply:post]
-                                     useFor:POST_FOR_FOLLOW];                    
-                }
-                
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(followPostDataRefresh:)]){
-                    [delegateObject followPostDataRefresh:output.resultCode];
-                }
-            });
-        }
-        else {
-            // otherwize do nothing        
-            NSLog(@"<requestUserFollowPostData> failure, result code=%d", 
+                    [self createPost:post userId:userId useFor:POST_FOR_FOLLOW];
+                }                    
+            }
+
+            // notify UI to refresh data
+            NSLog(@"<requestUserFollowPostData> result code=%d", 
                   output.resultCode);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(followPostDataRefresh:)]){
-                    [delegateObject followPostDataRefresh:output.resultCode];
-                }
-            });
+            [self notifyDelegate:delegateObject selector:@selector(followPostDataRefresh:) resultCode:output.resultCode];
+        });
             
-        }
         
     });
 
@@ -192,8 +182,8 @@
                                                          longitude:longitude latitude:latitude];
         
         // if succeed, clean local data and save new data
-        if (output.resultCode == ERROR_SUCCESS){
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
                 
                 // delete all old data
                 [PlaceManager deleteAllPlacesNearby];
@@ -202,33 +192,13 @@
                 NSArray* placeArray = output.placeArray;
                 for (NSDictionary* place in placeArray){
                     // save place into DB
-                    NSString* placeId = [output placeId:place];
-                    NSString* name = [output name:place];
-                    NSString* desc = [output description:place];
-                    double latitude = [output latitude:place];
-                    double lonitude = [output longitude:place];
-                    NSString* createUserId = [output createUserId:place];
-                    NSString* followUserId = nil;
-                    
-                    [PlaceManager createPlace:placeId name:name desc:desc longitude:lonitude latitude:latitude createUser:createUserId followUserId:followUserId useFor:PLACE_USE_NEARBY];
                 }
-                
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(nearbyPlaceDataRefresh:)]){
-                    [delegateObject nearbyPlaceDataRefresh:output.resultCode];
-                }
-            });
-        }
-        else {
-            // otherwize do nothing        
-            NSLog(@"<requestNearbyPlaceData> failure, result code=%d", output.resultCode);            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(nearbyPlaceDataRefresh:)]){
-                    [delegateObject nearbyPlaceDataRefresh:output.resultCode];
-                }
-            });
-        }
+            }
+            
+            // notify UI to refresh data
+            NSLog(@"<requestNearbyPlaceData> result code=%d", output.resultCode);            
+            [self notifyDelegate:delegateObject selector:@selector(nearbyPlaceDataRefresh:) resultCode:output.resultCode];            
+        });
         
     });
     
@@ -247,48 +217,22 @@
         // fetch user place data from server
         GetUserPlaceOutput* output = [GetUserPlaceRequest send:SERVER_URL userId:userId appId:appId];
         
-        // For test
-        output.resultCode = ERROR_SUCCESS;
-        
         // if succeed, clean local data and save new data
-        if (output.resultCode == ERROR_SUCCESS){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                // delete all old data
-                [PlaceManager deleteAllFollowPlaces];
-                
-                // insert new data
-                NSArray* placeArray = output.placeArray;
-                for (NSDictionary* place in placeArray){
-                    // save place into DB
-                    NSString* placeId = [output placeId:place];
-                    NSString* name = [output name:place];
-                    NSString* desc = [output description:place];
-                    double latitude = [output latitude:place];
-                    double lonitude = [output longitude:place];
-                    NSString* createUserId = [output createUserId:place];
-                    NSString* followUserId = userId;                    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
                     
-                    [PlaceManager createPlace:placeId name:name desc:desc longitude:lonitude latitude:latitude createUser:createUserId followUserId:followUserId useFor:PLACE_USE_FOLLOW];
-                }
-                
-                // notify UI to refresh data
-                if (delegate != nil && [delegate respondsToSelector:@selector(followPlaceDataRefresh:)]){
-                    [delegate followPlaceDataRefresh:output.resultCode];
-                }
-            });
-        }
-        else {
-            // otherwize do nothing        
-            NSLog(@"<requestPlaceData> failure, result code=%d", output.resultCode);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // notify UI to refresh data
-                if (delegate != nil && [delegate respondsToSelector:@selector(followPlaceDataRefresh:)]){
-                    [delegate followPlaceDataRefresh:output.resultCode];
-                }
-            });
-
-        }
+                    // delete all old data
+                    [PlaceManager deleteAllFollowPlaces];
+                    
+                    // insert new data
+                    NSArray* placeArray = output.placeArray;
+                    for (NSDictionary* place in placeArray){
+                        [self createPlace:place userId:userId useFor:PLACE_USE_FOLLOW];
+                    }
+            }
+                    
+            [self notifyDelegate:defaultDelegate selector:@selector(followPlaceDataRefresh:) resultCode:output.resultCode];
+        });
         
     });
 }
@@ -307,43 +251,24 @@
         GetUserFollowPlaceOutput* output = [GetUserFollowPlaceRequest send:SERVER_URL userId:userId appId:appId];
         
         // if succeed, clean local data and save new data
-        if (output.resultCode == ERROR_SUCCESS){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                // delete all old data
-                [PlaceManager deleteAllFollowPlaces];
-                
-                // insert new data
-                NSArray* placeArray = output.placeArray;
-                for (NSDictionary* place in placeArray){
-                    // save place into DB
-                    NSString* placeId = [output placeId:place];
-                    NSString* name = [output name:place];
-                    NSString* desc = [output description:place];
-                    double latitude = [output latitude:place];
-                    double lonitude = [output longitude:place];
-                    NSString* createUserId = [output createUserId:place];
-                    NSString* followUserId = userId;                    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
                     
-                    [PlaceManager createPlace:placeId name:name desc:desc longitude:lonitude latitude:latitude createUser:createUserId followUserId:followUserId useFor:PLACE_USE_FOLLOW];
-                }
-                
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(followPlaceDataRefresh:)]){
-                    [delegateObject followPlaceDataRefresh:output.resultCode];
-                }
-            });
-        }
-        else {
-            // otherwize do nothing        
-            NSLog(@"<requestUserFollowPlaceData> failure, result code=%d", output.resultCode);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(followPlaceDataRefresh:)]){
-                    [delegateObject followPlaceDataRefresh:output.resultCode];
-                }
-            });
-        }
+                    // delete all old data
+                    [PlaceManager deleteAllFollowPlaces];
+                    
+                    // insert new data
+                    NSArray* placeArray = output.placeArray;
+                    for (NSDictionary* place in placeArray){
+                        // save place into DB
+                        [self createPlace:place userId:userId useFor:PLACE_USE_FOLLOW];
+                    }
+            }
+
+            // notify UI to refresh data
+            NSLog(@"<requestUserFollowPlaceData>, result code=%d", output.resultCode);
+            [self notifyDelegate:delegateObject selector:@selector(followPlaceDataRefresh:) resultCode:output.resultCode];            
+        });
         
     });    
 }
@@ -365,8 +290,8 @@
         output.resultCode = ERROR_SUCCESS;
         
         // if succeed, clean local data and save new data
-        if (output.resultCode == ERROR_SUCCESS){
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){
                 
                 // delete all old data
                 [PostManager deletePostByPlace:placeId];
@@ -374,51 +299,19 @@
                 // insert new data
                 NSArray* postArray = output.postArray;
                 for (NSDictionary* post in postArray){
-                    // save place into DB
-                    
-                    NSString* postId = [output postId:post];
-                    NSString* userId = [output userId:post];
-                    double latitude = [output latitude:post];
-                    double longitude = [output longitude:post];
-                    double userLatitude = [output userLatitude:post];
-                    double userLongitude = [output userLongitude:post];
-                    NSString* textContent = [output textContent:post];
-                    NSString* imageURL = [output imageURL:post];
-                    int contentType = [output contentType:post];
-                    NSDate* createDate = [output createDate:post];
-                    int totalView = [output totalView:post];
-                    int totalForward = [output totalForward:post];
-                    int totalQuote = [output totalQuote:post];
-                    int totalReply = [output totalReply:post];
-                    
-                    [PostManager createPost:postId placeId:placeId userId:userId 
-                                textContent:textContent imageURL:imageURL 
-                                contentType:contentType 
-                                 createDate:createDate longitude:longitude latitude:latitude 
-                              userLongitude:userLongitude userLatitude:userLatitude
-                                  totalView:totalView totalForward:totalForward 
-                                 totalQuote:totalQuote totalReply:totalReply
-                                     useFor:POST_FOR_PLACE];
+                    [self createPost:post userId:userId useFor:POST_FOR_PLACE];
                 }
                 
                 // notify UI to refresh data
                 if (delegateObject != nil && [delegateObject respondsToSelector:@selector(placePostDataRefresh:)]){
                     [delegateObject placePostDataRefresh:output.resultCode];
                 }
-            });
-        }
-        else {
-            // otherwize do nothing        
-            NSLog(@"<requestPlaceData> failure, result code=%d", output.resultCode);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // notify UI to refresh data
-                if (delegateObject != nil && [delegateObject respondsToSelector:@selector(placePostDataRefresh:)]){
-                    [delegateObject placePostDataRefresh:output.resultCode];
-                }
-            });
+            }
 
-        }
-        
+            // notify UI to refresh data
+            NSLog(@"<requestPlaceData> result code=%d", output.resultCode);
+            [self notifyDelegate:delegateObject selector:@selector(placePostDataRefresh:) resultCode:output.resultCode];            
+        });        
     });
     
 }

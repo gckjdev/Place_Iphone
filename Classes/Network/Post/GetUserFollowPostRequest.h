@@ -31,22 +31,6 @@
 
 @property (nonatomic, retain) NSArray* postArray;
 
-- (NSString*)postId:(NSDictionary*)post;
-- (NSString*)userId:(NSDictionary*)post;
-- (double)longitude:(NSDictionary*)post;
-- (double)latitude:(NSDictionary*)post;
-- (double)userLongitude:(NSDictionary*)post;
-- (double)userLatitude:(NSDictionary*)post;
-- (NSString*)textContent:(NSDictionary*)post;
-- (NSString*)imageURL:(NSDictionary*)post;
-- (int)contentType:(NSDictionary*)post;
-- (NSDate*)createDate:(NSDictionary*)post;
-- (int)totalView:(NSDictionary*)post;
-- (int)totalForward:(NSDictionary*)post;
-- (int)totalQuote:(NSDictionary*)post;
-- (int)totalReply:(NSDictionary*)post;
-- (NSString*)placeId:(NSDictionary*)post;
-
 @end
 
 @interface GetUserFollowPostRequest : NetworkRequest {

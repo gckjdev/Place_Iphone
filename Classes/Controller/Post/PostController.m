@@ -11,6 +11,7 @@
 #import "UserManager.h"
 #import "AppManager.h"
 #import "GetPostRelatedPostRequest.h"
+#import "ResultUtils.h"
 
 enum{
     SECTION_POST_ITSELF,
@@ -61,7 +62,7 @@ enum{
     dispatch_async(workingQueue, ^{        
         GetPostRelatedPostOutput* output = [GetPostRelatedPostRequest send:SERVER_URL userId:userId 
                                                                      appId:appId 
-                                                                    postId:self.post.postId 
+                                                                    postId:self.post.postId
                                                            beforeTimeStamp:@""];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -261,10 +262,10 @@ enum{
             
             NSDictionary* dict = [dataList objectAtIndex:row];
             
-            NSString* name = [GetPostRelatedPostOutput nickName:dict];
-            NSString* textContent = [GetPostRelatedPostOutput textContent:dict];
-            NSDate*   createDate = [GetPostRelatedPostOutput createDate:dict];
-            int totalReply = [GetPostRelatedPostOutput totalReply:dict];
+            NSString* name = [ResultUtils nickName:dict];
+            NSString* textContent = [ResultUtils textContent:dict];
+            NSDate*   createDate = [ResultUtils createDate:dict];
+            int totalReply = [ResultUtils totalReply:dict];
 
             cell.textLabel.text = textContent;
             cell.detailTextLabel.numberOfLines = 3;
