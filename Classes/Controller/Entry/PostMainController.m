@@ -15,7 +15,8 @@
 
 enum SELECT_POST_TYPE {
     SELECT_NEARBY = 0,
-    SELECT_FOLLOW = 1,
+    SELECT_FOLLOW,
+    SELECT_MINE,
     SELECT_PRIVATE_MESSAGE,
     };
 
@@ -89,8 +90,12 @@ enum SELECT_POST_TYPE {
 - (void)viewDidLoad
 {
     [self createNavigationTitleToolbar:
-                    [NSArray arrayWithObjects:NSLS(@"kNearbyPost"),
-                                              NSLS(@"kFollowPost"), nil]
+                    [NSArray arrayWithObjects:
+                     NSLS(@"kNearbyPost"),
+                     NSLS(@"kFollowPost"),
+                     NSLS(@"kMyPost"),
+                     NSLS(@"kMyPrivateMessage"),
+                     nil]
                     defaultSelectIndex:SELECT_NEARBY];    
 
     [super viewDidLoad];

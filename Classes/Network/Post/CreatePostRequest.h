@@ -22,6 +22,7 @@
     NSString*       placeId;        
 	NSString*		appId;
     NSString*       srcPostId;
+    UIImage*        image;
 }
 
 @property (nonatomic, retain) NSString*		userId;
@@ -35,6 +36,7 @@
 @property (nonatomic, retain) NSString*     placeId;        
 @property (nonatomic, retain) NSString*		appId;
 @property (nonatomic, retain) NSString*     srcPostId;
+@property (nonatomic, retain) UIImage*      image;
 
 @end
 
@@ -68,6 +70,7 @@
                  latitude:(double)latitude longitude:(double)longitude
                  userLatitude:(double)userLatitude userLongitude:(double)userLongitude
                   syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
+                    image:(UIImage*)image
                 srcPostId:(NSString*)srcPostId;
 
 + (void)test;

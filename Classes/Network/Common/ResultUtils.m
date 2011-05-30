@@ -93,6 +93,16 @@
     return [[post objectForKey:PARA_TOTAL_REPLY] intValue];    
 }
 
++ (NSString*)srcPostId:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_SRC_POSTID];
+}
+
++ (NSString*)userAvatar:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_AVATAR];
+}
+
 + (NSString*)name:(NSDictionary*)place
 {
     return [place objectForKey:PARA_NAME];

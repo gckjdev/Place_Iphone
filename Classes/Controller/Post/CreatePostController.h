@@ -10,7 +10,7 @@
 #import "PPTableViewController.h"
 #import "Place.h"
 
-@interface CreatePostController : PPTableViewController {
+@interface CreatePostController : PPTableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
     
     Place *place;
     NSString *srcPostId;
@@ -24,6 +24,7 @@
     
     NSMutableArray *photoArray;
     BOOL            syncSNSStatus;
+    
 }
 @property (nonatomic, retain) IBOutlet UIButton *syncSNSButton;
 @property (nonatomic, retain) IBOutlet UIButton *selectPlaceButton;
@@ -36,5 +37,12 @@
 @property (nonatomic, retain) NSString *srcPlaceId;
 
 @property (nonatomic, retain) NSMutableArray *photoArray;
+
+- (UIImage*)getImage;
+- (void)setImage:(UIImage*)image;
+
+- (IBAction)clickSyncSNSButton:(id)sender;
+- (IBAction)clickSelectPhoto:(id)sender;
+- (IBAction)clickTakePhoto:(id)sender;
 
 @end

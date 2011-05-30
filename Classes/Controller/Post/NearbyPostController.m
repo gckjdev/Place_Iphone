@@ -163,7 +163,7 @@
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
 	// return cellImageHeight;
 	
-	return 55;
+	return 80;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -209,9 +209,15 @@
 	
     //	[self setCellBackground:cell row:row count:count];        
 	
-	Post* dataObject = [dataList objectAtIndex:row];
-    cell.textLabel.text = dataObject.textContent;
-    cell.detailTextLabel.text = dataObject.userId;
+	Post* post = [dataList objectAtIndex:row];
+    cell.textLabel.text = post.textContent;
+    cell.detailTextLabel.numberOfLines = 3;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
+                                 post.userNickName,
+                                 [post.createDate description],
+                                 [post.totalReply intValue]
+                                 ];
+    
 	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
 	
 	return cell;

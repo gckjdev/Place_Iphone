@@ -360,12 +360,16 @@
         NSURL *url = [NSURL URLWithString:qqRequestTokenUrl];
         NSString *queryString = [OAuthCore queryStringWithUrl:url
                                                        method:@"GET"
+//                                                   parameters:[NSDictionary dictionaryWithObject:@"http://www.baidu.com" forKey:@"oauth_callback"]
+//                                                   parameters:nil
                                                    parameters:[NSDictionary dictionaryWithObject:@"dipan://qq" forKey:@"oauth_callback"]
                                                   consumerKey:qqAppKey
                                                consumerSecret:qqAppSecret
                                                         token:nil
                                                   tokenSecret:nil];
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+        NSLog(@"Send QQ Login, URL=%@", url);
+//        return;
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;

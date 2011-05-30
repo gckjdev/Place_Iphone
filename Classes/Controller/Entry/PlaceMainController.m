@@ -117,9 +117,11 @@ enum SELECT_INDEX {
     if ([self isReloading] && segSelectIndex == SELECT_NEARBY){
         [self dataSourceDidFinishLoadingNewData];
         [self.dataTableView reloadData];
+        [self showTableOrButton];
     }
     else if (segSelectIndex == SELECT_NEARBY){
         [self.dataTableView reloadData];
+        [self showTableOrButton];
     }
 }
 
@@ -137,9 +139,12 @@ enum SELECT_INDEX {
     if ([self isReloading] && segSelectIndex == SELECT_FOLLOW){
         [self dataSourceDidFinishLoadingNewData];
         [self.dataTableView reloadData];
+        [self showTableOrButton];
+
     }
     else if (segSelectIndex == SELECT_FOLLOW){
         [self.dataTableView reloadData];
+        [self showTableOrButton];
     }
     else{
         // current UI is 

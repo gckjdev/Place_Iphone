@@ -29,6 +29,7 @@
 + (NetworkRequest*)requestWithURL:(NSString*)urlString;
 
 - (BOOL)sendRequest:(NSObject*)input output:(NSObject*)output;
+- (BOOL)sendPostRequest:(NSObject*)input output:(NSObject*)output postData:(NSData*)postData;
 
 - (NSString*)getBaseUrlString;
 

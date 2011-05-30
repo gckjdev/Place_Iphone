@@ -22,6 +22,9 @@
      userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
         totalQuote:(int)totalQuote totalReply:(int)totalReply
+      userNickName:(NSString*)userNickName
+         srcPostId:(NSString*)srcPostId
+         userAvatar:(NSString*)userAvatar
             useFor:(int)useFor;
 
 

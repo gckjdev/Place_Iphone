@@ -29,6 +29,8 @@
 + (int)totalReply:(NSDictionary*)post;
 + (NSString*)placeId:(NSDictionary*)post;
 + (NSString*)nickName:(NSDictionary*)post;
++ (NSString*)srcPostId:(NSDictionary*)post;
++ (NSString*)userAvatar:(NSDictionary*)post;
 
 + (NSString*)name:(NSDictionary*)place;
 + (NSString*)description:(NSDictionary*)place;

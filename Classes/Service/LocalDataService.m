@@ -67,6 +67,9 @@
                totalForward:[ResultUtils totalForward:post]
                  totalQuote:[ResultUtils totalQuote:post]
                  totalReply:[ResultUtils totalReply:post]
+               userNickName:[ResultUtils nickName:post]
+                  srcPostId:[ResultUtils srcPostId:post]
+                 userAvatar:[ResultUtils userAvatar:post]
                      useFor:useFor];                    
     
 }

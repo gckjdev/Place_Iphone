@@ -23,6 +23,7 @@
 @synthesize placeId;        
 @synthesize appId;
 @synthesize srcPostId;
+@synthesize image;
 
 - (void)dealloc
 {
@@ -31,6 +32,7 @@
 	[textContent release];
 	[placeId release];
     [srcPostId release];
+    [image release];
 	[super dealloc];	
 }
 
@@ -150,6 +152,7 @@
                  latitude:(double)latitude longitude:(double)longitude
              userLatitude:(double)userLatitude userLongitude:(double)userLongitude
                   syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
+                    image:(UIImage*)image
                 srcPostId:(NSString*)srcPostId
 
 {
@@ -170,8 +173,13 @@
     input.syncSNS = syncSNS;
     input.placeId = placeId;
     input.srcPostId = srcPostId;
+    
+    NSData* postData = nil;
+    if (input.contentType == CONTENT_TYPE_TEXT_PHOTO && image != nil){
+        postData = UIImagePNGRepresentation(image);
+    }
 	
-	if ([[CreatePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
+	if ([[CreatePostRequest requestWithURL:serverURL] sendPostRequest:input output:output postData:postData]){
 		result = output.resultCode;
 	}
 	else{
@@ -185,7 +193,7 @@
 
 + (void)test
 {
-	[CreatePostRequest send:SERVER_URL userId:@"benson" appId:@"appId" contentType:CONTENT_TYPE_TEXT textContent:@"hello, this is a 测试帖子" latitude:111.11f longitude:11133.f userLatitude:222.55f userLongitude:333.3f syncSNS:YES placeId:@"test_place_id" srcPostId:nil];
+	[CreatePostRequest send:SERVER_URL userId:@"benson" appId:@"appId" contentType:CONTENT_TYPE_TEXT textContent:@"hello, this is a 测试帖子" latitude:111.11f longitude:11133.f userLatitude:222.55f userLongitude:333.3f syncSNS:YES placeId:@"test_place_id" image:nil srcPostId:nil ];
 }
 @end
 

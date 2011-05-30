@@ -37,6 +37,9 @@
      userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
         totalQuote:(int)totalQuote totalReply:(int)totalReply
+      userNickName:(NSString*)userNickName
+         srcPostId:(NSString*)srcPostId
+        userAvatar:(NSString*)userAvatar
             useFor:(int)useFor
 
 {
@@ -59,6 +62,9 @@
     post.totalReply = [NSNumber numberWithInt:totalReply];
     post.useFor = [NSNumber numberWithInt:useFor];
     post.deleteFlag = [NSNumber numberWithBool:NO];
+    post.userNickName = userNickName;
+    post.srcPostId = srcPostId;
+    post.userAvatar = userAvatar;
     
     NSLog(@"<createPost> post=%@", [post description]);
     

@@ -62,7 +62,7 @@ enum{
     dispatch_async(workingQueue, ^{        
         GetPostRelatedPostOutput* output = [GetPostRelatedPostRequest send:SERVER_URL userId:userId 
                                                                      appId:appId 
-                                                                    postId:self.post.postId
+                                                                    postId:post.srcPostId
                                                            beforeTimeStamp:@""];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -244,7 +244,7 @@ enum{
             cell.textLabel.text = post.textContent;
             cell.detailTextLabel.numberOfLines = 3;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
-                                         post.userId,
+                                         post.userNickName,
                                          [post.createDate description],
                                          [post.totalReply intValue]
                                          ];
