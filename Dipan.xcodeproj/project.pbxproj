@@ -213,6 +213,7 @@
 		CAAF030F137FE03200E56503 /* UIToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0184137FE03100E56503 /* UIToolBarCell.m */; };
 		CAAF0310137FE03200E56503 /* UIWebViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0186137FE03100E56503 /* UIWebViewUtil.m */; };
 		CAB2F05A125F4CA600593157 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2F059125F4CA600593157 /* AudioToolbox.framework */; };
+		CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */; };
 		CAD19B1E137A6A3500A8817B /* FeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B0C137A6A3500A8817B /* FeedbackController.m */; };
 		CAD19B1F137A6A3500A8817B /* FeedbackController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B0D137A6A3500A8817B /* FeedbackController.xib */; };
 		CAD19B20137A6A3500A8817B /* InfoMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B0F137A6A3500A8817B /* InfoMainController.m */; };
@@ -754,6 +755,8 @@
 		CAAFFFE6137FE03000E56503 /* SelectItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectItemViewController.xib; sourceTree = "<group>"; };
 		CAB2F048125F49E400593157 /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CAB2F059125F4CA600593157 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CACDAD5A13912EFB00AE48F4 /* ResultUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultUtils.h; sourceTree = "<group>"; };
+		CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultUtils.m; sourceTree = "<group>"; };
 		CAD19B0B137A6A3500A8817B /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
 		CAD19B0C137A6A3500A8817B /* FeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController.m; sourceTree = "<group>"; };
 		CAD19B0D137A6A3500A8817B /* FeedbackController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackController.xib; sourceTree = "<group>"; };
@@ -1821,6 +1824,8 @@
 				CAD19BB8137A812600A8817B /* NetworkRequestResultCode.h */,
 				CAD19BCA137A832900A8817B /* VariableConstants.h */,
 				CA9E1FB51385247E009D1D4F /* Server_Interface.txt */,
+				CACDAD5A13912EFB00AE48F4 /* ResultUtils.h */,
+				CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2285,6 +2290,7 @@
 				CA4005AB138F5852009B5BF9 /* PostController.m in Sources */,
 				FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */,
 				CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */,
+				CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

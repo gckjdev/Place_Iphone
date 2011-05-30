@@ -54,44 +54,6 @@
 	return [NSString stringWithFormat:@"resultCode=%d, data=%@", resultCode, [placeArray description]];
 }
 
-- (NSString*)name:(NSDictionary*)place
-{
-    return [place objectForKey:PARA_NAME];
-}
-
-- (NSString*)description:(NSDictionary*)place
-{
-    return [place objectForKey:PARA_DESC];
-}
-
-- (double)longitude:(NSDictionary*)place
-{
-    return [[place objectForKey:PARA_LONGTITUDE] doubleValue];
-}
-
-
-- (double)latitude:(NSDictionary*)place
-{
-    return [[place objectForKey:PARA_LATITUDE] doubleValue];
-}
-
-
-- (NSString*)createUserId:(NSDictionary*)place
-{
-    return [place objectForKey:PARA_CREATE_USERID];
-}
-
-- (NSString*)placeId:(NSDictionary*)place
-{
-    return [place objectForKey:PARA_PLACEID];
-}
-
-- (int)seq:(NSDictionary*)place
-{
-    return [[place objectForKey:PARA_SEQ] intValue];
-}
-
-
 @end
 
 

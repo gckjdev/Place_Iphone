@@ -23,11 +23,11 @@
 @interface LocalDataService : NSObject {
     
     dispatch_queue_t                workingQueue;
-    id<LocalDataServiceDelegate>    delegate;
+    id<LocalDataServiceDelegate>    defaultDelegate;
 }
 
 @property (nonatomic, assign) dispatch_queue_t workingQueue;
-@property (nonatomic, assign) id<LocalDataServiceDelegate>    delegate;
+@property (nonatomic, assign) id<LocalDataServiceDelegate>    defaultDelegate;
 
 - (id)initWithDelegate:(id<LocalDataServiceDelegate>)delegate;
 - (void)requestPlaceData;
