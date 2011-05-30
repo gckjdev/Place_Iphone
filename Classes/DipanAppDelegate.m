@@ -259,7 +259,7 @@ void uncaughtExceptionHandler(NSException *exception) {
                                                        appId:[AppManager getPlaceAppId]
                                                     deviceId:@"1306505352"
                                               needReturnUser:YES];
-        if (output.resultCode == ERROR_SUCCESS) {
+        if (output.resultCode == ERROR_SUCCESS || output.resultCode == ERROR_NETWORK) {
             [UserManager setUserWithUserId:output.userId
                                   nickName:output.nickName
                            sinaAccessToken:output.sinaAccessToken
