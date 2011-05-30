@@ -414,6 +414,8 @@ enum SELECT_INDEX {
     
     [self setDataListBySelection];
     [self.dataTableView reloadData];
+    
+    [self initDataList];
 }
 
 - (void)clickCreatePlaceButton:(id)sender
