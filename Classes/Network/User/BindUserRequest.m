@@ -1,17 +1,18 @@
 //
-//  RegisterUser.m
-//  FacetimeAnyone
+//  BindUserRequest.m
+//  Dipan
 //
-//  Created by Peng Lingzhe on 10/11/10.
-//  Copyright 2010 Ericsson. All rights reserved.
+//  Created by penglzh on 11-5-30.
+//  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "RegisterUserRequest.h"
+#import "BindUserRequest.h"
 #import "TimeUtils.h"
 #import "LocaleUtils.h"
 
-@implementation RegisterUserInput
+@implementation BindUserInput
 
+@synthesize userId;
 @synthesize loginId;
 @synthesize loginIdType;
 @synthesize deviceId;
@@ -37,6 +38,7 @@
 
 - (void)dealloc
 {
+    [userId release];
     [loginId release];
 	[deviceId release];
 	[deviceModel release];
@@ -63,7 +65,8 @@
 {
 	NSString* str = [NSString stringWithString:baseURL];
 	
-	str = [str stringByAddQueryParameter:METHOD value:METHOD_REGISTRATION];
+	str = [str stringByAddQueryParameter:METHOD value:METHOD_BINDUSER];
+    str = [str stringByAddQueryParameter:PARA_USERID value:userId];
 	str = [str stringByAddQueryParameter:PARA_LOGINID value:loginId];
 	str = [str stringByAddQueryParameter:PARA_LOGINIDTYPE intValue:loginIdType];
 	str = [str stringByAddQueryParameter:PARA_DEVICEID value:deviceId];
@@ -104,30 +107,27 @@
 
 @end
 
-@implementation RegisterUserOutput
-
-@synthesize userId;
+@implementation BindUserOutput
 
 - (void)dealloc
 {
-	[userId release];
 	[super dealloc];	
 }
 
 - (NSString*)description
 {
-	return [NSString stringWithFormat:@"resultCode=%d, data=%@", resultCode, userId];
+	return [NSString stringWithFormat:@"resultCode=%d", resultCode];
 }
 
 @end
 
 
 
-@implementation RegisterUserRequest
+@implementation BindUserRequest
 
 + (id)requestWithURL:(NSString*)urlString
 {
-	NetworkRequest* request = [[[RegisterUserRequest alloc] init] autorelease];
+	NetworkRequest* request = [[[BindUserRequest alloc] init] autorelease];
 	request.serverURL = urlString;
 	return request;
 }
@@ -135,8 +135,8 @@
 // virtual method
 - (NSString*)getRequestUrlString:(NSObject*)input
 {	
-	if ([input isKindOfClass:[RegisterUserInput class]]){
-		RegisterUserInput* obj = (RegisterUserInput*)input;
+	if ([input isKindOfClass:[BindUserInput class]]){
+		BindUserInput* obj = (BindUserInput*)input;
 		NSString* url = [obj createUrlString:[self getBaseUrlString]];		
 		return [url stringByURLEncode];
 	}
@@ -151,24 +151,22 @@
 {
 	const void* bytes = [data bytes];
 	NSString* textData = [[[NSString alloc] initWithBytes:bytes length:[data length] encoding:NSUTF8StringEncoding] autorelease];		
-	NSLog(@"RegisterUserRequest receive data=%@", textData);
+	NSLog(@"BindUserRequest receive data=%@", textData);
 	
-	if ([output isKindOfClass:[RegisterUserOutput class]]){
+	if ([output isKindOfClass:[BindUserOutput class]]){
 		
-		RegisterUserOutput* obj = (RegisterUserOutput*)output;
+		BindUserOutput* obj = (BindUserOutput*)output;
 		
 		// get result code and message
 		[obj resultFromJSON:textData];										
 		if (obj.resultCode == 0){			
-
+            
 			// TODO
-            NSDictionary* data = [obj dictionaryDataFromJSON:textData];
-			obj.userId = [data objectForKey:PARA_USERID];
-			NSLog(@"RegisterUserRequest result=%d, data=%@", obj.resultCode, [data description]);						
+			NSLog(@"BindUserRequest result=%d, data=%@", obj.resultCode, [data description]);						
 			return YES;
 		}
 		else {
-			NSLog(@"RegisterUserRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
+			NSLog(@"BindUserRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
 			return NO;		
 		}
 	}
@@ -183,7 +181,8 @@
 	return OS_IOS;
 }
 
-+ (RegisterUserOutput*)send:(NSString*)serverURL
++ (BindUserOutput*)send:(NSString*)serverURL
+                 userId:(NSString *)userId
                     loginId:(NSString*)loginId
                 loginIdType:(int)loginIdType
                 deviceToken:(NSString*)deviceToken
@@ -203,8 +202,8 @@
                    qqDomain:(NSString *)qqDomain
 {
 	int result = ERROR_SUCCESS;
-	RegisterUserInput* input = [[RegisterUserInput alloc] init];
-	RegisterUserOutput* output = [[[RegisterUserOutput alloc] init] autorelease];
+	BindUserInput* input = [[BindUserInput alloc] init];
+	BindUserOutput* output = [[[BindUserOutput alloc] init] autorelease];
 	
 	// initlize all input data
 	input.loginId = loginId;
@@ -212,7 +211,7 @@
 	input.loginIdType = loginIdType;	
 	input.deviceId = [[UIDevice currentDevice] uniqueIdentifier];
 	input.deviceModel = [[UIDevice currentDevice] model];
-	input.deviceOS = [RegisterUserRequest getdeviceOS];
+	input.deviceOS = [BindUserRequest getdeviceOS];
 	input.countryCode = [LocaleUtils getCountryCode];
 	input.language = [LocaleUtils getLanguageCode];
 	input.deviceToken = deviceToken;
@@ -233,7 +232,7 @@
     // for test, to be removed
     //input.deviceId = [NSString stringWithInt:time(0)];
     
-	if ([[RegisterUserRequest requestWithURL:serverURL] sendRequest:input output:output]){
+	if ([[BindUserRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
 	}
 	else{
@@ -246,4 +245,3 @@
 }
 
 @end
-

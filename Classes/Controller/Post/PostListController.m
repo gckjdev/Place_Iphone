@@ -15,6 +15,7 @@
 #import "LocalDataService.h"
 #import "DipanAppDelegate.h"
 #import "UserFollowPlaceRequest.h"
+#import "UserUnfollowPlaceRequest.h"
 #import "PostController.h"
 
 @implementation PostListController
@@ -63,7 +64,7 @@
 - (void)viewDidLoad
 {
     [self setNavigationRightButton:NSLS(@"kNewPost") action:@selector(clickCreatePost:)];
-    [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    //[self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     
     //    [self loadPostList];
     [super viewDidLoad];
@@ -274,9 +275,46 @@
     
 }
 
+- (void)unfollowPlace:(NSString*)userId placeId:(NSString*)placeId
+{
+    NSString* appId = [AppManager getPlaceAppId];
+    
+    [self showActivityWithText:NSLS(@"kFollowingPlace")];
+    dispatch_async(workingQueue, ^{
+        
+        UserUnfollowPlaceOutput* output = [UserUnfollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){               
+                // save place data locally
+                
+                
+            }
+            else if (output.resultCode == ERROR_NETWORK){
+                [UIUtils alert:NSLS(@"kSystemFailure")];
+                // for test, TO BE REMOVED
+                
+            }
+            else{
+                // other error TBD
+                // for test, TO BE REMOVED
+            }
+        });        
+    });    
+    
+}
+
 - (IBAction)clickFollow:(id)sender
 {
     NSString* userId = [UserManager getUserId];
     [self followPlace:userId placeId:place.placeId];
 }
+
+- (IBAction)clickUnFollow:(id)sender
+{
+    NSString* userId = [UserManager getUserId];
+    [self unfollowPlace:userId placeId:place.placeId];
+}
+
 @end

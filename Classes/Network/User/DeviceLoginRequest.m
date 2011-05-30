@@ -44,6 +44,7 @@
 @implementation DeviceLoginOutput
 
 @synthesize userId;
+@synthesize loginId;
 @synthesize nickName;
 @synthesize sinaAccessToken;
 @synthesize sinaAccessTokenSecret;
@@ -111,6 +112,7 @@
 			// TODO
             NSDictionary* data = [obj dictionaryDataFromJSON:textData];
 			obj.userId = [data objectForKey:PARA_USERID];
+            obj.loginId = [data objectForKey:PARA_LOGINID];
             obj.nickName = [data objectForKey:PARA_NICKNAME];
             obj.sinaAccessToken = [data objectForKey:PARA_SINA_ACCESS_TOKEN];
             obj.sinaAccessTokenSecret = [data objectForKey:PARA_SINA_ACCESS_TOKEN_SECRET];

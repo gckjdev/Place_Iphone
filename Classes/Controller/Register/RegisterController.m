@@ -10,6 +10,7 @@
 #import "UserManager.h"
 #import "DipanAppDelegate.h"
 #import "RegisterUserRequest.h"
+#import "BindUserRequest.h"
 #import "OAuthCore.h"
 #import "JSON.h"
 
@@ -140,6 +141,81 @@
 {
     NSString* appId = [AppManager getPlaceAppId];
     NSString* deviceToken = @"";
+    User *user = [UserManager getUser];
+    if (nil != user) {
+        if ((LOGINID_OWN == loginIdType &&
+             [loginId isEqualToString:user.loginId]) ||
+            (LOGINID_SINA == loginIdType &&
+             [accessToken isEqualToString:user.sinaAccessToken] &&
+             [accessTokenSecret isEqualToString:user.sinaAccessTokenSecret]) ||
+            (LOGINID_QQ == loginIdType &&
+             [accessToken isEqualToString:user.qqAccessToken] &&
+             [accessTokenSecret isEqualToString:user.qqAccessTokenSecret])) {
+                DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegate removeRegisterView];
+                [delegate addMainView];
+                [UserManager setUserWithUserId:user.userId
+                                       loginId:user.loginId
+                                      nickName:user.nickName
+                               sinaAccessToken:user.sinaAccessToken
+                         sinaAccessTokenSecret:user.sinaAccessTokenSecret
+                                 qqAccessToken:user.qqAccessToken
+                           qqAccessTokenSecret:user.qqAccessTokenSecret
+                                   loginStatus:[user.loginStatus boolValue]];
+                return;
+            } else {
+                [self showActivityWithText:NSLS(@"kBindUser")];
+                dispatch_async(workingQueue, ^{
+                    BindUserOutput* output = [BindUserRequest send:SERVER_URL 
+                                                            userId:user.userId
+                                                                   loginId:loginId
+                                                               loginIdType:loginIdType
+                                                               deviceToken:deviceToken
+                                                                  nickName:nickName
+                                                                    avatar:avatar
+                                                               accessToken:accessToken
+                                                         accessTokenSecret:accessTokenSecret
+                                                                     appId:appId
+                                                                  province:province city:city 
+                                                                  location:location
+                                                                    gender:gender birthday:birthday
+                                                              sinaNickName:sinaNickName
+                                                                sinaDomain:sinaDomain
+                                                                qqNickName:qqNickName
+                                                                  qqDomain:qqDomain];
+                    // for test
+                    // output.resultCode = ERROR_SUCCESS;
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideActivity];
+                        if (output.resultCode == ERROR_SUCCESS){
+                            // save user data locally
+                            [UserManager setUserWithUserId:user.userId
+                                                   loginId:loginId
+                                               loginIdType:loginIdType
+                                                  nickName:user.nickName
+                                                    avatar:nil
+                                               accessToken:accessToken
+                                         accessTokenSecret:accessTokenSecret
+                                               loginStatus:YES];
+                            
+                            // show main tab view
+                            DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
+                            [delegate removeRegisterView];
+                            [delegate addMainView];
+                        }
+                        else if (output.resultCode == ERROR_NETWORK){
+                            [UIUtils alert:NSLS(@"kSystemFailure")];
+                        }
+                        else {
+                            // TBD
+                        }
+                    });
+                });
+
+            }
+        return;
+    }
     
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
     dispatch_async(workingQueue, ^{
@@ -223,6 +299,7 @@
                                                         token:nil
                                                   tokenSecret:nil];
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+        NSLog(@"RegisterController sina request token url:%@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;
@@ -366,6 +443,7 @@
                                                         token:nil
                                                   tokenSecret:nil];
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+        NSLog(@"RegisterController qq request token url:%@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSHTTPURLResponse *response = nil;
         NSError *error = nil;

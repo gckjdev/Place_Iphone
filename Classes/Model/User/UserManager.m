@@ -23,8 +23,8 @@ UserManager* userManager;
 	return ( user != nil );
 }
 
-+ (BOOL)setUserWithUserId:(NSString*)userId
-                  loginId:(NSString*)loginId
++ (BOOL)setUserWithUserId:(NSString *)userId
+                  loginId:(NSString *)loginId
               loginIdType:(int)loginIdType
                  nickName:(NSString *)nickName
                    avatar:(NSString *)avatar
@@ -38,12 +38,13 @@ UserManager* userManager;
         user = [dataManager insert:@"User"];
     }
     user.userId = userId;
-	user.loginId = loginId;
     user.loginIdType = [NSNumber numberWithInt:loginIdType];
     user.queryId = DEFAULT_USER_QUERY_ID;
     user.nickName = nickName;
     user.avatar = avatar;
-    if (LOGINID_SINA == loginIdType) {
+    if (LOGINID_OWN == loginIdType) {
+        user.loginId = loginId;
+    } else if (LOGINID_SINA == loginIdType) {
         user.sinaAccessToken = accessToken;
         user.sinaAccessTokenSecret = accessTokenSecret;
     } else if (LOGINID_QQ == loginIdType) {
@@ -57,7 +58,8 @@ UserManager* userManager;
 	return [dataManager save];
 }
 
-+ (BOOL)setUserWithUserId:(NSString*)userId
++ (BOOL)setUserWithUserId:(NSString *)userId
+                  loginId:(NSString *)loginId
                  nickName:(NSString *)nickName
           sinaAccessToken:(NSString *)sinaAccessToken
     sinaAccessTokenSecret:(NSString *)sinaAccessTokenSecret
@@ -72,6 +74,7 @@ UserManager* userManager;
     }
     user.queryId = DEFAULT_USER_QUERY_ID;
     user.userId = userId;
+    user.loginId = loginId;
     user.nickName = nickName;
     user.sinaAccessToken = sinaAccessToken;
     user.sinaAccessTokenSecret = sinaAccessTokenSecret;

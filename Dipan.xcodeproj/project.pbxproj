@@ -229,6 +229,8 @@
 		CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19BB6137A812600A8817B /* NetworkRequest.m */; };
 		CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */; };
 		FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB326BC313811BC80073368D /* GetUserPlaceRequest.m */; };
+		FB42F6EE13934C0D0053F0DC /* UserUnfollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */; };
+		FB42F6F113939DA10053F0DC /* BindUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB42F6F013939DA10053F0DC /* BindUserRequest.m */; };
 		FB46E8421388BAED00576C82 /* SinaService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46E8411388BAED00576C82 /* SinaService.m */; };
 		FB46E8451388D7AC00576C82 /* QQService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46E8441388D7AC00576C82 /* QQService.m */; };
 		FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */; };
@@ -785,6 +787,10 @@
 		CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
 		FB326BC213811BC80073368D /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
 		FB326BC313811BC80073368D /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
+		FB42F6EC13934C0D0053F0DC /* UserUnfollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnfollowPlaceRequest.h; sourceTree = "<group>"; };
+		FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUnfollowPlaceRequest.m; sourceTree = "<group>"; };
+		FB42F6EF13939DA10053F0DC /* BindUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindUserRequest.h; sourceTree = "<group>"; };
+		FB42F6F013939DA10053F0DC /* BindUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindUserRequest.m; sourceTree = "<group>"; };
 		FB46E8401388BAED00576C82 /* SinaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SinaService.h; path = ../Controller/Register/SinaService.h; sourceTree = "<group>"; };
 		FB46E8411388BAED00576C82 /* SinaService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SinaService.m; path = ../Controller/Register/SinaService.m; sourceTree = "<group>"; };
 		FB46E8431388D7AC00576C82 /* QQService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQService.h; sourceTree = "<group>"; };
@@ -1783,6 +1789,8 @@
 				CA0C2721138409560097931C /* UserFollowPlaceRequest.m */,
 				CA2A0162138E2432007EBEA9 /* GetUserFollowPlaceRequest.h */,
 				CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */,
+				FB42F6EC13934C0D0053F0DC /* UserUnfollowPlaceRequest.h */,
+				FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -1811,6 +1819,8 @@
 				CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */,
 				FBBDA05B138FEC4D00F16CFA /* DeviceLoginRequest.h */,
 				FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */,
+				FB42F6EF13939DA10053F0DC /* BindUserRequest.h */,
+				FB42F6F013939DA10053F0DC /* BindUserRequest.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2291,6 +2301,8 @@
 				FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */,
 				CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */,
 				CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */,
+				FB42F6EE13934C0D0053F0DC /* UserUnfollowPlaceRequest.m in Sources */,
+				FB42F6F113939DA10053F0DC /* BindUserRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
