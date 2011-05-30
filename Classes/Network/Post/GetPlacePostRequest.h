@@ -14,14 +14,14 @@
 	NSString*		userId;
     NSString*       appId;
     NSString*       placeId;
-    NSString*       afterTimeStamp;
+    NSString*       beforeTimeStamp;
     int             maxCount;
 }
 
 @property (nonatomic, retain) NSString*		userId;
 @property (nonatomic, retain) NSString*     appId;
 @property (nonatomic, retain) NSString*     placeId;
-@property (nonatomic, retain) NSString*     afterTimeStamp;
+@property (nonatomic, retain) NSString*     beforeTimeStamp;
 @property (nonatomic, assign) int           maxCount;
 
 @end
@@ -39,7 +39,7 @@
 	
 }
 
-+ (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId afterTimeStamp:(NSString*)afterTimeStamp;
++ (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId beforeTimeStamp:(NSString*)beforeTimeStamp;
 
 + (void)test;
 

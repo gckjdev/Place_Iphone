@@ -38,7 +38,15 @@
 - (void)notifyDelegate:(id)delegate selector:(SEL)selector resultCode:(int)resultCode
 {
     if (delegate != nil && [delegate respondsToSelector:selector]){
-        [delegate performSelector:selector withObject:(id)(&resultCode)];
+        
+        NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
+        if (sig){
+            NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
+            [inv setSelector:selector];
+            [inv setTarget:delegate];
+            [inv setArgument:&resultCode atIndex:2]; //arguments 0 and 1 are self and _cmd respectively, automatically set by NSInvocation
+            [inv invoke];        
+        }
     }
 }
 
@@ -192,6 +200,7 @@
                 NSArray* placeArray = output.placeArray;
                 for (NSDictionary* place in placeArray){
                     // save place into DB
+                    [self createPlace:place userId:userId useFor:PLACE_USE_NEARBY];
                 }
             }
             
@@ -284,7 +293,7 @@
     dispatch_async(workingQueue, ^{
         
         // fetch user place data from server
-        GetPlacePostOutput* output = [GetPlacePostRequest send:SERVER_URL userId:userId appId:appId placeId:placeId afterTimeStamp:@""];
+        GetPlacePostOutput* output = [GetPlacePostRequest send:SERVER_URL userId:userId appId:appId placeId:placeId beforeTimeStamp:@""];
         
         // For test
         output.resultCode = ERROR_SUCCESS;

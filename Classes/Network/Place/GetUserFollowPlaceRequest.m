@@ -95,6 +95,7 @@
 			// TODO
 			// obj.placeId = xxxx	
             // obj.createUser = xxx
+            obj.placeArray = [obj arrayFromJSON:textData];
 			NSLog(@"GetUserFollowPlaceRequest result=%d, data=%@", obj.resultCode, [obj description]);						
 			return YES;
 		}

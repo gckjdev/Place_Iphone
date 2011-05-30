@@ -15,14 +15,14 @@
 @synthesize userId;
 @synthesize appId;
 @synthesize placeId;
-@synthesize afterTimeStamp;
+@synthesize beforeTimeStamp;
 @synthesize maxCount;
 
 - (void)dealloc
 {
 	[appId release];
     [userId release];    
-    [afterTimeStamp release];
+    [beforeTimeStamp release];
     [placeId release];
 	[super dealloc];	
 }
@@ -35,7 +35,7 @@
 	str = [str stringByAddQueryParameter:PARA_USERID value:userId];
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
 	str = [str stringByAddQueryParameter:PARA_PLACEID value:placeId];
-	str = [str stringByAddQueryParameter:PARA_AFTER_TIMESTAMP value:afterTimeStamp];
+	str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:beforeTimeStamp];
 	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
 	
 	return str;
@@ -120,7 +120,7 @@
 	return OS_IOS;
 }
 
-+ (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId afterTimeStamp:(NSString*)afterTimeStamp
++ (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
     const int kMaxCount = 30;
     
@@ -132,7 +132,7 @@
 	input.userId = userId;
 	input.appId = appId;
     input.placeId = placeId;
-    input.afterTimeStamp = afterTimeStamp;
+    input.beforeTimeStamp = beforeTimeStamp;
     input.maxCount = kMaxCount;
 	
 	if ([[GetPlacePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
@@ -150,7 +150,7 @@
 + (void)test
 {
 	[GetPlacePostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-                      placeId:@"test_place_id" afterTimeStamp:@""];
+                      placeId:@"test_place_id" beforeTimeStamp:@""];
 }
 
 @end

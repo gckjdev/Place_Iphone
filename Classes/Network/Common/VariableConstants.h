@@ -1,6 +1,6 @@
 
 
-//#define SERVER_URL                  @"http://192.168.1.152:8001/api/i?"
+//#define SERVER_URL                  @"http://192.168.1.151:8000/api/i?"
 #define SERVER_URL                  @"http://127.0.0.1:8000/api/i?"
 
 //#define SERVER_URL                  @"http://192.168.1.101/place/api/i?"
