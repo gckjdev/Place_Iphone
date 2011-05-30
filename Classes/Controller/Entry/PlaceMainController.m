@@ -377,6 +377,12 @@ enum SELECT_INDEX {
     
     PostListController* postListController = [[PostListController alloc] init];
     postListController.place = place;
+//    if (SELECT_NEARBY == segSelectIndex) {
+//        postListController.navigationItem.leftBarButtonItem.title = NSLS(@"kAroundPlace");
+//    } else {
+//        postListController.navigationItem.leftBarButtonItem.title = NSLS(@"kMyPlace");
+//    }
+    postListController.navigationItem.title = place.name;
     [self.navigationController pushViewController:postListController animated:YES];
     [postListController release];
 }

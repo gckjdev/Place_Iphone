@@ -14,15 +14,16 @@
 }
 
 + (BOOL)isUserRegistered;
-+ (BOOL)setUserWithUserId:(NSString*)userId
-                  loginId:(NSString*)loginId
++ (BOOL)setUserWithUserId:(NSString *)userId
+                  loginId:(NSString *)loginId
               loginIdType:(int)loginIdType
                  nickName:(NSString *)nickName
                    avatar:(NSString *)avatar
               accessToken:(NSString *)accessToken
         accessTokenSecret:(NSString *)accessTokenSecret
               loginStatus:(BOOL)loginStatus;
-+ (BOOL)setUserWithUserId:(NSString*)userId
++ (BOOL)setUserWithUserId:(NSString *)userId
+                  loginId:(NSString *)loginId
                  nickName:(NSString *)nickName
           sinaAccessToken:(NSString *)sinaAccessToken
     sinaAccessTokenSecret:(NSString *)sinaAccessTokenSecret

@@ -236,31 +236,38 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)checkDevice {
     User *user = [UserManager getUser];
     if (nil != user){
-        workingQueue = dispatch_queue_create([[NSString GetUUID] UTF8String], NULL);
-        dispatch_async(workingQueue, ^{
-            DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
-                                                           appId:[AppManager getPlaceAppId]
-                                                        deviceId:@"1306505352"
-                                                  needReturnUser:YES];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (output.resultCode != ERROR_SUCCESS) {
-                    [self removeMainView];
-                    [self addRegisterView];
-                }
-            });
-        });
         if ([user.loginStatus boolValue]) {
             [self addMainView];
+            workingQueue = dispatch_queue_create([[NSString GetUUID] UTF8String], NULL);
+            dispatch_async(workingQueue, ^{
+                DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
+                                                               appId:[AppManager getPlaceAppId]
+                                                            deviceId:[[UIDevice currentDevice] uniqueIdentifier]
+                                                      needReturnUser:YES];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (output.resultCode != ERROR_SUCCESS) {
+                        [UserManager setUserWithUserId:output.userId
+                                               loginId:output.loginId
+                                              nickName:output.nickName
+                                       sinaAccessToken:output.sinaAccessToken
+                                 sinaAccessTokenSecret:output.sinaAccessTokenSecret
+                                         qqAccessToken:output.qqAccessToken
+                                   qqAccessTokenSecret:output.qqAccessTokenSecret
+                                           loginStatus:[user.loginStatus boolValue]];
+                    }
+                });
+            });
         } else {
             [self addRegisterView];
         }
     } else {
         DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
                                                        appId:[AppManager getPlaceAppId]
-                                                    deviceId:@"1306505352"
+                                                    deviceId:[[UIDevice currentDevice] uniqueIdentifier]
                                               needReturnUser:YES];
         if (output.resultCode == ERROR_SUCCESS || output.resultCode == ERROR_NETWORK) {
             [UserManager setUserWithUserId:output.userId
+                                   loginId:output.loginId
                                   nickName:output.nickName
                            sinaAccessToken:output.sinaAccessToken
                      sinaAccessTokenSecret:output.sinaAccessTokenSecret

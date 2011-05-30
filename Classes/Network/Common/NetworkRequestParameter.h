@@ -14,11 +14,13 @@
 #define METHOD_GETPLACEPOST @"gpp"
 #define METHOD_GETNEARBYPLACE @"gnp"
 #define METHOD_USERFOLLOWPLACE @"ufp"
+#define METHOD_USERUNFOLLOWPLACE @"unfp"
 #define METHOD_GETUSERFOLLOWPOSTS @"guf"
 #define METHOD_GETNEARBYPOSTS @"gne"
 #define METHOD_GETUSERFOLLOWPLACES @"gufp"
 #define METHOD_DEVICELOGIN @"dl"
 #define METHOD_GETPOSTRELATEDPOST @"gpr"
+#define METHOD_BINDUSER @"bu"
 
 // request parameters
 

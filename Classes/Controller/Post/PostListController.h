@@ -19,5 +19,6 @@
 @property (nonatomic, retain) Place       *place;
 
 - (IBAction)clickFollow:(id)sender;
+- (IBAction)clickUnFollow:(id)sender;
 
 @end
