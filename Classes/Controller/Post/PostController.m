@@ -188,10 +188,10 @@ enum{
 {    
     switch (indexPath.section) {
         case SECTION_POST_ITSELF:
-            return 100;
+            return [PostControllerUtils getCellHeight];
             
         case SECTION_RELATED_POST:
-            return 100;
+            return [PostControllerUtils getCellHeight];
             
         default:            
             return 0;

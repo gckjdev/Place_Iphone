@@ -18,5 +18,6 @@
 + (void)setCellInfoWithDict:(NSDictionary*)dict cell:(UITableViewCell*)cell;
 + (void)setCellInfoWithPost:(Post*)post cell:(UITableViewCell*)cell;
 + (void)gotoPostController:(UIViewController*)superController post:(Post*)post;
-
-@end
++ (CGFloat)getCellHeight;
+   
+   @end

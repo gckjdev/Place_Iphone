@@ -11,6 +11,8 @@
 
 @implementation PrivateMessageListController
 
+@synthesize superController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -22,6 +24,7 @@
 
 - (void)dealloc
 {
+    [superController release];
     [super dealloc];
 }
 

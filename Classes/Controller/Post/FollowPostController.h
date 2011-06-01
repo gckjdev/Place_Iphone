@@ -12,6 +12,10 @@
 
 @interface FollowPostController : PPTableViewController <LocalDataServiceDelegate> {
     
+    UIViewController     *superController;
 }
+
+@property (nonatomic, retain) UIViewController     *superController;
+
 
 @end

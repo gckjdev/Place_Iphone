@@ -57,7 +57,8 @@ enum SELECT_POST_TYPE {
 {
     if (self.nearbyPostController == nil){
         self.nearbyPostController = [[NearbyPostController alloc] init];
-        [self.view addSubview:nearbyPostController.view];        
+        self.nearbyPostController.superController = self;
+        [self.view addSubview:nearbyPostController.view];                
     }
     
     [self.view bringSubviewToFront:nearbyPostController.view];
@@ -68,6 +69,7 @@ enum SELECT_POST_TYPE {
 {
     if (self.followPostController == nil){
         self.followPostController = [[FollowPostController alloc] init];
+        self.followPostController.superController = self;
         [self.view addSubview:followPostController.view];        
     }
     
@@ -79,6 +81,7 @@ enum SELECT_POST_TYPE {
 {
     if (self.privateMessageController == nil){
         self.privateMessageController = [[PrivateMessageListController alloc] init];
+        self.privateMessageController.superController = self;
         [self.view addSubview:privateMessageController.view];                
     }
 

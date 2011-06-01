@@ -15,6 +15,8 @@
 
 @implementation NearbyPlaceController
 
+@synthesize superController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,6 +28,7 @@
 
 - (void)dealloc
 {
+    [superController release];
     [super dealloc];
 }
 
@@ -223,7 +226,7 @@
 	
 	// do select row action
 	Place* place = [dataList objectAtIndex:indexPath.row];
-    [PlaceControllerUtils gotoPlacePostListController:self place:place];
+    [PlaceControllerUtils gotoPlacePostListController:self.superController place:place];
 
 }
 

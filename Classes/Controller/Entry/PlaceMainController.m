@@ -50,6 +50,7 @@ enum SELECT_INDEX {
 {
     if (self.nearbyPlaceController == nil){
         self.nearbyPlaceController = [[NearbyPlaceController alloc] init];
+        self.nearbyPlaceController.superController = self;
         [self.view addSubview:nearbyPlaceController.view];        
     }
     
@@ -61,6 +62,7 @@ enum SELECT_INDEX {
 {
     if (self.followPlaceController == nil){
         self.followPlaceController = [[FollowPlaceController alloc] init];
+        self.followPlaceController.superController = self;
         [self.view addSubview:followPlaceController.view];        
     }
     

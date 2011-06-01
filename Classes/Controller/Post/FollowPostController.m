@@ -17,6 +17,8 @@
 
 @implementation FollowPostController
 
+@synthesize superController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,6 +30,7 @@
 
 - (void)dealloc
 {
+    [superController release];
     [super dealloc];
 }
 
@@ -170,7 +173,7 @@
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
 	// return cellImageHeight;
 	
-	return 55;
+	return [PostControllerUtils getCellHeight];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -223,7 +226,7 @@
 		return;
 	
 	// do select row action
-    [PostControllerUtils gotoPostController:self 
+    [PostControllerUtils gotoPostController:self.superController 
                                        post:[dataList objectAtIndex:indexPath.row]];
 }
 
