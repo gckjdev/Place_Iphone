@@ -12,6 +12,7 @@
 #import "AppManager.h"
 #import "GetPostRelatedPostRequest.h"
 #import "ResultUtils.h"
+#import "PostControllerUtils.h"
 
 enum{
     SECTION_POST_ITSELF,
@@ -227,27 +228,16 @@ enum{
     static NSString *CellIdentifier = @"Cell";
 	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;		
-		
-		if (cellTextLabelColor != nil)
-			cell.textLabel.textColor = cellTextLabelColor;
-		else
-			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
-		
-		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                       reuseIdentifier:CellIdentifier] autorelease];
+        
+        [PostControllerUtils setCellStyle:cell];        
 	}
 	
     switch (indexPath.section) {
         case SECTION_POST_ITSELF:
         {
-            cell.textLabel.text = post.textContent;
-            cell.detailTextLabel.numberOfLines = 3;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
-                                         post.userNickName,
-                                         [post.createDate description],
-                                         [post.totalReply intValue]
-                                         ];
+            [PostControllerUtils setCellInfoWithPost:post cell:cell];
         }
             break;
             
@@ -258,23 +248,11 @@ enum{
             if (row >= count){
                 NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
                 return cell;
-            }
+            }            
             
             NSDictionary* dict = [dataList objectAtIndex:row];
-            
-            NSString* name = [ResultUtils nickName:dict];
-            NSString* textContent = [ResultUtils textContent:dict];
-            NSDate*   createDate = [ResultUtils createDate:dict];
-            int totalReply = [ResultUtils totalReply:dict];
-
-            cell.textLabel.text = textContent;
-            cell.detailTextLabel.numberOfLines = 3;
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
-                                         name,
-                                         [createDate description],
-                                         totalReply
-                                         ];
-        
+            [PostControllerUtils setCellInfoWithDict:dict cell:cell];
+                    
         }
             break;
             

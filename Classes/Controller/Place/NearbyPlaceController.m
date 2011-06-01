@@ -1,21 +1,19 @@
 //
-//  FollowPostController.m
+//  NearbyPlaceController.m
 //  Dipan
 //
-//  Created by qqn_pipi on 11-5-26.
+//  Created by qqn_pipi on 11-6-1.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "FollowPostController.h"
-#import "PostManager.h"
-#import "UserManager.h"
-#import "LocalDataService.h"
-#import "DipanAppDelegate.h"
+#import "NearbyPlaceController.h"
+#import "PlaceManager.h"
+#import "Place.h"
 #import "NetworkRequestResultCode.h"
-#import "Post.h"
-#import "PostControllerUtils.h"
+#import "DipanAppDelegate.h"
+#import "PlaceControllerUtils.h"
 
-@implementation FollowPostController
+@implementation NearbyPlaceController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,10 +40,10 @@
 #pragma mark - View lifecycle
 
 
-- (void)followPostDataRefresh:(int)result
+- (void)nearbyPlaceDataRefresh:(int)result
 {    
     if (result == ERROR_SUCCESS){
-        self.dataList = [PostManager getAllFollowPost:nil];        
+        self.dataList = [PlaceManager getAllPlacesNearby];        
         [self.dataTableView reloadData];
     }
     
@@ -54,7 +52,7 @@
     }
 }
 
-- (void)requestPostListFromServer
+- (void)requestPlaceListFromServer
 {
     double longitude;
     double latitude;
@@ -64,39 +62,39 @@
     latitude = locationService.currentLocation.coordinate.latitude;
     
     LocalDataService* localService = GlobalGetLocalDataService();
-    [localService requestUserFollowPostData:self beforeTimeStamp:nil cleanData:YES];
+    [localService requestNearbyPlaceData:self];
     
 }
 
 - (void)initDataList
 {
-    NSString* userId = [UserManager getUserId];
-    self.dataList = [PostManager getAllFollowPost:userId];
-    [self requestPostListFromServer];    
+    self.dataList = [PlaceManager getAllPlacesNearby];
+    [self requestPlaceListFromServer];    
 }
 
 #pragma Pull Refresh Delegate
+
 - (void) reloadTableViewDataSource
 {
-    [self requestPostListFromServer];
+    [self requestPlaceListFromServer];
 }
 
-
 - (void)viewDidLoad
-{    
+{
     supportRefreshHeader = YES;
     
     [self initDataList];
-
+    
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.dataList = [PostManager getAllFollowPost:nil]; 
+    self.dataList = [PlaceManager getAllPlacesNearby]; 
     [super viewDidAppear:YES];
 }
 
@@ -112,6 +110,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 #pragma mark Table View Delegate
 
 //- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)aTableView 
@@ -193,9 +192,9 @@
     static NSString *CellIdentifier = @"Cell";
 	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];		
-		[PostControllerUtils setCellStyle:cell];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
         
+        [PlaceControllerUtils setCellStyle:cell];
 	}
 	
 	cell.accessoryView = accessoryView;
@@ -208,11 +207,11 @@
 		return cell;
 	}
 	
-    //	[self setCellBackground:cell row:row count:count];        
-	
-	Post* post = [dataList objectAtIndex:row];
-    [PostControllerUtils setCellInfoWithPost:post cell:cell];    
-	
+    //	[self setCellBackground:cell row:row count:count];
+        
+	Place* place = [dataList objectAtIndex:row];
+    [PlaceControllerUtils setCellInfoWithPlace:place cell:cell];
+    
 	return cell;
 	
 }
@@ -223,8 +222,9 @@
 		return;
 	
 	// do select row action
-    [PostControllerUtils gotoPostController:self 
-                                       post:[dataList objectAtIndex:indexPath.row]];
+	Place* place = [dataList objectAtIndex:indexPath.row];
+    [PlaceControllerUtils gotoPlacePostListController:self place:place];
+
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

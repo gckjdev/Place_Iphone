@@ -13,6 +13,8 @@
 #import "PostListController.h"
 #import "UserManager.h"
 #import "DipanAppDelegate.h"
+#import "NearbyPlaceController.h"
+#import "FollowPlaceController.h"
 
 #define kNearbyUpdateDate           @"kNearbyUpdateDate"
 #define kUserPlaceUpdateDate        @"kUserPlaceUpdateDate"
@@ -26,6 +28,8 @@ enum SELECT_INDEX {
 
 @synthesize createPlaceButton;
 @synthesize createPlaceController;
+@synthesize nearbyPlaceController;
+@synthesize followPlaceController;
 @synthesize nearbyPlaceList;
 @synthesize userPlaceList;
 @synthesize nearbyUpdateDate;
@@ -41,6 +45,28 @@ enum SELECT_INDEX {
  return self;
  }
  */
+
+- (void)showNearbyPlace
+{
+    if (self.nearbyPlaceController == nil){
+        self.nearbyPlaceController = [[NearbyPlaceController alloc] init];
+        [self.view addSubview:nearbyPlaceController.view];        
+    }
+    
+    [self.view bringSubviewToFront:nearbyPlaceController.view];
+    [nearbyPlaceController viewDidAppear:NO];
+}
+
+- (void)showFollowPlace
+{
+    if (self.followPlaceController == nil){
+        self.followPlaceController = [[FollowPlaceController alloc] init];
+        [self.view addSubview:followPlaceController.view];        
+    }
+    
+    [self.view bringSubviewToFront:followPlaceController.view];
+    [followPlaceController viewDidAppear:NO];
+}
 
 - (void)createTitleToolbar
 {    
@@ -207,12 +233,12 @@ enum SELECT_INDEX {
     
     [super viewDidLoad];
     
-    
+    [self showNearbyPlace];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self initDataList];
+//    [self initDataList];
     [super viewDidAppear:animated];
 }
 
@@ -248,6 +274,8 @@ enum SELECT_INDEX {
     [userPlaceList release];
     [nearbyUpdateDate release];
     [userPlaceUpdateDate release];
+    [followPlaceController release];
+    [nearbyPlaceController release];
     [super dealloc];
 }
 
@@ -333,15 +361,8 @@ enum SELECT_INDEX {
 	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;		
-		
-		if (cellTextLabelColor != nil)
-			cell.textLabel.textColor = cellTextLabelColor;
-		else
-			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
-		
-		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        
 	}
 	
 	cell.accessoryView = accessoryView;
@@ -414,19 +435,28 @@ enum SELECT_INDEX {
 
 - (void)clickSegControl:(id)sender
 {
+    UISegmentedControl* segControl = sender;
+    if (segControl.selectedSegmentIndex == SELECT_FOLLOW){
+        [self showFollowPlace];
+    }
+    else if (segControl.selectedSegmentIndex == SELECT_NEARBY){
+        [self showNearbyPlace];
+    }
+
+    
     //    NSLog(@"click seg control");
     
-    UISegmentedControl* segControl = sender;
-    segSelectIndex = segControl.selectedSegmentIndex;
-    
-    if ([self isReloading]){
-        [self dataSourceDidFinishLoadingNewData];
-    }
-    
-    [self setDataListBySelection];
-    [self.dataTableView reloadData];
-    
-    [self initDataList];
+//    UISegmentedControl* segControl = sender;
+//    segSelectIndex = segControl.selectedSegmentIndex;
+//    
+//    if ([self isReloading]){
+//        [self dataSourceDidFinishLoadingNewData];
+//    }
+//    
+//    [self setDataListBySelection];
+//    [self.dataTableView reloadData];
+//    
+//    [self initDataList];
 }
 
 - (void)clickCreatePlaceButton:(id)sender

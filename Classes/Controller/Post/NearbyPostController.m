@@ -13,6 +13,7 @@
 #import "LocalDataService.h"
 #import "DipanAppDelegate.h"
 #import "NetworkRequestResultCode.h"
+#import "PostControllerUtils.h"
 
 @implementation NearbyPostController
 
@@ -187,14 +188,7 @@
 	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;		
-		
-		if (cellTextLabelColor != nil)
-			cell.textLabel.textColor = cellTextLabelColor;
-		else
-			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
-		
-		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
+        [PostControllerUtils setCellStyle:cell];
 	}
 	
 	cell.accessoryView = accessoryView;
@@ -210,15 +204,7 @@
     //	[self setCellBackground:cell row:row count:count];        
 	
 	Post* post = [dataList objectAtIndex:row];
-    cell.textLabel.text = post.textContent;
-    cell.detailTextLabel.numberOfLines = 3;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"By : %@\nDate : %@\nTotal Reply : %d",
-                                 post.userNickName,
-                                 [post.createDate description],
-                                 [post.totalReply intValue]
-                                 ];
-    
-	// PPContact* contact = (PPContact*)[groupData dataForSection:indexPath.section row:indexPath.row];	
+    [PostControllerUtils setCellInfoWithPost:post cell:cell];
 	
 	return cell;
 	
@@ -229,11 +215,9 @@
 	if (indexPath.row > [dataList count] - 1)
 		return;
 	
-	[self updateSelectSectionAndRow:indexPath];
-	[self reloadForSelectSectionAndRow:indexPath];	
-	
 	// do select row action
-    //	Post* post = [dataList objectAtIndex:indexPath.row];
+    [PostControllerUtils gotoPostController:self 
+                                       post:[dataList objectAtIndex:indexPath.row]];
     
 }
 

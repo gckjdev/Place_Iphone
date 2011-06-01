@@ -17,6 +17,7 @@
 #import "UserFollowPlaceRequest.h"
 #import "UserUnfollowPlaceRequest.h"
 #import "PostController.h"
+#import "PostControllerUtils.h"
 
 @implementation PostListController
 
@@ -175,16 +176,9 @@
 	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;		
-		
-		if (cellTextLabelColor != nil)
-			cell.textLabel.textColor = cellTextLabelColor;
-		else
-			cell.textLabel.textColor = [UIColor colorWithRed:0x3e/255.0 green:0x34/255.0 blue:0x53/255.0 alpha:1.0];
-		
-		cell.detailTextLabel.textColor = [UIColor colorWithRed:0x84/255.0 green:0x79/255.0 blue:0x94/255.0 alpha:1.0];			
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [PostControllerUtils setCellStyle:cell];
 	}
 		
 	// set text label
@@ -198,25 +192,17 @@
     //	[self setCellBackground:cell row:row count:count];
     
     Post* post = [dataList objectAtIndex:row];
-    cell.textLabel.text = post.textContent;
-    cell.detailTextLabel.text = post.userId;    // need to be user display name
+    [PostControllerUtils setCellInfoWithPost:post cell:cell];
 	
 	return cell;
 	
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
-		return;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	// do select row action
-    Post* post = [dataList objectAtIndex:indexPath.row];
-    PostController *vc = [[PostController alloc] init];
-    vc.post = post;
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+    [PostControllerUtils gotoPostController:self 
+                                       post:[dataList objectAtIndex:indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

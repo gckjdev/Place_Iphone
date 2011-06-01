@@ -73,6 +73,12 @@
 		CA5D44EC136A63A300B9ECF2 /* ProjectApiKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5D44D9136A63A200B9ECF2 /* ProjectApiKey.txt */; };
 		CA5D44ED136A63A300B9ECF2 /* RELEASE_NOTES.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5D44DA136A63A200B9ECF2 /* RELEASE_NOTES.txt */; };
 		CA5D45DE136A87EB00B9ECF2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D45DD136A87EB00B9ECF2 /* iAd.framework */; };
+		CA6046711395C41A006C1D9F /* PostControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6046701395C41A006C1D9F /* PostControllerUtils.m */; };
+		CA6046751395D89B006C1D9F /* NearbyPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6046731395D89B006C1D9F /* NearbyPlaceController.m */; };
+		CA6046761395D89B006C1D9F /* NearbyPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6046741395D89B006C1D9F /* NearbyPlaceController.xib */; };
+		CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6046781395D8AE006C1D9F /* FollowPlaceController.m */; };
+		CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */; };
+		CA60467E1395D8C0006C1D9F /* PlaceControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */; };
 		CA7C70A213811BC60030442D /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7C70A113811BC60030442D /* LocalDataService.m */; };
 		CA7F9CD6137D5B530033FE12 /* PlaceLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */; };
 		CA7F9CD7137D5B530033FE12 /* PlaceLocationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */; };
@@ -503,6 +509,16 @@
 		CA5D4516136A6DD100B9ECF2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA5D4517136A6DE300B9ECF2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA5D45DD136A87EB00B9ECF2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		CA60466F1395C41A006C1D9F /* PostControllerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostControllerUtils.h; sourceTree = "<group>"; };
+		CA6046701395C41A006C1D9F /* PostControllerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostControllerUtils.m; sourceTree = "<group>"; };
+		CA6046721395D89B006C1D9F /* NearbyPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPlaceController.h; sourceTree = "<group>"; };
+		CA6046731395D89B006C1D9F /* NearbyPlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPlaceController.m; sourceTree = "<group>"; };
+		CA6046741395D89B006C1D9F /* NearbyPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyPlaceController.xib; sourceTree = "<group>"; };
+		CA6046771395D8AE006C1D9F /* FollowPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowPlaceController.h; sourceTree = "<group>"; };
+		CA6046781395D8AE006C1D9F /* FollowPlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowPlaceController.m; sourceTree = "<group>"; };
+		CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPlaceController.xib; sourceTree = "<group>"; };
+		CA60467C1395D8C0006C1D9F /* PlaceControllerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceControllerUtils.h; sourceTree = "<group>"; };
+		CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceControllerUtils.m; sourceTree = "<group>"; };
 		CA7C70A013811BC60030442D /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
 		CA7C70A113811BC60030442D /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
 		CA7F9CD3137D5B530033FE12 /* PlaceLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceLocationController.h; sourceTree = "<group>"; };
@@ -1227,6 +1243,8 @@
 				CA4005A8138F584E009B5BF9 /* PostController.h */,
 				CA4005A9138F5850009B5BF9 /* PostController.m */,
 				CA4005AA138F5851009B5BF9 /* PostController.xib */,
+				CA60466F1395C41A006C1D9F /* PostControllerUtils.h */,
+				CA6046701395C41A006C1D9F /* PostControllerUtils.m */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1667,6 +1685,14 @@
 				CA7F9CD3137D5B530033FE12 /* PlaceLocationController.h */,
 				CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */,
 				CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */,
+				CA6046721395D89B006C1D9F /* NearbyPlaceController.h */,
+				CA6046731395D89B006C1D9F /* NearbyPlaceController.m */,
+				CA6046741395D89B006C1D9F /* NearbyPlaceController.xib */,
+				CA6046771395D8AE006C1D9F /* FollowPlaceController.h */,
+				CA6046781395D8AE006C1D9F /* FollowPlaceController.m */,
+				CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */,
+				CA60467C1395D8C0006C1D9F /* PlaceControllerUtils.h */,
+				CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2141,6 +2167,8 @@
 				CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */,
 				CA4005A7138F47CA009B5BF9 /* PrivateMessageListController.xib in Resources */,
 				CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */,
+				CA6046761395D89B006C1D9F /* NearbyPlaceController.xib in Resources */,
+				CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2303,6 +2331,10 @@
 				CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */,
 				FB42F6EE13934C0D0053F0DC /* UserUnfollowPlaceRequest.m in Sources */,
 				FB42F6F113939DA10053F0DC /* BindUserRequest.m in Sources */,
+				CA6046711395C41A006C1D9F /* PostControllerUtils.m in Sources */,
+				CA6046751395D89B006C1D9F /* NearbyPlaceController.m in Sources */,
+				CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */,
+				CA60467E1395D8C0006C1D9F /* PlaceControllerUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
