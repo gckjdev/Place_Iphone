@@ -225,13 +225,18 @@ enum SELECT_INDEX {
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     
+    // set right button
+    UIBarButtonItem *newPlaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickCreatePlaceButton:)];
+    self.navigationItem.rightBarButtonItem = newPlaceButton;
+    [newPlaceButton release];
+    
+    
     supportRefreshHeader = YES;
     
     segSelectIndex = SELECT_NEARBY;
     
     [self.createPlaceButton setTitle:NSLS(@"kCreatePlace") forState:UIControlStateNormal];
     [self createTitleToolbar];
-    [self setNavigationRightButton:NSLS(@"kCreatePlace") action:@selector(clickCreatePlaceButton:)];
     
     [super viewDidLoad];
     

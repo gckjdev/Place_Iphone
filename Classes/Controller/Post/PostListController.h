@@ -10,15 +10,19 @@
 #import "PPTableViewController.h"
 #import "Place.h"
 #import "LocalDataService.h"
+#import "PlaceTableViewCell.h"
 
-@interface PostListController : PPTableViewController <LocalDataServiceDelegate> {
+@interface PostListController : PPTableViewController <LocalDataServiceDelegate, PlaceTableViewCellDelegate> {
     
-    Place       *place;
+    Place                           *place;
+    IBOutlet PlaceTableViewCell     *placeCell;
 }
 
 @property (nonatomic, retain) Place       *place;
 
 - (IBAction)clickFollow:(id)sender;
 - (IBAction)clickUnFollow:(id)sender;
+
+- (void)clickActionButton:(id)sender atRow:(NSUInteger)row;
 
 @end

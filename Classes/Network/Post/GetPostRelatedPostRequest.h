@@ -14,6 +14,7 @@
 	NSString*		userId;
     NSString*       appId;
     NSString*       postId;
+    NSString*       excludePostId;
     NSString*       beforeTimeStamp;
     int             maxCount;
 }
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) NSString*		userId;
 @property (nonatomic, retain) NSString*     appId;
 @property (nonatomic, retain) NSString*     postId;
+@property (nonatomic, retain) NSString*     excludePostId;
 @property (nonatomic, retain) NSString*     beforeTimeStamp;
 @property (nonatomic, assign) int           maxCount;
 
@@ -39,7 +41,7 @@
 	
 }
 
-+ (GetPostRelatedPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId postId:(NSString*)postId beforeTimeStamp:(NSString*)beforeTimeStamp;
++ (GetPostRelatedPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId postId:(NSString*)postId excludePostId:(NSString*)excludePostId beforeTimeStamp:(NSString*)beforeTimeStamp;
 
 + (void)test;
 

@@ -142,6 +142,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
+    workingQueue = dispatch_queue_create("main working queue", NULL);    
     
     [self checkDevice];
     
@@ -237,15 +238,18 @@ void uncaughtExceptionHandler(NSException *exception) {
     User *user = [UserManager getUser];
     if (nil != user){
         if ([user.loginStatus boolValue]) {
+
+            NSLog(@"<checkDevice> local user found, status LOGIN, detect user in background");
             [self addMainView];
-            workingQueue = dispatch_queue_create([[NSString GetUUID] UTF8String], NULL);
+            
             dispatch_async(workingQueue, ^{
                 DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
                                                                appId:[AppManager getPlaceAppId]
                                                             deviceId:[[UIDevice currentDevice] uniqueIdentifier]
                                                       needReturnUser:YES];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (output.resultCode != ERROR_SUCCESS) {
+                    if (output.resultCode == ERROR_SUCCESS) {
+                        NSLog(@"<checkDevice> update user profile from remote return data");
                         [UserManager setUserWithUserId:output.userId
                                                loginId:output.loginId
                                               nickName:output.nickName
@@ -255,17 +259,23 @@ void uncaughtExceptionHandler(NSException *exception) {
                                    qqAccessTokenSecret:output.qqAccessTokenSecret
                                            loginStatus:[user.loginStatus boolValue]];
                     }
+                    else{
+                        // TODO, need to handle different error code
+                    }
                 });
             });
         } else {
+            NSLog(@"<checkDevice> local user found, status LOGOUT, request user to login again");
             [self addRegisterView];
         }
     } else {
+        NSLog(@"<checkDevice> local user not found, try to detect from server");
         DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
                                                        appId:[AppManager getPlaceAppId]
                                                     deviceId:[[UIDevice currentDevice] uniqueIdentifier]
                                               needReturnUser:YES];
-        if (output.resultCode == ERROR_SUCCESS || output.resultCode == ERROR_NETWORK) {
+        if (output.resultCode == ERROR_SUCCESS) {
+            NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
             [UserManager setUserWithUserId:output.userId
                                    loginId:output.loginId
                                   nickName:output.nickName
@@ -275,7 +285,15 @@ void uncaughtExceptionHandler(NSException *exception) {
                        qqAccessTokenSecret:output.qqAccessTokenSecret
                                loginStatus:YES];
             [self addMainView];
-        } else {
+        } 
+        else if (output.resultCode == ERROR_NETWORK){
+            NSLog(@"<checkDevice> fail to get user from remote due to network faiure");            
+            [self addRegisterView];
+        }
+        else
+        {
+            // TODO, need to show different error based on error code
+            NSLog(@"<checkDevice> fail to get user from remote");
             [self addRegisterView];
         }
     }

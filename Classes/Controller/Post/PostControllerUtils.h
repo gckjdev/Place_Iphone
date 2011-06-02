@@ -20,4 +20,4 @@
 + (void)gotoPostController:(UIViewController*)superController post:(Post*)post;
 + (CGFloat)getCellHeight;
    
-   @end
+@end

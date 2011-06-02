@@ -205,7 +205,6 @@
 		CAAF0301137FE03200E56503 /* UIHideButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0168137FE03100E56503 /* UIHideButton.m */; };
 		CAAF0302137FE03200E56503 /* UIIconSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016A137FE03100E56503 /* UIIconSelectView.m */; };
 		CAAF0303137FE03200E56503 /* UIIconSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */; };
-		CAAF0304137FE03200E56503 /* UINavigationBarExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF016E137FE03100E56503 /* UINavigationBarExt.m */; };
 		CAAF0305137FE03200E56503 /* UINavigationItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0170137FE03100E56503 /* UINavigationItemExt.m */; };
 		CAAF0306137FE03200E56503 /* UINavTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0172137FE03100E56503 /* UINavTableViewController.m */; };
 		CAAF0307137FE03200E56503 /* UINumberAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0174137FE03100E56503 /* UINumberAccessoryView.m */; };
@@ -233,6 +232,8 @@
 		CAD19B37137A6FAB00A8817B /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B36137A6FAB00A8817B /* UserManager.m */; };
 		CAD19B40137A6FFB00A8817B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B3F137A6FFB00A8817B /* User.m */; };
 		CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19BB6137A812600A8817B /* NetworkRequest.m */; };
+		CAE4D0EF1397409A00D4B6BE /* PlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE4D0EE1397409A00D4B6BE /* PlaceTableViewCell.m */; };
+		CAE4D0F1139740C200D4B6BE /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE4D0F0139740C200D4B6BE /* PlaceTableViewCell.xib */; };
 		CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */; };
 		FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB326BC313811BC80073368D /* GetUserPlaceRequest.m */; };
 		FB42F6EE13934C0D0053F0DC /* UserUnfollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */; };
@@ -675,8 +676,6 @@
 		CAAF016A137FE03100E56503 /* UIIconSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIIconSelectView.m; sourceTree = "<group>"; };
 		CAAF016B137FE03100E56503 /* UIIconSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIIconSelectViewController.h; sourceTree = "<group>"; };
 		CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIIconSelectViewController.m; sourceTree = "<group>"; };
-		CAAF016D137FE03100E56503 /* UINavigationBarExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarExt.h; sourceTree = "<group>"; };
-		CAAF016E137FE03100E56503 /* UINavigationBarExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarExt.m; sourceTree = "<group>"; };
 		CAAF016F137FE03100E56503 /* UINavigationItemExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationItemExt.h; sourceTree = "<group>"; };
 		CAAF0170137FE03100E56503 /* UINavigationItemExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationItemExt.m; sourceTree = "<group>"; };
 		CAAF0171137FE03100E56503 /* UINavTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavTableViewController.h; sourceTree = "<group>"; };
@@ -799,6 +798,9 @@
 		CAD19BB7137A812600A8817B /* NetworkRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequestParameter.h; sourceTree = "<group>"; };
 		CAD19BB8137A812600A8817B /* NetworkRequestResultCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequestResultCode.h; sourceTree = "<group>"; };
 		CAD19BCA137A832900A8817B /* VariableConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableConstants.h; sourceTree = "<group>"; };
+		CAE4D0ED1397409A00D4B6BE /* PlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewCell.h; sourceTree = "<group>"; };
+		CAE4D0EE1397409A00D4B6BE /* PlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewCell.m; sourceTree = "<group>"; };
+		CAE4D0F0139740C200D4B6BE /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
 		CAF26C12137EC6DE00E30001 /* CreatePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePostRequest.h; sourceTree = "<group>"; };
 		CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
 		FB326BC213811BC80073368D /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
@@ -1245,6 +1247,9 @@
 				CA4005AA138F5851009B5BF9 /* PostController.xib */,
 				CA60466F1395C41A006C1D9F /* PostControllerUtils.h */,
 				CA6046701395C41A006C1D9F /* PostControllerUtils.m */,
+				CAE4D0ED1397409A00D4B6BE /* PlaceTableViewCell.h */,
+				CAE4D0EE1397409A00D4B6BE /* PlaceTableViewCell.m */,
+				CAE4D0F0139740C200D4B6BE /* PlaceTableViewCell.xib */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1432,8 +1437,6 @@
 				CAAF016A137FE03100E56503 /* UIIconSelectView.m */,
 				CAAF016B137FE03100E56503 /* UIIconSelectViewController.h */,
 				CAAF016C137FE03100E56503 /* UIIconSelectViewController.m */,
-				CAAF016D137FE03100E56503 /* UINavigationBarExt.h */,
-				CAAF016E137FE03100E56503 /* UINavigationBarExt.m */,
 				CAAF016F137FE03100E56503 /* UINavigationItemExt.h */,
 				CAAF0170137FE03100E56503 /* UINavigationItemExt.m */,
 				CAAF0171137FE03100E56503 /* UINavTableViewController.h */,
@@ -2169,6 +2172,7 @@
 				CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */,
 				CA6046761395D89B006C1D9F /* NearbyPlaceController.xib in Resources */,
 				CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */,
+				CAE4D0F1139740C200D4B6BE /* PlaceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2291,7 +2295,6 @@
 				CAAF0301137FE03200E56503 /* UIHideButton.m in Sources */,
 				CAAF0302137FE03200E56503 /* UIIconSelectView.m in Sources */,
 				CAAF0303137FE03200E56503 /* UIIconSelectViewController.m in Sources */,
-				CAAF0304137FE03200E56503 /* UINavigationBarExt.m in Sources */,
 				CAAF0305137FE03200E56503 /* UINavigationItemExt.m in Sources */,
 				CAAF0306137FE03200E56503 /* UINavTableViewController.m in Sources */,
 				CAAF0307137FE03200E56503 /* UINumberAccessoryView.m in Sources */,
@@ -2335,6 +2338,7 @@
 				CA6046751395D89B006C1D9F /* NearbyPlaceController.m in Sources */,
 				CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */,
 				CA60467E1395D8C0006C1D9F /* PlaceControllerUtils.m in Sources */,
+				CAE4D0EF1397409A00D4B6BE /* PlaceTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -79,7 +79,7 @@
 #define PARA_SYNC_SNS @"ss"
 #define PARA_PLACEID @"pid"
 #define PARA_SRC_POSTID @"spi"
-
+#define PARA_EXCLUDE_POSTID @"epi"
 
 
 #define PARA_CREATE_USERID @"cuid"

@@ -19,6 +19,12 @@
 #import "PostController.h"
 #import "PostControllerUtils.h"
 
+enum {
+    SECTION_PLACE,
+    SECTION_POSTS,
+    SECTION_NUM
+};
+
 @implementation PostListController
 
 @synthesize place;
@@ -56,20 +62,34 @@
     [dataService requestLatestPlacePostData:self placeId:place.placeId];
 }
 
+- (void)loadPostListFromDB
+{
+    self.dataList = [PostManager getPostByPlace:place.placeId];    
+}
+
+- (void)refreshUI
+{
+    self.dataList = [PostManager getPostByPlace:place.placeId];    
+    [self.dataTableView reloadData];
+}
+
 - (void)placePostDataRefresh:(int)result
 {
-    self.dataList = [PostManager getPostByPlace:place.placeId];
-    [self.dataTableView reloadData];
+    [self refreshUI];
 }
 
 - (void)viewDidLoad
 {
-    [self setNavigationRightButton:NSLS(@"kNewPost") action:@selector(clickCreatePost:)];
-    //[self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    // set right button
+    UIBarButtonItem *newPostButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(clickCreatePost:)];
+    self.navigationItem.rightBarButtonItem = newPostButton;
+    [newPostButton release];
     
-    //    [self loadPostList];
+    // set left button
+    [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.dataTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
 
@@ -114,17 +134,13 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
-	NSString *sectionHeader = [groupData titleForSection:section];	
-	
-    //	switch (section) {
-    //		case <#constant#>:
-    //			<#statements#>
-    //			break;
-    //		default:
-    //			break;
-    //	}
-	
-	return sectionHeader;
+    switch (section) {
+        case SECTION_PLACE:
+            return @"";
+            
+        default:
+            return NSLS(@"kPlacePosts");
+    }
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -152,18 +168,32 @@
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
 	// return cellImageHeight;
 	
-	return [PostControllerUtils getCellHeight];
+    switch (indexPath.section) {
+        case SECTION_PLACE:
+            return 60;
+            
+        default:
+            return [PostControllerUtils getCellHeight];
+    }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;		// default implementation
+    return SECTION_NUM;		// default implementation
 	
 	// return [groupData totalSectionCount];
 }
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [dataList count];			// default implementation
+
+    switch (section) {
+        case SECTION_PLACE:
+            return 1;
+            
+        default:
+            return [dataList count];			// default implementation
+    }
 	
 	// return [groupData numberOfRowsInSection:section];
 }
@@ -172,51 +202,87 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-        
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        [PostControllerUtils setCellStyle:cell];
-	}
-		
-	// set text label
-	int row = [indexPath row];	
-	int count = [dataList count];
-	if (row >= count){
-		NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
-		return cell;
-	}
-	
-    //	[self setCellBackground:cell row:row count:count];
     
-    Post* post = [dataList objectAtIndex:row];
-    [PostControllerUtils setCellInfoWithPost:post cell:cell];
-	
-	return cell;
+    switch (indexPath.section) {
+        case SECTION_PLACE:
+        {
+            static NSString *CellIdentifier = @"PlaceTableViewCell";
+            PlaceTableViewCell *cell = (PlaceTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                [self loadCellFromNib:@"PlaceTableViewCell"];
+                cell = placeCell;				
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [PostControllerUtils setCellStyle:cell];                
+                
+            }   
+            
+            cell.placeNameLabel.text = place.name;
+            cell.placeDescLabel.text = place.desc;                      
+            if ([PlaceManager isPlaceFollowByUser:place.placeId]){
+                [cell.actionButton setTitle:NSLS(@"kUnfollow") forState:UIControlStateNormal];                
+            }
+            else{
+                [cell.actionButton setTitle:NSLS(@"kFollow") forState:UIControlStateNormal];
+            }
+            cell.rowNumber = indexPath.row;
+            cell.delegate = self;
+            
+            return cell;
+        }
+            break;
+            
+        default:
+        {
+            static NSString *CellIdentifier = @"Cell";
+            UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [PostControllerUtils setCellStyle:cell];
+            }
+            
+            // set text label
+            int row = [indexPath row];	
+            int count = [dataList count];
+            if (row >= count){
+                NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
+                return cell;
+            }
+            
+            //	[self setCellBackground:cell row:row count:count];
+            
+            Post* post = [dataList objectAtIndex:row];
+            [PostControllerUtils setCellInfoWithPost:post cell:cell];
+            
+            return cell;
+        
+        }
+    }
+    
+    
 	
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	// do select row action
-    [PostControllerUtils gotoPostController:self 
-                                       post:[dataList objectAtIndex:indexPath.row]];
+    
+    switch (indexPath.section) {
+        case SECTION_PLACE:
+            break;
+            
+        default:
+            [PostControllerUtils gotoPostController:self 
+                                               post:[dataList objectAtIndex:indexPath.row]];
+            break;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		if (indexPath.row < 0 || indexPath.row > [dataList count] - 1)
-			return;
-        
-		// take delete action below, update data list
-		// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];		
-		
-		// update table view
-		
+				
 	}
 	
 }
@@ -244,17 +310,15 @@
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save place data locally
-                [PlaceManager createPlace:place.placeId name:place.name desc:place.desc longitude:[place.longitude doubleValue] latitude:[place.latitude doubleValue] createUser:place.createUser followUserId:userId
-                                   useFor:PLACE_USE_FOLLOW];
+                [PlaceManager userFollowPlace:userId place:place];
+                [self.dataTableView reloadData];
+
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];
-                // for test, TO BE REMOVED
-                
             }
             else{
                 // other error TBD
-                // for test, TO BE REMOVED
             }
         });        
     });    
@@ -265,7 +329,7 @@
 {
     NSString* appId = [AppManager getPlaceAppId];
     
-    [self showActivityWithText:NSLS(@"kFollowingPlace")];
+    [self showActivityWithText:NSLS(@"kUnfollowingPlace")];
     dispatch_async(workingQueue, ^{
         
         UserUnfollowPlaceOutput* output = [UserUnfollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
@@ -274,7 +338,8 @@
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save place data locally
-                
+                [PlaceManager userUnfollowPlace:userId placeId:placeId];
+                [self.dataTableView reloadData];
                 
             }
             else if (output.resultCode == ERROR_NETWORK){
@@ -301,6 +366,17 @@
 {
     NSString* userId = [UserManager getUserId];
     [self unfollowPlace:userId placeId:place.placeId];
+}
+
+- (void)clickActionButton:(id)sender atRow:(NSUInteger)row
+{
+    NSString* userId = [UserManager getUserId];    
+    if ([PlaceManager isPlaceFollowByUser:place.placeId]){
+        [self unfollowPlace:userId placeId:place.placeId];
+    }
+    else{
+        [self followPlace:userId placeId:place.placeId];    
+    }
 }
 
 @end

@@ -64,6 +64,7 @@ enum{
         GetPostRelatedPostOutput* output = [GetPostRelatedPostRequest send:SERVER_URL userId:userId 
                                                                      appId:appId 
                                                                     postId:post.srcPostId
+                                                             excludePostId:post.postId
                                                            beforeTimeStamp:@""];
         
         dispatch_async(dispatch_get_main_queue(), ^{

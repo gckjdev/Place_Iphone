@@ -9,6 +9,8 @@
 #import "PlaceControllerUtils.h"
 #import "Place.h"
 #import "PostListController.h"
+#import "DipanAppDelegate.h"
+#import "LocationService.h"
 
 @implementation PlaceControllerUtils
 
@@ -31,8 +33,21 @@
 
 + (void)setCellInfoWithPlace:(Place*)place cell:(UITableViewCell*)cell
 {
-    cell.textLabel.text = place.name;
-    cell.detailTextLabel.text = place.desc;
+    LocationService *locationService = GlobalGetLocationService();
+    if (locationService.currentLocation == nil){
+        cell.textLabel.text = place.name;
+        cell.detailTextLabel.text = place.desc;
+        return;
+    }
+
+    CLLocation* placeLocation = [[CLLocation alloc] initWithLatitude:[place.latitude doubleValue] longitude:[place.longitude doubleValue]];
+    int distance = (int)[locationService.currentLocation distanceFromLocation:placeLocation];
+         
+    NSString *distance_string = [NSString stringWithFormat:NSLS(@"kDistance"), distance];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@    (%@)", place.name, distance_string];
+    cell.detailTextLabel.text = place.desc;    
+                      
+    [placeLocation release];                
 }
 
 + (void)gotoPlacePostListController:(UIViewController*)superController place:(Place*)place

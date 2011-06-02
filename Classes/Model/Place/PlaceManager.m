@@ -78,5 +78,67 @@
     return placeArray;
 }
 
++ (BOOL)isPlaceFollowByUser:(NSString*)placeId
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getPlaceUseForFollow"
+                                        forKey:@"placeId" 
+                                         value:placeId 
+                                        sortBy:@"placeId" 
+                                     ascending:YES];
+    
+    if (placeArray != nil && [placeArray count] > 0)
+        return YES;
+    else    
+        return NO;
+}
+
++ (BOOL)userFollowPlace:(NSString*)userId place:(Place*)place
+{
+    if (place == nil)
+        return YES;
+    
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getPlaceUseForFollow"
+                                        forKey:@"placeId" 
+                                         value:place.placeId 
+                                        sortBy:@"placeId" 
+                                     ascending:YES];
+    
+    if (placeArray != nil && [placeArray count] > 0)
+        return YES;
+    
+    // not exist, copy place to follow list
+    [PlaceManager createPlace:place.placeId
+                         name:place.name 
+                         desc:place.desc 
+                    longitude:[place.longitude doubleValue]
+                     latitude:[place.latitude doubleValue]
+                   createUser:userId 
+                 followUserId:nil 
+                       useFor:PLACE_USE_FOLLOW];    
+    
+    return YES;    
+}
+
++ (BOOL)userUnfollowPlace:(NSString*)userId placeId:(NSString*)placeId
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getPlaceUseForFollow"
+                                        forKey:@"placeId" 
+                                         value:placeId 
+                                        sortBy:@"placeId" 
+                                     ascending:YES];
+    
+    if (placeArray != nil && [placeArray count] > 0){
+        for (Place* place in placeArray){
+            place.deleteFlag = [NSNumber numberWithInt:1];
+        }
+        [dataManager save];
+    }
+    
+    return YES;
+}
+
 
 @end

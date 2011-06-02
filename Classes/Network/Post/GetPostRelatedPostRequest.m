@@ -17,6 +17,7 @@
 @synthesize postId;
 @synthesize beforeTimeStamp;
 @synthesize maxCount;
+@synthesize excludePostId;
 
 - (void)dealloc
 {
@@ -24,6 +25,7 @@
     [userId release];    
     [beforeTimeStamp release];
     [postId release];
+    [excludePostId release];
 	[super dealloc];	
 }
 
@@ -38,6 +40,10 @@
 	str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:beforeTimeStamp];
 	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
 	
+    if (excludePostId != nil){
+        str = [str stringByAddQueryParameter:PARA_EXCLUDE_POSTID value:excludePostId];
+    }
+    
 	return str;
 }
 
@@ -119,7 +125,7 @@
 	return OS_IOS;
 }
 
-+ (GetPostRelatedPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId postId:(NSString*)postId beforeTimeStamp:(NSString*)beforeTimeStamp
++ (GetPostRelatedPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId postId:(NSString*)postId excludePostId:(NSString*)excludePostId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
     const int kMaxCount = 30;
     
@@ -131,6 +137,7 @@
 	input.userId = userId;
 	input.appId = appId;
     input.postId = postId;
+    input.excludePostId = excludePostId;
     input.beforeTimeStamp = beforeTimeStamp;
     input.maxCount = kMaxCount;
 	
@@ -149,7 +156,7 @@
 + (void)test
 {
 	[GetPostRelatedPostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-                      postId:@"test_postId" beforeTimeStamp:@""];
+                             postId:@"test_postId" excludePostId:nil beforeTimeStamp:@""];
 }
 
 @end

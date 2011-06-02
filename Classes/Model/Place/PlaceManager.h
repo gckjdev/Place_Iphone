@@ -24,4 +24,9 @@
 + (BOOL)deleteAllPlacesNearby;
 + (NSArray*)getAllPlacesNearby;
 
++ (BOOL)isPlaceFollowByUser:(NSString*)placeId;
++ (BOOL)userFollowPlace:(NSString*)userId place:(Place*)place;
++ (BOOL)userUnfollowPlace:(NSString*)userId placeId:(NSString*)placeId;
+
+
 @end
