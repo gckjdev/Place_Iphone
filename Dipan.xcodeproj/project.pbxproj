@@ -90,10 +90,22 @@
 		CA96731A137E59210038CC44 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967319137E59210038CC44 /* Post.m */; };
 		CA96731D137E593B0038CC44 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96731C137E593B0038CC44 /* PostManager.m */; };
 		CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */; };
+		CA9B40C413978E4000F16EA4 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */; };
+		CA9B40C61397D63700F16EA4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */; };
 		CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA9E1FB51385247E009D1D4F /* Server_Interface.txt */; };
 		CA9E1FB913856FFC009D1D4F /* GetUserFollowPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */; };
 		CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */; };
 		CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2FB9A13826DBA00DE820F /* LocationService.m */; };
+		CAA6AB1213987F52009F26E3 /* touxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = CAA6AB1113987F52009F26E3 /* touxiang.png */; };
+		CAA6AB3013988A2A009F26E3 /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB1D13988A2A009F26E3 /* HJCircularBuffer.m */; };
+		CAA6AB3113988A2A009F26E3 /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB1F13988A2A009F26E3 /* HJManagedImageV.m */; };
+		CAA6AB3213988A2A009F26E3 /* HJMOBigFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2213988A2A009F26E3 /* HJMOBigFileCache.m */; };
+		CAA6AB3313988A2A009F26E3 /* HJMOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2413988A2A009F26E3 /* HJMOFileCache.m */; };
+		CAA6AB3413988A2A009F26E3 /* HJMOHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2613988A2A009F26E3 /* HJMOHandler.m */; };
+		CAA6AB3513988A2A009F26E3 /* HJMOPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2813988A2A009F26E3 /* HJMOPolicy.m */; };
+		CAA6AB3613988A2A009F26E3 /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2B13988A2A009F26E3 /* HJMOUserBase.m */; };
+		CAA6AB3713988A2A009F26E3 /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2D13988A2A009F26E3 /* HJObjManager.m */; };
+		CAA6AB3813988A2A009F26E3 /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB2F13988A2A009F26E3 /* HJWeakMutableArray.m */; };
 		CAAA41E4137CDBAA00FB7C25 /* CreatePlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */; };
 		CAAA41E5137CDBAA00FB7C25 /* CreatePlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */; };
 		CAAA41EA137CDC6F00FB7C25 /* CreatePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA41E8137CDC6F00FB7C25 /* CreatePostController.m */; };
@@ -539,6 +551,9 @@
 		CA96731C137E593B0038CC44 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
 		CA96B39E1390BD0F00503786 /* GetPostRelatedPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPostRelatedPostRequest.h; sourceTree = "<group>"; };
 		CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPostRelatedPostRequest.m; sourceTree = "<group>"; };
+		CA9B40C213978E3E00F16EA4 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
+		CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
+		CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		CA9E1FB51385247E009D1D4F /* Server_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Server_Interface.txt; sourceTree = "<group>"; };
 		CA9E1FB713856FFB009D1D4F /* GetUserFollowPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPostRequest.h; sourceTree = "<group>"; };
 		CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPostRequest.m; sourceTree = "<group>"; };
@@ -546,6 +561,27 @@
 		CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPostRequest.m; sourceTree = "<group>"; };
 		CAA2FB9913826DB900DE820F /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		CAA2FB9A13826DBA00DE820F /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
+		CAA6AB1113987F52009F26E3 /* touxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang.png; sourceTree = "<group>"; };
+		CAA6AB1C13988A2A009F26E3 /* HJCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCircularBuffer.h; sourceTree = "<group>"; };
+		CAA6AB1D13988A2A009F26E3 /* HJCircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCircularBuffer.m; sourceTree = "<group>"; };
+		CAA6AB1E13988A2A009F26E3 /* HJManagedImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJManagedImageV.h; sourceTree = "<group>"; };
+		CAA6AB1F13988A2A009F26E3 /* HJManagedImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJManagedImageV.m; sourceTree = "<group>"; };
+		CAA6AB2013988A2A009F26E3 /* HJManagedImageVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJManagedImageVDelegate.h; sourceTree = "<group>"; };
+		CAA6AB2113988A2A009F26E3 /* HJMOBigFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOBigFileCache.h; sourceTree = "<group>"; };
+		CAA6AB2213988A2A009F26E3 /* HJMOBigFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOBigFileCache.m; sourceTree = "<group>"; };
+		CAA6AB2313988A2A009F26E3 /* HJMOFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOFileCache.h; sourceTree = "<group>"; };
+		CAA6AB2413988A2A009F26E3 /* HJMOFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOFileCache.m; sourceTree = "<group>"; };
+		CAA6AB2513988A2A009F26E3 /* HJMOHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOHandler.h; sourceTree = "<group>"; };
+		CAA6AB2613988A2A009F26E3 /* HJMOHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOHandler.m; sourceTree = "<group>"; };
+		CAA6AB2713988A2A009F26E3 /* HJMOPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOPolicy.h; sourceTree = "<group>"; };
+		CAA6AB2813988A2A009F26E3 /* HJMOPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOPolicy.m; sourceTree = "<group>"; };
+		CAA6AB2913988A2A009F26E3 /* HJMOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOUser.h; sourceTree = "<group>"; };
+		CAA6AB2A13988A2A009F26E3 /* HJMOUserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOUserBase.h; sourceTree = "<group>"; };
+		CAA6AB2B13988A2A009F26E3 /* HJMOUserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOUserBase.m; sourceTree = "<group>"; };
+		CAA6AB2C13988A2A009F26E3 /* HJObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJObjManager.h; sourceTree = "<group>"; };
+		CAA6AB2D13988A2A009F26E3 /* HJObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJObjManager.m; sourceTree = "<group>"; };
+		CAA6AB2E13988A2A009F26E3 /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJWeakMutableArray.h; sourceTree = "<group>"; };
+		CAA6AB2F13988A2A009F26E3 /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJWeakMutableArray.m; sourceTree = "<group>"; };
 		CAAA41E1137CDBAA00FB7C25 /* CreatePlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceController.h; sourceTree = "<group>"; };
 		CAAA41E2137CDBAA00FB7C25 /* CreatePlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceController.m; sourceTree = "<group>"; };
 		CAAA41E3137CDBAA00FB7C25 /* CreatePlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlaceController.xib; sourceTree = "<group>"; };
@@ -1224,6 +1260,33 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		CAA6AB1B13988A2A009F26E3 /* HJCacheClasses */ = {
+			isa = PBXGroup;
+			children = (
+				CAA6AB1C13988A2A009F26E3 /* HJCircularBuffer.h */,
+				CAA6AB1D13988A2A009F26E3 /* HJCircularBuffer.m */,
+				CAA6AB1E13988A2A009F26E3 /* HJManagedImageV.h */,
+				CAA6AB1F13988A2A009F26E3 /* HJManagedImageV.m */,
+				CAA6AB2013988A2A009F26E3 /* HJManagedImageVDelegate.h */,
+				CAA6AB2113988A2A009F26E3 /* HJMOBigFileCache.h */,
+				CAA6AB2213988A2A009F26E3 /* HJMOBigFileCache.m */,
+				CAA6AB2313988A2A009F26E3 /* HJMOFileCache.h */,
+				CAA6AB2413988A2A009F26E3 /* HJMOFileCache.m */,
+				CAA6AB2513988A2A009F26E3 /* HJMOHandler.h */,
+				CAA6AB2613988A2A009F26E3 /* HJMOHandler.m */,
+				CAA6AB2713988A2A009F26E3 /* HJMOPolicy.h */,
+				CAA6AB2813988A2A009F26E3 /* HJMOPolicy.m */,
+				CAA6AB2913988A2A009F26E3 /* HJMOUser.h */,
+				CAA6AB2A13988A2A009F26E3 /* HJMOUserBase.h */,
+				CAA6AB2B13988A2A009F26E3 /* HJMOUserBase.m */,
+				CAA6AB2C13988A2A009F26E3 /* HJObjManager.h */,
+				CAA6AB2D13988A2A009F26E3 /* HJObjManager.m */,
+				CAA6AB2E13988A2A009F26E3 /* HJWeakMutableArray.h */,
+				CAA6AB2F13988A2A009F26E3 /* HJWeakMutableArray.m */,
+			);
+			path = HJCacheClasses;
+			sourceTree = "<group>";
+		};
 		CAAA41E6137CDC3B00FB7C25 /* Post */ = {
 			isa = PBXGroup;
 			children = (
@@ -1250,6 +1313,9 @@
 				CAE4D0ED1397409A00D4B6BE /* PlaceTableViewCell.h */,
 				CAE4D0EE1397409A00D4B6BE /* PlaceTableViewCell.m */,
 				CAE4D0F0139740C200D4B6BE /* PlaceTableViewCell.xib */,
+				CA9B40C213978E3E00F16EA4 /* PostTableViewCell.h */,
+				CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */,
+				CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1522,6 +1588,7 @@
 		CAAFFF2C137FE03000E56503 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CAA6AB1B13988A2A009F26E3 /* HJCacheClasses */,
 				FB52F3E11388FA3100710F0C /* EGOTableViewPullRefresh */,
 				CAAFFF36137FE03000E56503 /* About */,
 				CAAFFF5F137FE03000E56503 /* AdController */,
@@ -1675,6 +1742,7 @@
 		CAB2F04E125F4A8400593157 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				CAA6AB1113987F52009F26E3 /* touxiang.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -2173,6 +2241,8 @@
 				CA6046761395D89B006C1D9F /* NearbyPlaceController.xib in Resources */,
 				CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */,
 				CAE4D0F1139740C200D4B6BE /* PlaceTableViewCell.xib in Resources */,
+				CA9B40C61397D63700F16EA4 /* PostTableViewCell.xib in Resources */,
+				CAA6AB1213987F52009F26E3 /* touxiang.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2339,6 +2409,16 @@
 				CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */,
 				CA60467E1395D8C0006C1D9F /* PlaceControllerUtils.m in Sources */,
 				CAE4D0EF1397409A00D4B6BE /* PlaceTableViewCell.m in Sources */,
+				CA9B40C413978E4000F16EA4 /* PostTableViewCell.m in Sources */,
+				CAA6AB3013988A2A009F26E3 /* HJCircularBuffer.m in Sources */,
+				CAA6AB3113988A2A009F26E3 /* HJManagedImageV.m in Sources */,
+				CAA6AB3213988A2A009F26E3 /* HJMOBigFileCache.m in Sources */,
+				CAA6AB3313988A2A009F26E3 /* HJMOFileCache.m in Sources */,
+				CAA6AB3413988A2A009F26E3 /* HJMOHandler.m in Sources */,
+				CAA6AB3513988A2A009F26E3 /* HJMOPolicy.m in Sources */,
+				CAA6AB3613988A2A009F26E3 /* HJMOUserBase.m in Sources */,
+				CAA6AB3713988A2A009F26E3 /* HJObjManager.m in Sources */,
+				CAA6AB3813988A2A009F26E3 /* HJWeakMutableArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

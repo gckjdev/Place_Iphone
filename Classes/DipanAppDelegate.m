@@ -137,6 +137,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[self initMobClick];
     [self initLocalDataService];    
     [self initLocationService];
+    [self initImageCacheManager];
     
     [locationService asyncGetLocation];
     
