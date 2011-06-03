@@ -18,6 +18,7 @@
 #import "UserUnfollowPlaceRequest.h"
 #import "PostController.h"
 #import "PostControllerUtils.h"
+#import "PostTableViewCell.h"
 
 enum {
     SECTION_PLACE,
@@ -87,6 +88,9 @@ enum {
     
     // set left button
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    
+    // set title
+    self.navigationItem.title = NSLS(@"kPlacePostTitle");
     
     [super viewDidLoad];
     self.dataTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -173,7 +177,7 @@ enum {
             return 60;
             
         default:
-            return [PostControllerUtils getCellHeight];
+            return [PostTableViewCell getCellHeight];
     }
     
 }
@@ -234,13 +238,10 @@ enum {
             
         default:
         {
-            static NSString *CellIdentifier = @"Cell";
-            UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
+            PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-                
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [PostControllerUtils setCellStyle:cell];
+                cell = [PostTableViewCell createCell];
             }
             
             // set text label
@@ -254,7 +255,7 @@ enum {
             //	[self setCellBackground:cell row:row count:count];
             
             Post* post = [dataList objectAtIndex:row];
-            [PostControllerUtils setCellInfoWithPost:post cell:cell];
+            [cell setCellInfoWithPost:post];
             
             return cell;
         

@@ -173,7 +173,10 @@
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
 	[self setPostData:request postData:postData];
     
-//	[request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];       
+	[request addValue:@"gzip" forHTTPHeaderField:@"Accepts-Encoding"];
+	[request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];  
+	[request setValue:[NSString stringWithFormat:@"%llu", [postData length]] forHTTPHeaderField:@"Content-Length"];
+    
 	if (request == nil){
 		NSLog(@"send request, but NSMutableURLRequest is nil");
 		return NO;

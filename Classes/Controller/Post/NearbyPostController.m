@@ -14,6 +14,8 @@
 #import "DipanAppDelegate.h"
 #import "NetworkRequestResultCode.h"
 #import "PostControllerUtils.h"
+#import "PostTableViewCell.h"
+
 
 @implementation NearbyPostController
 
@@ -167,7 +169,7 @@
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
 	// return cellImageHeight;
 	
-	return [PostControllerUtils getCellHeight];
+	return [PostTableViewCell getCellHeight];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -187,11 +189,10 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
+	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];				
-        [PostControllerUtils setCellStyle:cell];
+		cell = [PostTableViewCell createCell];
 	}
 	
 	cell.accessoryView = accessoryView;
@@ -207,7 +208,7 @@
     //	[self setCellBackground:cell row:row count:count];        
 	
 	Post* post = [dataList objectAtIndex:row];
-    [PostControllerUtils setCellInfoWithPost:post cell:cell];
+    [cell setCellInfoWithPost:post];
 	
 	return cell;
 	

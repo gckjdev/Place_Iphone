@@ -13,6 +13,7 @@
 #import "GetPostRelatedPostRequest.h"
 #import "ResultUtils.h"
 #import "PostControllerUtils.h"
+#import "PostTableViewCell.h"
 
 enum{
     SECTION_POST_ITSELF,
@@ -96,6 +97,8 @@ enum{
 {
     supportRefreshHeader = YES;    
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+        
+    self.navigationItem.title = NSLS(@"kPostRelatedPostTitle");
     
     [self initActionToolbar];    
     [super viewDidLoad];
@@ -151,18 +154,18 @@ enum{
 //}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
-	NSString *sectionHeader = [groupData titleForSection:section];	
-	
-	//	switch (section) {
-	//		case <#constant#>:
-	//			<#statements#>
-	//			break;
-	//		default:
-	//			break;
-	//	}
-	
-	return sectionHeader;
+
+    switch (section) {
+        case SECTION_POST_ITSELF:
+            return @"";
+            
+        case SECTION_RELATED_POST:
+            return NSLS(@"kRelatedPost");
+            
+        default:            
+            return 0;
+    }
+
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -189,10 +192,10 @@ enum{
 {    
     switch (indexPath.section) {
         case SECTION_POST_ITSELF:
-            return [PostControllerUtils getCellHeight];
+            return [PostTableViewCell getCellHeight];
             
         case SECTION_RELATED_POST:
-            return [PostControllerUtils getCellHeight];
+            return [PostTableViewCell getCellHeight];
             
         default:            
             return 0;
@@ -226,19 +229,16 @@ enum{
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
+	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                       reuseIdentifier:CellIdentifier] autorelease];
-        
-        [PostControllerUtils setCellStyle:cell];        
+        cell = [PostTableViewCell createCell];
 	}
 	
     switch (indexPath.section) {
         case SECTION_POST_ITSELF:
         {
-            [PostControllerUtils setCellInfoWithPost:post cell:cell];
+            [cell setCellInfoWithPost:post];
         }
             break;
             
@@ -252,7 +252,7 @@ enum{
             }            
             
             NSDictionary* dict = [dataList objectAtIndex:row];
-            [PostControllerUtils setCellInfoWithDict:dict cell:cell];
+            [cell setCellInfoWithDict:dict];
                     
         }
             break;

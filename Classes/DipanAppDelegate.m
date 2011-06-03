@@ -61,31 +61,31 @@ LocationService*   GlobalGetLocationService()
 
 	[UIUtils addViewController:[PlaceMainController alloc]
 					 viewTitle:NSLS(@"Nearby")
-					 viewImage:kViewSupportImage
+					 viewImage:@"app_globe_24.png"
 			  hasNavController:YES			
 			   viewControllers:controllers];	
 	
 	[UIUtils addViewController:[PostMainController alloc]
 					 viewTitle:NSLS(@"Follow")				 
-					 viewImage:kViewSupportImage
+					 viewImage:@"comment_24.png"
 			  hasNavController:YES			
 			   viewControllers:controllers];	
 
 	[UIUtils addViewController:[MyInfoController alloc]
 					 viewTitle:NSLS(@"Setting")				 
-					 viewImage:kViewSupportImage
+					 viewImage:@"man_24.png"
 			  hasNavController:YES			
 			   viewControllers:controllers];	
 
 	[UIUtils addViewController:[InviteController alloc]
 					 viewTitle:NSLS(@"Invite")				 
-					 viewImage:kViewSupportImage
+					 viewImage:@"mail_24.png"
 			  hasNavController:YES			
 			   viewControllers:controllers];	
 
 	[UIUtils addViewController:[FeedbackController alloc]
 					 viewTitle:NSLS(@"Feedback")				 
-					 viewImage:kViewSupportImage
+					 viewImage:@"help_24.png"
 			  hasNavController:YES			
 			   viewControllers:controllers];	
 	

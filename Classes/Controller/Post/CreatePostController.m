@@ -169,7 +169,7 @@
                              userAvatar:user.avatar
                                  useFor:POST_FOR_PLACE];
                 
-//                [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             }
             else if (output.resultCode == ERROR_NETWORK){
                 [UIUtils alert:NSLS(@"kSystemFailure")];

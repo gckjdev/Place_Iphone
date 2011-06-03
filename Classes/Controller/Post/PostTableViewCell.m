@@ -13,6 +13,7 @@
 #import <Three20/Three20.h>
 #import "HJManagedImageV.h"
 #import "DipanAppDelegate.h"
+#import "TimeUtils.h"
 
 #define DEFAULT_AVATAR @"touxiang.png"
 
@@ -92,6 +93,30 @@
     return url;
 }
 
+- (NSString*)getDateDisplayText:(NSDate*)date
+{
+    if (date == nil)
+        return @"";
+    
+    int second = abs([date timeIntervalSinceNow]);
+    
+    if (second < 60){
+        return [NSString stringWithFormat:NSLS(@"kDateBySecond"), second];
+    }
+    else if (second < 60*60){
+        return [NSString stringWithFormat:NSLS(@"kDateByMinute"), second/(60)];        
+    }
+    else if (second < 60*60*24){
+        return [NSString stringWithFormat:NSLS(@"kDateByHour"), second/(60*60)];                
+    }
+    else if (second < 60*60*24*3){
+        return [NSString stringWithFormat:NSLS(@"kDateByDay"), second/(60*60*24)];                
+    }
+    else{
+        return dateToStringByFormat(date, @"yyyy-MM-dd");                               
+    }    
+}
+
 - (void)setCellInfoWithTextContent:(NSString*)textContent 
                       userNickName:(NSString*)userNickName 
                         createDate:(NSDate*)createDate
@@ -105,8 +130,7 @@
     self.userNickNameLabel.text = userNickName;
     self.totalReplyLabel.text = [NSString stringWithFormat:NSLS(@"kTotalReply"), totalReply];
     
-    int sec = [createDate timeIntervalSinceDate:createDate];    
-    self.createDateLabel.text = [NSString stringWithFormat:NSLS(@"kDateByMinute"), sec/60];
+    self.createDateLabel.text = [self getDateDisplayText:createDate];
     
     [self.userAvatarImage clear];
     if ([self exist:userAvatar]){
