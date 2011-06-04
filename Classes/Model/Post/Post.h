@@ -35,8 +35,10 @@ enum {
 @property (nonatomic, retain) NSNumber * userLatitude;
 @property (nonatomic, retain) NSNumber * useFor;
 @property (nonatomic, retain) NSNumber * deleteFlag;
+@property (nonatomic, retain) NSNumber * deleteTimeStamp;
 @property (nonatomic, retain) NSString * userNickName;
 @property (nonatomic, retain) NSString * srcPostId;
+@property (nonatomic, retain) NSString * replyPostId;
 @property (nonatomic, retain) NSString * userAvatar;
 
 @end

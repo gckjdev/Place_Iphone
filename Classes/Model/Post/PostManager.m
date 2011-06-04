@@ -39,6 +39,7 @@
         totalQuote:(int)totalQuote totalReply:(int)totalReply
       userNickName:(NSString*)userNickName
          srcPostId:(NSString*)srcPostId
+       replyPostId:(NSString*)replyPostId
         userAvatar:(NSString*)userAvatar
             useFor:(int)useFor
 
@@ -65,6 +66,8 @@
     post.userNickName = userNickName;
     post.srcPostId = srcPostId;
     post.userAvatar = userAvatar;
+    post.replyPostId = replyPostId;
+    post.deleteTimeStamp = [NSNumber numberWithInt:0];
     
     NSLog(@"<createPost> post=%@", [post description]);
     
@@ -89,6 +92,7 @@
     
     for (Post* post in placeArray){
         post.deleteFlag = [NSNumber numberWithBool:YES];
+        post.deleteTimeStamp = [NSNumber numberWithInt:time(0)];
     }
     
     return [dataManager save];    
@@ -111,10 +115,27 @@
     
     for (Post* post in placeArray){
         post.deleteFlag = [NSNumber numberWithBool:YES];
+        post.deleteTimeStamp = [NSNumber numberWithInt:time(0)];
     }
     
     return [dataManager save];     
 }
 
++ (void)cleanUpDeleteDataBefore:(int)timeStamp
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getPostDeleteBefore" 
+                                        forKey:@"beforeTimeStamp" 
+                                         value:[NSNumber numberWithInt:timeStamp]
+                                        sortBy:@"createDate"
+                                     ascending:YES];
+
+    for (Post* post in placeArray){
+        [dataManager del:post];
+    }
+    
+    [dataManager save];     
+
+}
 
 @end

@@ -24,6 +24,7 @@
         totalQuote:(int)totalQuote totalReply:(int)totalReply
       userNickName:(NSString*)userNickName
          srcPostId:(NSString*)srcPostId
+       replyPostId:(NSString*)replyPostId
          userAvatar:(NSString*)userAvatar
             useFor:(int)useFor;
 
@@ -34,5 +35,7 @@
 
 + (NSArray*)getAllFollowPost:(NSString*)userId;
 + (BOOL)deleteUserFollowPost;
+
++ (void)cleanUpDeleteDataBefore:(int)timeStamp;
 
 @end

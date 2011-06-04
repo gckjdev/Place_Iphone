@@ -19,5 +19,6 @@
 @dynamic followUser;
 @dynamic useFor;
 @dynamic deleteFlag;
+@dynamic deleteTimeStamp;
 
 @end

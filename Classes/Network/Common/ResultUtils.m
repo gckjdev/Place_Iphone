@@ -98,6 +98,11 @@
     return [post objectForKey:PARA_SRC_POSTID];
 }
 
++ (NSString*)replyPostId:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_REPLY_POSTID];    
+}
+
 + (NSString*)userAvatar:(NSDictionary*)post
 {
     return [post objectForKey:PARA_AVATAR];

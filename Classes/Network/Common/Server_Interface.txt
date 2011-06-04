@@ -286,4 +286,124 @@ Output
 
 None
 
+12) METHOD_GETMEPOSTS
+
+In
+
+Mandantory
+
+    PARA_USERID
+    PARA_APPID
+    PARA_BEFORE_TIMESTAMP          // int, empty means latest
+    PARA_MAX_COUNT                // int
+
+Out
+
+    PostArray
+
+13) METHOD_GETMYPOSTS
+
+In
+
+Mandantory
+
+    PARA_USERID
+    PARA_APPID
+    PARA_BEFORE_TIMESTAMP          // int, empty means latest
+    PARA_MAX_COUNT                // int
+
+Out
+
+PostArray
+
+14) METHOD_SENDMESSAGE
+
+In
+
+    PARA_USERID
+    PARA_APPID
+    PARA_TO_USERID
+    PARA_TEXT_CONTENT
+
+Out
+
+    PARA_MESSAGE_ID
+
+15) METHOD_GETMYMESSAGE
+
+In
+
+    PARA_USERID
+    PARA_APPID
+    PARA_BEFORE_TIMESTAMP          // int, empty means latest
+    PARA_MAX_COUNT                // int
+
+Out
+
+Message Array
+
+    PARA_MESSAGE_ID
+    PARA_FROM_USERID
+    PARA_TO_USERID
+    PARA_TEXT_CONTENT
+    PARA_CREATEDATE
+
+16) METHOD_DELETEMESSAGE
+
+In
+
+    PARA_USERID
+    PARA_APPID
+    PARA_MESSAGE_ID
+
+Out
+
+    None
+
+
+17) METHOD_UPDATEUSER
+
+In
+
+Mandatory
+
+    PARA_USERID
+    PARA_APPID
+
+Optional
+
+    PARA_MOBILE
+    PARA_EMAIL
+    PARA_PASSWORD
+    PARA_AVATAR
+    PARA_NICKNAME
+
+Out
+
+    None
+
+17) METHOD_UPDATEPLACE
+
+In
+
+Mandatory
+
+    PARA_USERID
+    PARA_PLACEID
+
+Optional
+
+    PARA_NAME
+    PARA_DESC
+    PARA_LONGITUDE
+    PARA_LATITUDE
+    PARA_RADIUS          // int
+    PARA_POSTTYPE        // int
+
+Out
+
+    None
+
+
+
 

@@ -33,6 +33,10 @@
     // Configure the view for the selected state
 }
 
+- (void)awakeFromNib{
+    self.accessoryType = UITableViewCellAccessoryNone;
+}
+
 - (void)dealloc
 {
     [actionButton release];

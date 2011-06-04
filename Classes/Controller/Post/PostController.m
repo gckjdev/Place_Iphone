@@ -15,6 +15,8 @@
 #import "PostControllerUtils.h"
 #import "PostTableViewCell.h"
 
+
+
 enum{
     SECTION_POST_ITSELF,
     SECTION_RELATED_POST,
@@ -53,6 +55,22 @@ enum{
 
 #pragma mark - View lifecycle
 
+- (void)postDataRefresh:(GetPostRelatedPostOutput*)output
+{    
+    if (output.resultCode == ERROR_SUCCESS){
+        self.dataList = output.postArray;
+        [self.dataTableView reloadData];
+    }
+    else{
+        // TODO show error here
+        NSLog(@"fail to get post related post, result code=%d", output.resultCode);            
+    }
+    
+    if ([self isReloading]){
+        [self dataSourceDidFinishLoadingNewData];
+    }
+}
+
 - (void)loadPostRelatedPost
 {
     if ([UserManager isUserRegistered] == NO)
@@ -69,18 +87,18 @@ enum{
                                                            beforeTimeStamp:@""];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (output.resultCode == ERROR_SUCCESS){
-                self.dataList = output.postArray;
-                [self.dataTableView reloadData];
-            }
-            else{
-                NSLog(@"<requestNearbyPlaceData> failure, result code=%d", output.resultCode);            
-                
-            }                
+            [self postDataRefresh:output];
         });
     });
     
 }
+
+#pragma Pull Refresh Delegate
+- (void) reloadTableViewDataSource
+{
+    [self loadPostRelatedPost];
+}
+
 
 - (void)initActionToolbar
 {	
@@ -108,6 +126,13 @@ enum{
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{    
+    
+    self.hidesBottomBarWhenPushed = YES;
+    [super viewDidAppear:YES];
+}
+
 - (void)viewDidUnload
 {
     
@@ -121,12 +146,6 @@ enum{
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    self.hidesBottomBarWhenPushed = YES;
-    [super viewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -233,6 +252,7 @@ enum{
 	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
         cell = [PostTableViewCell createCell];
+        cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
     switch (indexPath.section) {
@@ -273,20 +293,18 @@ enum{
 	    
 }
 
-#pragma Pull Refresh Delegate
-
-- (void) reloadTableViewDataSource
-{
-    [self loadPostRelatedPost];
-}
 
 #pragma Button Actions
 
 - (void)replyPost
 {
+    needRefreshNow = YES;   // when back to this view, refresh to view the latest post
+    
     CreatePostController* vc = [[CreatePostController alloc] init];
-    vc.srcPostId = post.postId;
+    vc.srcPostId = post.srcPostId;
     vc.srcPlaceId = post.placeId;
+    vc.replyPostId = post.postId;
+    vc.navigationItem.title = NSLS(@"kReplyPostTitle");
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }

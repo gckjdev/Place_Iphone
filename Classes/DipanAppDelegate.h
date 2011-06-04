@@ -28,6 +28,8 @@
     LocalDataService    *localDataService;
     LocationService     *locationService;
     RegisterController *registerController;
+    
+    UIBackgroundTaskIdentifier backgroundTask;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow				*window;

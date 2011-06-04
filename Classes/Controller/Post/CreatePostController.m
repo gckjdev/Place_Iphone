@@ -15,6 +15,13 @@
 #import "SinaService.h"
 #import "QQService.h"
 
+#define MAX_POST_TEXT_LEN 140
+
+enum{
+    SELECT_TEXT,
+    SELECT_PHOTO
+};
+
 @implementation CreatePostController
 @synthesize syncSNSButton;
 @synthesize selectPlaceButton;
@@ -22,9 +29,12 @@
 @synthesize selectCameraButton;
 @synthesize contentTextView;
 @synthesize photoArray;
+@synthesize contentTypeSegControl;
+@synthesize contentImageView;
 @synthesize place;
 @synthesize srcPlaceId;
 @synthesize srcPostId;
+@synthesize replyPostId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +56,9 @@
     [selectPhotoButton release];
     [selectCameraButton release];
     [contentTextView release];
+    [contentTypeSegControl release];
+    [contentImageView release];
+    [replyPostId release];
     [super dealloc];
 }
 
@@ -75,23 +88,78 @@
 
 - (void)initData
 {
-    syncSNSStatus = YES;
+    syncSNSStatus = NO;
     
     self.photoArray = [[NSMutableArray alloc] init];
 }
 
+- (void)setSyncSNSButtonInfo
+{
+    if (syncSNSStatus){
+        [self.syncSNSButton setTitle:NSLS(@"kSyncSNSYes") forState:UIControlStateNormal];        
+    }
+    else{
+        [self.syncSNSButton setTitle:NSLS(@"kSyncSNSNo") forState:UIControlStateNormal];                
+    }
+}
+
+- (void)initButtons
+{
+    [self setSyncSNSButtonInfo];
+//    [self.selectCameraButton setTitle:NSLS(@"") forState:UIControlStateNormal];
+//    [self.selectPhotoButton setTitle:NSLS(@"") forState:UIControlStateNormal];
+//    [self.selectPlaceButton setTitle:NSLS(@"") forState:UIControlStateNormal];
+}
+
+- (void)setTextViewStatus
+{
+    if (contentTypeSegControl.selectedSegmentIndex == SELECT_TEXT){
+        if ([contentTextView isFirstResponder] == NO){
+            [contentTextView becomeFirstResponder];
+        }
+    }
+}
+
+- (void)updateContentTypeSegControlText
+{
+    int len = [contentTextView.text length];
+    NSString* text = [NSString stringWithFormat:NSLS(@"kSegText"), len];
+    [contentTypeSegControl setTitle:text forSegmentAtIndex:SELECT_TEXT];
+}
+
+- (void)updateContentTypeSegControlPhoto
+{
+    int len = [photoArray count];
+    NSString* text = [NSString stringWithFormat:NSLS(@"kSegPhoto"), len];
+    [contentTypeSegControl setTitle:text forSegmentAtIndex:SELECT_PHOTO];
+}
+
+- (void)initTextView
+{
+    contentTextView.delegate = self;
+}
+
 - (void)viewDidLoad
 {
-    
-    
+        
     [self initData];
     
-    [self createTitleToolbar];
+//    [self createTitleToolbar];
+    [self initButtons];
+    [self initTextView];
+    [self updateContentTypeSegControlText];
+    [self updateContentTypeSegControlPhoto];
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     [self setNavigationRightButton:NSLS(@"kSavePost") action:@selector(clickSavePost:)];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self setTextViewStatus];    
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload
@@ -101,6 +169,8 @@
     [self setSelectPhotoButton:nil];
     [self setSelectCameraButton:nil];
     [self setContentTextView:nil];
+    [self setContentTypeSegControl:nil];
+    [self setContentImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -130,6 +200,7 @@
            syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
              image:(UIImage*)image
          srcPostId:(NSString*)srcPostIdVal
+       replyPostId:(NSString*)replyPostIdVal
 
 {
     User* user = [UserManager getUser];
@@ -154,7 +225,8 @@
                                                    syncSNS:syncSNS 
                                                    placeId:placeId
                                                      image:image
-                                                 srcPostId:srcPostIdVal];
+                                                 srcPostId:srcPostIdVal
+                                               replyPostId:replyPostIdVal];
         
         if (syncSNS){
             [self syncSNS:textContent];
@@ -165,7 +237,9 @@
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
                 [PostManager createPost:output.postId placeId:placeId userId:user.userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply 
-                           userNickName:user.nickName srcPostId:srcPostId
+                           userNickName:user.nickName 
+                              srcPostId:srcPostId
+                            replyPostId:replyPostId
                              userAvatar:user.avatar
                                  useFor:POST_FOR_PLACE];
                 
@@ -193,8 +267,26 @@
     return contentType;
 }
 
+- (BOOL)validatePost
+{
+    if ([self getImage] == nil && [contentTextView.text length] <= 0){
+        [self popupUnhappyMessage:NSLS(@"kNoContentInPost") title:@""];
+        return NO;
+    }
+    
+    if ([contentTextView.text length] > MAX_POST_TEXT_LEN){
+        [self popupUnhappyMessage:NSLS(@"kNoContentInPost") title:@""];
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)clickSavePost:(id)sender
 {
+    if ([self validatePost] == NO)
+        return;
+    
     int contentType = [self getContentType];
     NSString* textContent = contentTextView.text;
     
@@ -212,7 +304,7 @@
     UIImage* image = [self getImage];
     
     // for test
-    syncSNSStatus = NO;
+    // syncSNSStatus = NO;
     
     [self createPost:contentType textContent:textContent 
             latitude:[place.latitude doubleValue] 
@@ -220,20 +312,35 @@
         userLatitude:userLatitude userLongitude:userLongitude 
              syncSNS:syncSNSStatus placeId:placeId 
                image:image
-           srcPostId:srcPostId];
+           srcPostId:srcPostId
+         replyPostId:replyPostId];
 }
 
 - (IBAction)clickSyncSNSButton:(id)sender
 {
     syncSNSStatus = ! syncSNSStatus;
-    NSLog(@"syncSNSStatus change to %d", syncSNSStatus);
-    
-//    [self uploadImage];
+    [self setSyncSNSButtonInfo];
 }
 
-- (void)clickSegControl:(id)sender
+- (IBAction)clickSegControl:(id)sender
 {
-    NSLog(@"click seg control");
+    switch (contentTypeSegControl.selectedSegmentIndex){
+        case SELECT_TEXT:
+        {
+            contentImageView.hidden = YES;
+            contentTextView.hidden = NO;
+        }
+            break;
+        case SELECT_PHOTO:            
+        {
+            contentImageView.hidden = NO;
+            contentTextView.hidden = YES;
+        }
+            break;
+        default:
+            break;
+    }
+
 }
 
 #pragma mark - Image Related Methods
@@ -243,6 +350,45 @@
     if (photoArray != nil){
         [photoArray removeAllObjects];
         [photoArray addObject:image];
+        
+        CGRect defaultRect = contentTextView.frame;
+        CGRect adjustSize = defaultRect;
+        if (image.size.width > defaultRect.size.width && image.size.height <= defaultRect.size.height){
+            // use height
+            float percentage = defaultRect.size.width / image.size.width;
+            float width = image.size.width * percentage;
+            float height = image.size.height * percentage;
+            adjustSize.size = CGSizeMake(width, height);
+        }
+        else if (image.size.width <= defaultRect.size.width && image.size.height > defaultRect.size.height){
+            // use width
+            float percentage = defaultRect.size.height / image.size.height;
+            float width = image.size.width * percentage;
+            float height = image.size.height * percentage;
+            adjustSize.size = CGSizeMake(width, height);            
+        }
+        else if (image.size.width > defaultRect.size.width && image.size.height > defaultRect.size.height){
+            float percentage1 = defaultRect.size.height / image.size.height;
+            float percentage2 = defaultRect.size.width / image.size.width;
+            float percentage;
+            if (percentage1 > percentage2){
+                percentage = percentage2;
+            }
+            else{
+                percentage = percentage1;
+            }
+            float width = image.size.width * percentage;
+            float height = image.size.height * percentage;
+            adjustSize.size = CGSizeMake(width, height);                        
+        }
+        else{
+            adjustSize.size = CGSizeMake(image.size.width, image.size.height);
+        }
+        
+        contentImageView.frame = adjustSize;
+        contentImageView.image = image;
+        
+        [self updateContentTypeSegControlPhoto];
     }
 }
 
@@ -351,5 +497,10 @@
 //    
 //	NSLog(@"upload image, return = %@", returnString);
 //}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self updateContentTypeSegControlText];
+}
 
 @end

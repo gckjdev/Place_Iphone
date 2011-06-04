@@ -23,6 +23,7 @@
 #import "PlaceMainController.h"
 #import "PostMainController.h"
 
+#import "CommonManager.h"
 #import "UserManager.h"
 #import "RegisterController.h"
 #import "DeviceLoginRequest.h"
@@ -188,6 +189,20 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	[self releaseResourceForAllViewControllers];	
 	[self stopAudioPlayer];
+    
+    backgroundTask = [application beginBackgroundTaskWithExpirationHandler: ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (UIBackgroundTaskInvalid != backgroundTask) {
+                [application endBackgroundTask:backgroundTask];
+                backgroundTask = UIBackgroundTaskInvalid;
+            }
+        });
+    }];
+    
+    NSLog(@"Background Task Remaining Time = %f", [application backgroundTimeRemaining]);
+    if (UIBackgroundTaskInvalid != backgroundTask) {
+//        [CommonManager cleanUpDeleteData];
+    }		
 }
 
 
@@ -200,6 +215,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	[self initMobClick];
     [localDataService requestDataWhileEnterForeground];
+    
+    [CommonManager cleanUpDeleteData];
 }
 
 

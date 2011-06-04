@@ -27,8 +27,10 @@
 @dynamic userLatitude;
 @dynamic useFor;
 @dynamic deleteFlag;
+@dynamic deleteTimeStamp;
 @dynamic srcPostId;
 @dynamic userNickName;
 @dynamic userAvatar;
+@dynamic replyPostId;
 
 @end

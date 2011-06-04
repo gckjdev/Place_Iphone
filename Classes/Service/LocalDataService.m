@@ -69,6 +69,7 @@
                  totalReply:[ResultUtils totalReply:post]
                userNickName:[ResultUtils nickName:post]
                   srcPostId:[ResultUtils srcPostId:post]
+                replyPostId:[ResultUtils replyPostId:post]
                  userAvatar:[ResultUtils userAvatar:post]
                      useFor:useFor];                    
     

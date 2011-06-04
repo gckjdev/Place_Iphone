@@ -294,6 +294,7 @@ enum {
 {
     CreatePostController* vc = [[CreatePostController alloc] init];
     vc.place = self.place;
+    vc.navigationItem.title = NSLS(@"kCreatePostTitle");
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }

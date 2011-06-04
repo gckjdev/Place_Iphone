@@ -80,7 +80,7 @@
 #define PARA_PLACEID @"pid"
 #define PARA_SRC_POSTID @"spi"
 #define PARA_EXCLUDE_POSTID @"epi"
-
+#define PARA_REPLY_POSTID @"rpi"
 
 #define PARA_CREATE_USERID @"cuid"
 

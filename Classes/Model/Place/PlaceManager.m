@@ -30,6 +30,7 @@
     place.followUser = followUserId;
     place.useFor = [NSNumber numberWithInt:useFor];
     place.deleteFlag = [NSNumber numberWithBool:NO];
+    place.deleteTimeStamp = [NSNumber numberWithInt:0];
     
     NSLog(@"Create Place: %@", [place description]);
     
@@ -51,6 +52,7 @@
     
     for (Place* place in placeArray){
         place.deleteFlag = [NSNumber numberWithBool:YES];
+        place.deleteTimeStamp = [NSNumber numberWithInt:time(0)];
     }
     
     return [dataManager save];
@@ -63,6 +65,8 @@
     
     for (Place* place in placeArray){
         place.deleteFlag = [NSNumber numberWithBool:YES];
+        place.deleteTimeStamp = [NSNumber numberWithInt:time(0)];
+
     }
     
     return [dataManager save];
@@ -132,13 +136,32 @@
     
     if (placeArray != nil && [placeArray count] > 0){
         for (Place* place in placeArray){
-            place.deleteFlag = [NSNumber numberWithInt:1];
+            place.deleteFlag = [NSNumber numberWithBool:YES];
+            place.deleteTimeStamp = [NSNumber numberWithInt:time(0)];            
         }
         [dataManager save];
     }
     
     return YES;
 }
+
++ (void)cleanUpDeleteDataBefore:(int)timeStamp
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getPlaceDeleteBefore" 
+                                        forKey:@"beforeTimeStamp" 
+                                         value:[NSNumber numberWithInt:timeStamp]
+                                        sortBy:@"createDate"
+                                     ascending:YES];
+    
+    for (Place* place in placeArray){
+        [dataManager del:place];
+    }
+    
+    [dataManager save];     
+    
+}
+
 
 
 @end

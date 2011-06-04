@@ -28,5 +28,6 @@
 + (BOOL)userFollowPlace:(NSString*)userId place:(Place*)place;
 + (BOOL)userUnfollowPlace:(NSString*)userId placeId:(NSString*)placeId;
 
++ (void)cleanUpDeleteDataBefore:(int)timeStamp;
 
 @end

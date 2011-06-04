@@ -23,6 +23,7 @@
 @synthesize placeId;        
 @synthesize appId;
 @synthesize srcPostId;
+@synthesize replyPostId;
 @synthesize image;
 
 - (void)dealloc
@@ -33,6 +34,7 @@
 	[placeId release];
     [srcPostId release];
     [image release];
+    [replyPostId release];
 	[super dealloc];	
 }
 
@@ -54,6 +56,10 @@
 
     if (srcPostId != nil){
         str = [str stringByAddQueryParameter:PARA_SRC_POSTID value:srcPostId];
+    }
+
+    if (replyPostId != nil){
+        str = [str stringByAddQueryParameter:PARA_REPLY_POSTID value:replyPostId];
     }
 	
 	return str;
@@ -154,6 +160,7 @@
                   syncSNS:(BOOL)syncSNS placeId:(NSString*)placeId
                     image:(UIImage*)image
                 srcPostId:(NSString*)srcPostId
+              replyPostId:(NSString*)replyPostId
 
 {
 	int result = ERROR_SUCCESS;
@@ -173,6 +180,7 @@
     input.syncSNS = syncSNS;
     input.placeId = placeId;
     input.srcPostId = srcPostId;
+    input.replyPostId = replyPostId;
     
     NSData* postData = nil;
     if (input.contentType == CONTENT_TYPE_TEXT_PHOTO && image != nil){
@@ -193,7 +201,7 @@
 
 + (void)test
 {
-	[CreatePostRequest send:SERVER_URL userId:@"benson" appId:@"appId" contentType:CONTENT_TYPE_TEXT textContent:@"hello, this is a 测试帖子" latitude:111.11f longitude:11133.f userLatitude:222.55f userLongitude:333.3f syncSNS:YES placeId:@"test_place_id" image:nil srcPostId:nil ];
+	[CreatePostRequest send:SERVER_URL userId:@"benson" appId:@"appId" contentType:CONTENT_TYPE_TEXT textContent:@"hello, this is a 测试帖子" latitude:111.11f longitude:11133.f userLatitude:222.55f userLongitude:333.3f syncSNS:YES placeId:@"test_place_id" image:nil srcPostId:nil replyPostId:nil];
 }
 @end
 
