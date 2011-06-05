@@ -93,6 +93,11 @@
     return [[post objectForKey:PARA_TOTAL_REPLY] intValue];    
 }
 
++ (int)totalRelated:(NSDictionary*)post
+{
+    return [[post objectForKey:PARA_TOTAL_RELATED] intValue];        
+}
+
 + (NSString*)srcPostId:(NSDictionary*)post
 {
     return [post objectForKey:PARA_SRC_POSTID];

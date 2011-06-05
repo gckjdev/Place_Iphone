@@ -37,6 +37,7 @@
      userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
         totalQuote:(int)totalQuote totalReply:(int)totalReply
+      totalRelated:(int)totalRelated
       userNickName:(NSString*)userNickName
          srcPostId:(NSString*)srcPostId
        replyPostId:(NSString*)replyPostId
@@ -61,6 +62,7 @@
     post.totalForward = [NSNumber numberWithInt:totalForward];
     post.totalQuote = [NSNumber numberWithInt:totalQuote];
     post.totalReply = [NSNumber numberWithInt:totalReply];
+    post.totalRelated = [NSNumber numberWithInt:totalRelated];
     post.useFor = [NSNumber numberWithInt:useFor];
     post.deleteFlag = [NSNumber numberWithBool:NO];
     post.userNickName = userNickName;

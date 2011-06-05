@@ -61,6 +61,7 @@ UserManager* userManager;
 + (BOOL)setUserWithUserId:(NSString *)userId
                   loginId:(NSString *)loginId
                  nickName:(NSString *)nickName
+                   avatar:(NSString *)avatar
           sinaAccessToken:(NSString *)sinaAccessToken
     sinaAccessTokenSecret:(NSString *)sinaAccessTokenSecret
             qqAccessToken:(NSString *)qqAccessToken
@@ -81,6 +82,7 @@ UserManager* userManager;
     user.qqAccessToken = qqAccessToken;
     user.qqAccessTokenSecret = qqAccessTokenSecret;
     user.loginStatus = [NSNumber numberWithBool:loginStatus];
+    user.avatar = avatar;
     
     NSLog(@"<setUser> user=%@", [user description]);
     

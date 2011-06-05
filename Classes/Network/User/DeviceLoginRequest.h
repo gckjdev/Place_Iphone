@@ -24,6 +24,7 @@
 @end
 
 @interface DeviceLoginOutput : CommonOutput {
+    NSString*           userAvatar;
 	NSString*           userId;
     NSString*           loginId;
     NSString*           nickName;
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) NSString	*userId;
 @property (nonatomic, retain) NSString	*loginId;
 @property (nonatomic, retain) NSString	*nickName;
+@property (nonatomic, retain) NSString  *userAvatar;
 @property (nonatomic, retain) NSString	*sinaAccessToken;
 @property (nonatomic, retain) NSString	*sinaAccessTokenSecret;
 @property (nonatomic, retain) NSString	*qqAccessToken;

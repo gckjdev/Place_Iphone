@@ -23,6 +23,7 @@
 @dynamic totalForward;
 @dynamic totalQuote;
 @dynamic totalReply;
+@dynamic totalRelated;
 @dynamic userLongitude;
 @dynamic userLatitude;
 @dynamic useFor;

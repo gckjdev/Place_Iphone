@@ -27,6 +27,7 @@
 + (int)totalForward:(NSDictionary*)post;
 + (int)totalQuote:(NSDictionary*)post;
 + (int)totalReply:(NSDictionary*)post;
++ (int)totalRelated:(NSDictionary*)post;
 + (NSString*)placeId:(NSDictionary*)post;
 + (NSString*)nickName:(NSDictionary*)post;
 + (NSString*)srcPostId:(NSDictionary*)post;

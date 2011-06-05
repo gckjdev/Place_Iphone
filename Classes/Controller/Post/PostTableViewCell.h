@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJManagedImageV.h"
 
 @class Post;
-@class HJManagedImageV;
 
-@interface PostTableViewCell : UITableViewCell {
+@interface PostTableViewCell : UITableViewCell <HJManagedImageVDelegate> {
     
     HJManagedImageV *userAvatarImage;
     UILabel *userNickNameLabel;

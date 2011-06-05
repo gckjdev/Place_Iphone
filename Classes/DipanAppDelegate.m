@@ -215,8 +215,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	[self initMobClick];
     [localDataService requestDataWhileEnterForeground];
-    
-    [CommonManager cleanUpDeleteData];
+  
+//   Bug, TO be fixed
+//   [CommonManager cleanUpDeleteData];
 }
 
 
@@ -271,6 +272,7 @@ void uncaughtExceptionHandler(NSException *exception) {
                         [UserManager setUserWithUserId:output.userId
                                                loginId:output.loginId
                                               nickName:output.nickName
+                                                avatar:output.userAvatar
                                        sinaAccessToken:output.sinaAccessToken
                                  sinaAccessTokenSecret:output.sinaAccessTokenSecret
                                          qqAccessToken:output.qqAccessToken
@@ -290,13 +292,14 @@ void uncaughtExceptionHandler(NSException *exception) {
         NSLog(@"<checkDevice> local user not found, try to detect from server");
         DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
                                                        appId:[AppManager getPlaceAppId]
-                                                    deviceId:[[UIDevice currentDevice] uniqueIdentifier]
+                                                     deviceId:[[UIDevice currentDevice] uniqueIdentifier]
                                               needReturnUser:YES];
         if (output.resultCode == ERROR_SUCCESS) {
             NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
             [UserManager setUserWithUserId:output.userId
                                    loginId:output.loginId
                                   nickName:output.nickName
+                                    avatar:output.userAvatar
                            sinaAccessToken:output.sinaAccessToken
                      sinaAccessTokenSecret:output.sinaAccessTokenSecret
                              qqAccessToken:output.qqAccessToken

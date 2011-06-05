@@ -157,6 +157,7 @@
                 [UserManager setUserWithUserId:user.userId
                                        loginId:user.loginId
                                       nickName:user.nickName
+                                        avatar:user.avatar
                                sinaAccessToken:user.sinaAccessToken
                          sinaAccessTokenSecret:user.sinaAccessTokenSecret
                                  qqAccessToken:user.qqAccessToken
