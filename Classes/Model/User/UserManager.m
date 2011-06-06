@@ -113,6 +113,13 @@ UserManager* userManager;
 	return [dataManager save];
 }
 
++ (void)userLoginSuccess:(User*)user
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();
+    user.loginStatus = [NSNumber numberWithBool:YES];
+    [dataManager save];
+}
+
 + (User*)getUser
 {
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();

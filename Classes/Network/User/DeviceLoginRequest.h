@@ -51,7 +51,5 @@
 
 + (DeviceLoginOutput*)send:(NSString*)serverURL
                      appId:(NSString*)appId
-                  deviceId:(NSString *)deviceId
             needReturnUser:(BOOL)needReturnUser;
-
 @end

@@ -8,7 +8,6 @@
 
 #import <CoreData/CoreData.h>
 
-
 @interface User :  NSManagedObject  
 {
 }
@@ -24,6 +23,8 @@
 @property (nonatomic, retain) NSString *qqAccessToken;
 @property (nonatomic, retain) NSString *qqAccessTokenSecret;
 @property (nonatomic, assign) NSNumber *loginStatus;
+
+- (BOOL)isLogin;
 
 @end
 

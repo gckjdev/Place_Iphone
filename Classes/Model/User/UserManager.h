@@ -36,4 +36,6 @@
 + (BOOL)delUser;
 + (NSString*)getUserId;
 
++ (void)userLoginSuccess:(User*)user;
+
 @end

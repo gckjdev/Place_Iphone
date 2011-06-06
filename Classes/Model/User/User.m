@@ -23,4 +23,9 @@
 @dynamic qqAccessTokenSecret;
 @dynamic loginStatus;
 
+- (BOOL)isLogin
+{
+    return [self.loginStatus boolValue];
+}
+
 @end

@@ -166,5 +166,30 @@
 	return output;	
 }
 
++ (DeviceLoginOutput*)send:(NSString*)serverURL
+                     appId:(NSString*)appId
+            needReturnUser:(BOOL)needReturnUser
+{
+	int result = ERROR_SUCCESS;
+	DeviceLoginInput* input = [[DeviceLoginInput alloc] init];
+	DeviceLoginOutput* output = [[[DeviceLoginOutput alloc] init] autorelease];
+	
+	input.appId = appId;	
+	input.deviceId = [[UIDevice currentDevice] uniqueIdentifier];
+    input.needReturnUser = needReturnUser;
+    
+	if ([[DeviceLoginRequest requestWithURL:serverURL] sendRequest:input output:output]){
+		result = output.resultCode;
+	}
+	else{
+		output.resultCode = ERROR_NETWORK;
+	}
+	
+	[input release];
+	
+	return output;	
+}
+
+
 @end
 

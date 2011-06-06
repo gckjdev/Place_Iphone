@@ -79,6 +79,7 @@
 		CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6046781395D8AE006C1D9F /* FollowPlaceController.m */; };
 		CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */; };
 		CA60467E1395D8C0006C1D9F /* PlaceControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */; };
+		CA66BC30139C74C000FBA347 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA66BC2F139C74C000FBA347 /* UserService.m */; };
 		CA7C70A213811BC60030442D /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7C70A113811BC60030442D /* LocalDataService.m */; };
 		CA7F9CD6137D5B530033FE12 /* PlaceLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */; };
 		CA7F9CD7137D5B530033FE12 /* PlaceLocationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */; };
@@ -92,6 +93,11 @@
 		CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */; };
 		CA9B40C413978E4000F16EA4 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */; };
 		CA9B40C61397D63700F16EA4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */; };
+		CA9E093B139CB7CB000B6FEE /* CommonSNSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E093A139CB7CB000B6FEE /* CommonSNSRequest.m */; };
+		CA9E093E139CB7E2000B6FEE /* SNSServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E093D139CB7E2000B6FEE /* SNSServiceHandler.m */; };
+		CA9E0941139CB803000B6FEE /* QQWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0940139CB803000B6FEE /* QQWeiboRequest.m */; };
+		CA9E0944139CB817000B6FEE /* SINAWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0943139CB817000B6FEE /* SINAWeiboRequest.m */; };
+		CA9E0947139CCC8D000B6FEE /* PlaceSNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */; };
 		CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA9E1FB51385247E009D1D4F /* Server_Interface.txt */; };
 		CA9E1FB913856FFC009D1D4F /* GetUserFollowPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */; };
 		CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */; };
@@ -543,6 +549,8 @@
 		CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPlaceController.xib; sourceTree = "<group>"; };
 		CA60467C1395D8C0006C1D9F /* PlaceControllerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceControllerUtils.h; sourceTree = "<group>"; };
 		CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceControllerUtils.m; sourceTree = "<group>"; };
+		CA66BC2E139C74C000FBA347 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
+		CA66BC2F139C74C000FBA347 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
 		CA7C70A013811BC60030442D /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
 		CA7C70A113811BC60030442D /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
 		CA7F9CD3137D5B530033FE12 /* PlaceLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceLocationController.h; sourceTree = "<group>"; };
@@ -565,6 +573,16 @@
 		CA9B40C213978E3E00F16EA4 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
 		CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		CA9E0939139CB7CB000B6FEE /* CommonSNSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSNSRequest.h; sourceTree = "<group>"; };
+		CA9E093A139CB7CB000B6FEE /* CommonSNSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSNSRequest.m; sourceTree = "<group>"; };
+		CA9E093C139CB7E2000B6FEE /* SNSServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSServiceHandler.h; sourceTree = "<group>"; };
+		CA9E093D139CB7E2000B6FEE /* SNSServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSServiceHandler.m; sourceTree = "<group>"; };
+		CA9E093F139CB803000B6FEE /* QQWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQWeiboRequest.h; sourceTree = "<group>"; };
+		CA9E0940139CB803000B6FEE /* QQWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQWeiboRequest.m; sourceTree = "<group>"; };
+		CA9E0942139CB817000B6FEE /* SINAWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SINAWeiboRequest.h; sourceTree = "<group>"; };
+		CA9E0943139CB817000B6FEE /* SINAWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SINAWeiboRequest.m; sourceTree = "<group>"; };
+		CA9E0945139CCC8C000B6FEE /* PlaceSNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceSNSService.h; sourceTree = "<group>"; };
+		CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceSNSService.m; sourceTree = "<group>"; };
 		CA9E1FB51385247E009D1D4F /* Server_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Server_Interface.txt; sourceTree = "<group>"; };
 		CA9E1FB713856FFB009D1D4F /* GetUserFollowPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPostRequest.h; sourceTree = "<group>"; };
 		CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPostRequest.m; sourceTree = "<group>"; };
@@ -1281,8 +1299,51 @@
 				CAA2FB9A13826DBA00DE820F /* LocationService.m */,
 				FB46E8431388D7AC00576C82 /* QQService.h */,
 				FB46E8441388D7AC00576C82 /* QQService.m */,
+				CA66BC2E139C74C000FBA347 /* UserService.h */,
+				CA66BC2F139C74C000FBA347 /* UserService.m */,
+				CA9E0945139CCC8C000B6FEE /* PlaceSNSService.h */,
+				CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CA9E0935139CB7AF000B6FEE /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				CA9E0936139CB7AF000B6FEE /* Common */,
+				CA9E0937139CB7AF000B6FEE /* QQ */,
+				CA9E0938139CB7AF000B6FEE /* SINA */,
+			);
+			path = SNS;
+			sourceTree = "<group>";
+		};
+		CA9E0936139CB7AF000B6FEE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CA9E0939139CB7CB000B6FEE /* CommonSNSRequest.h */,
+				CA9E093A139CB7CB000B6FEE /* CommonSNSRequest.m */,
+				CA9E093C139CB7E2000B6FEE /* SNSServiceHandler.h */,
+				CA9E093D139CB7E2000B6FEE /* SNSServiceHandler.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CA9E0937139CB7AF000B6FEE /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				CA9E093F139CB803000B6FEE /* QQWeiboRequest.h */,
+				CA9E0940139CB803000B6FEE /* QQWeiboRequest.m */,
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		CA9E0938139CB7AF000B6FEE /* SINA */ = {
+			isa = PBXGroup;
+			children = (
+				CA9E0942139CB817000B6FEE /* SINAWeiboRequest.h */,
+				CA9E0943139CB817000B6FEE /* SINAWeiboRequest.m */,
+			);
+			path = SINA;
 			sourceTree = "<group>";
 		};
 		CAA6AB1B13988A2A009F26E3 /* HJCacheClasses */ = {
@@ -1560,6 +1621,7 @@
 		CAAFFEC0137FE02E00E56503 /* Common_Iphone */ = {
 			isa = PBXGroup;
 			children = (
+				CA9E0935139CB7AF000B6FEE /* SNS */,
 				CAAFFF05137FE03000E56503 /* AddressBookUtils */,
 				CAAFFF0A137FE03000E56503 /* Application */,
 				CAAFFF2C137FE03000E56503 /* Components */,
@@ -2465,6 +2527,12 @@
 				CAA6AB3713988A2A009F26E3 /* HJObjManager.m in Sources */,
 				CAA6AB3813988A2A009F26E3 /* HJWeakMutableArray.m in Sources */,
 				CAEE3AC3139A1CFC00EC7EE5 /* CommonManager.m in Sources */,
+				CA66BC30139C74C000FBA347 /* UserService.m in Sources */,
+				CA9E093B139CB7CB000B6FEE /* CommonSNSRequest.m in Sources */,
+				CA9E093E139CB7E2000B6FEE /* SNSServiceHandler.m in Sources */,
+				CA9E0941139CB803000B6FEE /* QQWeiboRequest.m in Sources */,
+				CA9E0944139CB817000B6FEE /* SINAWeiboRequest.m in Sources */,
+				CA9E0947139CCC8D000B6FEE /* PlaceSNSService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

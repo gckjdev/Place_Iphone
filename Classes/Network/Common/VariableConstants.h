@@ -23,7 +23,8 @@
 #define CONTENT_TYPE_TEXT           1
 #define CONTENT_TYPE_TEXT_PHOTO     2
 
-
+#define PROVINCE_UNKNOWN            (-1)
+#define CITY_UNKNOWN                (-1)
 
 
 
