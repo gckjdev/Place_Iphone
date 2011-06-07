@@ -20,4 +20,6 @@
 @property (nonatomic, retain) IBOutlet MKMapView        *mapView;
 @property (nonatomic, assign) CLLocationCoordinate2D    location;
 
+- (void)finishSelectLocation:(id)sender;
+
 @end

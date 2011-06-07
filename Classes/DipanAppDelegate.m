@@ -146,7 +146,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
     workingQueue = dispatch_queue_create("main working queue", NULL);    
     
-    [self checkDevice];
+    //[self checkDevice];
+    [self addMainView];
     
     [window makeKeyAndVisible];
 	

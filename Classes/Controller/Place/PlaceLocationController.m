@@ -7,6 +7,7 @@
 //
 
 #import "PlaceLocationController.h"
+#import "CreatePlaceController.h"
 #import "MapViewUtil.h"
 
 @implementation PlaceLocationController
@@ -41,8 +42,8 @@
 
 - (void)viewDidLoad
 {
-    [self setNavigationLeftButton:NSLS(@"kFinishSelectLocation") action:@selector(finishSelectLocation)];
-    
+    [self setNavigationRightButton:NSLS(@"Finish") action:@selector(finishSelectLocation:)];
+    [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
     [super viewDidLoad];
 
     // Do any additional setup after loading the view from its nib.
@@ -51,7 +52,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [mapView setCenterCoordinate:location zoomLevel:15 animated:YES];
+    //[mapView setCenterCoordinate:location zoomLevel:15 animated:YES];
 }
 
 - (void)viewDidUnload
@@ -68,8 +69,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)finishSelectLocation
+- (void)finishSelectLocation:(id)sender
 {
+    NSArray *controllers = self.navigationController.viewControllers;
+    CreatePlaceController *controller = [controllers objectAtIndex:([controllers count] - 2)];
+    controller.location = [mapView convertPoint:CGPointMake(160, 183) toCoordinateFromView:mapView]; 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
