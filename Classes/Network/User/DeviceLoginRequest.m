@@ -50,6 +50,7 @@
 @synthesize sinaAccessTokenSecret;
 @synthesize qqAccessToken;
 @synthesize qqAccessTokenSecret;
+@synthesize userAvatar;
 
 - (void)dealloc
 {
@@ -59,6 +60,7 @@
     [sinaAccessTokenSecret release];
     [qqAccessToken release];
     [qqAccessTokenSecret release];
+    [userAvatar release];
 	[super dealloc];	
 }
 
@@ -118,6 +120,7 @@
             obj.sinaAccessTokenSecret = [data objectForKey:PARA_SINA_ACCESS_TOKEN_SECRET];
             obj.qqAccessToken = [data objectForKey:PARA_QQ_ACCESS_TOKEN];
             obj.qqAccessTokenSecret = [data objectForKey:PARA_QQ_ACCESS_TOKEN_SECRET];
+            obj.userAvatar = [data objectForKey:PARA_AVATAR];
             
 			NSLog(@"DeviceLoginRequest result=%d, data=%@", obj.resultCode, [data description]);						
 			return YES;
@@ -162,6 +165,31 @@
 	
 	return output;	
 }
+
++ (DeviceLoginOutput*)send:(NSString*)serverURL
+                     appId:(NSString*)appId
+            needReturnUser:(BOOL)needReturnUser
+{
+	int result = ERROR_SUCCESS;
+	DeviceLoginInput* input = [[DeviceLoginInput alloc] init];
+	DeviceLoginOutput* output = [[[DeviceLoginOutput alloc] init] autorelease];
+	
+	input.appId = appId;	
+	input.deviceId = [[UIDevice currentDevice] uniqueIdentifier];
+    input.needReturnUser = needReturnUser;
+    
+	if ([[DeviceLoginRequest requestWithURL:serverURL] sendRequest:input output:output]){
+		result = output.resultCode;
+	}
+	else{
+		output.resultCode = ERROR_NETWORK;
+	}
+	
+	[input release];
+	
+	return output;	
+}
+
 
 @end
 

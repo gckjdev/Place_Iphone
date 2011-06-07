@@ -22,6 +22,7 @@
      userLongitude:(double)userLongitude userLatitude:(double)userLatitude
          totalView:(int)totalView totalForward:(int)totalForward
         totalQuote:(int)totalQuote totalReply:(int)totalReply
+      totalRelated:(int)totalRelated
       userNickName:(NSString*)userNickName
          srcPostId:(NSString*)srcPostId
        replyPostId:(NSString*)replyPostId

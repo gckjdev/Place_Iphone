@@ -14,6 +14,7 @@
 #import "HJManagedImageV.h"
 #import "DipanAppDelegate.h"
 #import "TimeUtils.h"
+#import "UIImageUtil.h"
 
 #define DEFAULT_AVATAR @"touxiang.png"
 
@@ -120,7 +121,7 @@
 - (void)setCellInfoWithTextContent:(NSString*)textContent 
                       userNickName:(NSString*)userNickName 
                         createDate:(NSDate*)createDate
-                        totalReply:(int)totalReply
+                        totalRelated:(int)totalRelated
                         userAvatar:(NSString*)userAvatar
                       contentImage:(NSString*)imageURL
 
@@ -128,7 +129,12 @@
     
     self.textContentLabel.text = textContent;
     self.userNickNameLabel.text = userNickName;
-    self.totalReplyLabel.text = [NSString stringWithFormat:NSLS(@"kTotalReply"), totalReply];
+    if (totalRelated > 1){
+        self.totalReplyLabel.text = [NSString stringWithFormat:NSLS(@"kTotalRelated"), totalRelated-1];
+    }
+    else{
+        self.totalReplyLabel.text = [NSString stringWithFormat:NSLS(@"kTotalRelated"), 0];
+    }
     
     self.createDateLabel.text = [self getDateDisplayText:createDate];
     
@@ -143,11 +149,20 @@
 
     [self.contentImage clear];
     if ([self exist:imageURL]){
-        self.contentImage.url = [NSURL URLWithString:imageURL];
+        NSString* thumbImageURL = [imageURL stringByReplacingOccurrencesOfString:@".png" withString:@"_s.png"]; // hard code ,no good here
+        thumbImageURL = [imageURL stringByReplacingOccurrencesOfString:@".jpg" withString:@"_s.jpg"];
+        self.contentImage.url = [NSURL URLWithString:thumbImageURL];
+        self.contentImage.callbackOnSetImage = self;
         [GlobalGetImageCache() manage:self.contentImage];
     }
     
     
+}
+
+-(void) managedImageSet:(HJManagedImageV*)mi
+{
+    CGRect origRect = self.contentImage.frame;    
+    self.contentImage.frame = [UIImage shrinkFromOrigRect:origRect imageSize:mi.image.size];    
 }
 
 - (void)setCellInfoWithPost:(Post*)post
@@ -156,7 +171,7 @@
     [self setCellInfoWithTextContent:post.textContent
                         userNickName:post.userNickName
                           createDate:post.createDate
-                          totalReply:[post.totalReply intValue]
+                          totalRelated:[post.totalRelated intValue]
                           userAvatar:post.userAvatar
                         contentImage:post.imageURL];
     
@@ -167,7 +182,7 @@
     [self setCellInfoWithTextContent:[ResultUtils textContent:dict]
                         userNickName:[ResultUtils nickName:dict]
                           createDate:[ResultUtils createDate:dict]
-                          totalReply:[ResultUtils totalReply:dict]
+                          totalRelated:[ResultUtils totalRelated:dict]
                           userAvatar:[ResultUtils userAvatar:dict]
                         contentImage:[ResultUtils imageURL:dict]
      
@@ -179,5 +194,9 @@
     return 130.0f;
 }
 
+-(void) managedImageCancelled:(HJManagedImageV*)mi
+{
+    
+}
 
 @end

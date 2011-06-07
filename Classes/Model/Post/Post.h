@@ -31,6 +31,7 @@ enum {
 @property (nonatomic, retain) NSNumber * totalForward;
 @property (nonatomic, retain) NSNumber * totalQuote;
 @property (nonatomic, retain) NSNumber * totalReply;
+@property (nonatomic, retain) NSNumber * totalRelated;
 @property (nonatomic, retain) NSNumber * userLongitude;
 @property (nonatomic, retain) NSNumber * userLatitude;
 @property (nonatomic, retain) NSNumber * useFor;

@@ -13,6 +13,7 @@
 #import "BindUserRequest.h"
 #import "OAuthCore.h"
 #import "JSON.h"
+#import "PlaceSNSService.h"
 
 #define sinaAppKey                      @"1528146353"
 #define sinaAppSecret                   @"4815b7938e960380395e6ac1fe645a5c"
@@ -123,220 +124,77 @@
 	[loginIdField resignFirstResponder];
 }
 
-- (void)registerUserWithLoginId:(NSString*)loginId
-                    loginIdType:(int)loginIdType
-                       nickName:(NSString*)nickName
-                         avatar:(NSString *)avatar
-                    accessToken:(NSString *)accessToken
-              accessTokenSecret:(NSString *)accessTokenSecret
-                       province:(int)province
-                           city:(int)city
-                       location:(NSString *)location
-                         gender:(NSString *)gender
-                       birthday:(NSString *)birthday
-                   sinaNickName:(NSString *)sinaNickName
-                     sinaDomain:(NSString *)sinaDomain
-                     qqNickName:(NSString *)qqNickName
-                       qqDomain:(NSString *)qqDomain
-{
-    NSString* appId = [AppManager getPlaceAppId];
-    NSString* deviceToken = @"";
-    User *user = [UserManager getUser];
-    if (nil != user) {
-        if ((LOGINID_OWN == loginIdType &&
-             [loginId isEqualToString:user.loginId]) ||
-            (LOGINID_SINA == loginIdType &&
-             [accessToken isEqualToString:user.sinaAccessToken] &&
-             [accessTokenSecret isEqualToString:user.sinaAccessTokenSecret]) ||
-            (LOGINID_QQ == loginIdType &&
-             [accessToken isEqualToString:user.qqAccessToken] &&
-             [accessTokenSecret isEqualToString:user.qqAccessTokenSecret])) {
-                DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
-                [delegate removeRegisterView];
-                [delegate addMainView];
-                [UserManager setUserWithUserId:user.userId
-                                       loginId:user.loginId
-                                      nickName:user.nickName
-                               sinaAccessToken:user.sinaAccessToken
-                         sinaAccessTokenSecret:user.sinaAccessTokenSecret
-                                 qqAccessToken:user.qqAccessToken
-                           qqAccessTokenSecret:user.qqAccessTokenSecret
-                                   loginStatus:[user.loginStatus boolValue]];
-                return;
-            } else {
-                [self showActivityWithText:NSLS(@"kBindUser")];
-                dispatch_async(workingQueue, ^{
-                    BindUserOutput* output = [BindUserRequest send:SERVER_URL 
-                                                            userId:user.userId
-                                                                   loginId:loginId
-                                                               loginIdType:loginIdType
-                                                               deviceToken:deviceToken
-                                                                  nickName:nickName
-                                                                    avatar:avatar
-                                                               accessToken:accessToken
-                                                         accessTokenSecret:accessTokenSecret
-                                                                     appId:appId
-                                                                  province:province city:city 
-                                                                  location:location
-                                                                    gender:gender birthday:birthday
-                                                              sinaNickName:sinaNickName
-                                                                sinaDomain:sinaDomain
-                                                                qqNickName:qqNickName
-                                                                  qqDomain:qqDomain];
-                    // for test
-                    // output.resultCode = ERROR_SUCCESS;
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideActivity];
-                        if (output.resultCode == ERROR_SUCCESS){
-                            // save user data locally
-                            [UserManager setUserWithUserId:user.userId
-                                                   loginId:loginId
-                                               loginIdType:loginIdType
-                                                  nickName:user.nickName
-                                                    avatar:nil
-                                               accessToken:accessToken
-                                         accessTokenSecret:accessTokenSecret
-                                               loginStatus:YES];
-                            
-                            // show main tab view
-                            DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
-                            [delegate removeRegisterView];
-                            [delegate addMainView];
-                        }
-                        else if (output.resultCode == ERROR_NETWORK){
-                            [UIUtils alert:NSLS(@"kSystemFailure")];
-                        }
-                        else {
-                            // TBD
-                        }
-                    });
-                });
-
-            }
-        return;
-    }
-    
-    [self showActivityWithText:NSLS(@"kRegisteringUser")];
-    dispatch_async(workingQueue, ^{
-        RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL 
-                                                       loginId:loginId
-                                                   loginIdType:loginIdType
-                                                   deviceToken:deviceToken
-                                                      nickName:nickName
-                                                        avatar:avatar
-                                                   accessToken:accessToken
-                                             accessTokenSecret:accessTokenSecret
-                                                         appId:appId
-                                                      province:province city:city 
-                                                      location:location
-                                                        gender:gender birthday:birthday
-                                                  sinaNickName:sinaNickName
-                                                    sinaDomain:sinaDomain
-                                                    qqNickName:qqNickName
-                                                      qqDomain:qqDomain];
-        // for test
-        // output.resultCode = ERROR_SUCCESS;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideActivity];
-            if (output.resultCode == ERROR_SUCCESS){
-                // save user data locally
-                [UserManager setUserWithUserId:output.userId
-                                       loginId:loginId
-                                   loginIdType:loginIdType
-                                      nickName:nickName
-                                        avatar:nil
-                                   accessToken:accessToken
-                             accessTokenSecret:accessTokenSecret
-                                   loginStatus:YES];
-                
-                // show main tab view
-                DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
-                [delegate removeRegisterView];
-                [delegate addMainView];
-            }
-            else if (output.resultCode == ERROR_NETWORK){
-                [UIUtils alert:NSLS(@"kSystemFailure")];
-            }
-            else {
-                // TBD
-            }
-        });
-    });
-    
-}
-
 - (IBAction)clickRegister:(id)sender {
-    [self registerUserWithLoginId:self.loginIdField.text
-                      loginIdType:LOGINID_OWN
-                         nickName:self.loginIdField.text
-                           avatar:nil
-                      accessToken:nil
-                accessTokenSecret:nil
-                         province:-1
-                             city:-1
-                         location:nil
-                           gender:nil
-                         birthday:nil
-                     sinaNickName:nil
-                       sinaDomain:nil
-                       qqNickName:nil
-                         qqDomain:nil
-     ];
-
+    
+    UserService* userService = GlobalGetUserService();
+    [userService loginUserWithLoginId:loginIdField.text viewController:self];     
 }
 
-- (IBAction)clickSinaLogin:(id)sender{
+- (IBAction)clickSinaLogin:(id)sender
+{
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
     dispatch_async(workingQueue, ^{
-        NSURL *url = [NSURL URLWithString:sinaRequestTokenUrl];
-        NSString *queryString = [OAuthCore queryStringWithUrl:url
-                                                       method:@"GET"
-                                                   parameters:[NSDictionary dictionaryWithObject:@"dipan://sina" forKey:@"oauth_callback"]
-                                                  consumerKey:sinaAppKey
-                                               consumerSecret:sinaAppSecret
-                                                        token:nil
-                                                  tokenSecret:nil];
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
-        NSLog(@"RegisterController sina request token url:%@", url);
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSHTTPURLResponse *response = nil;
-        NSError *error = nil;
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-        NSLog(@"RegisterController sina request token result: %@", result);
-        if (200 == [response statusCode] && nil == error) {
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            NSArray *pairs = [result componentsSeparatedByString:@"&"];
-            for(NSString *pair in pairs) {
-                NSArray *keyValue = [pair componentsSeparatedByString:@"="];
-                if([keyValue count] == 2) {
-                    NSString *key = [keyValue objectAtIndex:0];
-                    NSString *value = [keyValue objectAtIndex:1];
-                    [dict setObject:value forKey:key];
-                }
-            }
-            self.token = [dict objectForKey:@"oauth_token"];
-            self.tokenSecret = [dict objectForKey:@"oauth_token_secret"];
-            url = [NSURL URLWithString:sinaAuthorizeUrl];
-            queryString = [OAuthCore queryStringWithUrl:url
-                                                 method:@"GET"
-                                             parameters:nil
-                                            consumerKey:sinaAppKey
-                                         consumerSecret:sinaAppSecret
-                                                  token:self.token
-                                            tokenSecret:self.tokenSecret];
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+        PlaceSNSService* snsService = GlobalGetSNSService();
+        if ([snsService sinaLoginForAuthorization] == NO){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:url];
+                [self hideActivity];                
             });
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideActivity];
-        });
     });
+
+    
 }
+
+//- (IBAction)clickSinaLogin:(id)sender{
+//    [self showActivityWithText:NSLS(@"kRegisteringUser")];
+//    dispatch_async(workingQueue, ^{
+//        NSURL *url = [NSURL URLWithString:sinaRequestTokenUrl];
+//        NSString *queryString = [OAuthCore queryStringWithUrl:url
+//                                                       method:@"GET"
+//                                                   parameters:[NSDictionary dictionaryWithObject:@"dipan://sina" forKey:@"oauth_callback"]
+//                                                  consumerKey:sinaAppKey
+//                                               consumerSecret:sinaAppSecret
+//                                                        token:nil
+//                                                  tokenSecret:nil];
+//        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+//        NSLog(@"RegisterController sina request token url:%@", url);
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        NSHTTPURLResponse *response = nil;
+//        NSError *error = nil;
+//        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+//        NSLog(@"RegisterController sina request token result: %@", result);
+//        if (200 == [response statusCode] && nil == error) {
+//            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//            NSArray *pairs = [result componentsSeparatedByString:@"&"];
+//            for(NSString *pair in pairs) {
+//                NSArray *keyValue = [pair componentsSeparatedByString:@"="];
+//                if([keyValue count] == 2) {
+//                    NSString *key = [keyValue objectAtIndex:0];
+//                    NSString *value = [keyValue objectAtIndex:1];
+//                    [dict setObject:value forKey:key];
+//                }
+//            }
+//            self.token = [dict objectForKey:@"oauth_token"];
+//            self.tokenSecret = [dict objectForKey:@"oauth_token_secret"];
+//            url = [NSURL URLWithString:sinaAuthorizeUrl];
+//            queryString = [OAuthCore queryStringWithUrl:url
+//                                                 method:@"GET"
+//                                             parameters:nil
+//                                            consumerKey:sinaAppKey
+//                                         consumerSecret:sinaAppSecret
+//                                                  token:self.token
+//                                            tokenSecret:self.tokenSecret];
+//            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[UIApplication sharedApplication] openURL:url];
+//            });
+//        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self hideActivity];
+//        });
+//    });
+//}
 
 - (void)requestSinaAccessToken:(NSString *)query {
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
@@ -431,58 +289,72 @@
     });
 }
 
-- (IBAction)clickQQLogin:(id)sender {
+
+- (IBAction)clickQQLogin:(id)sender
+{
     [self showActivityWithText:NSLS(@"kRegisteringUser")];
     dispatch_async(workingQueue, ^{
-        NSURL *url = [NSURL URLWithString:qqRequestTokenUrl];
-        NSString *queryString = [OAuthCore queryStringWithUrl:url
-                                                       method:@"GET"
-//                                                   parameters:[NSDictionary dictionaryWithObject:@"http://www.baidu.com" forKey:@"oauth_callback"]
-//                                                   parameters:nil
-                                                   parameters:[NSDictionary dictionaryWithObject:@"dipan://qq" forKey:@"oauth_callback"]
-                                                  consumerKey:qqAppKey
-                                               consumerSecret:qqAppSecret
-                                                        token:nil
-                                                  tokenSecret:nil];
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
-        NSLog(@"RegisterController qq request token url:%@", url);
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSHTTPURLResponse *response = nil;
-        NSError *error = nil;
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-        NSLog(@"RegisterController qq request token result: %@", result);
-        if (200 == [response statusCode] && nil == error) {
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            NSArray *pairs = [result componentsSeparatedByString:@"&"];
-            for(NSString *pair in pairs) {
-                NSArray *keyValue = [pair componentsSeparatedByString:@"="];
-                if([keyValue count] == 2) {
-                    NSString *key = [keyValue objectAtIndex:0];
-                    NSString *value = [keyValue objectAtIndex:1];
-                    [dict setObject:value forKey:key];
-                }
-            }
-            self.token = [dict objectForKey:@"oauth_token"];
-            self.tokenSecret = [dict objectForKey:@"oauth_token_secret"];
-            url = [NSURL URLWithString:qqAuthorizeUrl];
-            queryString = [OAuthCore queryStringWithUrl:url
-                                                 method:@"GET"
-                                             parameters:nil
-                                            consumerKey:qqAppKey
-                                         consumerSecret:qqAppSecret
-                                                  token:self.token
-                                            tokenSecret:self.tokenSecret];
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+        PlaceSNSService* snsService = GlobalGetSNSService();
+        if ([snsService qqLoginForAuthorization] == NO){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:url];
-            }); 
+                [self hideActivity];                
+            });
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideActivity];
-        });
     });
+    
 }
+//- (IBAction)clickQQLogin:(id)sender {
+//    [self showActivityWithText:NSLS(@"kRegisteringUser")];
+//    dispatch_async(workingQueue, ^{
+//        NSURL *url = [NSURL URLWithString:qqRequestTokenUrl];
+//        NSString *queryString = [OAuthCore queryStringWithUrl:url
+//                                                       method:@"GET"
+////                                                   parameters:[NSDictionary dictionaryWithObject:@"http://www.baidu.com" forKey:@"oauth_callback"]
+////                                                   parameters:nil
+//                                                   parameters:[NSDictionary dictionaryWithObject:@"dipan://qq" forKey:@"oauth_callback"]
+//                                                  consumerKey:qqAppKey
+//                                               consumerSecret:qqAppSecret
+//                                                        token:nil
+//                                                  tokenSecret:nil];
+//        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+//        NSLog(@"RegisterController qq request token url:%@", url);
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        NSHTTPURLResponse *response = nil;
+//        NSError *error = nil;
+//        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//        NSString *result = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+//        NSLog(@"RegisterController qq request token result: %@", result);
+//        if (200 == [response statusCode] && nil == error) {
+//            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//            NSArray *pairs = [result componentsSeparatedByString:@"&"];
+//            for(NSString *pair in pairs) {
+//                NSArray *keyValue = [pair componentsSeparatedByString:@"="];
+//                if([keyValue count] == 2) {
+//                    NSString *key = [keyValue objectAtIndex:0];
+//                    NSString *value = [keyValue objectAtIndex:1];
+//                    [dict setObject:value forKey:key];
+//                }
+//            }
+//            self.token = [dict objectForKey:@"oauth_token"];
+//            self.tokenSecret = [dict objectForKey:@"oauth_token_secret"];
+//            url = [NSURL URLWithString:qqAuthorizeUrl];
+//            queryString = [OAuthCore queryStringWithUrl:url
+//                                                 method:@"GET"
+//                                             parameters:nil
+//                                            consumerKey:qqAppKey
+//                                         consumerSecret:qqAppSecret
+//                                                  token:self.token
+//                                            tokenSecret:self.tokenSecret];
+//            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [url description], queryString]];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[UIApplication sharedApplication] openURL:url];
+//            }); 
+//        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self hideActivity];
+//        });
+//    });
+//}
 
 - (void)requestQQAccessToken:(NSString *)query {
     [self showActivityWithText:NSLS(@"kRegisteringUser")];

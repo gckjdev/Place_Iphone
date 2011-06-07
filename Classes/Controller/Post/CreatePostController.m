@@ -14,6 +14,7 @@
 #import "AppManager.h"
 #import "SinaService.h"
 #import "QQService.h"
+#import "UIImageUtil.h"
 
 #define MAX_POST_TEXT_LEN 140
 
@@ -186,11 +187,11 @@ enum{
 - (void)syncSNS:(NSString*)textContent
 {
     User* user = [UserManager getUser];
-    if (user.sinaAccessToken != nil && user.sinaAccessTokenSecret){
+    if (user.sinaAccessToken != nil && [user.sinaAccessToken length] > 0 && user.sinaAccessTokenSecret){
         [SinaService createWeiboWith:textContent accessToken:user.sinaAccessToken tokenSecret:user.sinaAccessTokenSecret];
     }
-    if (user.qqAccessToken != nil && user.qqAccessTokenSecret){
-        [SinaService createWeiboWith:textContent accessToken:user.qqAccessToken tokenSecret:user.qqAccessTokenSecret];        
+    if (user.qqAccessToken != nil && [user.qqAccessToken length] > 0 && user.qqAccessTokenSecret){
+        [QQService createWeiboWith:textContent accessToken:user.qqAccessToken tokenSecret:user.qqAccessTokenSecret];        
     }
 }
 
@@ -236,7 +237,7 @@ enum{
             [self hideActivity];
             if (output.resultCode == ERROR_SUCCESS){               
                 // save post data locally
-                [PostManager createPost:output.postId placeId:placeId userId:user.userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply 
+                [PostManager createPost:output.postId placeId:placeId userId:user.userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply totalRelated:0
                            userNickName:user.nickName 
                               srcPostId:srcPostId
                             replyPostId:replyPostId
@@ -351,41 +352,10 @@ enum{
         [photoArray removeAllObjects];
         [photoArray addObject:image];
         
-        CGRect defaultRect = contentTextView.frame;
-        CGRect adjustSize = defaultRect;
-        if (image.size.width > defaultRect.size.width && image.size.height <= defaultRect.size.height){
-            // use height
-            float percentage = defaultRect.size.width / image.size.width;
-            float width = image.size.width * percentage;
-            float height = image.size.height * percentage;
-            adjustSize.size = CGSizeMake(width, height);
-        }
-        else if (image.size.width <= defaultRect.size.width && image.size.height > defaultRect.size.height){
-            // use width
-            float percentage = defaultRect.size.height / image.size.height;
-            float width = image.size.width * percentage;
-            float height = image.size.height * percentage;
-            adjustSize.size = CGSizeMake(width, height);            
-        }
-        else if (image.size.width > defaultRect.size.width && image.size.height > defaultRect.size.height){
-            float percentage1 = defaultRect.size.height / image.size.height;
-            float percentage2 = defaultRect.size.width / image.size.width;
-            float percentage;
-            if (percentage1 > percentage2){
-                percentage = percentage2;
-            }
-            else{
-                percentage = percentage1;
-            }
-            float width = image.size.width * percentage;
-            float height = image.size.height * percentage;
-            adjustSize.size = CGSizeMake(width, height);                        
-        }
-        else{
-            adjustSize.size = CGSizeMake(image.size.width, image.size.height);
-        }
+        CGRect origRect = contentTextView.frame;
+        CGRect retRect = [UIImage shrinkFromOrigRect:origRect imageSize:image.size];
         
-        contentImageView.frame = adjustSize;
+        contentImageView.frame = retRect;
         contentImageView.image = image;
         
         [self updateContentTypeSegControlPhoto];

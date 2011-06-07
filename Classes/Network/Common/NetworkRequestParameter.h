@@ -67,7 +67,9 @@
 #define PARA_TOTAL_FORWARD  @"tf"
 #define PARA_TOTAL_QUOTE    @"tq"
 #define PARA_TOTAL_REPLY    @"tr"
+#define PARA_TOTAL_RELATED  @"trl"
 #define PARA_CREATE_DATE    @"cd"
+
 #define PARA_SEQ            @"sq"
 
 #define PARA_POSTID         @"pi"

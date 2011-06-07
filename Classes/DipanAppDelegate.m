@@ -28,6 +28,8 @@
 #import "RegisterController.h"
 #import "DeviceLoginRequest.h"
 
+#import "PlaceSNSService.h"
+
 #define kDbFileName			@"AppDB"
 
 LocalDataService* GlobalGetLocalDataService()
@@ -45,6 +47,18 @@ LocationService*   GlobalGetLocationService()
 
 }
 
+UserService* GlobalGetUserService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    return [delegate userService];    
+}
+
+PlaceSNSService* GlobalGetSNSService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    return [delegate snsService];    
+}
+
 @implementation DipanAppDelegate
 
 @synthesize window;
@@ -52,6 +66,9 @@ LocationService*   GlobalGetLocationService()
 @synthesize dataManager;
 @synthesize localDataService;
 @synthesize locationService;
+@synthesize registerController;
+@synthesize userService;
+@synthesize snsService;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -127,6 +144,19 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)initLocationService
 {
     self.locationService = [[LocationService alloc] init];
+    [locationService asyncGetLocation];        
+}
+
+- (void)initUserService
+{
+    self.userService = [[UserService alloc] init];
+    userService.delegate = self;
+    [userService checkDevice];
+}
+
+- (void)initSNSService
+{
+    self.snsService = [[PlaceSNSService alloc] init];
 }
 
 
@@ -135,20 +165,24 @@ void uncaughtExceptionHandler(NSException *exception) {
 	NSLog(@"Application starts, launch option = %@", [launchOptions description]);	
 	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);	
 	
-	[self initMobClick];
-    [self initLocalDataService];    
-    [self initLocationService];
-    [self initImageCacheManager];
-    
-    [locationService asyncGetLocation];
-    
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
     workingQueue = dispatch_queue_create("main working queue", NULL);    
+<<<<<<< HEAD
     
     //[self checkDevice];
     [self addMainView];
     
+=======
+
+    [self initSNSService];
+	[self initMobClick];
+    [self initImageCacheManager];    
+    [self initLocationService];
+    [self initUserService];
+    [self initLocalDataService];        
+        
+>>>>>>> origin/master
     [window makeKeyAndVisible];
 	
 	// Ask For Review
@@ -216,8 +250,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	[self initMobClick];
     [localDataService requestDataWhileEnterForeground];
-    
-    [CommonManager cleanUpDeleteData];
+  
+//   Bug, TO be fixed
+//   [CommonManager cleanUpDeleteData];
 }
 
 
@@ -253,82 +288,59 @@ void uncaughtExceptionHandler(NSException *exception) {
     return YES;
 }
 
-- (void)checkDevice {
-    User *user = [UserManager getUser];
-    if (nil != user){
-        if ([user.loginStatus boolValue]) {
+#pragma mark - User Service Delegate
+- (void)checkDeviceResult:(int)result
+{
+    switch (result) {
+        case USER_EXIST_LOCAL_STATUS_LOGIN:
+            [self addMainView];
+            break;
 
-            NSLog(@"<checkDevice> local user found, status LOGIN, detect user in background");
-            [self addMainView];
+        case USER_STATUS_UNKNOWN:
+        case USER_EXIST_LOCAL_STATUS_LOGOUT:
+        case USER_NOT_EXIST_LOCAL:
+        default:
+            [self addRegisterView];
+            break;
             
-            dispatch_async(workingQueue, ^{
-                DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
-                                                               appId:[AppManager getPlaceAppId]
-                                                            deviceId:[[UIDevice currentDevice] uniqueIdentifier]
-                                                      needReturnUser:YES];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (output.resultCode == ERROR_SUCCESS) {
-                        NSLog(@"<checkDevice> update user profile from remote return data");
-                        [UserManager setUserWithUserId:output.userId
-                                               loginId:output.loginId
-                                              nickName:output.nickName
-                                       sinaAccessToken:output.sinaAccessToken
-                                 sinaAccessTokenSecret:output.sinaAccessTokenSecret
-                                         qqAccessToken:output.qqAccessToken
-                                   qqAccessTokenSecret:output.qqAccessTokenSecret
-                                           loginStatus:[user.loginStatus boolValue]];
-                    }
-                    else{
-                        // TODO, need to handle different error code
-                    }
-                });
-            });
-        } else {
-            NSLog(@"<checkDevice> local user found, status LOGOUT, request user to login again");
-            [self addRegisterView];
-        }
-    } else {
-        NSLog(@"<checkDevice> local user not found, try to detect from server");
-        DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
-                                                       appId:[AppManager getPlaceAppId]
-                                                    deviceId:[[UIDevice currentDevice] uniqueIdentifier]
-                                              needReturnUser:YES];
-        if (output.resultCode == ERROR_SUCCESS) {
-            NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
-            [UserManager setUserWithUserId:output.userId
-                                   loginId:output.loginId
-                                  nickName:output.nickName
-                           sinaAccessToken:output.sinaAccessToken
-                     sinaAccessTokenSecret:output.sinaAccessTokenSecret
-                             qqAccessToken:output.qqAccessToken
-                       qqAccessTokenSecret:output.qqAccessTokenSecret
-                               loginStatus:YES];
-            [self addMainView];
-        } 
-        else if (output.resultCode == ERROR_NETWORK){
-            NSLog(@"<checkDevice> fail to get user from remote due to network faiure");            
-            [self addRegisterView];
-        }
-        else
-        {
-            // TODO, need to show different error based on error code
-            NSLog(@"<checkDevice> fail to get user from remote");
-            [self addRegisterView];
-        }
+    }
+}
+
+- (void)loginUserResult:(int)result
+{
+    switch (result) {
+        case LOGIN_RESULT_SUCCESS:
+            [self dismissRegisterView];
+            break;
+
+        case ERROR_NETWORK:
+            [UIUtils alert:NSLS(@"kSystemFailure")];
+            break;
+            
+        case LOGIN_RESULT_ID_NOT_MATCH:
+            [UIUtils alert:NSLS(@"kLoginIdNotMatch")];
+            break;
+            
+        case ERROR_LOGINID_EXIST:
+            [UIUtils alert:NSLS(@"kLoginIdExist")];
+            break;
+        
+        default:
+            [UIUtils alert:[NSString stringWithFormat:NSLS(@"kLoginGeneralError"), result]];
+            break;
     }
 }
 
 #pragma Register View Management
 
 - (void)addRegisterView {
-    registerController = [[RegisterController alloc] init];
+    self.registerController = [[RegisterController alloc] init];
     [window addSubview:registerController.view];
 }
 
 - (void)removeRegisterView {
     [registerController.view removeFromSuperview];
-    [registerController release];
-    registerController = nil;
+    self.registerController = nil;
 }
 
 - (void)addMainView {
@@ -339,6 +351,11 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)removeMainView {
     [tabBarController.view removeFromSuperview];
+}
+
+- (void)dismissRegisterView{
+    [self removeRegisterView];
+    [self addMainView];
 }
 
 
@@ -389,6 +406,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)dealloc {
 	
 	// release UI objects
+    [registerController release];
     [tabBarController release];
     [window release];
 	
@@ -396,6 +414,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[dataManager release];
     [localDataService release];
     [locationService release];
+    [snsService release];
 	
     [super dealloc];
 }
