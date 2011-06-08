@@ -281,6 +281,7 @@ enum
     }
     
     placeController.location = location;
+
     [self.navigationController pushViewController:placeController animated:YES];
 }
 
