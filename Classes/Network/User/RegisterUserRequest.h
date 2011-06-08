@@ -85,6 +85,22 @@
                    location:(NSString *)location
                      gender:(NSString *)gender
                    birthday:(NSString *)birthday
+                     domain:(NSString *)domain;
+
++ (RegisterUserOutput*)send:(NSString*)serverURL
+                    loginId:(NSString*)loginId
+                loginIdType:(int)loginIdType
+                deviceToken:(NSString*)deviceToken
+                   nickName:(NSString*)nickName
+                     avatar:(NSString *)avatar
+                accessToken:(NSString *)accessToken
+          accessTokenSecret:(NSString *)accessTokenSecret
+                      appId:(NSString*)appId
+                   province:(int)province
+                       city:(int)city
+                   location:(NSString *)location
+                     gender:(NSString *)gender
+                   birthday:(NSString *)birthday
                sinaNickName:(NSString *)sinaNickName
                  sinaDomain:(NSString *)sinaDomain
                  qqNickName:(NSString *)qqNickName

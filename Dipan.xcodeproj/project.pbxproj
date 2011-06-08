@@ -471,6 +471,7 @@
 		82B52DAF12548339003E64D0 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		82B52DFF1254838E003E64D0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Dipan-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dipan-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		CA037C40139F46ED0095AA2A /* SNSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSConstants.h; sourceTree = "<group>"; };
 		CA0A56BC137BAF1F003CD06C /* RegisterUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequest.h; sourceTree = "<group>"; };
 		CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequest.m; sourceTree = "<group>"; };
 		CA0BFA8C1381538600A9633F /* GetPlacePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlacePostRequest.h; sourceTree = "<group>"; };
@@ -1324,6 +1325,7 @@
 				CA9E093A139CB7CB000B6FEE /* CommonSNSRequest.m */,
 				CA9E093C139CB7E2000B6FEE /* SNSServiceHandler.h */,
 				CA9E093D139CB7E2000B6FEE /* SNSServiceHandler.m */,
+				CA037C40139F46ED0095AA2A /* SNSConstants.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";

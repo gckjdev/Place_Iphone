@@ -11,18 +11,29 @@
 #import "SINAWeiboRequest.h"
 #import "QQWeiboRequest.h"
 
+@class PPViewController;
+
+typedef void (^AuthorizationSuccessHandler)(NSDictionary*, PPViewController*);
+
 @interface PlaceSNSService : SNSServiceHandler {
     
     SINAWeiboRequest    *sinaRequest;
     QQWeiboRequest      *qqRequest;
-    
+    dispatch_queue_t    workingQueue;
+
 }
 
 @property (nonatomic, retain) SINAWeiboRequest    *sinaRequest;
 @property (nonatomic, retain) QQWeiboRequest      *qqRequest;
 
+- (BOOL)hasQQCacheData;
+- (BOOL)hasSinaCacheData;
 
-- (BOOL)sinaLoginForAuthorization;
-- (BOOL)qqLoginForAuthorization;
+- (void)sinaParseAuthorizationResponseURL:(NSString *)query viewController:(PPViewController*)viewController successHandler:(AuthorizationSuccessHandler)successHandler;
+- (void)qqParseAuthorizationResponseURL:(NSString *)query viewController:(PPViewController*)viewController successHandler:(AuthorizationSuccessHandler)successHandler;
+- (void)sinaInitiateLogin:(PPViewController*)viewController;
+- (void)qqInitiateLogin:(PPViewController*)viewController;
 
 @end
+
+

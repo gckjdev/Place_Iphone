@@ -12,6 +12,8 @@
 
 #import "RegisterUserRequest.h"
 #import "DeviceLoginRequest.h"
+#import "BindUserRequest.h"
+#import "SNSConstants.h"
 
 @implementation UserService
 
@@ -206,6 +208,119 @@
     
 }
 
+- (int)getSNSType:(NSDictionary*)userInfo
+{
+    NSString* networkName = [userInfo objectForKey:SNS_NETWORK];
+    if ([networkName isEqualToString:SNS_SINA_WEIBO]){
+        return LOGINID_SINA;
+    }
+    else if ([networkName isEqualToString:SNS_QQ_WEIBO]){
+        return LOGINID_QQ;
+    }
+    
+    return LOGINID_SINA;
+}
+
+- (void)bindUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController
+{
+    NSString* userId = user.userId;
+    NSString* appId = [AppManager getPlaceAppId];
+    NSString* deviceToken = @"";    
+    
+    NSString* loginId = [userInfo objectForKey:SNS_USER_ID];
+    int loginIdType = [self getSNSType:userInfo];
+    
+    [viewController showActivityWithText:NSLS(@"kRegisteringUser")];    
+    dispatch_async(workingQueue, ^{
+        
+        BindUserOutput* output = [BindUserRequest send:SERVER_URL 
+                                                userId:userId
+                                               loginId:loginId
+                                           loginIdType:loginIdType
+                                           deviceToken:deviceToken
+                                              nickName:[userInfo objectForKey:SNS_NICK_NAME]
+                                                avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
+                                           accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
+                                     accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
+                                                 appId:appId
+                                              province:[[userInfo objectForKey:SNS_PROVINCE] intValue]
+                                                  city:[[userInfo objectForKey:SNS_CITY] intValue]
+                                              location:[userInfo objectForKey:SNS_LOCATION]
+                                                gender:[userInfo objectForKey:SNS_GENDER]
+                                              birthday:[userInfo objectForKey:SNS_BIRTHDAY]                                      
+                                                domain:[userInfo objectForKey:SNS_DOMAIN]];        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){
+                // save user data locally
+                [UserManager setUserWithUserId:userId
+                                       loginId:loginId
+                                   loginIdType:loginIdType
+                                      nickName:[userInfo objectForKey:SNS_NICK_NAME]
+                                        avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
+                                   accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
+                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
+                                   loginStatus:YES];
+                [self updateUserCache];                 // MUST call this!!!
+            }
+            
+            [delegate loginUserResult:output.resultCode];
+        });
+    });
+
+}
+
+- (void)registerUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController
+{
+    NSString* appId = [AppManager getPlaceAppId];
+    NSString* deviceToken = @"";    
+    
+    NSString* loginId = [userInfo objectForKey:SNS_USER_ID];
+    int loginIdType = [self getSNSType:userInfo];
+    
+    [viewController showActivityWithText:NSLS(@"kRegisteringUser")];    
+    dispatch_async(workingQueue, ^{
+        RegisterUserOutput* output = [RegisterUserRequest send:SERVER_URL 
+                                                       loginId:loginId
+                                                   loginIdType:loginIdType
+                                                   deviceToken:deviceToken
+                                                      nickName:[userInfo objectForKey:SNS_NICK_NAME]
+                                                        avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
+                                                   accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
+                                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
+                                                         appId:appId
+                                                      province:[[userInfo objectForKey:SNS_PROVINCE] intValue]
+                                                          city:[[userInfo objectForKey:SNS_CITY] intValue]
+                                                      location:[userInfo objectForKey:SNS_LOCATION]
+                                                        gender:[userInfo objectForKey:SNS_GENDER]
+                                                      birthday:[userInfo objectForKey:SNS_BIRTHDAY]                                      
+                                                        domain:[userInfo objectForKey:SNS_DOMAIN]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){
+                // save user data locally
+                [UserManager setUserWithUserId:output.userId
+                                       loginId:loginId
+                                   loginIdType:loginIdType
+                                      nickName:[userInfo objectForKey:SNS_NICK_NAME]
+                                        avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
+                                   accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
+                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
+                                   loginStatus:YES];
+                [self updateUserCache];                 // MUST call this!!!
+            }
+            
+            [delegate loginUserResult:output.resultCode];
+        });
+    });
+    
+}
+
+
 - (void)loginUserWithLoginId:(NSString*)loginId viewController:(PPViewController*)viewController
 {
     int result = LOGIN_RESULT_UNKNOWN;
@@ -235,8 +350,27 @@
     }        
 }
 
-- (IBAction)loginSinaUser:(PPViewController*)viewController{
+- (void)loginUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController
+{
+    switch (userCurrentStatus) {
+        case USER_STATUS_UNKNOWN:
+        case USER_NOT_EXIST_LOCAL:
+            [self registerUserWithSNSUserInfo:userInfo viewController:viewController];
+            break;
+            
+        case USER_EXIST_LOCAL_STATUS_LOGIN:            
+            // it's strange here, we just treat this as login locally again
+            [self bindUserWithSNSUserInfo:userInfo viewController:viewController];
+            break;
+            
+        case USER_EXIST_LOCAL_STATUS_LOGOUT:
+            [self bindUserWithSNSUserInfo:userInfo viewController:viewController];            
+            break;
+            
+        default:
+            break;
+    }
+    
 }
-
 
 @end

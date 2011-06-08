@@ -25,8 +25,11 @@
 - (IBAction)backgroundTap:(id)sender;
 - (IBAction)clickRegister:(id)sender;
 - (IBAction)clickSinaLogin:(id)sender;
-- (void)requestSinaAccessToken:(NSString *)query;
 - (IBAction)clickQQLogin:(id)sender;
-- (void)requestQQAccessToken:(NSString *)query;
+
+- (void)sinaParseAuthorizationResponseURL:(NSString *)query;
+- (void)qqParseAuthorizationResponseURL:(NSString *)query;
 
 @end
+
+

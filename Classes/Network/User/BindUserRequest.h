@@ -90,5 +90,21 @@
                  qqNickName:(NSString *)qqNickName
                    qqDomain:(NSString *)qqDomain;
 
++ (BindUserOutput*)    send:(NSString*)serverURL
+                     userId:(NSString *)userId
+                    loginId:(NSString*)loginId
+                loginIdType:(int)loginIdType
+                deviceToken:(NSString*)deviceToken
+                   nickName:(NSString*)nickName
+                     avatar:(NSString *)avatar
+                accessToken:(NSString *)accessToken
+          accessTokenSecret:(NSString *)accessTokenSecret
+                      appId:(NSString*)appId
+                   province:(int)province
+                       city:(int)city
+                   location:(NSString *)location
+                     gender:(NSString *)gender
+                   birthday:(NSString *)birthday
+                     domain:(NSString *)domain;
 @end
 

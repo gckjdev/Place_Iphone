@@ -54,6 +54,8 @@ enum{
 
 - (void)checkDevice;
 - (void)loginUserWithLoginId:(NSString*)loginId viewController:(PPViewController*)viewController;
-
+- (void)loginUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController;
 
 @end
+
+extern UserService*       GlobalGetUserService();

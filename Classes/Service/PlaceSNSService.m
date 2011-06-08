@@ -7,6 +7,8 @@
 //
 
 #import "PlaceSNSService.h"
+#import "PPViewController.h"
+#import "UserService.h"
 
 #define SINA_APP_KEY                    @"1528146353"
 #define SINA_APP_SECRET                 @"4815b7938e960380395e6ac1fe645a5c"
@@ -25,6 +27,8 @@
 {
     self = [super init];
     
+    workingQueue = dispatch_queue_create("sns service queue", NULL);
+    
     self.sinaRequest = [[SINAWeiboRequest alloc] initWithAppKey:SINA_APP_KEY
                                                       appSecret:SINA_APP_SECRET
                                                     callbackURL:SINA_CALLBACK_URL
@@ -42,19 +46,100 @@
 
 - (void)dealloc
 {
+    
+    dispatch_release(workingQueue);
+    workingQueue = NULL;
+    
     [sinaRequest release];
     [qqRequest release];
     [super dealloc];
 }
 
-- (BOOL)sinaLoginForAuthorization
+#pragma mark - Cache Handling
+
+- (BOOL)hasQQCacheData
 {
-    return [self loginForAuthorization:sinaRequest];
+    return [qqRequest hasUserInfoCache];
 }
 
-- (BOOL)qqLoginForAuthorization
+- (BOOL)hasSinaCacheData
 {
-    return [self loginForAuthorization:qqRequest];
+    return [sinaRequest hasUserInfoCache];    
 }
+
+#pragma mark - Handle Authroization Response
+
+- (void)handleParseAuthorizationResponseURL:(CommonSNSRequest*)snsRequest 
+                                      query:(NSString*)query 
+                             viewController:(PPViewController*)viewController 
+                             successHandler:(AuthorizationSuccessHandler)successHandler
+{
+    [viewController showActivityWithText:NSLS(@"kCheckAuthorizationResponse")];
+    dispatch_async(workingQueue, ^{                
+        BOOL finalResult = YES;
+        // parse authorization response
+        int result = [self parseAuthorizationResponseURL:query snsRequest:snsRequest];
+        if (result != 0)
+            finalResult = NO;
+        
+        // get user info
+        NSDictionary* userInfo = [self getUserInfo:snsRequest];
+        if (userInfo != nil){            
+            
+            // success
+            finalResult = YES;
+            successHandler(userInfo, viewController);
+            
+        }
+        else{
+            finalResult = NO;
+        }                
+        
+        if (finalResult == NO){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [viewController hideActivity]; 
+                [UIUtils alert:NSLS(@"kAuthorizationFailure")];
+            });            
+        }                
+    });
+}
+
+- (void)sinaParseAuthorizationResponseURL:(NSString *)query viewController:(PPViewController*)viewController successHandler:(AuthorizationSuccessHandler)successHandler
+{
+    [self handleParseAuthorizationResponseURL:sinaRequest query:query viewController:viewController successHandler:successHandler];    
+}
+
+- (void)qqParseAuthorizationResponseURL:(NSString *)query viewController:(PPViewController*)viewController successHandler:(AuthorizationSuccessHandler)successHandler
+{
+    [self handleParseAuthorizationResponseURL:qqRequest query:query viewController:viewController successHandler:successHandler];    
+}
+
+#pragma mark - Initate Login Request
+
+- (void)snsInitiateLogin:(PPViewController*)viewController snsRequest:(CommonSNSRequest*)snsRequest
+{
+    [viewController showActivityWithText:NSLS(@"kInitiateAuthorization")];
+    dispatch_async(workingQueue, ^{        
+        BOOL result = [self loginForAuthorization:snsRequest];
+        dispatch_async(dispatch_get_main_queue(), ^{                
+            [viewController hideActivity];  
+            if (result == NO){
+                [UIUtils alert:NSLS(@"kFailInitAuthorization")];                
+            }
+        });        
+    });        
+}
+
+- (void)sinaInitiateLogin:(PPViewController*)viewController
+{
+    [self snsInitiateLogin:viewController snsRequest:sinaRequest];
+}
+
+- (void)qqInitiateLogin:(PPViewController*)viewController
+{
+    [self snsInitiateLogin:viewController snsRequest:qqRequest];
+}
+
+
 
 @end

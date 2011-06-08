@@ -273,9 +273,10 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSString *host = [url host];
     if ([host isEqualToString:@"sina"]) {
-        [registerController requestSinaAccessToken:[url query]];
+        
+        [registerController sinaParseAuthorizationResponseURL:[url query]];
     } else if ([host isEqualToString:@"qq"]) {
-        [registerController requestQQAccessToken:[url query]];
+        [registerController qqParseAuthorizationResponseURL:[url query]];
     }
     
     return YES;

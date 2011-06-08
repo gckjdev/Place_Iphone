@@ -228,6 +228,7 @@
     input.sinaDomain = sinaDomain;
     input.qqNickName = qqNickName;
     input.qqDomain = qqDomain;
+    input.userId = userId;
 	
     // for test, to be removed
     //input.deviceId = [NSString stringWithInt:time(0)];
@@ -243,5 +244,34 @@
 	
 	return output;	
 }
+
++ (BindUserOutput*)    send:(NSString*)serverURL
+                     userId:(NSString *)userId
+                    loginId:(NSString*)loginId
+                loginIdType:(int)loginIdType
+                deviceToken:(NSString*)deviceToken
+                   nickName:(NSString*)nickName
+                     avatar:(NSString *)avatar
+                accessToken:(NSString *)accessToken
+          accessTokenSecret:(NSString *)accessTokenSecret
+                      appId:(NSString*)appId
+                   province:(int)province
+                       city:(int)city
+                   location:(NSString *)location
+                     gender:(NSString *)gender
+                   birthday:(NSString *)birthday
+                     domain:(NSString *)domain
+{
+    if (loginIdType == LOGINID_SINA){
+        return [BindUserRequest send:serverURL userId:userId loginId:loginId loginIdType:loginIdType deviceToken:deviceToken nickName:nickName avatar:avatar accessToken:accessToken accessTokenSecret:accessTokenSecret appId:appId province:province city:city location:location gender:gender birthday:birthday sinaNickName:nickName sinaDomain:domain qqNickName:nil qqDomain:nil];
+    }
+    else if (loginIdType == LOGINID_QQ){
+        return [BindUserRequest send:serverURL userId:userId  loginId:loginId loginIdType:loginIdType deviceToken:deviceToken nickName:nickName avatar:avatar accessToken:accessToken accessTokenSecret:accessTokenSecret appId:appId province:province city:city location:location gender:gender birthday:birthday sinaNickName:nil sinaDomain:nil qqNickName:nickName qqDomain:domain];        
+    }
+    else{
+        return [BindUserRequest send:serverURL userId:userId loginId:loginId loginIdType:loginIdType deviceToken:deviceToken nickName:nickName avatar:avatar accessToken:accessToken accessTokenSecret:accessTokenSecret appId:appId province:province city:city location:location gender:gender birthday:birthday sinaNickName:nil sinaDomain:nil qqNickName:nil qqDomain:nil];                
+    }
+}
+
 
 @end
