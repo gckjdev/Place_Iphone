@@ -14,6 +14,7 @@
 
 @synthesize mapView;
 @synthesize location;
+@synthesize marker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,7 +53,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //[mapView setCenterCoordinate:location zoomLevel:15 animated:YES];
+    [mapView setCenterCoordinate:location zoomLevel:5 animated:YES];
 }
 
 - (void)viewDidUnload
@@ -73,7 +74,7 @@
 {
     NSArray *controllers = self.navigationController.viewControllers;
     CreatePlaceController *controller = [controllers objectAtIndex:([controllers count] - 2)];
-    controller.location = [mapView convertPoint:CGPointMake(160, 183) toCoordinateFromView:mapView]; 
+    controller.location = [mapView convertPoint:CGPointMake(17, 53) toCoordinateFromView:marker]; 
     [self.navigationController popViewControllerAnimated:YES];
 }
 

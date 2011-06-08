@@ -168,21 +168,16 @@ void uncaughtExceptionHandler(NSException *exception) {
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
     workingQueue = dispatch_queue_create("main working queue", NULL);    
-<<<<<<< HEAD
-    
-    //[self checkDevice];
-    [self addMainView];
-    
-=======
 
     [self initSNSService];
 	[self initMobClick];
     [self initImageCacheManager];    
     [self initLocationService];
-    [self initUserService];
+    //[self initUserService];
     [self initLocalDataService];        
-        
->>>>>>> origin/master
+    
+    [self addMainView];
+    
     [window makeKeyAndVisible];
 	
 	// Ask For Review
