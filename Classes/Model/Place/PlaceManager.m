@@ -32,7 +32,7 @@
     place.deleteFlag = [NSNumber numberWithBool:NO];
     place.deleteTimeStamp = [NSNumber numberWithInt:0];
     
-    NSLog(@"Create Place: %@", [place description]);
+    NSLog(@"Create Place: %@", [place name]);
     
     return [dataManager save];
 }

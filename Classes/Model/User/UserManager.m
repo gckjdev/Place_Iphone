@@ -23,68 +23,171 @@ UserManager* userManager;
 	return ( user != nil );
 }
 
-+ (BOOL)setUserWithUserId:(NSString *)userId
-                  loginId:(NSString *)loginId
-              loginIdType:(int)loginIdType
-                 nickName:(NSString *)nickName
-                   avatar:(NSString *)avatar
-              accessToken:(NSString *)accessToken
-        accessTokenSecret:(NSString *)accessTokenSecret
-              loginStatus:(BOOL)loginStatus
++ (void)setUserLoginId:(User*)user 
+               loginId:(NSString*)loginId 
+                  type:(int)loginIdType
+              nickName:(NSString *)nickName
+                avatar:(NSString *)avatar
+           accessToken:(NSString *)accessToken
+     accessTokenSecret:(NSString *)accessTokenSecret
+
+{
+//    user.loginId = loginId;
+//    user.loginIdType = [NSNumber numberWithInt:loginIdType];
+    
+    if (avatar != nil && [avatar length] > 0)
+        user.avatar = avatar;
+    
+    if (nickName != nil && [nickName length] > 0)
+        user.nickName = nickName;
+    
+    switch (loginIdType) {
+        case LOGINID_OWN:
+            user.userLoginId = loginId;
+            break;
+            
+        case LOGINID_SINA:
+        {
+            user.sinaLoginId = loginId;
+            user.sinaAccessToken = accessToken;
+            user.sinaAccessTokenSecret = accessTokenSecret;
+        }
+            break;
+
+        case LOGINID_QQ:
+        {
+            user.qqLoginId = loginId;
+            user.qqAccessToken = accessToken;
+            user.qqAccessTokenSecret = accessTokenSecret;
+        }
+            break;
+
+        case LOGINID_RENREN:
+        {
+            user.renrenLoginId = loginId;
+        }
+            break;
+
+        case LOGINID_FACEBOOK:
+        {
+            user.facebookLoginId = loginId;
+        }
+            break;
+
+        case LOGINID_TWITTER:
+        {
+            user.twitterLoginId = loginId;
+        }
+            break;
+
+        default:
+            break;
+    }
+}
+
++ (BOOL)createUserWithUserId:(NSString *)userId
+                 userLoginId:(NSString *)userLoginId
+                 sinaLoginId:(NSString *)sinaLoginId
+                   qqLoginId:(NSString *)qqLoginId
+               renrenLoginId:(NSString *)renrenLoginId
+              twitterLoginId:(NSString *)twitterLoginId
+             facebookLoginId:(NSString *)facebookLoginId
+                    nickName:(NSString *)nickName
+                      avatar:(NSString *)avatar
+             sinaAccessToken:(NSString *)sinaAccessToken
+       sinaAccessTokenSecret:(NSString *)sinaAccessTokenSecret                
+               qqAccessToken:(NSString *)qqAccessToken               
+         qqAccessTokenSecret:(NSString *)qqAccessTokenSecret
 {
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();
 	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
     if (nil == user) {
         user = [dataManager insert:@"User"];
     }
-    user.userId = userId;
-    user.loginIdType = [NSNumber numberWithInt:loginIdType];
-    user.queryId = DEFAULT_USER_QUERY_ID;
+
+    user.userLoginId = userLoginId;
+    user.sinaLoginId = sinaLoginId;
+    user.qqLoginId = qqLoginId;
+    user.renrenLoginId = renrenLoginId;
+    user.twitterLoginId = twitterLoginId;
+    user.facebookLoginId = facebookLoginId;
     user.nickName = nickName;
     user.avatar = avatar;
-    if (LOGINID_OWN == loginIdType) {
-        user.loginId = loginId;
-    } else if (LOGINID_SINA == loginIdType) {
-        user.sinaAccessToken = accessToken;
-        user.sinaAccessTokenSecret = accessTokenSecret;
-    } else if (LOGINID_QQ == loginIdType) {
-        user.qqAccessToken = accessToken;
-        user.qqAccessTokenSecret = accessTokenSecret;
-    }
-    user.loginStatus = [NSNumber numberWithBool:loginStatus];    
-    
-    NSLog(@"<setUser> user=%@", [user description]);
-    
-	return [dataManager save];
-}
-
-+ (BOOL)setUserWithUserId:(NSString *)userId
-                  loginId:(NSString *)loginId
-                 nickName:(NSString *)nickName
-                   avatar:(NSString *)avatar
-          sinaAccessToken:(NSString *)sinaAccessToken
-    sinaAccessTokenSecret:(NSString *)sinaAccessTokenSecret
-            qqAccessToken:(NSString *)qqAccessToken
-      qqAccessTokenSecret:(NSString *)qqAccessTokenSecret
-              loginStatus:(BOOL)loginStatus
-{
-    CoreDataManager* dataManager = GlobalGetCoreDataManager();
-	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
-    if (nil == user) {
-        user = [dataManager insert:@"User"];
-    }
-    user.queryId = DEFAULT_USER_QUERY_ID;
-    user.userId = userId;
-    user.loginId = loginId;
-    user.nickName = nickName;
     user.sinaAccessToken = sinaAccessToken;
     user.sinaAccessTokenSecret = sinaAccessTokenSecret;
     user.qqAccessToken = qqAccessToken;
     user.qqAccessTokenSecret = qqAccessTokenSecret;
-    user.loginStatus = [NSNumber numberWithBool:loginStatus];
-    user.avatar = avatar;
+
+    user.userId = userId;
+    user.queryId = DEFAULT_USER_QUERY_ID;
+    user.loginStatus = [NSNumber numberWithBool:YES];
     
-    NSLog(@"<setUser> user=%@", [user description]);
+    NSLog(@"<createUser> user=%@", [user description]);
+    
+    return [dataManager save];
+}
+
++ (BOOL)createUserWithUserId:(NSString *)userId
+                  loginId:(NSString *)loginId
+              loginIdType:(int)loginIdType
+                 nickName:(NSString *)nickName
+                   avatar:(NSString *)avatar
+              accessToken:(NSString *)accessToken
+        accessTokenSecret:(NSString *)accessTokenSecret
+{
+	CoreDataManager* dataManager = GlobalGetCoreDataManager();
+	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
+    if (nil == user) {
+        user = [dataManager insert:@"User"];
+    }
+    
+    [UserManager setUserLoginId:user 
+                        loginId:loginId 
+                           type:loginIdType     
+                       nickName:nickName
+                         avatar:avatar 
+                    accessToken:accessToken 
+              accessTokenSecret:accessTokenSecret];
+    
+    user.userId = userId;
+    user.queryId = DEFAULT_USER_QUERY_ID;
+    user.loginStatus = [NSNumber numberWithBool:YES];    
+    
+    NSLog(@"<createUser> user=%@", [user description]);
+    
+	return [dataManager save];
+}
+
++ (BOOL)bindUserWithUserId:(NSString *)userId
+                  loginId:(NSString *)loginId
+              loginIdType:(int)loginIdType
+                 nickName:(NSString *)nickName
+                   avatar:(NSString *)avatar
+              accessToken:(NSString *)accessToken
+        accessTokenSecret:(NSString *)accessTokenSecret
+
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();
+	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
+    if (nil == user) {
+        // no user?
+        NSLog(@"<bindUser> but userId(%@) record not found!", userId);
+        return NO;
+    }
+    
+//    user.queryId = DEFAULT_USER_QUERY_ID;
+//    user.userId = userId;
+    user.loginStatus = [NSNumber numberWithBool:YES];
+
+    [UserManager setUserLoginId:user 
+                        loginId:loginId 
+                           type:loginIdType     
+                       nickName:nickName
+                         avatar:avatar 
+                    accessToken:accessToken 
+              accessTokenSecret:accessTokenSecret];
+    
+    NSLog(@"<bindUser> user=%@", [user description]);
     
 	return [dataManager save];
 }
@@ -97,8 +200,9 @@ UserManager* userManager;
         u = [dataManager insert:@"User"];
     }
     u.userId = user.userId;
-    u.loginId = user.loginId;
-    u.loginIdType = user.loginIdType;
+    
+//    u.loginId = user.loginId;
+//    u.loginIdType = user.loginIdType;
     u.queryId = user.queryId;
     u.nickName = user.nickName;
     u.avatar = user.avatar;
@@ -142,6 +246,14 @@ UserManager* userManager;
 	CoreDataManager* dataManager = GlobalGetCoreDataManager();
 	User* user = (User*)[dataManager execute:@"getUser" forKey:@"queryId" value:DEFAULT_USER_QUERY_ID];
 	return user.userId;    
+}
+
++ (void)logoutUser:(User*)user
+{
+    NSLog(@"Logout User OK!");
+    user.loginStatus = [NSNumber numberWithBool:NO];
+	CoreDataManager* dataManager = GlobalGetCoreDataManager();
+    [dataManager save];    
 }
 
 @end

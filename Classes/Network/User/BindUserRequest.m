@@ -161,8 +161,8 @@
 		[obj resultFromJSON:textData];										
 		if (obj.resultCode == 0){			
             
-			// TODO
-			NSLog(@"BindUserRequest result=%d, data=%@", obj.resultCode, [data description]);						
+			// TODO            
+			NSLog(@"BindUserRequest result=%d, data=%@", obj.resultCode, textData);						
 			return YES;
 		}
 		else {

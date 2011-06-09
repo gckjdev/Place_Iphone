@@ -27,6 +27,11 @@
     NSString*           userAvatar;
 	NSString*           userId;
     NSString*           loginId;
+    NSString*           sinaId;
+    NSString*           qqId;
+    NSString*           renrenId;
+    NSString*           facebookId;
+    NSString*           twitterId;    
     NSString*           nickName;
     NSString*           sinaAccessToken;
     NSString*           sinaAccessTokenSecret;
@@ -36,6 +41,11 @@
 
 @property (nonatomic, retain) NSString	*userId;
 @property (nonatomic, retain) NSString	*loginId;
+@property (nonatomic, retain) NSString  *sinaId;
+@property (nonatomic, retain) NSString  *qqId;
+@property (nonatomic, retain) NSString  *renrenId;
+@property (nonatomic, retain) NSString  *facebookId;
+@property (nonatomic, retain) NSString  *twitterId;    
 @property (nonatomic, retain) NSString	*nickName;
 @property (nonatomic, retain) NSString  *userAvatar;
 @property (nonatomic, retain) NSString	*sinaAccessToken;

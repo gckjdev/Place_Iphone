@@ -67,6 +67,11 @@
     return (user != nil);
 }
 
+- (void)logoutUser
+{
+    [UserManager logoutUser:user];
+}
+
 - (void)checkDevice {
 
     int result;
@@ -80,30 +85,39 @@
                                                            appId:[AppManager getPlaceAppId]
                                                   needReturnUser:YES];
             
-            if (output.resultCode == ERROR_SUCCESS) {
-                NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
+            dispatch_async(dispatch_get_main_queue(), ^{    // all DB execution MUST be in MAIN thread
                 
-                // TODO combine two lines below into one method
-                [UserManager setUserWithUserId:output.userId
-                                       loginId:output.loginId
-                                      nickName:output.nickName
-                                        avatar:output.userAvatar
-                               sinaAccessToken:output.sinaAccessToken
-                         sinaAccessTokenSecret:output.sinaAccessTokenSecret
-                                 qqAccessToken:output.qqAccessToken
-                           qqAccessTokenSecret:output.qqAccessTokenSecret
-                                   loginStatus:YES];
-                [self updateUserCache];                
-            } 
-            else if (output.resultCode == ERROR_NETWORK){
-                NSLog(@"<checkDevice> fail to get user from remote due to network faiure");  
-                [UIUtils alert:NSLS(@"kSystemFailure")];
-            }
-            else
-            {
-                // TODO, need to show different error based on error code
-                NSLog(@"<checkDevice> fail to get user from remote, error=%d", output.resultCode);
-            }            
+                if (output.resultCode == ERROR_SUCCESS) {
+                    NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
+                    
+                    // TODO combine two lines below into one method
+                    [UserManager createUserWithUserId:output.userId
+                                          userLoginId:output.loginId
+                                          sinaLoginId:output.sinaId
+                                            qqLoginId:output.qqId
+                                        renrenLoginId:output.renrenId
+                                       twitterLoginId:output.twitterId
+                                      facebookLoginId:output.facebookId
+                                             nickName:output.nickName
+                                               avatar:output.userAvatar
+                                      sinaAccessToken:output.sinaAccessToken
+                                sinaAccessTokenSecret:output.sinaAccessTokenSecret
+                                        qqAccessToken:output.qqAccessToken
+                                  qqAccessTokenSecret:output.qqAccessTokenSecret];
+                    
+                    
+                    [self updateUserCache];                
+                } 
+                else if (output.resultCode == ERROR_NETWORK){
+                    NSLog(@"<checkDevice> fail to get user from remote due to network faiure");  
+                    [UIUtils alert:NSLS(@"kSystemFailure")];
+                }
+                else
+                {
+                    // TODO, need to show different error based on error code
+                    NSLog(@"<checkDevice> fail to get user from remote, error=%d", output.resultCode);
+                }            
+            });
         }
             break;
             
@@ -143,7 +157,7 @@
 
 - (BOOL)verifyLoginId:(NSString*)loginId
 {
-    return ([user.loginId compare:[loginId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]                                                               
+    return ([user.userLoginId compare:[loginId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]                                                               
                           options:NSCaseInsensitiveSearch] == NSOrderedSame);
         
 }
@@ -191,14 +205,13 @@
             [viewController hideActivity];
             if (output.resultCode == ERROR_SUCCESS){
                 // save user data locally
-                [UserManager setUserWithUserId:output.userId
+                [UserManager createUserWithUserId:output.userId
                                        loginId:loginId
                                    loginIdType:LOGINID_OWN
                                       nickName:nickName
                                         avatar:nil
                                    accessToken:nil
-                             accessTokenSecret:nil
-                                   loginStatus:YES];
+                             accessTokenSecret:nil];
                 [self updateUserCache];                 // MUST call this!!!
             }
 
@@ -218,6 +231,7 @@
         return LOGINID_QQ;
     }
     
+    NSLog(@"<getSNSType> cannot find SNS type for network name = %@", networkName);
     return LOGINID_SINA;
 }
 
@@ -230,6 +244,9 @@
     NSString* loginId = [userInfo objectForKey:SNS_USER_ID];
     int loginIdType = [self getSNSType:userInfo];
     
+    
+    NSString* nickName = (user.nickName == nil || [user.nickName length] == 0) ? [userInfo objectForKey:SNS_NICK_NAME] : user.nickName;
+    
     [viewController showActivityWithText:NSLS(@"kRegisteringUser")];    
     dispatch_async(workingQueue, ^{
         
@@ -238,7 +255,7 @@
                                                loginId:loginId
                                            loginIdType:loginIdType
                                            deviceToken:deviceToken
-                                              nickName:[userInfo objectForKey:SNS_NICK_NAME]
+                                              nickName:nickName
                                                 avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
                                            accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
                                      accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
@@ -255,14 +272,13 @@
             [viewController hideActivity];
             if (output.resultCode == ERROR_SUCCESS){
                 // save user data locally
-                [UserManager setUserWithUserId:userId
+                [UserManager bindUserWithUserId:userId
                                        loginId:loginId
                                    loginIdType:loginIdType
-                                      nickName:[userInfo objectForKey:SNS_NICK_NAME]
+                                      nickName:nickName
                                         avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
                                    accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
-                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
-                                   loginStatus:YES];
+                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]];
                 [self updateUserCache];                 // MUST call this!!!
             }
             
@@ -271,6 +287,58 @@
     });
 
 }
+
+- (void)bindUserWithLoginId:(NSString*)loginId viewController:(PPViewController*)viewController
+{
+    NSString* userId = user.userId;
+    NSString* appId = [AppManager getPlaceAppId];
+    NSString* deviceToken = @"";      
+    
+    NSString* nickName = (user.nickName == nil || [user.nickName length] == 0) ? loginId : user.nickName;
+    
+    int loginIdType = LOGINID_OWN;
+    
+    [viewController showActivityWithText:NSLS(@"kRegisteringUser")];    
+    dispatch_async(workingQueue, ^{
+        
+        BindUserOutput* output = [BindUserRequest send:SERVER_URL 
+                                                userId:userId
+                                               loginId:loginId
+                                           loginIdType:loginIdType
+                                           deviceToken:nil
+                                              nickName:nickName
+                                                avatar:nil
+                                           accessToken:nil
+                                     accessTokenSecret:nil
+                                                 appId:appId
+                                              province:PROVINCE_UNKNOWN
+                                                  city:CITY_UNKNOWN
+                                              location:nil
+                                                gender:nil
+                                              birthday:nil
+                                                domain:nil];        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [viewController hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){
+                // save user data locally
+                [UserManager bindUserWithUserId:userId
+                                        loginId:loginId
+                                    loginIdType:loginIdType
+                                       nickName:nickName
+                                         avatar:nil
+                                    accessToken:nil
+                              accessTokenSecret:nil];
+                [self updateUserCache];                 // MUST call this!!!
+            }
+            
+            [delegate loginUserResult:output.resultCode];
+        });
+    });
+    
+}
+
 
 - (void)registerUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController
 {
@@ -303,14 +371,13 @@
             [viewController hideActivity];
             if (output.resultCode == ERROR_SUCCESS){
                 // save user data locally
-                [UserManager setUserWithUserId:output.userId
+                [UserManager createUserWithUserId:output.userId
                                        loginId:loginId
                                    loginIdType:loginIdType
                                       nickName:[userInfo objectForKey:SNS_NICK_NAME]
                                         avatar:[userInfo objectForKey:SNS_USER_IMAGE_URL]
                                    accessToken:[userInfo objectForKey:SNS_OAUTH_TOKEN]
-                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]
-                                   loginStatus:YES];
+                             accessTokenSecret:[userInfo objectForKey:SNS_OAUTH_TOKEN_SECRET]];
                 [self updateUserCache];                 // MUST call this!!!
             }
             
@@ -333,12 +400,24 @@
 
         case USER_EXIST_LOCAL_STATUS_LOGIN:            
             // it's strange here, we just treat this as login locally again
-            result = [self setLocalStatusLogin:loginId];
+            if (user.userLoginId != nil){
+                result = [self setLocalStatusLogin:loginId];
+            }
+            else{
+                // send bind user request
+                [self bindUserWithLoginId:loginId viewController:viewController];
+            }
             break;
             
         case USER_EXIST_LOCAL_STATUS_LOGOUT:
             // compare local info and change local status
-            result = [self setLocalStatusLogin:loginId];
+            if (user.userLoginId != nil){
+                result = [self setLocalStatusLogin:loginId];
+            }
+            else{
+                // send bind user request
+                [self bindUserWithLoginId:loginId viewController:viewController];
+            }
             break;
             
         default:

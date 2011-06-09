@@ -12,8 +12,8 @@
 @implementation User 
 
 @dynamic userId;
-@dynamic loginId;
-@dynamic loginIdType;
+//@dynamic loginId;
+//@dynamic loginIdType;
 @dynamic queryId;
 @dynamic nickName;
 @dynamic avatar;
@@ -22,6 +22,13 @@
 @dynamic qqAccessToken;
 @dynamic qqAccessTokenSecret;
 @dynamic loginStatus;
+@dynamic userLoginId;
+@dynamic sinaLoginId;
+@dynamic qqLoginId;
+@dynamic renrenLoginId;
+@dynamic facebookLoginId;
+@dynamic twitterLoginId;
+
 
 - (BOOL)isLogin
 {

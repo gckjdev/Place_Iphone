@@ -14,6 +14,10 @@
 #define LOGINID_OWN                 1
 #define LOGINID_SINA                2
 #define LOGINID_QQ                  3
+#define LOGINID_RENREN              4
+#define LOGINID_FACEBOOK            5
+#define LOGINID_TWITTER             6
+
     
 #define DEFAULT_PLACE_RADIUS        500
 

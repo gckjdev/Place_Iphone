@@ -173,7 +173,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[self initMobClick];
     [self initImageCacheManager];    
     [self initLocationService];
-    //[self initUserService];
+    [self initUserService];
     [self initLocalDataService];        
     
     [self addMainView];

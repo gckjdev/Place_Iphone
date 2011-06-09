@@ -51,10 +51,21 @@
 @synthesize qqAccessToken;
 @synthesize qqAccessTokenSecret;
 @synthesize userAvatar;
+@synthesize sinaId;
+@synthesize qqId;
+@synthesize renrenId;
+@synthesize facebookId;
+@synthesize twitterId; 
 
 - (void)dealloc
 {
 	[userId release];
+    [loginId release];
+    [sinaId release];
+    [qqId release];
+    [renrenId release];
+    [facebookId release];
+    [twitterId release];
     [nickName release];
     [sinaAccessToken release];
     [sinaAccessTokenSecret release];
@@ -115,6 +126,11 @@
             NSDictionary* data = [obj dictionaryDataFromJSON:textData];
 			obj.userId = [data objectForKey:PARA_USERID];
             obj.loginId = [data objectForKey:PARA_LOGINID];
+            obj.sinaId = [data objectForKey:PARA_SINAID];
+            obj.qqId = [data objectForKey:PARA_QQID];
+            obj.facebookId = [data objectForKey:PARA_FACEBOOKID];
+            obj.twitterId = [data objectForKey:PARA_TWITTERID];
+            obj.renrenId = [data objectForKey:PARA_RENRENID];
             obj.nickName = [data objectForKey:PARA_NICKNAME];
             obj.sinaAccessToken = [data objectForKey:PARA_SINA_ACCESS_TOKEN];
             obj.sinaAccessTokenSecret = [data objectForKey:PARA_SINA_ACCESS_TOKEN_SECRET];

@@ -33,6 +33,7 @@ enum{
 - (void)checkDeviceResult:(int)result;
 - (void)loginUserResult:(int)result;
 
+
 @end
 
 
@@ -55,6 +56,7 @@ enum{
 - (void)checkDevice;
 - (void)loginUserWithLoginId:(NSString*)loginId viewController:(PPViewController*)viewController;
 - (void)loginUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController;
+- (void)logoutUser;
 
 @end
 

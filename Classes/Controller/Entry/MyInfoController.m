@@ -10,7 +10,7 @@
 #import "UserManager.h"
 #import "DipanAppDelegate.h"
 #import "User.h"
-
+#import "UserService.h"
 
 @implementation MyInfoController
 
@@ -34,8 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     User *user = [UserManager getUser];
-    loginIdLabel.text = user.loginId;
-    loginIdTypeLabel.text = [NSString stringWithFormat:@"%d",  [user.loginIdType intValue]];
+    loginIdLabel.text = user.userLoginId;
+//    loginIdTypeLabel.text = [NSString stringWithFormat:@"%d",  [user.loginIdType intValue]];
     nicknameLabel.text = user.nickName;
 }
 
@@ -66,9 +66,11 @@
 }
 
 - (IBAction)clickLogout:(id)sender {
-    User *user = [UserManager getUser];
-    user.loginStatus = [NSNumber numberWithBool:NO];
-    [UserManager setUser:user];
+
+    
+    UserService* userService = GlobalGetUserService();
+    [userService logoutUser];
+    
     DipanAppDelegate *delegate = (DipanAppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate removeMainView];
     [delegate addRegisterView];

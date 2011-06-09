@@ -30,6 +30,12 @@
 #define PARA_USERTYPE @"uty"
 #define PARA_PASSWORD @"pwd"
 
+#define PARA_SINAID @"sid"
+#define PARA_QQID @"qid"
+#define PARA_FACEBOOKID @"fid"
+#define PARA_RENRENID @"rid"
+#define PARA_TWITTERID @"tid"
+
 #define PARA_DEVICEID @"did"
 #define PARA_DEVICETYPE @"dty"
 #define PARA_DEVICEMODEL @"dm"

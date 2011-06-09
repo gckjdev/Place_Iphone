@@ -88,7 +88,9 @@
             
             // success
             finalResult = YES;
-            successHandler(userInfo, viewController);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                successHandler(userInfo, viewController);
+            });            
             
         }
         else{
