@@ -15,6 +15,8 @@
 #import "BindUserRequest.h"
 #import "SNSConstants.h"
 
+#define USER_UPDATE_FLAG        @"USER_UPDATE_FLAG"
+
 @implementation UserService
 
 @synthesize user;
@@ -72,9 +74,99 @@
     [UserManager logoutUser:user];
 }
 
+#pragma mark - Update User Related Methods
+
+- (void)setUserUpdateFlag
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:YES] forKey:USER_UPDATE_FLAG];
+}
+
+- (void)clearUserUpdateFlag
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:NO] forKey:USER_UPDATE_FLAG];
+}
+
+- (BOOL)hasUserUpdate
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [[userDefaults objectForKey:USER_UPDATE_FLAG] boolValue];
+}
+
+- (void)updateUserNickName:(NSString*)value
+{
+    if ([user.nickName isEqualToString:value])
+        return;
+
+    user.nickName = value;
+    [self setUserUpdateFlag];
+}
+
+- (void)updateUserMobile:(NSString*)value
+{
+    if ([user.mobile isEqualToString:value])
+        return;
+    
+    user.mobile = value;
+    [self setUserUpdateFlag];
+}
+
+- (void)updateUser
+{
+    // update user mobile, nickname, email, password only
+    
+    NSLog(@"<updateUser> mobile=%@, nickname=%@, email=%@, password=%@",
+          [user mobile], [user nickName], [user email], [user password]);
+    
+    // TODO send request to sever
+    
+    [self clearUserUpdateFlag];
+}
+
+- (void)updateUserData
+{
+    if ([self hasUserUpdate]){
+        [self updateUser];        
+    }
+}
+
+- (NSString*)getLoginIdForDisplay
+{
+    if ([user.userLoginId length] > 0)
+        return user.userLoginId;
+    else if ([user.sinaLoginId length] > 0)
+        return [NSString stringWithFormat:@"%@ - 新浪微博", user.sinaLoginId];
+    else if ([user.qqLoginId length] > 0)
+        return [NSString stringWithFormat:@"%@ - 腾讯微博", user.qqLoginId];
+    else if ([user.renrenLoginId length] > 0)
+        return [NSString stringWithFormat:@"%@ - 人人网", user.renrenLoginId];
+    else if ([user.facebookLoginId length] > 0)
+        return [NSString stringWithFormat:@"%@ - Facebook", user.facebookLoginId];
+    else if ([user.twitterLoginId length] > 0)
+        return [NSString stringWithFormat:@"%@ - Twitter", user.twitterLoginId];
+    else
+        return @"";
+}
+
+- (BOOL)hasUserBindSina
+{
+    return ([user.sinaLoginId length] > 0);
+}
+
+- (BOOL)hasUserBindQQ
+{
+    return ([user.qqLoginId length] > 0);    
+}
+
+- (BOOL)hasUserBindRenren
+{
+    return ([user.renrenLoginId length] > 0);    
+}
+
 - (void)checkDevice {
 
-    int result;
+    BOOL result = YES;
     NSLog(@"<checkDevice> user current status is %d", userCurrentStatus);
     
     switch (userCurrentStatus) {
@@ -83,41 +175,38 @@
         {
             DeviceLoginOutput* output = [DeviceLoginRequest send:SERVER_URL
                                                            appId:[AppManager getPlaceAppId]
-                                                  needReturnUser:YES];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{    // all DB execution MUST be in MAIN thread
+                                                  needReturnUser:YES];            
                 
-                if (output.resultCode == ERROR_SUCCESS) {
-                    NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
-                    
-                    // TODO combine two lines below into one method
-                    [UserManager createUserWithUserId:output.userId
-                                          userLoginId:output.loginId
-                                          sinaLoginId:output.sinaId
-                                            qqLoginId:output.qqId
-                                        renrenLoginId:output.renrenId
-                                       twitterLoginId:output.twitterId
-                                      facebookLoginId:output.facebookId
-                                             nickName:output.nickName
-                                               avatar:output.userAvatar
-                                      sinaAccessToken:output.sinaAccessToken
-                                sinaAccessTokenSecret:output.sinaAccessTokenSecret
-                                        qqAccessToken:output.qqAccessToken
-                                  qqAccessTokenSecret:output.qqAccessTokenSecret];
-                    
-                    
-                    [self updateUserCache];                
-                } 
-                else if (output.resultCode == ERROR_NETWORK){
-                    NSLog(@"<checkDevice> fail to get user from remote due to network faiure");  
-                    [UIUtils alert:NSLS(@"kSystemFailure")];
-                }
-                else
-                {
-                    // TODO, need to show different error based on error code
-                    NSLog(@"<checkDevice> fail to get user from remote, error=%d", output.resultCode);
-                }            
-            });
+            if (output.resultCode == ERROR_SUCCESS) {
+                NSLog(@"<checkDevice> get user from remote successfully, userId=%@, loginId=%@", output.userId, output.loginId);
+                
+                // TODO combine two lines below into one method
+                [UserManager createUserWithUserId:output.userId
+                                      userLoginId:output.loginId
+                                      sinaLoginId:output.sinaId
+                                        qqLoginId:output.qqId
+                                    renrenLoginId:output.renrenId
+                                   twitterLoginId:output.twitterId
+                                  facebookLoginId:output.facebookId
+                                         nickName:output.nickName
+                                           avatar:output.userAvatar
+                                  sinaAccessToken:output.sinaAccessToken
+                            sinaAccessTokenSecret:output.sinaAccessTokenSecret
+                                    qqAccessToken:output.qqAccessToken
+                              qqAccessTokenSecret:output.qqAccessTokenSecret];
+                
+                
+                [self updateUserCache];                
+            } 
+            else if (output.resultCode == ERROR_NETWORK){
+                NSLog(@"<checkDevice> fail to get user from remote due to network faiure");                                          
+                [UIUtils alert:NSLS(@"kSystemFailure")];                                    
+            }
+            else
+            {
+                // TODO, need to show different error based on error code
+                NSLog(@"<checkDevice> fail to get user from remote, error=%d", output.resultCode);
+            }            
         }
             break;
             
@@ -305,7 +394,7 @@
                                                 userId:userId
                                                loginId:loginId
                                            loginIdType:loginIdType
-                                           deviceToken:nil
+                                           deviceToken:deviceToken
                                               nickName:nickName
                                                 avatar:nil
                                            accessToken:nil

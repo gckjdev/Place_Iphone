@@ -43,7 +43,7 @@ enum{
     User                    *user;              // save and cache current user
     id<UserServiceDelegate> delegate;           
     dispatch_queue_t        workingQueue;
-    int                     userCurrentStatus;
+    int                     userCurrentStatus;    
 }
 
 @property (nonatomic, retain) User        *user;
@@ -57,6 +57,14 @@ enum{
 - (void)loginUserWithLoginId:(NSString*)loginId viewController:(PPViewController*)viewController;
 - (void)loginUserWithSNSUserInfo:(NSDictionary*)userInfo viewController:(PPViewController*)viewController;
 - (void)logoutUser;
+
+- (NSString*)getLoginIdForDisplay;
+- (BOOL)hasUserBindSina;
+- (BOOL)hasUserBindQQ;
+- (BOOL)hasUserBindRenren;
+
+- (void)updateUserNickName:(NSString*)value;
+- (void)updateUserMobile:(NSString*)value;
 
 @end
 

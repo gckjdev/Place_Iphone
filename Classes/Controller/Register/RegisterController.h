@@ -27,9 +27,6 @@
 - (IBAction)clickSinaLogin:(id)sender;
 - (IBAction)clickQQLogin:(id)sender;
 
-- (void)sinaParseAuthorizationResponseURL:(NSString *)query;
-- (void)qqParseAuthorizationResponseURL:(NSString *)query;
-
 @end
 
 

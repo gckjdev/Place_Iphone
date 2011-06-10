@@ -274,11 +274,10 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSString *host = [url host];
-    if ([host isEqualToString:@"sina"]) {
-        
-        [registerController sinaParseAuthorizationResponseURL:[url query]];
+    if ([host isEqualToString:@"sina"]) {        
+        [snsService sinaParseAuthorizationResponseURL:[url query]];
     } else if ([host isEqualToString:@"qq"]) {
-        [registerController qqParseAuthorizationResponseURL:[url query]];
+        [snsService qqParseAuthorizationResponseURL:[url query]];
     }
     
     return YES;
@@ -289,7 +288,10 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
     switch (result) {
         case USER_EXIST_LOCAL_STATUS_LOGIN:
+        {
+            [self removeRegisterView];
             [self addMainView];
+        }
             break;
 
         case USER_STATUS_UNKNOWN:
@@ -342,6 +344,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)addMainView {
     // Init tab bar and window
 	[self initTabViewControllers];
+    [tabBarController.view removeFromSuperview];
 	[window addSubview:tabBarController.view];
 }
 

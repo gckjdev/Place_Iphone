@@ -142,20 +142,6 @@
     [snsService qqInitiateLogin:self];
 }
 
-AuthorizationSuccessHandler snsAuthorizeSuccess = ^(NSDictionary* userInfo, PPViewController* viewController){
-    UserService* userService = GlobalGetUserService();
-    [userService loginUserWithSNSUserInfo:userInfo viewController:viewController];            
 
-};
-
-- (void)sinaParseAuthorizationResponseURL:(NSString *)query {
-    PlaceSNSService* snsService = GlobalGetSNSService();
-    [snsService sinaParseAuthorizationResponseURL:query viewController:self successHandler:snsAuthorizeSuccess];
-}
-
-- (void)qqParseAuthorizationResponseURL:(NSString *)query {
-    PlaceSNSService* snsService = GlobalGetSNSService();
-    [snsService qqParseAuthorizationResponseURL:query viewController:self successHandler:snsAuthorizeSuccess];    
-}
 
 @end

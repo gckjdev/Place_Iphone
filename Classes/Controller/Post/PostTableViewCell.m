@@ -15,8 +15,8 @@
 #import "DipanAppDelegate.h"
 #import "TimeUtils.h"
 #import "UIImageUtil.h"
+#import "ContollerConstants.h"
 
-#define DEFAULT_AVATAR @"touxiang.png"
 
 @implementation PostTableViewCell
 @synthesize userAvatarImage;

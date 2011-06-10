@@ -31,6 +31,10 @@
 @property (nonatomic, retain) NSString *facebookLoginId;
 @property (nonatomic, retain) NSString *twitterLoginId;
 
+@property (nonatomic, retain) NSString *mobile;
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *password;
+
 
 - (BOOL)isLogin;
 

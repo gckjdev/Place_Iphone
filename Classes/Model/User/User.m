@@ -28,6 +28,9 @@
 @dynamic renrenLoginId;
 @dynamic facebookLoginId;
 @dynamic twitterLoginId;
+@dynamic mobile;
+@dynamic email;
+@dynamic password;
 
 
 - (BOOL)isLogin

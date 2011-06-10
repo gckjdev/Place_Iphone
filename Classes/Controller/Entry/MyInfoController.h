@@ -7,19 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPTableViewController.h"
+#import "HJManagedImageV.h"
 
-
-@interface MyInfoController : UIViewController {
+@interface MyInfoController : PPTableViewController {
     IBOutlet UILabel         *loginIdLabel;
     IBOutlet UILabel         *loginIdTypeLabel;
     IBOutlet UIImageView     *avatarView;
     IBOutlet UILabel         *nicknameLabel;
+    HJManagedImageV *avatarImageView;
+    UIButton *logoutButton;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel         *loginIdLabel;
 @property (nonatomic, retain) IBOutlet UILabel         *loginIdTypeLabel;
 @property (nonatomic, retain) IBOutlet UIImageView     *avatarView;
 @property (nonatomic, retain) IBOutlet UILabel         *nicknameLabel;
+@property (nonatomic, retain) IBOutlet HJManagedImageV *avatarImageView;
+@property (nonatomic, retain) IBOutlet UIButton *logoutButton;
+
 - (IBAction)clickLogout:(id)sender;
 
 @end

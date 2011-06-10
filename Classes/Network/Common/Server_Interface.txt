@@ -404,6 +404,39 @@ Out
 
     None
 
+18）METHOD_GETAPPS
 
+// 获取平台其他应用接口
 
+In
+
+Mandatory
+
+    PARA_APPID
+    PARA_LANGUAGE
+
+Out
+
+App Array
+
+    PARA_APPID
+    PARA_NAME
+    PARA_DESC
+
+19）METHOD_GETUPDATES
+
+In
+
+Mandatory
+
+    PARA_APPID
+    PARA_USERID
+    PARA_LANGUAGE
+
+Out
+
+    PARA_VERSION
+    PARA_APPID
+    PARA_DESC
+    PARA_NAME
 

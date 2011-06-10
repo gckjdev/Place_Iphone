@@ -849,6 +849,7 @@
 		CAAFFFE6137FE03000E56503 /* SelectItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectItemViewController.xib; sourceTree = "<group>"; };
 		CAB2F048125F49E400593157 /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CAB2F059125F4CA600593157 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CABC814813A1F5F8001CE1B8 /* ContollerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContollerConstants.h; sourceTree = "<group>"; };
 		CACDAD5A13912EFB00AE48F4 /* ResultUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultUtils.h; sourceTree = "<group>"; };
 		CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultUtils.m; sourceTree = "<group>"; };
 		CAD19B0B137A6A3500A8817B /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
@@ -1149,6 +1150,7 @@
 		8239C3FC125318180007CBBB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CABC814713A1F5E6001CE1B8 /* Common */,
 				CAD19B0A137A6A3500A8817B /* Entry */,
 				CAD19B1A137A6A3500A8817B /* Register */,
 				CAD19B09137A69D700A8817B /* Message */,
@@ -1847,6 +1849,14 @@
 				CAA6AB1113987F52009F26E3 /* touxiang.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		CABC814713A1F5E6001CE1B8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CABC814813A1F5F8001CE1B8 /* ContollerConstants.h */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		CAD19B08137A69B600A8817B /* Place */ = {

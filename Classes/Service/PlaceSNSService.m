@@ -120,6 +120,8 @@
 
 - (void)snsInitiateLogin:(PPViewController*)viewController snsRequest:(CommonSNSRequest*)snsRequest
 {
+    displayViewController = viewController; // save the view controller to parse reponse URL
+    
     [viewController showActivityWithText:NSLS(@"kInitiateAuthorization")];
     dispatch_async(workingQueue, ^{        
         BOOL result = [self loginForAuthorization:snsRequest];
@@ -142,6 +144,20 @@
     [self snsInitiateLogin:viewController snsRequest:qqRequest];
 }
 
+AuthorizationSuccessHandler snsAuthorizeSuccess = ^(NSDictionary* userInfo, PPViewController* viewController){
+    UserService* userService = GlobalGetUserService();
+    [userService loginUserWithSNSUserInfo:userInfo viewController:viewController];            
+    
+};
 
+- (void)sinaParseAuthorizationResponseURL:(NSString *)query
+{
+    [self sinaParseAuthorizationResponseURL:query viewController:displayViewController successHandler:snsAuthorizeSuccess];
+}
+
+- (void)qqParseAuthorizationResponseURL:(NSString *)query
+{
+    [self qqParseAuthorizationResponseURL:query viewController:displayViewController successHandler:snsAuthorizeSuccess];    
+}
 
 @end

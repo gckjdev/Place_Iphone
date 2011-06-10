@@ -21,6 +21,7 @@ typedef void (^AuthorizationSuccessHandler)(NSDictionary*, PPViewController*);
     QQWeiboRequest      *qqRequest;
     dispatch_queue_t    workingQueue;
 
+    PPViewController    *displayViewController;
 }
 
 @property (nonatomic, retain) SINAWeiboRequest    *sinaRequest;
@@ -29,10 +30,12 @@ typedef void (^AuthorizationSuccessHandler)(NSDictionary*, PPViewController*);
 - (BOOL)hasQQCacheData;
 - (BOOL)hasSinaCacheData;
 
-- (void)sinaParseAuthorizationResponseURL:(NSString *)query viewController:(PPViewController*)viewController successHandler:(AuthorizationSuccessHandler)successHandler;
-- (void)qqParseAuthorizationResponseURL:(NSString *)query viewController:(PPViewController*)viewController successHandler:(AuthorizationSuccessHandler)successHandler;
 - (void)sinaInitiateLogin:(PPViewController*)viewController;
 - (void)qqInitiateLogin:(PPViewController*)viewController;
+
+- (void)sinaParseAuthorizationResponseURL:(NSString *)query;
+- (void)qqParseAuthorizationResponseURL:(NSString *)query;
+
 
 @end
 
