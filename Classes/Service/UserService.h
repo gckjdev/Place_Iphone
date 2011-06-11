@@ -66,6 +66,7 @@ typedef void (^SaveUserSuccessHandler)(PPViewController*);
 - (BOOL)hasUserBindSina;
 - (BOOL)hasUserBindQQ;
 - (BOOL)hasUserBindRenren;
+- (BOOL)hasBindSNS;
 
 - (NSURL*)getUserAvatarURL;
 

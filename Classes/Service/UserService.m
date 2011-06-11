@@ -253,6 +253,11 @@
         return @"";
 }
 
+- (BOOL)hasBindSNS
+{
+    return [self hasUserBindQQ] || [self hasUserBindRenren] || [self hasUserBindSina];
+}
+
 - (BOOL)hasUserBindSina
 {
     return ([user.sinaLoginId length] > 0);
