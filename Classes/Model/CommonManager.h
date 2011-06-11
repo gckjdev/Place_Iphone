@@ -14,5 +14,6 @@
 }
 
 + (void)cleanUpDeleteData;
++ (void)save;
 
 @end

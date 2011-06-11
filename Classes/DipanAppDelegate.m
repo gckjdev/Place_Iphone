@@ -151,7 +151,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
     self.userService = [[UserService alloc] init];
     userService.delegate = self;
-    [userService checkDevice];
 }
 
 - (void)initSNSService
@@ -159,6 +158,10 @@ void uncaughtExceptionHandler(NSException *exception) {
     self.snsService = [[PlaceSNSService alloc] init];
 }
 
+- (void)showViewByUserStatus
+{
+    [userService checkDevice];    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     	
@@ -175,17 +178,14 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self initLocationService];
     [self initUserService];
     [self initLocalDataService];        
-    
-    [self addMainView];
+
+    [self showViewByUserStatus];
     
     [window makeKeyAndVisible];
 	
 	// Ask For Review
 	[ReviewRequest startReviewRequest:kAppId appName:GlobalGetAppName() isTest:NO];
 
-	// Test
-	// [RegisterUserRequest test];
-	
     return YES;
 }
 

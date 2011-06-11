@@ -10,7 +10,7 @@
 #import "PPTableViewController.h"
 #import "HJManagedImageV.h"
 
-@interface MyInfoController : PPTableViewController {
+@interface MyInfoController : PPTableViewController <UIActionSheetDelegate> {
     IBOutlet UILabel         *loginIdLabel;
     IBOutlet UILabel         *loginIdTypeLabel;
     IBOutlet UIImageView     *avatarView;
@@ -27,5 +27,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *logoutButton;
 
 - (IBAction)clickLogout:(id)sender;
+- (IBAction)clickAvatar:(id)sender;
 
 @end

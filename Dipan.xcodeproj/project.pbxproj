@@ -85,6 +85,7 @@
 		CA7F9CD7137D5B530033FE12 /* PlaceLocationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */; };
 		CA7F9CDA137D62000033FE12 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD9137D62000033FE12 /* Place.m */; };
 		CA7F9CDD137D62340033FE12 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CDC137D62340033FE12 /* PlaceManager.m */; };
+		CA86099C13A33DB200B00874 /* UpdateUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA86099B13A33DB100B00874 /* UpdateUserRequest.m */; };
 		CA933E9D137FE66C001E0D1E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA933E9C137FE66C001E0D1E /* CFNetwork.framework */; };
 		CA967316137E4DF00038CC44 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967314137E4DEF0038CC44 /* PostListController.m */; };
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
@@ -562,6 +563,8 @@
 		CA7F9CD9137D62000033FE12 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		CA7F9CDB137D62340033FE12 /* PlaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceManager.h; sourceTree = "<group>"; };
 		CA7F9CDC137D62340033FE12 /* PlaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceManager.m; sourceTree = "<group>"; };
+		CA86099A13A33DB100B00874 /* UpdateUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserRequest.h; sourceTree = "<group>"; };
+		CA86099B13A33DB100B00874 /* UpdateUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserRequest.m; sourceTree = "<group>"; };
 		CA933E9C137FE66C001E0D1E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CA967313137E4DEF0038CC44 /* PostListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostListController.h; sourceTree = "<group>"; };
 		CA967314137E4DEF0038CC44 /* PostListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostListController.m; sourceTree = "<group>"; };
@@ -2032,6 +2035,8 @@
 				FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */,
 				FB42F6EF13939DA10053F0DC /* BindUserRequest.h */,
 				FB42F6F013939DA10053F0DC /* BindUserRequest.m */,
+				CA86099A13A33DB100B00874 /* UpdateUserRequest.h */,
+				CA86099B13A33DB100B00874 /* UpdateUserRequest.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2551,6 +2556,7 @@
 				CA9E0944139CB817000B6FEE /* SINAWeiboRequest.m in Sources */,
 				CA9E0947139CCC8D000B6FEE /* PlaceSNSService.m in Sources */,
 				FB091A73139F4FF700C94292 /* PPImageView.m in Sources */,
+				CA86099C13A33DB200B00874 /* UpdateUserRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

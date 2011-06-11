@@ -69,17 +69,13 @@ enum{
 
 - (void)updateImageView
 {
-    [self.avatarImageView clear];
+    UserService *userService = GlobalGetUserService();    
     
-    UserService *userService = GlobalGetUserService();
-    NSString* avatarURL = [[userService user] avatar];
-    if ([avatarURL length] > 0){
-        self.avatarImageView.url = [NSURL URLWithString:avatarURL];        
-    }
-    else{
-        // use default
-        self.avatarImageView.url = [FileUtil bundleURL:DEFAULT_AVATAR];        
-    }
+    // clear cache
+    [self.avatarImageView clear];    
+    
+    // set new
+    self.avatarImageView.url = [userService getUserAvatarURL];
     
     [GlobalGetImageCache() manage:self.avatarImageView];    
 }
@@ -97,6 +93,8 @@ enum{
     [self updateLoginId];
     [self updateImageView];
     [self initLogoutButton];
+    
+    [self setNavigationRightButton:NSLS(@"Save") action:@selector(clickSave:)];
     
     self.dataTableView.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -421,6 +419,7 @@ enum{
                     
                     TextEditorViewController* vc = [[TextEditorViewController alloc] init];
                     vc.isSingleLine = YES;
+                    vc.delegate = self;
                     vc.inputText = [[userService user] nickName];
                     vc.navigationItem.title = NSLS(@"kEnterNickNameTitle");
                     vc.view.backgroundColor = [UIColor whiteColor]; // to be removed
@@ -436,9 +435,6 @@ enum{
                     TextEditorViewController* vc = [[TextEditorViewController alloc] init];
                     vc.isSingleLine = YES;
                     vc.inputText = [[userService user] mobile];
-                    if ([vc.inputText length] == 0 && [LocaleUtils isChina] == NO){
-                        vc.inputText = NSLS(@"+");
-                    }
                     vc.inputPlaceHolder = NSLS(@"kEnterMobileNumber");
                     vc.isNumber = YES;
                     vc.delegate = self;
@@ -496,5 +492,75 @@ enum{
     [delegate removeMainView];
     [delegate addRegisterView];
 }
+
+
+
+SaveUserSuccessHandler saveSuccessHandler = ^(PPViewController* viewController){ // no use now
+
+    MyInfoController *vc = (MyInfoController*)viewController;
+    
+    [vc.dataTableView reloadData];
+    [vc updateImageView];
+};
+
+- (void)clickSave:(id)sender
+{
+    // send request to server
+    UserService *userService = GlobalGetUserService();
+    [userService updateUserToServer:self successHandler:^(PPViewController* viewController){        
+        MyInfoController *vc = (MyInfoController*)viewController;        
+        [vc.dataTableView reloadData];
+        [vc updateImageView];
+    }];
+}
+
+- (IBAction)clickAvatar:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLS(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:NSLS(@"kSelectFromAlbum"), NSLS(@"kTakePhoto"), nil];
+    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    [actionSheet release];
+}
+
+- (void)setUserAvatar:(UIImage*)image
+{    
+    UserService* userService = GlobalGetUserService();
+    [userService updateUserAvatar:image];    
+    
+    // update GUI
+    [self updateImageView];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if (image != nil){
+        [self setUserAvatar:image];
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    enum{
+        BUTTON_SELECT_ALBUM,
+        BUTTON_TAKE_PHOTO,
+        BUTTON_CANCEL
+    };
+    
+    switch (buttonIndex) {
+        case BUTTON_SELECT_ALBUM:
+            [self selectPhoto];
+            break;
+            
+        case BUTTON_TAKE_PHOTO:
+            [self takePhoto];
+            break;
+
+        default:
+            break;
+    }
+}
+
 
 @end

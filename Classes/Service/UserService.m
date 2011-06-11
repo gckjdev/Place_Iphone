@@ -13,7 +13,15 @@
 #import "RegisterUserRequest.h"
 #import "DeviceLoginRequest.h"
 #import "BindUserRequest.h"
+#import "UpdateUserRequest.h"
+
 #import "SNSConstants.h"
+
+#import "CommonManager.h"
+#import "UIImageUtil.h"
+#import "FileUtil.h"
+#import "UIImageExt.h"
+#import "StringUtil.h"
 
 #define USER_UPDATE_FLAG        @"USER_UPDATE_FLAG"
 
@@ -40,12 +48,24 @@
     }
 }
 
+- (NSString*)avatarDir
+{
+    return [NSString stringWithFormat:@"%@/%@", [FileUtil getAppHomeDir], TEMP_AVATAR_DIR];
+}
+
 - (id)init
 {
     self = [super init];
 
     workingQueue = dispatch_queue_create("user service queue", NULL);
     [self updateUserCache];
+    
+    // create temp avatar dir path
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSError* error = nil;
+    [fileManager createDirectoryAtPath:[self avatarDir] withIntermediateDirectories:YES attributes:nil error:&error];
+    if (error != nil)
+        NSLog(@"create dir=%@ error=%@", [self avatarDir], [error description]);
     
     return self;
 }
@@ -74,6 +94,23 @@
     [UserManager logoutUser:user];
 }
 
+- (NSURL*)getUserAvatarURL
+{
+    NSString* avatarURL = [user avatar];
+    if ([avatarURL length] > 0){
+        if ([avatarURL hasPrefix:@"http"]){
+            return [NSURL URLWithString:avatarURL];        
+        }
+        else{
+            return [NSURL fileURLWithPath:avatarURL];
+        }
+    }
+    else{
+        // use default
+        return [FileUtil bundleURL:DEFAULT_AVATAR];        
+    }
+}
+
 #pragma mark - Update User Related Methods
 
 - (void)setUserUpdateFlag
@@ -96,31 +133,53 @@
 
 - (void)updateUserNickName:(NSString*)value
 {
-    if ([user.nickName isEqualToString:value])
+    if ([value length] == 0 || [user.nickName isEqualToString:value])
         return;
 
     user.nickName = value;
+    [CommonManager save];    
+
     [self setUserUpdateFlag];
 }
 
 - (void)updateUserMobile:(NSString*)value
 {
-    if ([user.mobile isEqualToString:value])
+    if ([value length] == 0 || [user.mobile isEqualToString:value])
         return;
     
     user.mobile = value;
+    [CommonManager save]; 
+    
     [self setUserUpdateFlag];
 }
+
+- (void)updateUserAvatar:(UIImage*)image
+{
+    // write to avatar file and update DB
+    image = [image imageByScalingAndCroppingForSize:AVATAR_SIZE];
+    NSString* fileName = [NSString stringWithFormat:@"%@/%@.png", [self avatarDir], [NSString GetUUID]];
+    if ([image saveImageToFile:fileName]){     
+        user.avatar = fileName;
+        [CommonManager save];
+
+        [self setUserUpdateFlag];
+    }        
+    
+}
+
+
 
 - (void)updateUser
 {
     // update user mobile, nickname, email, password only
     
     NSLog(@"<updateUser> mobile=%@, nickname=%@, email=%@, password=%@",
-          [user mobile], [user nickName], [user email], [user password]);
+    [user mobile], [user nickName], [user email], [user password]);
     
     // TODO send request to sever
     
+    [CommonManager save];    
+
     [self clearUserUpdateFlag];
 }
 
@@ -130,6 +189,51 @@
         [self updateUser];        
     }
 }
+
+- (NSData*)getUserAvatarData
+{
+    if ([[user avatar] length] == 0)
+        return nil;
+    
+    if ([[user avatar] hasPrefix:@"http"])
+        return nil;
+    
+    NSData* data = [NSData dataWithContentsOfFile:[user avatar]];
+    return data;
+}
+
+- (void)updateUserToServer:(PPViewController*)viewController successHandler:(SaveUserSuccessHandler)saveSuccessHandler
+{
+    [viewController showActivityWithText:NSLS(@"kUpdatingUser")];
+    dispatch_async(workingQueue, ^{
+        UpdateUserOutput* output = [UpdateUserRequest send:SERVER_URL 
+                         userId:user.userId 
+                          appId:[AppManager getPlaceAppId]
+                         mobile:[user mobile]
+                          email:[user email]
+                       password:[user password]
+                       nickName:[user nickName]
+                         avatar:[self getUserAvatarData]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [viewController hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){
+                [viewController popupHappyMessage:NSLS(@"kUpdateUserSucc") title:@""];
+                
+                // update avatar
+                user.avatar = output.avatarURL;
+                [CommonManager save];
+                
+                // update UI
+                saveSuccessHandler(viewController);
+            }
+            else{
+                [viewController popupUnhappyMessage:NSLS(@"kUpdateUserFail") title:@""];
+            }
+        });
+    });
+}
+
 
 - (NSString*)getLoginIdForDisplay
 {
@@ -166,7 +270,7 @@
 
 - (void)checkDevice {
 
-    BOOL result = YES;
+    int result = userCurrentStatus;
     NSLog(@"<checkDevice> user current status is %d", userCurrentStatus);
     
     switch (userCurrentStatus) {

@@ -22,6 +22,13 @@
 #define METHOD_GETPOSTRELATEDPOST @"gpr"
 #define METHOD_BINDUSER @"bu"
 
+#define METHOD_SENDMESSAGE @"sm"
+#define METHOD_GETMYMESSAGE @"gmm"
+#define METHOD_DELETEMESSAGE @"dmm"
+#define METHOD_GETMEPOST @"gmep"
+#define METHOD_UPDATEUSER @"uu"
+#define METHOD_UPDATEPLACE @"up"
+
 // request parameters
 
 #define PARA_USERID @"uid"
@@ -42,6 +49,10 @@
 #define PARA_DEVICEOS @"dos"
 #define PARA_DEVICETOKEN @"dto"
 #define PARA_NICKNAME @"nn"
+
+#define PARA_MOBILE @"mb"
+#define PARA_EMAIL @"em"
+
 
 #define PARA_COUNTRYCODE @"cc"
 #define PARA_LANGUAGE @"lang"

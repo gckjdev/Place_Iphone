@@ -12,9 +12,13 @@
 
 @class PPViewController;
 
+#define AVATAR_SIZE         CGSizeMake(180, 180)
+#define DEFAULT_AVATAR      @"touxiang.png"
+#define TEMP_AVATAR_DIR     @"avatar_temp"
+
 enum{
     USER_STATUS_UNKNOWN = 0,    
-    USER_NOT_EXIST_LOCAL = 1100001,
+    USER_NOT_EXIST_LOCAL = 810001,
     USER_EXIST_LOCAL_STATUS_LOGIN,
     USER_EXIST_LOCAL_STATUS_LOGOUT,
     
@@ -23,7 +27,7 @@ enum{
 
 enum{
     LOGIN_RESULT_SUCCESS = 0,
-    LOGIN_RESULT_UNKNOWN = 1200000,
+    LOGIN_RESULT_UNKNOWN = 820001,
     LOGIN_RESULT_ID_NOT_MATCH,  
     LOGIN_RESULT_NETWORK_ERROR,
 };
@@ -36,7 +40,7 @@ enum{
 
 @end
 
-
+typedef void (^SaveUserSuccessHandler)(PPViewController*);
 
 @interface UserService : NSObject {
     
@@ -63,9 +67,16 @@ enum{
 - (BOOL)hasUserBindQQ;
 - (BOOL)hasUserBindRenren;
 
+- (NSURL*)getUserAvatarURL;
+
 - (void)updateUserNickName:(NSString*)value;
 - (void)updateUserMobile:(NSString*)value;
+- (void)updateUserAvatar:(UIImage*)image;
+
+- (void)updateUserToServer:(PPViewController*)viewController successHandler:(SaveUserSuccessHandler)saveSuccessHandler;
 
 @end
 
 extern UserService*       GlobalGetUserService();
+
+
