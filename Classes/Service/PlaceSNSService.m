@@ -160,4 +160,24 @@ AuthorizationSuccessHandler snsAuthorizeSuccess = ^(NSDictionary* userInfo, PPVi
     [self qqParseAuthorizationResponseURL:query viewController:displayViewController successHandler:snsAuthorizeSuccess];    
 }
 
+- (void)syncWeiboToAllSNS:(NSString*)text viewController:(PPViewController*)viewController
+{
+    if ([text length] == 0)
+        return;
+    
+    UserService* userService = GlobalGetUserService();
+    if ([userService hasUserBindQQ]){
+        dispatch_async(workingQueue, ^{
+            [self sendText:text snsRequest:qqRequest]; 
+        });
+    }
+
+    if ([userService hasUserBindSina]){
+        dispatch_async(workingQueue, ^{
+            [self sendText:text snsRequest:sinaRequest]; 
+        });
+    }
+    
+}
+
 @end

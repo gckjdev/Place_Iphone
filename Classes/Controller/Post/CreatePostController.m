@@ -412,6 +412,19 @@ enum{
     
 }
 
+- (IBAction)clickTag:(id)sender
+{
+    UIButton* button = sender;
+    contentTextView.text = [NSString stringWithFormat:@"[%@] %@", [button titleForState:UIControlStateNormal], contentTextView.text];
+    
+    [self updateContentTypeSegControlText];    
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self updateContentTypeSegControlText];
+}
+
 
 //- (IBAction)uploadImage {
 //	/*
@@ -467,10 +480,5 @@ enum{
 //    
 //	NSLog(@"upload image, return = %@", returnString);
 //}
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-    [self updateContentTypeSegControlText];
-}
 
 @end

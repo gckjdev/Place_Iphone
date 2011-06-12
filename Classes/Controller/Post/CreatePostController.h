@@ -52,4 +52,6 @@
 - (IBAction)clickTakePhoto:(id)sender;
 - (IBAction)clickSegControl:(id)sender;
 
+- (IBAction)clickTag:(id)sender;
+
 @end

@@ -95,6 +95,7 @@ enum{
         // go to write text directly
         TextEditorViewController* postController = [[TextEditorViewController alloc] init];
         postController.hasSendButton = YES;
+        postController.delegate = self;        
         [self.navigationController pushViewController:postController animated:YES];
         [postController release];
     }
@@ -107,9 +108,15 @@ enum{
     }
 }
 
+
+
+
 - (void)clickSend:(NSString*)text
 {
     // sync post to SNS
+    PlaceSNSService* snsService = GlobalGetSNSService();
+    [snsService syncWeiboToAllSNS:text viewController:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)handleSendAppLinkClick:(NSInteger)buttonIndex

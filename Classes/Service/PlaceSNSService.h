@@ -36,6 +36,7 @@ typedef void (^AuthorizationSuccessHandler)(NSDictionary*, PPViewController*);
 - (void)sinaParseAuthorizationResponseURL:(NSString *)query;
 - (void)qqParseAuthorizationResponseURL:(NSString *)query;
 
+- (void)syncWeiboToAllSNS:(NSString*)text viewController:(PPViewController*)viewController;
 
 @end
 
