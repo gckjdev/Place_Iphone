@@ -18,6 +18,7 @@
 #import "GetUserFollowPlaceRequest.h"
 #import "UserFollowPlaceRequest.h"
 #import "GetPlaceRequest.h"
+#import "GetAtMePostRequest.h"
 #import "TimeUtils.h"
 #import "Post.h"
 #import "AppManager.h"
@@ -181,29 +182,77 @@
 
 }
 
-
-- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegateObject
+- (void)requestUserAtMePostData:(id<LocalDataServiceDelegate>)delegateObject
+                beforeTimeStamp:(NSString*)beforeTimeStamp
+                      cleanData:(BOOL)cleanData
 {
     if ([UserManager isUserRegistered] == NO)
         return;
     
     NSString* userId = [UserManager getUserId];
     NSString* appId = [AppManager getPlaceAppId];
-    double longitude = 111.22;
-    double latitude = 233.44;
     
     dispatch_async(workingQueue, ^{
         
         // fetch user place data from server
-        GetNearbyPlaceOutput* output = [GetNearbyPlaceRequest send:SERVER_URL userId:userId appId:appId
-                                                         longitude:longitude latitude:latitude];
+        GetAtMePostOutput* output = [GetAtMePostRequest send:SERVER_URL userId:userId appId:appId beforeTimeStamp:beforeTimeStamp];
+        
+        // if succeed, clean local data and save new data
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (output.resultCode == ERROR_SUCCESS){                    
+                // delete all old data
+                if (cleanData){
+                    [PostManager deleteAllAtMePost];
+                }
+                
+                // insert new data
+                NSArray* postArray = output.postArray;
+                for (NSDictionary* post in postArray){
+                    [self createPost:post userId:userId useFor:POST_FOR_ATME];
+                }                    
+            }
+            
+            // notify UI to refresh data
+            NSLog(@"<requestUserAtMePostData> result code=%d", 
+                  output.resultCode);
+            [self notifyDelegate:delegateObject selector:@selector(atMePostDataRefresh:) resultCode:output.resultCode];
+        });
+        
+        
+    });
+    
+}
+
+
+- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegateObject
+               beforeTimeStamp:(NSString*)beforeTimeStamp
+                     longitude:(double)longitude 
+                      latitude:(double)latitude
+                     cleanData:(BOOL)cleanData
+{
+    if ([UserManager isUserRegistered] == NO)
+        return;
+    
+    NSString* userId = [UserManager getUserId];
+    NSString* appId = [AppManager getPlaceAppId];
+    
+    dispatch_async(workingQueue, ^{
+        
+        // fetch user place data from server
+        GetNearbyPlaceOutput* output = [GetNearbyPlaceRequest send:SERVER_URL 
+                                                            userId:userId 
+                                                             appId:appId
+                                                         longitude:longitude 
+                                                          latitude:latitude
+                                                   beforeTimeStamp:beforeTimeStamp];
         
         // if succeed, clean local data and save new data
         dispatch_async(dispatch_get_main_queue(), ^{
             if (output.resultCode == ERROR_SUCCESS){
                 
                 // delete all old data
-                [PlaceManager deleteAllPlacesNearby];
+                if (cleanData)
+                    [PlaceManager deleteAllPlacesNearby];
                 
                 // insert new data
                 NSArray* placeArray = output.placeArray;
@@ -266,7 +315,9 @@
     dispatch_async(workingQueue, ^{
         
         // fetch user place data from server
-        GetUserFollowPlaceOutput* output = [GetUserFollowPlaceRequest send:SERVER_URL userId:userId appId:appId];
+        GetUserFollowPlaceOutput* output = [GetUserFollowPlaceRequest send:SERVER_URL 
+                                                                    userId:userId 
+                                                                     appId:appId];
         
         // if succeed, clean local data and save new data
         dispatch_async(dispatch_get_main_queue(), ^{

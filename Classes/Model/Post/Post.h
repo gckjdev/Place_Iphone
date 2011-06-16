@@ -13,6 +13,7 @@ enum {
     POST_FOR_PLACE,
     POST_FOR_NEARBY,
     POST_FOR_FOLLOW,
+    POST_FOR_ATME,
 };
 
 @interface Post : NSManagedObject {

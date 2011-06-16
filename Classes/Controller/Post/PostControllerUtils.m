@@ -133,4 +133,16 @@ PostControllerUtils* shareUtil;
     }
 }
 
++ (NSString*)getLastPostId:(NSArray*)dataList
+{
+    NSString* postId = nil;
+    int count = [dataList count];
+    if (count > 0){
+        Post* post = [dataList objectAtIndex:count-1];
+        postId = post.postId;
+    }
+    
+    return postId;
+}
+
 @end

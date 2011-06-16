@@ -16,6 +16,7 @@
     UITextField             *descriptionTextField;
     CLLocationCoordinate2D  location;
     BOOL                    hasLocationData;
+    NSString                *defaultPlaceName;
     
     PlaceLocationController *placeController;
 }
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) UITextField             *descriptionTextField;
 @property (nonatomic, assign) CLLocationCoordinate2D  location;
 @property (nonatomic, retain) PlaceLocationController *placeController;
+@property (nonatomic, retain) NSString                *defaultPlaceName;
 
 - (void)clickSave:(id)sender;
 

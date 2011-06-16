@@ -16,11 +16,14 @@
 @synthesize appId;
 @synthesize longitude;
 @synthesize latitude;
+@synthesize beforeTimeStamp;
+@synthesize maxCount;
 
 - (void)dealloc
 {
 	[appId release];
-    [userId release];    
+    [userId release];   
+    [beforeTimeStamp release];
 	[super dealloc];	
 }
 
@@ -34,6 +37,10 @@
 	str = [str stringByAddQueryParameter:PARA_LONGTITUDE doubleValue:longitude];
 	str = [str stringByAddQueryParameter:PARA_LATITUDE doubleValue:latitude];
 	
+    if (beforeTimeStamp != nil){
+        str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:beforeTimeStamp];
+    }
+    
 	return str;
 }
 
@@ -123,6 +130,7 @@
                         appId:(NSString*)appId 
                     longitude:(double)longitude
                      latitude:(double)latitude
+              beforeTimeStamp:(NSString*)beforeTimeStamp
 {
 	int result = ERROR_SUCCESS;
 	GetNearbyPlaceInput* input = [[GetNearbyPlaceInput alloc] init];
@@ -133,6 +141,8 @@
 	input.appId = appId;
     input.latitude = latitude;
     input.longitude = longitude;
+    input.beforeTimeStamp = beforeTimeStamp;
+    input.maxCount = kMaxCount;
 	
 	if ([[GetNearbyPlaceRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
@@ -148,7 +158,6 @@
 
 + (void)test
 {
-	[GetNearbyPlaceRequest send:SERVER_URL userId:@"test_user" appId:@"test_app" longitude:113.33 latitude:333.22];
 }
 
 @end

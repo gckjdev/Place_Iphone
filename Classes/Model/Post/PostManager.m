@@ -15,13 +15,13 @@
 + (NSArray*)getPostByPlace:(NSString*)placeId
 {
     CoreDataManager* dataManager = GlobalGetCoreDataManager();
-    return [dataManager execute:@"getPostByPlace" forKey:@"placeId" value:placeId sortBy:@"createDate" ascending:YES];
+    return [dataManager execute:@"getPostByPlace" forKey:@"placeId" value:placeId sortBy:@"createDate" ascending:NO];
 }
 
 + (BOOL)deletePostByPlace:(NSString*)placeId
 {
     CoreDataManager* dataManager = GlobalGetCoreDataManager();
-    NSArray* postArray = [dataManager execute:@"getPostByPlace" forKey:@"placeId" value:placeId sortBy:@"createDate" ascending:YES];
+    NSArray* postArray = [dataManager execute:@"getPostByPlace" forKey:@"placeId" value:placeId sortBy:@"createDate" ascending:NO];
     
     for (Post* post in postArray){
         post.deleteFlag = [NSNumber numberWithBool:YES];
@@ -83,7 +83,7 @@
     CoreDataManager* dataManager = GlobalGetCoreDataManager();
     return [dataManager execute:@"getFollowPostByUser" 
                          sortBy:@"createDate" 
-                      ascending:YES];
+                      ascending:NO];
     
 }
 
@@ -92,7 +92,7 @@
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
     NSArray* placeArray = [dataManager execute:@"getFollowPostByUser" 
                                         sortBy:@"createDate" 
-                                     ascending:YES]; 
+                                     ascending:NO]; 
     
     for (Post* post in placeArray){
         post.deleteFlag = [NSNumber numberWithBool:YES];
@@ -107,7 +107,7 @@
     CoreDataManager* dataManager = GlobalGetCoreDataManager();
     return [dataManager execute:@"getNearbyPost" 
                          sortBy:@"createDate" 
-                      ascending:YES];    
+                      ascending:NO];    
 }
 
 + (BOOL)deleteAllNearbyPost
@@ -115,7 +115,7 @@
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
     NSArray* placeArray = [dataManager execute:@"getNearbyPost" 
                                         sortBy:@"createDate" 
-                                     ascending:YES]; 
+                                     ascending:NO]; 
     
     for (Post* post in placeArray){
         post.deleteFlag = [NSNumber numberWithBool:YES];
@@ -125,6 +125,30 @@
     return [dataManager save];     
 }
 
++ (NSArray*)getAllAtMePost
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();
+    return [dataManager execute:@"getAtMePost" 
+                         sortBy:@"createDate" 
+                      ascending:NO];    
+}
+
++ (BOOL)deleteAllAtMePost
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getAtMePost" 
+                                        sortBy:@"createDate" 
+                                     ascending:NO]; 
+    
+    for (Post* post in placeArray){
+        post.deleteFlag = [NSNumber numberWithBool:YES];
+        post.deleteTimeStamp = [NSNumber numberWithInt:time(0)];
+    }
+    
+    return [dataManager save]; 
+}
+
+
 + (void)cleanUpDeleteDataBefore:(int)timeStamp
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
@@ -132,7 +156,7 @@
                                         forKey:@"beforeTimeStamp" 
                                          value:[NSNumber numberWithInt:timeStamp]
                                         sortBy:@"createDate"
-                                     ascending:YES];
+                                     ascending:NO];
 
     for (Post* post in placeArray){
         [dataManager del:post];

@@ -13,6 +13,7 @@
 #import "LocalDataService.h"
 #import "LocationService.h"
 #import "RegisterController.h"
+#import "EnterPlaceAppController.h"
 #import "AppManager.h"
 #import "UserService.h"
 
@@ -24,7 +25,7 @@
 #define kAppId			@"388419035"					// To be changed for each project
 #define kMobClickKey	@"4dba296b112cf77d98000015"		// To be changed for each project
 
-@interface DipanAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate, MobClickDelegate, 
+@interface DipanAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate, MobClickDelegate, EnterPlaceAppDelegate,
 LocalDataServiceDelegate, UserServiceDelegate> {
 
     UIWindow			*window;
@@ -36,6 +37,9 @@ LocalDataServiceDelegate, UserServiceDelegate> {
     UserService         *userService;
     RegisterController  *registerController;
     PlaceSNSService     *snsService;
+
+    EnterPlaceAppController *enterController;    
+    NSString                *placeNameForRegistration;
     
     UIBackgroundTaskIdentifier backgroundTask;
 }
@@ -48,7 +52,12 @@ LocalDataServiceDelegate, UserServiceDelegate> {
 @property (nonatomic, retain) UserService                   *userService;
 @property (nonatomic, retain) PlaceSNSService               *snsService;
 @property (nonatomic, retain) RegisterController            *registerController;
+@property (nonatomic, retain) EnterPlaceAppController       *enterController;    
+@property (nonatomic, retain) NSString                      *placeNameForRegistration;
 
+- (BOOL)requireCreatePlace;
+- (void)addEnterAppView;
+- (void)removeEnterAppView;
 - (void)addRegisterView;
 - (void)removeRegisterView;
 - (void)addMainView;

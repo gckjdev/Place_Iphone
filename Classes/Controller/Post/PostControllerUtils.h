@@ -31,4 +31,6 @@
    
 + (void)askFollowPlace:(NSString*)placeId placeName:(NSString*)placeName viewController:(PPViewController*)viewController;
 
++ (NSString*)getLastPostId:(NSArray*)dataList;
+
 @end

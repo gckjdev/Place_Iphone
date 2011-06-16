@@ -25,6 +25,7 @@ enum SELECT_POST_TYPE {
 @synthesize nearbyPostController;
 @synthesize followPostController;
 @synthesize privateMessageController;
+@synthesize atMePostController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +41,7 @@ enum SELECT_POST_TYPE {
     [nearbyPostController release];
     [followPostController release];
     [privateMessageController release];
+    [atMePostController release];
     [super dealloc];
 }
 
@@ -58,6 +60,7 @@ enum SELECT_POST_TYPE {
     if (self.nearbyPostController == nil){
         self.nearbyPostController = [[NearbyPostController alloc] init];
         self.nearbyPostController.superController = self;
+        self.nearbyPostController.view.frame = self.view.bounds;        
         [self.view addSubview:nearbyPostController.view];                
     }
     
@@ -70,6 +73,7 @@ enum SELECT_POST_TYPE {
     if (self.followPostController == nil){
         self.followPostController = [[FollowPostController alloc] init];
         self.followPostController.superController = self;
+        self.followPostController.view.frame = self.view.bounds;        
         [self.view addSubview:followPostController.view];        
     }
     
@@ -77,11 +81,26 @@ enum SELECT_POST_TYPE {
     [followPostController viewDidAppear:NO];
 }
 
+- (void)showAtMePost
+{
+    if (self.atMePostController == nil){
+        self.atMePostController = [[AtMePostController alloc] init];
+        self.atMePostController.superController = self;
+        self.atMePostController.view.frame = self.view.bounds;        
+        [self.view addSubview:atMePostController.view];                
+    }
+    
+    [self.view bringSubviewToFront:atMePostController.view];
+    [atMePostController viewDidAppear:NO];    
+}
+
+
 - (void)showPrivateMessage
 {
     if (self.privateMessageController == nil){
         self.privateMessageController = [[PrivateMessageListController alloc] init];
         self.privateMessageController.superController = self;
+        self.privateMessageController.view.frame = self.view.bounds;        
         [self.view addSubview:privateMessageController.view];                
     }
 
@@ -96,8 +115,8 @@ enum SELECT_POST_TYPE {
                     [NSArray arrayWithObjects:
                      NSLS(@"kNearbyPost"),
                      NSLS(@"kFollowPost"),
-                     NSLS(@"kMyPost"),
-                     NSLS(@"kMyPrivateMessage"),
+                     NSLS(@"kAtMePost"),
+//                     NSLS(@"kMyPrivateMessage"),
                      nil]
                     defaultSelectIndex:SELECT_NEARBY];    
 
@@ -152,6 +171,9 @@ enum SELECT_POST_TYPE {
     }
     else if (segControl.selectedSegmentIndex == SELECT_NEARBY){
         [self showNearbyPost];
+    }
+    else if (segControl.selectedSegmentIndex == SELECT_MINE){
+        [self showAtMePost];
     }
     else{
         [self showPrivateMessage];

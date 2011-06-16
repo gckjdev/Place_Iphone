@@ -30,5 +30,5 @@
 #define PROVINCE_UNKNOWN            (0)
 #define CITY_UNKNOWN                (0)
 
-
-
+#define kMaxCount                   3
+#define kMaxCountForPostRelatedPost 200

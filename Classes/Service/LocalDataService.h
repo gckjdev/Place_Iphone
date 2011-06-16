@@ -18,6 +18,7 @@
 - (void)nearbyPlaceDataRefresh:(int)result;
 - (void)followPostDataRefresh:(int)result;
 - (void)nearbyPostDataRefresh:(int)result;
+- (void)atMePostDataRefresh:(int)result;
 
 @end
 
@@ -32,7 +33,12 @@
 
 - (id)initWithDelegate:(id<LocalDataServiceDelegate>)delegate;
 - (void)requestPlaceData;
-- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegate;
+- (void)requestNearbyPlaceData:(id<LocalDataServiceDelegate>)delegate
+               beforeTimeStamp:(NSString*)beforeTimeStamp
+                     longitude:(double)longitude 
+                      latitude:(double)latitude
+                     cleanData:(BOOL)cleanData;
+
 - (void)requestUserFollowPlaceData:(id<LocalDataServiceDelegate>)delegate;
 
 - (void)requestLatestPlacePostData:(id<LocalDataServiceDelegate>)delegateObject 
@@ -47,6 +53,10 @@
 - (void)requestUserFollowPostData:(id<LocalDataServiceDelegate>)delegateObject
               beforeTimeStamp:(NSString*)beforeTimeStamp
                     cleanData:(BOOL)cleanData;
+
+- (void)requestUserAtMePostData:(id<LocalDataServiceDelegate>)delegateObject
+                  beforeTimeStamp:(NSString*)beforeTimeStamp
+                        cleanData:(BOOL)cleanData;
 
 
 - (void)requestDataWhileEnterForeground;

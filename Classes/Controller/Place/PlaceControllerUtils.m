@@ -65,4 +65,16 @@
     [postListController release];
 }
 
++ (NSString*)getLastPlaceId:(NSArray*)dataList
+{
+    NSString* placeId = nil;
+    int count = [dataList count];
+    if (count > 0){
+        Place* place = [dataList objectAtIndex:count-1];
+        placeId = place.placeId;
+    }
+    
+    return placeId;
+}
+
 @end

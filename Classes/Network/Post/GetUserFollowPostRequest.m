@@ -119,7 +119,6 @@
 
 + (GetUserFollowPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
-    const int kMaxCount = 30;
     
 	int result = ERROR_SUCCESS;
 	GetUserFollowPostInput* input = [[GetUserFollowPostInput alloc] init];

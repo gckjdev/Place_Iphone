@@ -44,6 +44,6 @@
 
 
 - (IBAction)clickCreatePlaceButton:(id)sender;
-
+- (void)gotoCreatePlaceController:(NSString*)defaultPlaceName;
 
 @end

@@ -11,15 +11,16 @@
 #import "NearbyPostController.h"
 #import "FollowPostController.h"
 #import "PrivateMessageListController.h"
+#import "AtMePostController.h"
 
 @interface PostMainController : PPViewController {
     NearbyPostController    *nearbyPostController;
     FollowPostController    *followPostController;
-    PrivateMessageListController *privateMessageController;
+    AtMePostController      *atMePostController;
 }
 
 @property (nonatomic, retain) NearbyPostController    *nearbyPostController;
 @property (nonatomic, retain) FollowPostController    *followPostController;
 @property (nonatomic, retain) PrivateMessageListController *privateMessageController;
-
+@property (nonatomic, retain) AtMePostController      *atMePostController;
 @end

@@ -122,7 +122,6 @@
 
 + (GetPlacePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId placeId:(NSString*)placeId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
-    const int kMaxCount = 30;
     
 	int result = ERROR_SUCCESS;
 	GetPlacePostInput* input = [[GetPlacePostInput alloc] init];

@@ -1,31 +1,27 @@
 //
-//  GetPostRelatedPost.m
+//  GetAtMePost.m
 //  FacetimeAnyone
 //
 //  Created by Peng Lingzhe on 10/11/10.
 //  Copyright 2010 Ericsson. All rights reserved.
 //
 
-#import "GetPostRelatedPostRequest.h"
+#import "GetAtMePostRequest.h"
 #import "TimeUtils.h"
 #import "LocaleUtils.h"
 
-@implementation GetPostRelatedPostInput
+@implementation GetAtMePostInput
 
 @synthesize userId;
 @synthesize appId;
-@synthesize postId;
 @synthesize beforeTimeStamp;
 @synthesize maxCount;
-@synthesize excludePostId;
 
 - (void)dealloc
 {
 	[appId release];
     [userId release];    
     [beforeTimeStamp release];
-    [postId release];
-    [excludePostId release];
 	[super dealloc];	
 }
 
@@ -33,23 +29,18 @@
 {
 	NSString* str = [NSString stringWithString:baseURL];
 	
-	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETPOSTRELATEDPOST];	
+	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETMEPOST];	
 	str = [str stringByAddQueryParameter:PARA_USERID value:userId];
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
-	str = [str stringByAddQueryParameter:PARA_POSTID value:postId];
 	str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:beforeTimeStamp];
 	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
 	
-    if (excludePostId != nil){
-        str = [str stringByAddQueryParameter:PARA_EXCLUDE_POSTID value:excludePostId];
-    }
-    
 	return str;
 }
 
 @end
 
-@implementation GetPostRelatedPostOutput
+@implementation GetAtMePostOutput
 
 @synthesize postArray;
 
@@ -66,11 +57,11 @@
 
 @end
 
-@implementation GetPostRelatedPostRequest
+@implementation GetAtMePostRequest
 
 + (id)requestWithURL:(NSString*)urlString
 {
-	NetworkRequest* request = [[[GetPostRelatedPostRequest alloc] init] autorelease];
+	NetworkRequest* request = [[[GetAtMePostRequest alloc] init] autorelease];
 	request.serverURL = urlString;
 	return request;
 }
@@ -78,14 +69,15 @@
 // virtual method
 - (NSString*)getRequestUrlString:(NSObject*)input
 {	
-	if ([input isKindOfClass:[GetPostRelatedPostInput class]]){
-		GetPostRelatedPostInput* obj = (GetPostRelatedPostInput*)input;
+	if ([input isKindOfClass:[GetAtMePostInput class]]){
+		GetAtMePostInput* obj = (GetAtMePostInput*)input;
 		NSString* url = [obj createUrlString:[self getBaseUrlString]];		
 		return [url stringByURLEncode];
 	}
 	else {
 		return nil;
-	}	
+	}
+	
 }
 
 // virtual method
@@ -93,11 +85,11 @@
 {
 	const void* bytes = [data bytes];
 	NSString* textData = [[[NSString alloc] initWithBytes:bytes length:[data length] encoding:NSUTF8StringEncoding] autorelease];		
-	NSLog(@"GetPostRelatedPostRequest receive data=%@", textData);
+	NSLog(@"GetAtMePostRequest receive data=%@", textData);
 	
-	if ([output isKindOfClass:[GetPostRelatedPostOutput class]]){
+	if ([output isKindOfClass:[GetAtMePostOutput class]]){
 		
-		GetPostRelatedPostOutput* obj = (GetPostRelatedPostOutput*)output;
+		GetAtMePostOutput* obj = (GetAtMePostOutput*)output;
 		
 		// get result code and message
 		[obj resultFromJSON:textData];										
@@ -105,11 +97,11 @@
             
 			// TODO         
             obj.postArray = [obj arrayFromJSON:textData];
-			NSLog(@"GetPostRelatedPostRequest result=%d, data=%@", obj.resultCode, [obj description]);						
+			NSLog(@"GetAtMePostRequest result=%d, data=%@", obj.resultCode, [obj description]);						
 			return YES;
 		}
 		else {
-			NSLog(@"GetPostRelatedPostRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
+			NSLog(@"GetAtMePostRequest result=%d, message=%@", obj.resultCode, obj.resultMessage);
 			return NO;		
 		}
 	}
@@ -125,22 +117,20 @@
 	return OS_IOS;
 }
 
-+ (GetPostRelatedPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId postId:(NSString*)postId excludePostId:(NSString*)excludePostId beforeTimeStamp:(NSString*)beforeTimeStamp
++ (GetAtMePostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp
 {
     
 	int result = ERROR_SUCCESS;
-	GetPostRelatedPostInput* input = [[GetPostRelatedPostInput alloc] init];
-	GetPostRelatedPostOutput* output = [[[GetPostRelatedPostOutput alloc] init] autorelease];
+	GetAtMePostInput* input = [[GetAtMePostInput alloc] init];
+	GetAtMePostOutput* output = [[[GetAtMePostOutput alloc] init] autorelease];
 	
 	// initlize all input data
 	input.userId = userId;
 	input.appId = appId;
-    input.postId = postId;
-    input.excludePostId = excludePostId;
     input.beforeTimeStamp = beforeTimeStamp;
-    input.maxCount = kMaxCountForPostRelatedPost;
+    input.maxCount = kMaxCount;
 	
-	if ([[GetPostRelatedPostRequest requestWithURL:serverURL] sendRequest:input output:output]){
+	if ([[GetAtMePostRequest requestWithURL:serverURL] sendRequest:input output:output]){
 		result = output.resultCode;
 	}
 	else{
@@ -154,8 +144,8 @@
 
 + (void)test
 {
-	[GetPostRelatedPostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
-                             postId:@"test_postId" excludePostId:nil beforeTimeStamp:@""];
+	[GetAtMePostRequest send:SERVER_URL userId:@"test_user_id" appId:@"test_app"
+                   beforeTimeStamp:@""];
 }
 
 @end

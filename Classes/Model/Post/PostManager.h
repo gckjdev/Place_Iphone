@@ -38,6 +38,11 @@
 + (NSArray*)getAllFollowPost:(NSString*)userId;
 + (BOOL)deleteUserFollowPost;
 
+
++ (NSArray*)getAllAtMePost;
++ (BOOL)deleteAllAtMePost;
+
+
 + (void)cleanUpDeleteDataBefore:(int)timeStamp;
 
 @end

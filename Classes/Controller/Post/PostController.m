@@ -14,7 +14,7 @@
 #import "ResultUtils.h"
 #import "PostControllerUtils.h"
 #import "PostTableViewCell.h"
-
+#import "MoreTableViewCell.h"
 
 
 enum{

@@ -15,6 +15,7 @@
 #import "Post.h"
 #import "PostControllerUtils.h"
 #import "PostTableViewCell.h"
+#import "MoreTableViewCell.h"
 
 @implementation FollowPostController
 
@@ -58,7 +59,7 @@
     }
 }
 
-- (void)requestPostListFromServer
+- (void)requestPostListFromServer:(BOOL)isRequestLastest
 {
     double longitude;
     double latitude;
@@ -68,7 +69,16 @@
     latitude = locationService.currentLocation.coordinate.latitude;
     
     LocalDataService* localService = GlobalGetLocalDataService();
-    [localService requestUserFollowPostData:self beforeTimeStamp:nil cleanData:YES];
+
+    // tag_more_rows
+    if (!isRequestLastest){
+        NSString* lastPostId = [PostControllerUtils getLastPostId:dataList];        
+        [localService requestUserFollowPostData:self beforeTimeStamp:lastPostId cleanData:NO];
+    }
+    else{
+        [localService requestUserFollowPostData:self beforeTimeStamp:nil cleanData:YES];        
+    }
+    
     
 }
 
@@ -76,13 +86,13 @@
 {
     NSString* userId = [UserManager getUserId];
     self.dataList = [PostManager getAllFollowPost:userId];
-    [self requestPostListFromServer];    
+    [self requestPostListFromServer:YES];    
 }
 
 #pragma Pull Refresh Delegate
 - (void) reloadTableViewDataSource
 {
-    [self requestPostListFromServer];
+    [self requestPostListFromServer:YES];
 }
 
 
@@ -174,6 +184,11 @@
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
 	// return cellImageHeight;
 	
+    // tag_more_rows
+    if ([self isMoreRow:indexPath.row]){
+        return [MoreTableViewCell getRowHeight];
+    }
+    
 	return [PostTableViewCell getCellHeight];
 }
 
@@ -185,14 +200,22 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [dataList count];			// default implementation
-	
-	// return [groupData numberOfRowsInSection:section];
+    
+    // tag_more_rows
+    return [self dataListCountWithMore];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // tag_more_rows
+    if ([self isMoreRow:indexPath.row]){
+        // check if it's last row - to load more
+        MoreTableViewCell* moreCell = [MoreTableViewCell createCell:theTableView];
+        self.moreLoadingView = moreCell.loadingView;
+        return moreCell;
+    }
     
     NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
 	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -219,28 +242,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+    // tag_more_rows
+    if ([self isMoreRow:indexPath.row]){
+        [self.moreLoadingView startAnimating];
+        [self requestPostListFromServer:NO];
+        return;
+    }
+    
 	if (indexPath.row > [dataList count] - 1)
 		return;
 	
 	// do select row action
     [PostControllerUtils gotoPostController:self.superController 
                                        post:[dataList objectAtIndex:indexPath.row]];
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		if (indexPath.row > [dataList count] - 1)
-			return;
-		
-		// take delete action below, update data list
-		// NSObject* dataObject = [dataList objectAtIndex:indexPath.row];		
-		
-		// update table view
-		
-	}
-	
 }
 
 - (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath *)indexPath

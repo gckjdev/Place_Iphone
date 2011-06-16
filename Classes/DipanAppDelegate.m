@@ -69,6 +69,8 @@ PlaceSNSService* GlobalGetSNSService()
 @synthesize registerController;
 @synthesize userService;
 @synthesize snsService;
+@synthesize enterController;
+@synthesize placeNameForRegistration;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -289,6 +291,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     switch (result) {
         case USER_EXIST_LOCAL_STATUS_LOGIN:
         {
+            [self removeEnterAppView];
             [self removeRegisterView];
             [self addMainView];
         }
@@ -298,9 +301,8 @@ void uncaughtExceptionHandler(NSException *exception) {
         case USER_EXIST_LOCAL_STATUS_LOGOUT:
         case USER_NOT_EXIST_LOCAL:
         default:
-            [self addRegisterView];
-            break;
-            
+            [self addEnterAppView];
+            break;            
     }
 }
 
@@ -330,6 +332,32 @@ void uncaughtExceptionHandler(NSException *exception) {
 }
 
 #pragma Register View Management
+
+- (void)doRegisterWithPlaceName:(NSString*)placeName
+{
+    if ([placeName length] > 0){
+        self.placeNameForRegistration = placeName;                
+    }
+    
+    [self removeEnterAppView];
+    [self addRegisterView];
+}
+
+- (BOOL)requireCreatePlace
+{
+    return ([placeNameForRegistration length] > 0);
+}
+
+- (void)addEnterAppView {
+    self.enterController = [[EnterPlaceAppController alloc] init];
+    enterController.delegate = self;
+    [window addSubview:enterController.view];
+}
+
+- (void)removeEnterAppView {
+    [enterController.view removeFromSuperview];
+    self.enterController = nil;
+}
 
 - (void)addRegisterView {
     self.registerController = [[RegisterController alloc] init];
@@ -407,6 +435,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 	// release UI objects
     [registerController release];
     [tabBarController release];
+    [enterController release];
     [window release];
 	
 	// release data objects
@@ -414,6 +443,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     [localDataService release];
     [locationService release];
     [snsService release];
+    [placeNameForRegistration release];
 	
     [super dealloc];
 }

@@ -123,7 +123,6 @@
 
 + (GetNearbyPostOutput*)send:(NSString*)serverURL userId:(NSString*)userId appId:(NSString*)appId beforeTimeStamp:(NSString*)beforeTimeStamp longitude:(double)longitude latitude:(double)latitude
 {
-    const int kMaxCount = 30;
     
 	int result = ERROR_SUCCESS;
 	GetNearbyPostInput* input = [[GetNearbyPostInput alloc] init];

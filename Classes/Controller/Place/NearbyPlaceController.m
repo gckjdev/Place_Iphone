@@ -12,6 +12,7 @@
 #import "NetworkRequestResultCode.h"
 #import "DipanAppDelegate.h"
 #import "PlaceControllerUtils.h"
+#import "MoreTableViewCell.h"
 
 @implementation NearbyPlaceController
 
@@ -55,7 +56,7 @@
     }
 }
 
-- (void)requestPlaceListFromServer
+- (void)requestPlaceListFromServer:(BOOL)isRequestLastest
 {
     double longitude;
     double latitude;
@@ -64,22 +65,38 @@
     longitude = locationService.currentLocation.coordinate.longitude;
     latitude = locationService.currentLocation.coordinate.latitude;
     
+    
     LocalDataService* localService = GlobalGetLocalDataService();
-    [localService requestNearbyPlaceData:self];
+    if (!isRequestLastest){
+        NSString* lastPlaceId = [PlaceControllerUtils getLastPlaceId:dataList];        
+        [localService requestNearbyPlaceData:self 
+                             beforeTimeStamp:lastPlaceId                                   
+                                   longitude:longitude 
+                                    latitude:latitude 
+                                   cleanData:NO];
+        
+    }
+    else{
+        [localService requestNearbyPlaceData:self 
+                             beforeTimeStamp:nil                                   
+                                   longitude:longitude 
+                                    latitude:latitude 
+                                   cleanData:YES];
+    }
     
 }
 
 - (void)initDataList
 {
     self.dataList = [PlaceManager getAllPlacesNearby];
-    [self requestPlaceListFromServer];    
+    [self requestPlaceListFromServer:YES];    
 }
 
 #pragma Pull Refresh Delegate
 
 - (void) reloadTableViewDataSource
 {
-    [self requestPlaceListFromServer];
+    [self requestPlaceListFromServer:YES];
 }
 
 - (void)viewDidLoad
@@ -171,7 +188,10 @@
 {
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
 	// return cellImageHeight;
-	
+    if ([self isMoreRow:indexPath.row]){
+        return [MoreTableViewCell getRowHeight];
+    }
+
 	return 55;
 }
 
@@ -183,14 +203,19 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [dataList count];			// default implementation
-	
-	// return [groupData numberOfRowsInSection:section];
+    return [self dataListCountWithMore];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([self isMoreRow:indexPath.row]){
+        // check if it's last row - to load more
+        MoreTableViewCell* moreCell = [MoreTableViewCell createCell:theTableView];
+        self.moreLoadingView = moreCell.loadingView;
+        return moreCell;
+    }
     
     static NSString *CellIdentifier = @"Cell";
 	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -221,6 +246,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+    if ([self isMoreRow:indexPath.row]){
+        [self.moreLoadingView startAnimating];
+        [self requestPlaceListFromServer:NO];
+        return;
+    }
+
+    
 	if (indexPath.row > [dataList count] - 1)
 		return;
 	

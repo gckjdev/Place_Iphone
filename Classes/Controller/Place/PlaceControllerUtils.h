@@ -19,4 +19,6 @@
 + (void)setCellInfoWithPlace:(Place*)place cell:(UITableViewCell*)cell;
 + (void)gotoPlacePostListController:(UIViewController*)superController place:(Place*)place;
 
++ (NSString*)getLastPlaceId:(NSArray*)dataList;
+
 @end

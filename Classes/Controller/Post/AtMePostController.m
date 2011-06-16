@@ -1,24 +1,23 @@
 //
-//  NearbyPostController.m
+//  AtMePostController.m
 //  Dipan
 //
 //  Created by qqn_pipi on 11-5-26.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "NearbyPostController.h"
-#import "Post.h"
+#import "AtMePostController.h"
 #import "PostManager.h"
 #import "UserManager.h"
 #import "LocalDataService.h"
 #import "DipanAppDelegate.h"
 #import "NetworkRequestResultCode.h"
+#import "Post.h"
 #import "PostControllerUtils.h"
 #import "PostTableViewCell.h"
-#import "ResultUtils.h"
 #import "MoreTableViewCell.h"
 
-@implementation NearbyPostController
+@implementation AtMePostController
 
 @synthesize superController;
 
@@ -47,13 +46,14 @@
 
 #pragma mark - View lifecycle
 
-- (void)nearbyPostDataRefresh:(int)result
+
+- (void)atMePostDataRefresh:(int)result
 {    
     if (result == ERROR_SUCCESS){
-        self.dataList = [PostManager getAllNearbyPost:nil];        
+        self.dataList = [PostManager getAllAtMePost];        
         [self.dataTableView reloadData];
     }
-
+    
     if ([self isReloading]){
         [self dataSourceDidFinishLoadingNewData];
     }
@@ -70,39 +70,44 @@
     
     LocalDataService* localService = GlobalGetLocalDataService();
     
+    // tag_more_rows
     if (!isRequestLastest){
         NSString* lastPostId = [PostControllerUtils getLastPostId:dataList];        
-        [localService requestNearbyPostData:self beforeTimeStamp:lastPostId longitude:longitude latitude:latitude cleanData:NO];
+        [localService requestUserAtMePostData:self beforeTimeStamp:lastPostId cleanData:NO];
     }
     else{
-
-        [localService requestNearbyPostData:self beforeTimeStamp:nil longitude:longitude latitude:latitude cleanData:YES];
-    }        
+        [localService requestUserAtMePostData:self beforeTimeStamp:nil cleanData:YES];
+    }    
 }
 
 - (void)initDataList
 {
-    NSString* userId = [UserManager getUserId];
-    self.dataList = [PostManager getAllNearbyPost:userId];
+    self.dataList = [PostManager getAllAtMePost];
     [self requestPostListFromServer:YES];    
 }
 
-- (void)viewDidLoad
+#pragma Pull Refresh Delegate
+- (void) reloadTableViewDataSource
 {
+    [self requestPostListFromServer:YES];
+}
+
+
+- (void)viewDidLoad
+{    
     supportRefreshHeader = YES;
     
     [self initDataList];
     
     [super viewDidLoad];
-
+    
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.dataList = [PostManager getAllNearbyPost:nil]; 
+    self.dataList = [PostManager getAllAtMePost]; 
     [super viewDidAppear:YES];
 }
 
@@ -118,7 +123,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 #pragma mark Table View Delegate
 
 //- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)aTableView 
@@ -210,10 +214,8 @@
     NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
 	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [PostTableViewCell createCell:self];
+        cell = [PostTableViewCell createCell:self];
 	}
-	
-	cell.accessoryView = accessoryView;
 	
 	// set text label
 	int row = [indexPath row];	
@@ -226,7 +228,7 @@
     //	[self setCellBackground:cell row:row count:count];        
 	
 	Post* post = [dataList objectAtIndex:row];
-    [cell setCellInfoWithPost:post indexPath:indexPath];
+    [cell setCellInfoWithPost:post indexPath:indexPath];    
 	
 	return cell;
 	
@@ -234,6 +236,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+    
     // tag_more_rows
     if ([self isMoreRow:indexPath.row]){
         [self.moreLoadingView startAnimating];
@@ -247,7 +250,6 @@
 	// do select row action
     [PostControllerUtils gotoPostController:self.superController 
                                        post:[dataList objectAtIndex:indexPath.row]];
-    
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -266,23 +268,13 @@
 	
 }
 
-
 - (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row >= [dataList count])
         return;
     
-    NSDictionary* dict = [dataList objectAtIndex:indexPath.row];
-    [PostControllerUtils askFollowPlace:[ResultUtils placeId:dict]
-                              placeName:[ResultUtils placeName:dict]
-                         viewController:self];
-}
-
-#pragma Pull Refresh Delegate
-
-- (void) reloadTableViewDataSource
-{
-    [self requestPostListFromServer:YES];
+    Post* post = [dataList objectAtIndex:indexPath.row];
+    [PostControllerUtils askFollowPlace:post.placeId placeName:post.placeName  viewController:self];
 }
 
 @end

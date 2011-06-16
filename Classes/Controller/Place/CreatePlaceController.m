@@ -28,6 +28,7 @@ enum
 @synthesize nameTextField;
 @synthesize descriptionTextField;
 @synthesize placeController;
+@synthesize defaultPlaceName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +44,7 @@ enum
     [nameTextField release];
     [descriptionTextField release];
     [placeController release];
+    [defaultPlaceName release];
     [super dealloc];
 }
 
@@ -65,7 +67,7 @@ enum
     // Do any additional setup after loading the view from its nib.
     [self setNavigationRightButton:NSLS(@"Save") action:@selector(clickSave:)];
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
-    
+        
     //    [self initLocationManager];
 }
 
@@ -178,11 +180,13 @@ enum
         frame.size.width -= 20;
         UITextField* textField = [[UITextField alloc] initWithFrame:frame];
         
-        self.nameTextField = textField;
         
         textField.placeholder = NSLS(@"kEnterPlaceName");                
         [cell.contentView addSubview:textField];                
         [textField release];
+        
+        self.nameTextField = textField;
+        self.nameTextField.text = defaultPlaceName;
         
         [self.nameTextField becomeFirstResponder];    
     }
