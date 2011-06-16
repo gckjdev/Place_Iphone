@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "LocalDataService.h"
+#import "PostTableViewCell.h"
 
-@interface FollowPostController : PPTableViewController <LocalDataServiceDelegate> {
+@interface FollowPostController : PPTableViewController <LocalDataServiceDelegate, PostTableViewCellDelegate> {
     
     UIViewController     *superController;
 }

@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@class PPViewController;
 @class Post;
 
 @interface PostControllerUtils : NSObject {
-    
+ 
+    NSString* placeId;
+    NSString* placeName;
+    PPViewController* viewController;
 }
+
+@property (nonatomic, retain) NSString* placeId;
+@property (nonatomic, retain) NSString* placeName;
+@property (nonatomic, retain) PPViewController* viewController;
+
 
 + (void)setCellStyle:(UITableViewCell*)cell;
 + (void)setCellInfoWithDict:(NSDictionary*)dict cell:(UITableViewCell*)cell;
@@ -20,4 +29,6 @@
 + (void)gotoPostController:(UIViewController*)superController post:(Post*)post;
 + (CGFloat)getCellHeight;
    
++ (void)askFollowPlace:(NSString*)placeId placeName:(NSString*)placeName viewController:(PPViewController*)viewController;
+
 @end

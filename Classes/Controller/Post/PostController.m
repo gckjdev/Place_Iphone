@@ -115,6 +115,7 @@ enum{
 {
     supportRefreshHeader = YES;    
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    [self setNavigationRightButton:NSLS(@"kReply") action:@selector(clickReply:)];
         
     self.navigationItem.title = NSLS(@"kPostRelatedPostTitle");
     
@@ -251,14 +252,14 @@ enum{
     NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
 	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-        cell = [PostTableViewCell createCell];
+        cell = [PostTableViewCell createCell:self];
         cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
     switch (indexPath.section) {
         case SECTION_POST_ITSELF:
         {
-            [cell setCellInfoWithPost:post];
+            [cell setCellInfoWithPost:post indexPath:indexPath];
         }
             break;
             
@@ -272,7 +273,7 @@ enum{
             }            
             
             NSDictionary* dict = [dataList objectAtIndex:row];
-            [cell setCellInfoWithDict:dict];
+            [cell setCellInfoWithDict:dict indexPath:indexPath];
                     
         }
             break;
@@ -293,6 +294,35 @@ enum{
 	    
 }
 
+- (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath*)indexPath
+{
+    switch (indexPath.section) {
+        case SECTION_POST_ITSELF:
+        {
+            [PostControllerUtils askFollowPlace:post.placeId
+                                      placeName:post.placeName
+                                 viewController:self];            
+
+        }
+            break;
+            
+        case SECTION_RELATED_POST:
+        {
+            if (indexPath.row >= [dataList count])
+                return;        
+            
+            NSDictionary* postDict = [dataList objectAtIndex:indexPath.row];
+            [PostControllerUtils askFollowPlace:[ResultUtils placeId:postDict]
+                                      placeName:[ResultUtils placeName:postDict]
+                                 viewController:self];            
+        }
+            break;
+            
+        default:            
+            break;
+    }    
+    
+}
 
 #pragma Button Actions
 
@@ -307,6 +337,11 @@ enum{
     vc.navigationItem.title = NSLS(@"kReplyPostTitle");
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
+}
+
+- (void)clickReply:(id)sender
+{
+    [self replyPost];
 }
 
 - (void)clickBack:(id)sender

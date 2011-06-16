@@ -11,8 +11,10 @@
 #import "Place.h"
 #import "LocalDataService.h"
 #import "PlaceTableViewCell.h"
+#import "PostTableViewCell.h"
 
-@interface PostListController : PPTableViewController <LocalDataServiceDelegate, PlaceTableViewCellDelegate> {
+
+@interface PostListController : PPTableViewController <LocalDataServiceDelegate, PlaceTableViewCellDelegate, PostTableViewCellDelegate> {
     
     Place                           *place;
     IBOutlet PlaceTableViewCell     *placeCell;

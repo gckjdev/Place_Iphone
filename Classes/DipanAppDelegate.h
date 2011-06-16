@@ -57,6 +57,4 @@ LocalDataServiceDelegate, UserServiceDelegate> {
 
 @end
 
-extern LocalDataService*  GlobalGetLocalDataService();
-extern LocationService*   GlobalGetLocationService();
-extern PlaceSNSService*   GlobalGetSNSService();
+

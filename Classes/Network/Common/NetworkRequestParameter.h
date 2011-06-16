@@ -28,6 +28,7 @@
 #define METHOD_GETMEPOST @"gmep"
 #define METHOD_UPDATEUSER @"uu"
 #define METHOD_UPDATEPLACE @"up"
+#define METHOD_GETPLACE @"gtp"
 
 // request parameters
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPViewController.h"
 
 @protocol LocalDataServiceDelegate <NSObject>
 
@@ -51,4 +52,8 @@
 - (void)requestDataWhileEnterForeground;
 - (void)requestDataWhileLaunch;
 
+- (void)userFollowPlace:(NSString*)placeId placeName:(NSString*)placeName viewController:(PPViewController*)viewController;
+
 @end
+
+extern LocalDataService* GlobalGetLocalDataService();

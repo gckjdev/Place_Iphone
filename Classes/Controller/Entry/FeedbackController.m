@@ -10,6 +10,8 @@
 
 
 @implementation FeedbackController
+@synthesize feedbackLabel;
+@synthesize feedbackButton;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -22,12 +24,14 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	feedbackLabel.text = NSLS(@"kFeedbackLabel");
+	[feedbackButton setTitle:NSLS(@"kFeedbackButton") forState:UIControlStateNormal];		
+
     [super viewDidLoad];
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -45,6 +49,8 @@
 }
 
 - (void)viewDidUnload {
+    [self setFeedbackLabel:nil];
+    [self setFeedbackButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -52,8 +58,20 @@
 
 
 - (void)dealloc {
+    [feedbackLabel release];
+    [feedbackButton release];
     [super dealloc];
 }
 
+- (IBAction)clickFeedback:(id)sender
+{
+    [self sendEmailTo:[NSArray arrayWithObject:@"zz2010.support@gmail.com"] 
+		 ccRecipients:nil 
+		bccRecipients:nil 
+			  subject:NSLS(@"kFeedbackSubject")
+				 body:NSLS(@"") 
+			   isHTML:NO 
+			 delegate:self];
+}
 
 @end

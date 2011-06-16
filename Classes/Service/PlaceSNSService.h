@@ -40,4 +40,4 @@ typedef void (^AuthorizationSuccessHandler)(NSDictionary*, PPViewController*);
 
 @end
 
-
+extern PlaceSNSService*   GlobalGetSNSService();

@@ -20,6 +20,7 @@ enum {
 }
 @property (nonatomic, retain) NSString * postId;
 @property (nonatomic, retain) NSString * placeId;
+@property (nonatomic, retain) NSString * placeName;
 @property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSString * textContent;
 @property (nonatomic, retain) NSString * imageURL;

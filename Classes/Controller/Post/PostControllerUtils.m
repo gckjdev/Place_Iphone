@@ -10,8 +10,33 @@
 #import "ResultUtils.h"
 #import "Post.h"
 #import "PostController.h"
+#import "PlaceManager.h"
+#import "LocalDataService.h"
+
+PostControllerUtils* shareUtil;
 
 @implementation PostControllerUtils
+
+@synthesize placeId;
+@synthesize placeName;
+@synthesize viewController;
+
+- (void)dealloc
+{
+    [placeId release];
+    [placeName release];
+    [viewController release];
+    [super dealloc];
+}
+
++ (PostControllerUtils*)shareUtil
+{
+    if (shareUtil == nil){
+        shareUtil = [[PostControllerUtils alloc] init];
+    }
+    
+    return shareUtil;
+}
 
 + (void)setCellStyle:(UITableViewCell*)cell
 {
@@ -72,6 +97,40 @@
     return 100.0f;
 }
 
++ (void)askFollowPlace:(NSString*)placeId placeName:(NSString*)placeName viewController:(PPViewController*)viewController
+{
+    if ([PlaceManager isPlaceFollowByUser:placeId] == YES){
+        NSLog(@"<askFollowPlace> but place(%@,%@) has been followed by user", placeId, placeName);
+        return;
+    }
+    
+    NSString* message = [NSString stringWithFormat:NSLS(@"kAskFollowPlace"), placeName];
+    PostControllerUtils* shareUtil = [PostControllerUtils shareUtil];
+    shareUtil.viewController = viewController;
+    shareUtil.placeId = placeId;
+    shareUtil.placeName = placeName;
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"" 
+                                                        message:message                                                        
+                                                       delegate:[PostControllerUtils shareUtil]
+                                              cancelButtonTitle:NSLS(@"Cancel")
+                                              otherButtonTitles:NSLS(@"Yes"), nil];
+    
+    [alertView show];
+    [alertView release];
+}
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    enum{
+        BUTTON_CANCEL,
+        BUTTON_YES
+    };
+    
+    if (buttonIndex == BUTTON_YES){
+        LocalDataService* localService = GlobalGetLocalDataService();
+        [localService userFollowPlace:placeId placeName:placeName viewController:viewController];
+    }
+}
 
 @end

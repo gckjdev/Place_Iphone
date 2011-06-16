@@ -247,6 +247,7 @@
 		CAAF030F137FE03200E56503 /* UIToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0184137FE03100E56503 /* UIToolBarCell.m */; };
 		CAAF0310137FE03200E56503 /* UIWebViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0186137FE03100E56503 /* UIWebViewUtil.m */; };
 		CAB2F05A125F4CA600593157 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2F059125F4CA600593157 /* AudioToolbox.framework */; };
+		CAC8B63F13A8ADAB00627367 /* GetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC8B63E13A8ADAB00627367 /* GetPlaceRequest.m */; };
 		CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */; };
 		CAD19B1E137A6A3500A8817B /* FeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B0C137A6A3500A8817B /* FeedbackController.m */; };
 		CAD19B1F137A6A3500A8817B /* FeedbackController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B0D137A6A3500A8817B /* FeedbackController.xib */; };
@@ -853,6 +854,8 @@
 		CAB2F048125F49E400593157 /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CAB2F059125F4CA600593157 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CABC814813A1F5F8001CE1B8 /* ContollerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContollerConstants.h; sourceTree = "<group>"; };
+		CAC8B63D13A8ADAB00627367 /* GetPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlaceRequest.h; sourceTree = "<group>"; };
+		CAC8B63E13A8ADAB00627367 /* GetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlaceRequest.m; sourceTree = "<group>"; };
 		CACDAD5A13912EFB00AE48F4 /* ResultUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultUtils.h; sourceTree = "<group>"; };
 		CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultUtils.m; sourceTree = "<group>"; };
 		CAD19B0B137A6A3500A8817B /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
@@ -2005,6 +2008,8 @@
 				CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */,
 				FB42F6EC13934C0D0053F0DC /* UserUnfollowPlaceRequest.h */,
 				FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */,
+				CAC8B63D13A8ADAB00627367 /* GetPlaceRequest.h */,
+				CAC8B63E13A8ADAB00627367 /* GetPlaceRequest.m */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2557,6 +2562,7 @@
 				CA9E0947139CCC8D000B6FEE /* PlaceSNSService.m in Sources */,
 				FB091A73139F4FF700C94292 /* PPImageView.m in Sources */,
 				CA86099C13A33DB200B00874 /* UpdateUserRequest.m in Sources */,
+				CAC8B63F13A8ADAB00627367 /* GetPlaceRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,10 +16,13 @@
 #import "GetNearbyPostRequest.h"
 #import "GetUserFollowPostRequest.h"
 #import "GetUserFollowPlaceRequest.h"
+#import "UserFollowPlaceRequest.h"
+#import "GetPlaceRequest.h"
 #import "TimeUtils.h"
 #import "Post.h"
 #import "AppManager.h"
 #import "ResultUtils.h"
+#import "UserService.h"
 
 @implementation LocalDataService
 
@@ -69,6 +72,7 @@
                  totalReply:[ResultUtils totalReply:post]
                totalRelated:[ResultUtils totalRelated:post]
                userNickName:[ResultUtils nickName:post]
+                  placeName:[ResultUtils placeName:post]
                   srcPostId:[ResultUtils srcPostId:post]
                 replyPostId:[ResultUtils replyPostId:post]
                  userAvatar:[ResultUtils userAvatar:post]
@@ -350,4 +354,40 @@
     [super dealloc];
 }
 
+- (void)userFollowPlace:(NSString*)placeId placeName:(NSString*)placeName viewController:(PPViewController*)viewController
+{
+    NSString* appId = [AppManager getPlaceAppId];
+    UserService* userService = GlobalGetUserService();
+    NSString* userId = [userService userId];
+    
+    [viewController showActivityWithText:NSLS(@"kFollowingPlace")];
+    dispatch_async(workingQueue, ^{
+
+        int resultCode = ERROR_SUCCESS;
+        UserFollowPlaceOutput* output = [UserFollowPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
+        resultCode = output.resultCode;
+
+        NSDictionary* placeDataDict = nil;
+        if (output.resultCode == ERROR_SUCCESS){
+            GetPlaceOutput* getPlaceOutput = [GetPlaceRequest send:SERVER_URL userId:userId placeId:placeId appId:appId];
+            
+            resultCode = getPlaceOutput.resultCode;
+            placeDataDict = getPlaceOutput.placeDict;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [viewController hideActivity];
+            if (resultCode == ERROR_SUCCESS){     
+                [viewController popupHappyMessage:NSLS(@"kFollowSucc") title:@""];
+                [self createPlace:placeDataDict userId:userId useFor:PLACE_USE_FOLLOW];
+            }
+            else if (resultCode == ERROR_NETWORK){
+                [UIUtils alert:NSLS(@"kSystemFailure")];
+            }
+            else{
+                // other error TBD
+            }
+        });        
+    });  
+}
 @end

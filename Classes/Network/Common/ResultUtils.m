@@ -128,4 +128,9 @@
     return [place objectForKey:PARA_CREATE_USERID];
 }
 
++ (NSString*)placeName:(NSDictionary*)post
+{
+    return [post objectForKey:PARA_NAME];
+}
+
 @end

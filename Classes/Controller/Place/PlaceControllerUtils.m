@@ -60,6 +60,7 @@
     //        postListController.navigationItem.leftBarButtonItem.title = NSLS(@"kMyPlace");
     //    }
     postListController.navigationItem.title = place.name;
+    superController.hidesBottomBarWhenPushed = YES;
     [superController.navigationController pushViewController:postListController animated:YES];
     [postListController release];
 }

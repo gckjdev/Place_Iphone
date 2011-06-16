@@ -241,7 +241,7 @@ enum {
             NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
             PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
-                cell = [PostTableViewCell createCell];
+                cell = [PostTableViewCell createCell:self];
             }
             
             // set text label
@@ -255,7 +255,7 @@ enum {
             //	[self setCellBackground:cell row:row count:count];
             
             Post* post = [dataList objectAtIndex:row];
-            [cell setCellInfoWithPost:post];
+            [cell setCellInfoWithPost:post indexPath:indexPath];
             
             return cell;
         
@@ -379,6 +379,25 @@ enum {
     else{
         [self followPlace:userId placeId:place.placeId];    
     }
+}
+
+- (void)clickBack:(id)sender
+{
+    int count = [self.navigationController.viewControllers count];
+    if (count >= 2){
+        UIViewController* vc = [self.navigationController.viewControllers objectAtIndex:count-2];
+        vc.hidesBottomBarWhenPushed = NO;
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row >= [dataList count])
+        return;
+    
+    Post* post = [dataList objectAtIndex:indexPath.row];
+    [PostControllerUtils askFollowPlace:post.placeId placeName:post.placeName  viewController:self];
 }
 
 @end

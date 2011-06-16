@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPViewController.h"
 
-
-@interface FeedbackController : UIViewController {
-
+@interface FeedbackController : PPViewController {
+ 
+    UILabel *feedbackLabel;
+    UIButton *feedbackButton;
 }
+@property (nonatomic, retain) IBOutlet UILabel *feedbackLabel;
+@property (nonatomic, retain) IBOutlet UIButton *feedbackButton;
+
+- (IBAction)clickFeedback:(id)sender;
 
 @end

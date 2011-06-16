@@ -11,6 +11,12 @@
 
 @class Post;
 
+@protocol PostTableViewCellDelegate <NSObject>
+
+- (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath*)indexPath;
+
+@end
+
 @interface PostTableViewCell : UITableViewCell <HJManagedImageVDelegate> {
     
     HJManagedImageV *userAvatarImage;
@@ -19,6 +25,12 @@
     UILabel *textContentLabel;
     UILabel *totalReplyLabel;
     HJManagedImageV *contentImage;
+    UIButton *placeNameButton;
+    UILabel *placeNameLabel;
+    NSIndexPath *indexPath;
+    
+    id<PostTableViewCellDelegate> delegate;
+
 }
 @property (nonatomic, retain) IBOutlet HJManagedImageV *userAvatarImage;
 @property (nonatomic, retain) IBOutlet UILabel *userNickNameLabel;
@@ -26,12 +38,18 @@
 @property (nonatomic, retain) IBOutlet UILabel *textContentLabel;
 @property (nonatomic, retain) IBOutlet UILabel *totalReplyLabel;
 @property (nonatomic, retain) IBOutlet HJManagedImageV *contentImage;
+@property (nonatomic, retain) IBOutlet UIButton *placeNameButton;
+@property (nonatomic, retain) IBOutlet UILabel *placeNameLabel;
+@property (nonatomic, retain) NSIndexPath *indexPath;
+@property (nonatomic, assign) id<PostTableViewCellDelegate> delegate;
 
-+ (PostTableViewCell*)createCell;
++ (PostTableViewCell*)createCell:(id<PostTableViewCellDelegate>)delegate;
 + (NSString*)getCellIdentifier;
 
-- (void)setCellInfoWithDict:(NSDictionary*)dict;
-- (void)setCellInfoWithPost:(Post*)post;
+- (void)setCellInfoWithDict:(NSDictionary*)dict indexPath:(NSIndexPath*)indexPath;
+- (void)setCellInfoWithPost:(Post*)post indexPath:(NSIndexPath*)indexPath;
 + (CGFloat)getCellHeight;
+
+- (IBAction)clickPlaceNameButton:(id)sender;
 
 @end

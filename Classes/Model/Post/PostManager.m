@@ -39,6 +39,7 @@
         totalQuote:(int)totalQuote totalReply:(int)totalReply
       totalRelated:(int)totalRelated
       userNickName:(NSString*)userNickName
+         placeName:(NSString*)placeName
          srcPostId:(NSString*)srcPostId
        replyPostId:(NSString*)replyPostId
         userAvatar:(NSString*)userAvatar
@@ -70,6 +71,7 @@
     post.userAvatar = userAvatar;
     post.replyPostId = replyPostId;
     post.deleteTimeStamp = [NSNumber numberWithInt:0];
+    post.placeName = placeName;
     
     NSLog(@"<createPost> post=%@", [post description]);
     

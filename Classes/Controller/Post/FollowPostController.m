@@ -197,7 +197,7 @@
     NSString *CellIdentifier = [PostTableViewCell getCellIdentifier];
 	PostTableViewCell *cell = (PostTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-        cell = [PostTableViewCell createCell];
+        cell = [PostTableViewCell createCell:self];
 	}
 	
 	// set text label
@@ -211,7 +211,7 @@
     //	[self setCellBackground:cell row:row count:count];        
 	
 	Post* post = [dataList objectAtIndex:row];
-    [cell setCellInfoWithPost:post];    
+    [cell setCellInfoWithPost:post indexPath:indexPath];    
 	
 	return cell;
 	
@@ -243,5 +243,13 @@
 	
 }
 
+- (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row >= [dataList count])
+        return;
+    
+    Post* post = [dataList objectAtIndex:indexPath.row];
+    [PostControllerUtils askFollowPlace:post.placeId placeName:post.placeName  viewController:self];
+}
 
 @end

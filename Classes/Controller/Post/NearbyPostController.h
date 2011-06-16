@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "LocalDataService.h"
+#import "PostTableViewCell.h"
 
-@interface NearbyPostController : PPTableViewController <LocalDataServiceDelegate> {
+
+@interface NearbyPostController : PPTableViewController <LocalDataServiceDelegate, PostTableViewCellDelegate> {
     
     
     UIViewController     *superController;

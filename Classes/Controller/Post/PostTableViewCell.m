@@ -19,12 +19,17 @@
 
 
 @implementation PostTableViewCell
+
 @synthesize userAvatarImage;
 @synthesize userNickNameLabel;
 @synthesize createDateLabel;
 @synthesize textContentLabel;
 @synthesize totalReplyLabel;
 @synthesize contentImage;
+@synthesize placeNameButton;
+@synthesize placeNameLabel;
+@synthesize indexPath;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -52,10 +57,13 @@
     [textContentLabel release];
     [totalReplyLabel release];
     [contentImage release];
+    [placeNameLabel release];
+    [placeNameButton release];
+    [indexPath release];
     [super dealloc];
 }
 
-+ (PostTableViewCell*)createCell
++ (PostTableViewCell*)createCell:(id<PostTableViewCellDelegate>)delegate
 {
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PostTableViewCell" owner:self options:nil];
     // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).  
@@ -63,6 +71,8 @@
         NSLog(@"<createPostTableViewCell> but cannot find cell object");
         return nil;
     }
+    
+    ((PostTableViewCell*)[topLevelObjects objectAtIndex:0]).delegate = delegate;
     
     return (PostTableViewCell*)[topLevelObjects objectAtIndex:0];
 }
@@ -124,11 +134,16 @@
                         totalRelated:(int)totalRelated
                         userAvatar:(NSString*)userAvatar
                       contentImage:(NSString*)imageURL
+                         placeName:(NSString*)placeName
+                       indexPath:(NSIndexPath*)indexPathValue
 
 {
+    self.indexPath = indexPathValue;
     
+    [self.placeNameButton setTitle:placeName forState:UIControlStateNormal];
+    
+    self.userNickNameLabel.text = userNickName;    
     self.textContentLabel.text = textContent;
-    self.userNickNameLabel.text = userNickName;
     if (totalRelated > 1){
         self.totalReplyLabel.text = [NSString stringWithFormat:NSLS(@"kTotalRelated"), totalRelated-1];
     }
@@ -165,7 +180,7 @@
     self.contentImage.frame = [UIImage shrinkFromOrigRect:origRect imageSize:mi.image.size];    
 }
 
-- (void)setCellInfoWithPost:(Post*)post
+- (void)setCellInfoWithPost:(Post*)post indexPath:(NSIndexPath*)indexPathValue
 {
     
     [self setCellInfoWithTextContent:post.textContent
@@ -173,11 +188,13 @@
                           createDate:post.createDate
                           totalRelated:[post.totalRelated intValue]
                           userAvatar:post.userAvatar
-                        contentImage:post.imageURL];
+                        contentImage:post.imageURL
+                           placeName:post.placeName
+                           indexPath:indexPathValue];
     
 }
 
-- (void)setCellInfoWithDict:(NSDictionary*)dict
+- (void)setCellInfoWithDict:(NSDictionary*)dict indexPath:(NSIndexPath*)indexPathValue
 {
     [self setCellInfoWithTextContent:[ResultUtils textContent:dict]
                         userNickName:[ResultUtils nickName:dict]
@@ -185,6 +202,8 @@
                           totalRelated:[ResultUtils totalRelated:dict]
                           userAvatar:[ResultUtils userAvatar:dict]
                         contentImage:[ResultUtils imageURL:dict]
+                           placeName:[ResultUtils placeName:dict]
+                           indexPath:indexPathValue
      
      ];
 }
@@ -198,5 +217,13 @@
 {
     
 }
+
+- (IBAction)clickPlaceNameButton:(id)sender
+{
+    if (delegate != nil && [delegate respondsToSelector:@selector(clickPlaceNameButton:atIndexPath:)]){
+        [delegate clickPlaceNameButton:sender atIndexPath:indexPath];
+    }
+}
+
 
 @end

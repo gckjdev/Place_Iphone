@@ -33,5 +33,6 @@
 @dynamic userNickName;
 @dynamic userAvatar;
 @dynamic replyPostId;
+@dynamic placeName;
 
 @end

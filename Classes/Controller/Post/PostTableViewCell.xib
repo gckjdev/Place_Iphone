@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J869</string>
+		<string key="IBDocument.SystemVersion">10J3250</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
@@ -13,6 +13,7 @@
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUITableViewCell</string>
+			<string>IBUIButton</string>
 			<string>IBUILabel</string>
 			<string>IBUIView</string>
 			<string>IBProxyObject</string>
@@ -81,7 +82,6 @@
 								<string key="NSFrame">{{224, 97}, {90, 21}}</string>
 								<reference key="NSSuperview" ref="27607831"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -120,7 +120,7 @@
 							<object class="IBUILabel" id="178121312">
 								<reference key="NSNextResponder" ref="27607831"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{81, 7}, {129, 21}}</string>
+								<string key="NSFrame">{{14, 73}, {60, 21}}</string>
 								<reference key="NSSuperview" ref="27607831"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="737818473"/>
@@ -158,6 +158,34 @@
 								<reference key="NSNextKeyView" ref="75049368"/>
 								<reference key="IBUIBackgroundColor" ref="738238824"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUIButton" id="283949487">
+								<reference key="NSNextResponder" ref="27607831"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{78, 12}, {138, 28}}</string>
+								<reference key="NSSuperview" ref="27607831"/>
+								<reference key="NSWindow"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">15</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<object class="NSColor" key="IBUIHighlightedTitleColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<object class="NSColor" key="IBUINormalTitleShadowColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
 							</object>
 						</object>
 						<string key="NSFrameSize">{320, 130}</string>
@@ -237,6 +265,23 @@
 					</object>
 					<int key="connectionID">22</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">placeNameButton</string>
+						<reference key="source" ref="912718677"/>
+						<reference key="destination" ref="283949487"/>
+					</object>
+					<int key="connectionID">26</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">clickPlaceNameButton:</string>
+						<reference key="source" ref="283949487"/>
+						<reference key="destination" ref="912718677"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">27</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -264,11 +309,12 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="75049368"/>
-							<reference ref="178121312"/>
 							<reference ref="737818473"/>
 							<reference ref="120130485"/>
 							<reference ref="426683019"/>
 							<reference ref="292848123"/>
+							<reference ref="178121312"/>
+							<reference ref="283949487"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -302,6 +348,11 @@
 						<reference key="object" ref="292848123"/>
 						<reference key="parent" ref="912718677"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">25</int>
+						<reference key="object" ref="283949487"/>
+						<reference key="parent" ref="912718677"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -315,6 +366,7 @@
 					<string>2.IBPluginDependency</string>
 					<string>20.CustomClassName</string>
 					<string>20.IBPluginDependency</string>
+					<string>25.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
@@ -328,6 +380,7 @@
 					<string>PostTableViewCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>HJManagedImageV</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -347,7 +400,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">22</int>
+			<int key="maxID">27</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -363,12 +416,25 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PostTableViewCell</string>
 					<string key="superclassName">UITableViewCell</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">clickPlaceNameButton:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">clickPlaceNameButton:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">clickPlaceNameButton:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>contentImage</string>
 							<string>createDateLabel</string>
+							<string>placeNameButton</string>
+							<string>placeNameLabel</string>
 							<string>textContentLabel</string>
 							<string>totalReplyLabel</string>
 							<string>userAvatarImage</string>
@@ -377,6 +443,8 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>HJManagedImageV</string>
+							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -390,6 +458,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>contentImage</string>
 							<string>createDateLabel</string>
+							<string>placeNameButton</string>
+							<string>placeNameLabel</string>
 							<string>textContentLabel</string>
 							<string>totalReplyLabel</string>
 							<string>userAvatarImage</string>
@@ -403,6 +473,14 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">createDateLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">placeNameButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">placeNameLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">

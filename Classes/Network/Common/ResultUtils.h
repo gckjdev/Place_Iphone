@@ -33,6 +33,7 @@
 + (NSString*)srcPostId:(NSDictionary*)post;
 + (NSString*)replyPostId:(NSDictionary*)post;
 + (NSString*)userAvatar:(NSDictionary*)post;
++ (NSString*)placeName:(NSDictionary*)post;
 
 + (NSString*)name:(NSDictionary*)place;
 + (NSString*)description:(NSDictionary*)place;

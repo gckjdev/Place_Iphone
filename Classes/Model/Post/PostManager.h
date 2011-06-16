@@ -24,6 +24,7 @@
         totalQuote:(int)totalQuote totalReply:(int)totalReply
       totalRelated:(int)totalRelated
       userNickName:(NSString*)userNickName
+         placeName:(NSString*)placeName
          srcPostId:(NSString*)srcPostId
        replyPostId:(NSString*)replyPostId
          userAvatar:(NSString*)userAvatar

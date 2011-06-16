@@ -83,6 +83,7 @@ enum{
 - (void)initLogoutButton
 {
     [logoutButton setTitle:NSLS(@"Logout") forState:UIControlStateNormal];
+    logoutButton.hidden = YES;  // don't show it at this momement to make the app clear
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

@@ -239,6 +239,7 @@ enum{
                 // save post data locally
                 [PostManager createPost:output.postId placeId:placeId userId:user.userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply totalRelated:0
                            userNickName:user.nickName 
+                              placeName:place.name
                               srcPostId:srcPostId
                             replyPostId:replyPostId
                              userAvatar:user.avatar

@@ -46,3 +46,6 @@
 + (NSString*)getCity:(MKPlacemark*)placemark;
 
 @end
+
+extern LocationService*   GlobalGetLocationService();
+

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
 #import "Post.h"
+#import "PostTableViewCell.h"
 
-@interface PostController : PPTableViewController {
+
+@interface PostController : PPTableViewController <PostTableViewCellDelegate> {
     
     Post        *post;
     UIToolbar   *actionToolbar;
