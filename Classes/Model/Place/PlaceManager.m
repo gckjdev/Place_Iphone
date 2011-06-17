@@ -148,10 +148,10 @@
 + (void)cleanUpDeleteDataBefore:(int)timeStamp
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    NSArray* placeArray = [dataManager execute:@"getPlaceDeleteBefore" 
+    NSArray* placeArray = [dataManager execute:@"getAllPlacesForDelete" 
                                         forKey:@"beforeTimeStamp" 
                                          value:[NSNumber numberWithInt:timeStamp]
-                                        sortBy:@"createDate"
+                                        sortBy:@"placeId"
                                      ascending:YES];
     
     for (Place* place in placeArray){
@@ -161,6 +161,8 @@
     [dataManager save];     
     
 }
+
+
 
 + (NSArray*)getPlaceListForCreatePost:(CLLocation*)currentLocation
 {

@@ -44,6 +44,7 @@
 - (void)viewDidLoad
 {
     [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    self.navigationItem.title = NSLS(@"kSelectPlaceTitle");
     
     LocationService* locationService = GlobalGetLocationService();
     self.dataList = [PlaceManager getPlaceListForCreatePost:locationService.currentLocation];

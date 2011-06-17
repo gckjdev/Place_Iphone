@@ -28,6 +28,7 @@
 #import "RegisterController.h"
 #import "DeviceLoginRequest.h"
 
+#import "PlaceManager.h"
 #import "PlaceSNSService.h"
 
 #define kDbFileName			@"AppDB"
@@ -233,7 +234,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     NSLog(@"Background Task Remaining Time = %f", [application backgroundTimeRemaining]);
     if (UIBackgroundTaskInvalid != backgroundTask) {
-//        [CommonManager cleanUpDeleteData];
+        [CommonManager cleanUpDeleteData];
     }		
 }
 
@@ -248,8 +249,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 	[self initMobClick];
     [localDataService requestDataWhileEnterForeground];
   
-//   Bug, TO be fixed
-//   [CommonManager cleanUpDeleteData];
 }
 
 

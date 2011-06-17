@@ -53,7 +53,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [mapView setCenterCoordinate:location zoomLevel:5 animated:YES];
+    [mapView setCenterCoordinate:location zoomLevel:12 animated:YES];
 }
 
 - (void)viewDidUnload

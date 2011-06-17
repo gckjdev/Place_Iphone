@@ -70,7 +70,7 @@
     post.srcPostId = srcPostId;
     post.userAvatar = userAvatar;
     post.replyPostId = replyPostId;
-    post.deleteTimeStamp = [NSNumber numberWithInt:0];
+    post.deleteTimeStamp = [NSNumber numberWithInt:time(0)];
     post.placeName = placeName;
     
     NSLog(@"<createPost> post=%@", [post description]);
@@ -152,13 +152,13 @@
 + (void)cleanUpDeleteDataBefore:(int)timeStamp
 {
     CoreDataManager *dataManager = GlobalGetCoreDataManager();
-    NSArray* placeArray = [dataManager execute:@"getPostDeleteBefore" 
+    NSArray* dataArray = [dataManager execute:@"getAllPostsForDelete" 
                                         forKey:@"beforeTimeStamp" 
                                          value:[NSNumber numberWithInt:timeStamp]
                                         sortBy:@"createDate"
                                      ascending:NO];
 
-    for (Post* post in placeArray){
+    for (Post* post in dataArray){
         [dataManager del:post];
     }
     
