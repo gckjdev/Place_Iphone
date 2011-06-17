@@ -11,7 +11,7 @@
 #import "PostManager.h"
 #import "UserManager.h"
 #import "NearbyPostController.h"
-
+#import "CreatePostController.h"
 
 enum SELECT_POST_TYPE {
     SELECT_NEARBY = 0,
@@ -111,6 +111,11 @@ enum SELECT_POST_TYPE {
 
 - (void)viewDidLoad
 {
+    // set right button
+    UIBarButtonItem *newPostButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(clickCreatePost:)];
+    self.navigationItem.rightBarButtonItem = newPostButton;
+    [newPostButton release];
+    
     [self createNavigationTitleToolbar:
                     [NSArray arrayWithObjects:
                      NSLS(@"kNearbyPost"),
@@ -178,6 +183,15 @@ enum SELECT_POST_TYPE {
     else{
         [self showPrivateMessage];
     }
+}
+
+- (void)clickCreatePost:(id)sender
+{
+    CreatePostController* vc = [[CreatePostController alloc] init];
+    vc.place = nil;
+    vc.navigationItem.title = NSLS(@"kCreatePostTitle");
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 
 @end

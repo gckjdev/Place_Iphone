@@ -15,6 +15,7 @@
 #import "SinaService.h"
 #import "QQService.h"
 #import "UIImageUtil.h"
+#import "SelectPlaceController.h"
 
 #define MAX_POST_TEXT_LEN 140
 
@@ -104,12 +105,22 @@ enum{
     }
 }
 
+// whether it's a reply post
+- (BOOL)isReply
+{
+    return [replyPostId length] > 0;
+}
+
 - (void)initButtons
 {
     [self setSyncSNSButtonInfo];
 //    [self.selectCameraButton setTitle:NSLS(@"") forState:UIControlStateNormal];
 //    [self.selectPhotoButton setTitle:NSLS(@"") forState:UIControlStateNormal];
 //    [self.selectPlaceButton setTitle:NSLS(@"") forState:UIControlStateNormal];
+    
+    if ([self isReply]){
+        selectPlaceButton.hidden = YES; // cannot select place if it's a reply post
+    }
 }
 
 - (void)setTextViewStatus
@@ -411,6 +422,16 @@ enum{
         [self presentModalViewController:picker animated:YES];        
     }
     
+}
+
+- (void)selectPlace:(Place*)newPlace
+{
+    self.place = newPlace;
+}
+
+- (IBAction)clickSelectPlace:(id)sender
+{
+    [SelectPlaceController gotoSelectPlaceController:self defaultPlace:place];
 }
 
 - (IBAction)clickTag:(id)sender

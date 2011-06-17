@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
+#import "SelectPlaceController.h"
 #import "Place.h"
 
-@interface CreatePostController : PPTableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate> {
+
+@interface CreatePostController : PPTableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, SelectPlaceControllerDelegate> {
     
     Place *place;
     NSString *srcPostId;

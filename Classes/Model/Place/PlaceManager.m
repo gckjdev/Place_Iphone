@@ -9,7 +9,7 @@
 #import "PlaceManager.h"
 #import "Place.h"
 #import "CoreDataUtil.h"
-
+#import <CoreLocation/CoreLocation.h>
 
 @implementation PlaceManager
 
@@ -162,6 +162,74 @@
     
 }
 
++ (NSArray*)getPlaceListForCreatePost:(CLLocation*)currentLocation
+{
+    CoreDataManager *dataManager = GlobalGetCoreDataManager();
+    NSArray* placeArray = [dataManager execute:@"getAllPlacesFollowNearby" 
+                                        sortBy:@"placeId" 
+                                     ascending:YES];
+    
+    NSMutableArray* newPlaceArray = [[[NSMutableArray alloc] init] autorelease];
+    int count = [placeArray count];
+    for (int i=0; i<count; ){
+        Place* place = [placeArray objectAtIndex:i];
+        NSString* placeId1 = [[placeArray objectAtIndex:i] placeId];
+        int j;
+        for (j=i+1; j<count;){
+            Place* place2 = [placeArray objectAtIndex:j];
+            NSString* placeId2 = [place2 placeId];
+            if ([placeId1 isEqualToString:placeId2]){
+
+                if ([place2.useFor intValue] == PLACE_USE_FOLLOW){
+                    place = place2; // use for follow place has higher priority for sorting purpose
+                }
+                
+                j++; // skip same place
+                
+            }
+            else{
+                break;
+            }
+        }
+        
+        // add place
+        [newPlaceArray addObject:place];
+
+        // new index for removing duplicate place
+        i = j;
+    }
+    
+    return [newPlaceArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        Place* place1 = obj1;
+        Place* place2 = obj2;
+        if ([place1.useFor intValue] > [place2.useFor intValue])    // follow has higher priority
+            return NSOrderedAscending;
+        else if ([place1.useFor intValue] == [place2.useFor intValue]){
+
+            CLLocation* location1 = [[CLLocation alloc] initWithLatitude:[place1.latitude doubleValue] 
+                                                               longitude:[place1.longitude doubleValue]];
+            
+            CLLocation* location2 = [[CLLocation alloc] initWithLatitude:[place2.latitude doubleValue] 
+                                                               longitude:[place2.longitude doubleValue]];
+            
+            double distance1 = [currentLocation distanceFromLocation:location1];
+            double distance2 = [currentLocation distanceFromLocation:location2];
+            
+            if (distance1 < distance2)          // more close has higher priority
+                return NSOrderedAscending;
+            else if (distance1 == distance2)
+                return NSOrderedSame;
+            else
+                return NSOrderedDescending;
+        }
+        else{
+            return NSOrderedDescending;
+        }
+        
+    }];
+     
+    
+}
 
 
 @end

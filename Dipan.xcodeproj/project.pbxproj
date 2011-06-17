@@ -52,6 +52,8 @@
 		CA4005A7138F47CA009B5BF9 /* PrivateMessageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */; };
 		CA4005AB138F5852009B5BF9 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4005A9138F5850009B5BF9 /* PostController.m */; };
 		CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005AA138F5851009B5BF9 /* PostController.xib */; };
+		CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4921DB13AAF55300744CCC /* SelectPlaceController.m */; };
+		CA4921DE13AAF55300744CCC /* SelectPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */; };
 		CA5C848213A9948200A22BB5 /* AtMePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848013A9948200A22BB5 /* AtMePostController.m */; };
 		CA5C848313A9948200A22BB5 /* AtMePostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5C848113A9948200A22BB5 /* AtMePostController.xib */; };
 		CA5C848613A99BA900A22BB5 /* GetAtMePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848513A99BA900A22BB5 /* GetAtMePostRequest.m */; };
@@ -510,6 +512,9 @@
 		CA4005A8138F584E009B5BF9 /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
 		CA4005A9138F5850009B5BF9 /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
 		CA4005AA138F5851009B5BF9 /* PostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostController.xib; sourceTree = "<group>"; };
+		CA4921DA13AAF55300744CCC /* SelectPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlaceController.h; sourceTree = "<group>"; };
+		CA4921DB13AAF55300744CCC /* SelectPlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlaceController.m; sourceTree = "<group>"; };
+		CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlaceController.xib; sourceTree = "<group>"; };
 		CA5C847F13A9948200A22BB5 /* AtMePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtMePostController.h; sourceTree = "<group>"; };
 		CA5C848013A9948200A22BB5 /* AtMePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtMePostController.m; sourceTree = "<group>"; };
 		CA5C848113A9948200A22BB5 /* AtMePostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AtMePostController.xib; sourceTree = "<group>"; };
@@ -1906,6 +1911,9 @@
 				CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */,
 				FB091A71139F4FF600C94292 /* PPImageView.h */,
 				FB091A72139F4FF600C94292 /* PPImageView.m */,
+				CA4921DA13AAF55300744CCC /* SelectPlaceController.h */,
+				CA4921DB13AAF55300744CCC /* SelectPlaceController.m */,
+				CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -2417,6 +2425,7 @@
 				CA5C848313A9948200A22BB5 /* AtMePostController.xib in Resources */,
 				CA5C848B13A9AB6400A22BB5 /* EnterPlaceAppController.xib in Resources */,
 				CAD8EBD613A9E3A00092C2EC /* MoreTableViewCell.xib in Resources */,
+				CA4921DE13AAF55300744CCC /* SelectPlaceController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2607,6 +2616,7 @@
 				CA5C848613A99BA900A22BB5 /* GetAtMePostRequest.m in Sources */,
 				CA5C848A13A9AB6400A22BB5 /* EnterPlaceAppController.m in Sources */,
 				CAD8EBD513A9E3A00092C2EC /* MoreTableViewCell.m in Sources */,
+				CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

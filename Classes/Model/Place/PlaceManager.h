@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Place.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface PlaceManager : NSObject {
     
@@ -29,5 +30,7 @@
 + (BOOL)userUnfollowPlace:(NSString*)userId placeId:(NSString*)placeId;
 
 + (void)cleanUpDeleteDataBefore:(int)timeStamp;
+
++ (NSArray*)getPlaceListForCreatePost:(CLLocation*)currentLocation;
 
 @end

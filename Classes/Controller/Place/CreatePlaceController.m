@@ -60,6 +60,8 @@ enum
 
 - (void)viewDidLoad
 {
+    self.navigationItem.title = NSLS(@"kCreatePlaceTitle");
+    
     [super viewDidLoad];
     
     self.dataTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
