@@ -32,3 +32,4 @@
 
 #define kMaxCount                   3
 #define kMaxCountForPostRelatedPost 200
+#define kMaxMessageCount            100

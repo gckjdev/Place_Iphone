@@ -30,13 +30,19 @@
 
 #import "PlaceManager.h"
 #import "PlaceSNSService.h"
+#import "MessageService.h"
 
 #define kDbFileName			@"AppDB"
 
+extern MessageService*   GlobalGetMessageService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    return [delegate messageService];    
+}
+
 LocalDataService* GlobalGetLocalDataService()
 {
-    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];
-    
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
     return [delegate localDataService];
 }
 
@@ -72,6 +78,7 @@ PlaceSNSService* GlobalGetSNSService()
 @synthesize snsService;
 @synthesize enterController;
 @synthesize placeNameForRegistration;
+@synthesize messageService;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -150,6 +157,12 @@ void uncaughtExceptionHandler(NSException *exception) {
     [locationService asyncGetLocation];        
 }
 
+- (void)initMessageService
+{
+    self.messageService = [[MessageService alloc] init];
+}
+
+
 - (void)initUserService
 {
     self.userService = [[UserService alloc] init];
@@ -180,7 +193,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self initImageCacheManager];    
     [self initLocationService];
     [self initUserService];
-    [self initLocalDataService];        
+    [self initLocalDataService];       
+    [self initMessageService];
 
     [self showViewByUserStatus];
     
@@ -443,6 +457,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     [locationService release];
     [snsService release];
     [placeNameForRegistration release];
+    [messageService release];
 	
     [super dealloc];
 }

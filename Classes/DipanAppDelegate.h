@@ -20,6 +20,7 @@
 // TODO remove all depedency class header files
 
 @class PlaceSNSService;
+@class MessageService;
 
 #define _THREE20_		1
 #define kAppId			@"388419035"					// To be changed for each project
@@ -37,6 +38,7 @@ LocalDataServiceDelegate, UserServiceDelegate> {
     UserService         *userService;
     RegisterController  *registerController;
     PlaceSNSService     *snsService;
+    MessageService      *messageService;
 
     EnterPlaceAppController *enterController;    
     NSString                *placeNameForRegistration;
@@ -51,6 +53,7 @@ LocalDataServiceDelegate, UserServiceDelegate> {
 @property (nonatomic, retain) LocationService               *locationService;
 @property (nonatomic, retain) UserService                   *userService;
 @property (nonatomic, retain) PlaceSNSService               *snsService;
+@property (nonatomic, retain) MessageService                *messageService;
 @property (nonatomic, retain) RegisterController            *registerController;
 @property (nonatomic, retain) EnterPlaceAppController       *enterController;    
 @property (nonatomic, retain) NSString                      *placeNameForRegistration;

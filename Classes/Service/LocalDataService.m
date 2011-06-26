@@ -64,7 +64,7 @@
 {
     [PostManager createPost:[ResultUtils postId:post] 
                     placeId:[ResultUtils placeId:post] 
-                     userId:userId 
+                     userId:[ResultUtils userId:post]
                 textContent:[ResultUtils textContent:post]
                    imageURL:[ResultUtils imageURL:post]
                 contentType:[ResultUtils contentType:post]

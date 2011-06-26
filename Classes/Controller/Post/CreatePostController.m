@@ -288,7 +288,7 @@ enum{
     }
     
     if ([contentTextView.text length] > MAX_POST_TEXT_LEN){
-        [self popupUnhappyMessage:NSLS(@"kNoContentInPost") title:@""];
+        [self popupUnhappyMessage:NSLS(@"kExceedContentLength") title:@""];
         return NO;
     }
     

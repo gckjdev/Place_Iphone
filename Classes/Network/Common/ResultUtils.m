@@ -133,4 +133,20 @@
     return [post objectForKey:PARA_NAME];
 }
 
++ (NSString*)messageId:(NSDictionary*)msg
+{
+    return [msg objectForKey:PARA_MESSAGE_ID];
+}
+
++ (NSString*)toUserId:(NSDictionary*)msg
+{
+    return [msg objectForKey:PARA_TO_USERID];
+}
+
++ (NSString*)fromUserId:(NSDictionary*)msg
+{
+    return [msg objectForKey:PARA_USERID];
+}
+
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "CreatePrivateMessageController.h"
-
+#import "MessageService.h"
 
 @implementation CreatePrivateMessageController
 @synthesize contentTextView;
@@ -82,7 +82,13 @@
 
 - (IBAction)clickSend:(id)sender
 {
+    if ([contentTextView.text length] <= 0){
+        [self popupUnhappyMessage:NSLS(@"kNoContentInMessage") title:@""];
+        return;
+    }
     
+    MessageService* messageService = GlobalGetMessageService();
+    [messageService sendMessage:self toUserId:self.messageUserId textContent:contentTextView.text];
 }
      
 @end

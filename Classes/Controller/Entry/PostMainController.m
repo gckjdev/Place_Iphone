@@ -12,6 +12,7 @@
 #import "UserManager.h"
 #import "NearbyPostController.h"
 #import "CreatePostController.h"
+#import "PrivateMessageUserController.h"
 
 enum SELECT_POST_TYPE {
     SELECT_NEARBY = 0,
@@ -98,7 +99,7 @@ enum SELECT_POST_TYPE {
 - (void)showPrivateMessage
 {
     if (self.privateMessageController == nil){
-        self.privateMessageController = [[PrivateMessageListController alloc] init];
+        self.privateMessageController = [[PrivateMessageUserController alloc] init];
         self.privateMessageController.superController = self;
         self.privateMessageController.view.frame = self.view.bounds;        
         [self.view addSubview:privateMessageController.view];                
@@ -121,7 +122,7 @@ enum SELECT_POST_TYPE {
                      NSLS(@"kNearbyPost"),
                      NSLS(@"kFollowPost"),
                      NSLS(@"kAtMePost"),
-//                     NSLS(@"kMyPrivateMessage"),
+                     NSLS(@"kMyPrivateMessage"),
                      nil]
                     defaultSelectIndex:SELECT_NEARBY];    
 

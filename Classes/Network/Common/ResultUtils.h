@@ -39,5 +39,9 @@
 + (NSString*)description:(NSDictionary*)place;
 + (NSString*)createUserId:(NSDictionary*)place;
 
++ (NSString*)messageId:(NSDictionary*)msg;
++ (NSString*)toUserId:(NSDictionary*)msg;
++ (NSString*)fromUserId:(NSDictionary*)msg;
+
 
 @end

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PPTableViewController.h"
+#import "PPViewController.h"
+#import "MessageService.h"
 
-@interface PrivateMessageUserController : PPTableViewController {
-    
+@interface PrivateMessageUserController : PPTableViewController <MessageServiceDelegate> {
+    PPViewController    *superController;
 }
+
+@property (nonatomic, retain) PPViewController    *superController;
 
 @end

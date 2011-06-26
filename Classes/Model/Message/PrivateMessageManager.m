@@ -142,7 +142,8 @@
 
 + (PrivateMessage*)getMessageById:(NSString*)messageId
 {
-    return nil;
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();    
+    return (PrivateMessage*)[dataManager execute:@"getMessageById" forKey:@"MESSAGE_ID" value:messageId];
 }
 
 + (PrivateMessageUser*)getMessageUserById:(NSString*)messageUserId

@@ -105,6 +105,9 @@
 		CA8900E113B703F1005ED51A /* PrivateMessageControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E013B703F1005ED51A /* PrivateMessageControllerUtils.m */; };
 		CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */; };
 		CA8900E613B70480005ED51A /* CreatePrivateMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */; };
+		CA8900EA13B70E57005ED51A /* SendPrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */; };
+		CA8900ED13B71183005ED51A /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900EC13B71182005ED51A /* MessageService.m */; };
+		CA8900F313B72B05005ED51A /* GetPrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */; };
 		CA933E9D137FE66C001E0D1E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA933E9C137FE66C001E0D1E /* CFNetwork.framework */; };
 		CA967316137E4DF00038CC44 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967314137E4DEF0038CC44 /* PostListController.m */; };
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
@@ -618,6 +621,12 @@
 		CA8900E213B7047D005ED51A /* CreatePrivateMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePrivateMessageController.h; sourceTree = "<group>"; };
 		CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePrivateMessageController.m; sourceTree = "<group>"; };
 		CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePrivateMessageController.xib; sourceTree = "<group>"; };
+		CA8900E813B70E57005ED51A /* SendPrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPrivateMessageRequest.h; sourceTree = "<group>"; };
+		CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPrivateMessageRequest.m; sourceTree = "<group>"; };
+		CA8900EB13B71182005ED51A /* MessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageService.h; sourceTree = "<group>"; };
+		CA8900EC13B71182005ED51A /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageService.m; sourceTree = "<group>"; };
+		CA8900F113B72B04005ED51A /* GetPrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPrivateMessageRequest.h; sourceTree = "<group>"; };
+		CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPrivateMessageRequest.m; sourceTree = "<group>"; };
 		CA933E9C137FE66C001E0D1E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CA967313137E4DEF0038CC44 /* PostListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostListController.h; sourceTree = "<group>"; };
 		CA967314137E4DEF0038CC44 /* PostListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostListController.m; sourceTree = "<group>"; };
@@ -1370,6 +1379,8 @@
 				CA66BC2F139C74C000FBA347 /* UserService.m */,
 				CA9E0945139CCC8C000B6FEE /* PlaceSNSService.h */,
 				CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */,
+				CA8900EB13B71182005ED51A /* MessageService.h */,
+				CA8900EC13B71182005ED51A /* MessageService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1407,6 +1418,17 @@
 				CA8900E213B7047D005ED51A /* CreatePrivateMessageController.h */,
 				CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */,
 				CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		CA8900E713B70E46005ED51A /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				CA8900E813B70E57005ED51A /* SendPrivateMessageRequest.h */,
+				CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */,
+				CA8900F113B72B04005ED51A /* GetPrivateMessageRequest.h */,
+				CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -2063,19 +2085,12 @@
 			isa = PBXGroup;
 			children = (
 				CAD19BB3137A812600A8817B /* Common */,
-				CAD19B86137A773C00A8817B /* Message */,
 				CAD19B87137A773C00A8817B /* Place */,
+				CA8900E713B70E46005ED51A /* Message */,
 				CAD19B88137A773C00A8817B /* Post */,
 				CAD19B8A137A773C00A8817B /* User */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		CAD19B86137A773C00A8817B /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		CAD19B87137A773C00A8817B /* Place */ = {
@@ -2681,6 +2696,9 @@
 				CA8900D813B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m in Sources */,
 				CA8900E113B703F1005ED51A /* PrivateMessageControllerUtils.m in Sources */,
 				CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */,
+				CA8900EA13B70E57005ED51A /* SendPrivateMessageRequest.m in Sources */,
+				CA8900ED13B71183005ED51A /* MessageService.m in Sources */,
+				CA8900F313B72B05005ED51A /* GetPrivateMessageRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,9 +12,13 @@
 #import "PrivateMessageUser.h"
 #import "NetworkRequestResultCode.h"
 #import "UserService.h"
+#import "MessageService.h"
 #import "PrivateMessageUserTableViewCell.h"
 
+
 @implementation PrivateMessageUserController
+
+@synthesize superController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,7 @@
 
 - (void)dealloc
 {
+    [superController release];
     [super dealloc];
 }
 
@@ -36,9 +41,10 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)privateMessageDataRefresh:(int)result
+- (void)downloadMessageFinish:(int)result;
 {    
     if (result == ERROR_SUCCESS){
         self.dataList = [PrivateMessageManager getAllMessageUser];
@@ -52,25 +58,8 @@
 
 - (void)requestPrivateMessageListFromServer:(BOOL)isRequestLastest
 {
-//    double longitude;
-//    double latitude;
-//    
-//    LocationService* locationService = GlobalGetLocationService();
-//    longitude = locationService.currentLocation.coordinate.longitude;
-//    latitude = locationService.currentLocation.coordinate.latitude;
-//    
-//    LocalDataService* localService = GlobalGetLocalDataService();
-//    
-//    // tag_more_rows
-//    if (!isRequestLastest){
-//        NSString* lastPostId = [PostControllerUtils getLastPostId:dataList];        
-//        [localService requestUserFollowPostData:self beforeTimeStamp:lastPostId cleanData:NO];
-//    }
-//    else{
-//        [localService requestUserFollowPostData:self beforeTimeStamp:nil cleanData:YES];        
-//    }
-//    
-    
+    MessageService *messageService = GlobalGetMessageService();
+    [messageService downloadNewMessage:self];
 }
 
 - (void)initDataList
@@ -90,9 +79,14 @@
 
 - (void)viewDidLoad
 {
+    supportRefreshHeader = YES;
+    
     [self initDataList];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (void)viewDidUnload
@@ -161,6 +155,9 @@
 //	return footerImageHeight;
 //}
 
+
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
@@ -179,7 +176,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // tag_more_rows
-    return [self dataListCountWithMore];
+    return [[self dataList] count];
 }
 
 
