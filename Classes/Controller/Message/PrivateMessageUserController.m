@@ -14,7 +14,7 @@
 #import "UserService.h"
 #import "MessageService.h"
 #import "PrivateMessageUserTableViewCell.h"
-
+#import "PrivateMessageListController.h"
 
 @implementation PrivateMessageUserController
 
@@ -217,10 +217,13 @@
     
 	if (indexPath.row > [dataList count] - 1)
 		return;
-	
-	// do select row action
-//    [PostControllerUtils gotoPostController:self.superController 
-//                                       post:[dataList objectAtIndex:indexPath.row]];
+
+    PrivateMessageUser* user = [dataList objectAtIndex:indexPath.row];
+    PrivateMessageListController* controller = [[PrivateMessageListController alloc] init];
+    controller.messageUserId = user.userId;
+    controller.messageUserNickName = user.userNickName;
+    [self.superController.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 

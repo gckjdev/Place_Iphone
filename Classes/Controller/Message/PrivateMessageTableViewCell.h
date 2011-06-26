@@ -8,13 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@class PrivateMessage;
 
 @interface PrivateMessageTableViewCell : UITableViewCell {
     
+    UILabel *messageLabel;
+    UILabel *dateLabel;
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
+@property (nonatomic, retain) IBOutlet UILabel *dateLabel;
 
 + (NSString*)getCellIdentifier;
 + (PrivateMessageTableViewCell*)createCell;
 + (CGFloat)getCellHeight;
+- (void)setCellInfoWithMessage:(PrivateMessage*)message;
 
 @end

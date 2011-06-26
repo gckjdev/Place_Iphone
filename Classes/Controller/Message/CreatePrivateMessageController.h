@@ -28,4 +28,10 @@
 
 - (IBAction)clickSend:(id)sender;
 
++ (CreatePrivateMessageController*)showCreatePrivateMessage:(UIViewController*)viewController
+                                              messageUserId:(NSString*)messageUserId
+                                          messageUserNickName:(NSString*)messageUserNickName
+                                          messageUserAvatar:(NSString*)messageUserAvatar;
+
+
 @end

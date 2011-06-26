@@ -7,9 +7,11 @@
 //
 
 #import "PrivateMessageTableViewCell.h"
-
+#import "PrivateMessage.h"
 
 @implementation PrivateMessageTableViewCell
+@synthesize messageLabel;
+@synthesize dateLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,6 +31,8 @@
 
 - (void)dealloc
 {
+    [messageLabel release];
+    [dateLabel release];
     [super dealloc];
 }
 
@@ -49,7 +53,7 @@
 
 + (PrivateMessageTableViewCell*)createCell
 {
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PrivateMessageCell" owner:self options:nil];
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PrivateMessgaeCell" owner:self options:nil];
     // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).  
     if (topLevelObjects == nil || [topLevelObjects count] <= 0){
         NSLog(@"<createPrivateMessageTableViewCell> but cannot find cell object");
@@ -63,5 +67,12 @@
 {
     return 60;
 }
+
+- (void)setCellInfoWithMessage:(PrivateMessage*)message
+{
+    self.messageLabel.text = message.content;
+    self.dateLabel.text = [message.createDate description];    
+}
+
 
 @end

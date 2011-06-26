@@ -90,5 +90,14 @@
     MessageService* messageService = GlobalGetMessageService();
     [messageService sendMessage:self toUserId:self.messageUserId textContent:contentTextView.text];
 }
+
++ (CreatePrivateMessageController*)showCreatePrivateMessage:(UIViewController*)viewController
+                                              messageUserId:(NSString*)messageUserId
+                                        messageUserNickName:(NSString*)messageUserNickName
+                                          messageUserAvatar:(NSString*)messageUserAvatar
+{
+    return nil;
+}
+
      
 @end
