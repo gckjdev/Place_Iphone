@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPTableViewController.h"
 
-
-@interface PrivateMessageUserController : UIViewController {
+@interface PrivateMessageUserController : PPTableViewController {
     
 }
 

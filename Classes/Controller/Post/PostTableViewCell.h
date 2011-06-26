@@ -14,6 +14,7 @@
 @protocol PostTableViewCellDelegate <NSObject>
 
 - (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath*)indexPath;
+- (void)clickUserAvatarButton:(id)sender atIndexPath:(NSIndexPath*)indexPath;
 
 @end
 
@@ -31,6 +32,7 @@
     
     id<PostTableViewCellDelegate> delegate;
 
+    IBOutlet UIButton *userAvatarButton;
 }
 @property (nonatomic, retain) IBOutlet HJManagedImageV *userAvatarImage;
 @property (nonatomic, retain) IBOutlet UILabel *userNickNameLabel;
@@ -51,5 +53,6 @@
 + (CGFloat)getCellHeight;
 
 - (IBAction)clickPlaceNameButton:(id)sender;
+- (IBAction)clickUserAvatarButton:(id)sender;
 
 @end

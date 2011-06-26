@@ -7,7 +7,12 @@
 //
 
 #import "PrivateMessageUserController.h"
-
+#import "PrivateMessageManager.h"
+#import "PrivateMessage.h"
+#import "PrivateMessageUser.h"
+#import "NetworkRequestResultCode.h"
+#import "UserService.h"
+#import "PrivateMessageUserTableViewCell.h"
 
 @implementation PrivateMessageUserController
 
@@ -33,10 +38,59 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)privateMessageDataRefresh:(int)result
+{    
+    if (result == ERROR_SUCCESS){
+        self.dataList = [PrivateMessageManager getAllMessageUser];
+        [self.dataTableView reloadData];
+    }
+    
+    if ([self isReloading]){
+        [self dataSourceDidFinishLoadingNewData];
+    }
+}
+
+- (void)requestPrivateMessageListFromServer:(BOOL)isRequestLastest
+{
+//    double longitude;
+//    double latitude;
+//    
+//    LocationService* locationService = GlobalGetLocationService();
+//    longitude = locationService.currentLocation.coordinate.longitude;
+//    latitude = locationService.currentLocation.coordinate.latitude;
+//    
+//    LocalDataService* localService = GlobalGetLocalDataService();
+//    
+//    // tag_more_rows
+//    if (!isRequestLastest){
+//        NSString* lastPostId = [PostControllerUtils getLastPostId:dataList];        
+//        [localService requestUserFollowPostData:self beforeTimeStamp:lastPostId cleanData:NO];
+//    }
+//    else{
+//        [localService requestUserFollowPostData:self beforeTimeStamp:nil cleanData:YES];        
+//    }
+//    
+    
+}
+
+- (void)initDataList
+{
+    self.dataList = [PrivateMessageManager getAllMessageUser];
+//    [self requestPostListFromServer:YES];    
+}
+
+#pragma Pull Refresh Delegate
+- (void) reloadTableViewDataSource
+{
+    [self requestPrivateMessageListFromServer:YES];
+}
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
+    [self initDataList];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -53,5 +107,124 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark Table View Delegate
+
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)aTableView 
+//{
+//	NSMutableArray* array = [NSMutableArray arrayWithArray:[ArrayOfCharacters getArray]];
+//	[array addObject:kSectionNull];
+//	return array;
+//	
+////		NSMutableArray *indices = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
+////		return nil;
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//	return [groupData sectionForLetter:title];
+//}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	
+	NSString *sectionHeader = [groupData titleForSection:section];	
+	
+	//	switch (section) {
+	//		case <#constant#>:
+	//			<#statements#>
+	//			break;
+	//		default:
+	//			break;
+	//	}
+	
+	return sectionHeader;
+}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//	return [self getSectionView:tableView section:section];
+//}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//	return sectionImageHeight;
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//	return [self getFooterView:tableView section:section];
+//}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//	return footerImageHeight;
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	// return [self getRowHeight:indexPath.row totalRow:[dataList count]];
+	// return cellImageHeight;
+	
+	return [PrivateMessageUserTableViewCell getCellHeight];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;		// default implementation
+	
+	// return [groupData totalSectionCount];
+}
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    // tag_more_rows
+    return [self dataListCountWithMore];
+}
+
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *CellIdentifier = [PrivateMessageUserTableViewCell getCellIdentifier];
+	PrivateMessageUserTableViewCell *cell = (PrivateMessageUserTableViewCell*)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+        cell = [PrivateMessageUserTableViewCell createCell];
+	}
+	
+	// set text label
+	int row = [indexPath row];	
+	int count = [dataList count];
+	if (row >= count){
+		NSLog(@"[WARN] cellForRowAtIndexPath, row(%d) > data list total number(%d)", row, count);
+		return cell;
+	}
+	
+    //	[self setCellBackground:cell row:row count:count];        
+	
+	PrivateMessageUser* user = [dataList objectAtIndex:row];
+    [cell setCellInfoWithMessageUser:user];    
+	
+	return cell;
+	
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+    // tag_more_rows
+    if ([self isMoreRow:indexPath.row]){
+        [self.moreLoadingView startAnimating];
+        [self requestPrivateMessageListFromServer:NO];
+        return;
+    }
+    
+	if (indexPath.row > [dataList count] - 1)
+		return;
+	
+	// do select row action
+//    [PostControllerUtils gotoPostController:self.superController 
+//                                       post:[dataList objectAtIndex:indexPath.row]];
+}
+
 
 @end

@@ -19,6 +19,7 @@
 #import "PostController.h"
 #import "PostControllerUtils.h"
 #import "PostTableViewCell.h"
+#import "PrivateMessageControllerUtils.h"
 
 enum {
     SECTION_PLACE,
@@ -398,6 +399,21 @@ enum {
     
     Post* post = [dataList objectAtIndex:indexPath.row];
     [PostControllerUtils askFollowPlace:post.placeId placeName:post.placeName  viewController:self];
+    
+    
+    
+}
+
+- (void)clickUserAvatarButton:(id)sender atIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row >= [dataList count])
+        return;
+    
+    Post* post = [dataList objectAtIndex:indexPath.row];    
+    [PrivateMessageControllerUtils showPrivateMessageController:post.userId 
+                                                   userNickName:post.userNickName
+                                                     userAvatar:post.userAvatar
+                                                 viewController:self];      
 }
 
 @end

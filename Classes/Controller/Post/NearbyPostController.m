@@ -17,6 +17,7 @@
 #import "PostTableViewCell.h"
 #import "ResultUtils.h"
 #import "MoreTableViewCell.h"
+#import "PrivateMessageControllerUtils.h"
 
 @implementation NearbyPostController
 
@@ -266,16 +267,28 @@
 	
 }
 
-
 - (void)clickPlaceNameButton:(id)sender atIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row >= [dataList count])
         return;
     
-    NSDictionary* dict = [dataList objectAtIndex:indexPath.row];
-    [PostControllerUtils askFollowPlace:[ResultUtils placeId:dict]
-                              placeName:[ResultUtils placeName:dict]
-                         viewController:self];
+    Post* post = [dataList objectAtIndex:indexPath.row];
+    [PostControllerUtils askFollowPlace:post.placeId placeName:post.placeName  viewController:self];
+    
+    
+    
+}
+
+- (void)clickUserAvatarButton:(id)sender atIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row >= [dataList count])
+        return;
+    
+    Post* post = [dataList objectAtIndex:indexPath.row];    
+    [PrivateMessageControllerUtils showPrivateMessageController:post.userId 
+                                                   userNickName:post.userNickName
+                                                     userAvatar:post.userAvatar
+                                                 viewController:self.superController];      
 }
 
 #pragma Pull Refresh Delegate

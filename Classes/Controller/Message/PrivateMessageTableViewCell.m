@@ -32,4 +32,36 @@
     [super dealloc];
 }
 
++ (NSString*)getCellIdentifier
+{
+    return @"PrivateMessageCell";
+}
+
+- (void)setCellStyle
+{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;		   
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;        
+}
+
+- (void)awakeFromNib{
+    [self setCellStyle];
+}
+
++ (PrivateMessageTableViewCell*)createCell
+{
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PrivateMessageCell" owner:self options:nil];
+    // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).  
+    if (topLevelObjects == nil || [topLevelObjects count] <= 0){
+        NSLog(@"<createPrivateMessageTableViewCell> but cannot find cell object");
+        return nil;
+    }
+        
+    return (PrivateMessageTableViewCell*)[topLevelObjects objectAtIndex:0];
+}
+
++ (CGFloat)getCellHeight
+{
+    return 60;
+}
+
 @end

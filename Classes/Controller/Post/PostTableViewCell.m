@@ -60,6 +60,7 @@
     [placeNameLabel release];
     [placeNameButton release];
     [indexPath release];
+    [userAvatarButton release];
     [super dealloc];
 }
 
@@ -104,6 +105,7 @@
     return url;
 }
 
+// TODO : move as common utils
 - (NSString*)getDateDisplayText:(NSDate*)date
 {
     if (date == nil)
@@ -223,6 +225,14 @@
     if (delegate != nil && [delegate respondsToSelector:@selector(clickPlaceNameButton:atIndexPath:)]){
         [delegate clickPlaceNameButton:sender atIndexPath:indexPath];
     }
+}
+
+- (IBAction)clickUserAvatarButton:(id)sender
+{
+    if (delegate != nil && [delegate respondsToSelector:@selector(clickUserAvatarButton:atIndexPath:)]){
+        [delegate clickUserAvatarButton:sender atIndexPath:indexPath];
+    }
+    
 }
 
 

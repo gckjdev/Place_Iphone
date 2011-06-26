@@ -10,6 +10,11 @@
 
 
 @implementation CreatePrivateMessageController
+@synthesize contentTextView;
+@synthesize userLabel;
+@synthesize messageUserId;
+@synthesize messageUserNickName;
+@synthesize messageUserAvatar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,6 +27,11 @@
 
 - (void)dealloc
 {
+    [contentTextView release];
+    [userLabel release];
+    [messageUserId release];
+    [messageUserAvatar release];
+    [messageUserNickName release];
     [super dealloc];
 }
 
@@ -37,12 +47,28 @@
 
 - (void)viewDidLoad
 {
+    [self setNavigationLeftButton:NSLS(@"Back") action:@selector(clickBack:)];
+    [self setNavigationRightButton:NSLS(@"Send") action:@selector(clickSend:)];
+    
+    self.navigationItem.title = NSLS(@"kSendPrivateMessage");
+    if ([messageUserNickName length] > 0){
+        self.userLabel.text = [NSString stringWithFormat:@"%@%@", NSLS(@"kSendTo"), messageUserNickName];    
+    }
+    else{
+        self.userLabel.text = [NSString stringWithFormat:@"%@%@", NSLS(@"kSendTo"), messageUserId];    
+    }
+        
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.contentTextView becomeFirstResponder];
+
 }
 
 - (void)viewDidUnload
 {
+    [self setContentTextView:nil];
+    [self setUserLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -54,4 +80,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)clickSend:(id)sender
+{
+    
+}
+     
 @end

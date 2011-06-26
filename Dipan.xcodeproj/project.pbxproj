@@ -48,8 +48,6 @@
 		CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */; };
 		CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */; };
 		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
-		CA4005A6138F47CA009B5BF9 /* PrivateMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4005A4138F47CA009B5BF9 /* PrivateMessageListController.m */; };
-		CA4005A7138F47CA009B5BF9 /* PrivateMessageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */; };
 		CA4005AB138F5852009B5BF9 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4005A9138F5850009B5BF9 /* PostController.m */; };
 		CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005AA138F5851009B5BF9 /* PostController.xib */; };
 		CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4921DB13AAF55300744CCC /* SelectPlaceController.m */; };
@@ -93,6 +91,20 @@
 		CA7F9CDA137D62000033FE12 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD9137D62000033FE12 /* Place.m */; };
 		CA7F9CDD137D62340033FE12 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CDC137D62340033FE12 /* PlaceManager.m */; };
 		CA86099C13A33DB200B00874 /* UpdateUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA86099B13A33DB100B00874 /* UpdateUserRequest.m */; };
+		CA8900B913B6D98F005ED51A /* PrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900B413B6D98F005ED51A /* PrivateMessage.m */; };
+		CA8900BA13B6D98F005ED51A /* PrivateMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900B613B6D98F005ED51A /* PrivateMessageManager.m */; };
+		CA8900BB13B6D98F005ED51A /* PrivateMessageUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900B813B6D98F005ED51A /* PrivateMessageUser.m */; };
+		CA8900CA13B6DA6F005ED51A /* PrivateMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900C813B6DA6F005ED51A /* PrivateMessageListController.m */; };
+		CA8900CB13B6DA6F005ED51A /* PrivateMessageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900C913B6DA6F005ED51A /* PrivateMessageListController.xib */; };
+		CA8900CE13B6DAAD005ED51A /* PrivateMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900CD13B6DAAD005ED51A /* PrivateMessageTableViewCell.m */; };
+		CA8900D013B6DACB005ED51A /* PrivateMessgaeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900CF13B6DACB005ED51A /* PrivateMessgaeCell.xib */; };
+		CA8900D413B6DB1F005ED51A /* PrivateMessageUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900D213B6DB1E005ED51A /* PrivateMessageUserController.m */; };
+		CA8900D513B6DB1F005ED51A /* PrivateMessageUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900D313B6DB1E005ED51A /* PrivateMessageUserController.xib */; };
+		CA8900D813B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900D713B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m */; };
+		CA8900DA13B6DE37005ED51A /* PrivateMessageUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900D913B6DE37005ED51A /* PrivateMessageUserCell.xib */; };
+		CA8900E113B703F1005ED51A /* PrivateMessageControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E013B703F1005ED51A /* PrivateMessageControllerUtils.m */; };
+		CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */; };
+		CA8900E613B70480005ED51A /* CreatePrivateMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */; };
 		CA933E9D137FE66C001E0D1E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA933E9C137FE66C001E0D1E /* CFNetwork.framework */; };
 		CA967316137E4DF00038CC44 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967314137E4DEF0038CC44 /* PostListController.m */; };
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
@@ -506,9 +518,6 @@
 		CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPostController.xib; sourceTree = "<group>"; };
 		CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
 		CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
-		CA4005A3138F47CA009B5BF9 /* PrivateMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageListController.h; sourceTree = "<group>"; };
-		CA4005A4138F47CA009B5BF9 /* PrivateMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageListController.m; sourceTree = "<group>"; };
-		CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageListController.xib; sourceTree = "<group>"; };
 		CA4005A8138F584E009B5BF9 /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
 		CA4005A9138F5850009B5BF9 /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
 		CA4005AA138F5851009B5BF9 /* PostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostController.xib; sourceTree = "<group>"; };
@@ -586,6 +595,29 @@
 		CA7F9CDC137D62340033FE12 /* PlaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceManager.m; sourceTree = "<group>"; };
 		CA86099A13A33DB100B00874 /* UpdateUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserRequest.h; sourceTree = "<group>"; };
 		CA86099B13A33DB100B00874 /* UpdateUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserRequest.m; sourceTree = "<group>"; };
+		CA8900B313B6D98F005ED51A /* PrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessage.h; sourceTree = "<group>"; };
+		CA8900B413B6D98F005ED51A /* PrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessage.m; sourceTree = "<group>"; };
+		CA8900B513B6D98F005ED51A /* PrivateMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageManager.h; sourceTree = "<group>"; };
+		CA8900B613B6D98F005ED51A /* PrivateMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageManager.m; sourceTree = "<group>"; };
+		CA8900B713B6D98F005ED51A /* PrivateMessageUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageUser.h; sourceTree = "<group>"; };
+		CA8900B813B6D98F005ED51A /* PrivateMessageUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageUser.m; sourceTree = "<group>"; };
+		CA8900C713B6DA6F005ED51A /* PrivateMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageListController.h; sourceTree = "<group>"; };
+		CA8900C813B6DA6F005ED51A /* PrivateMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageListController.m; sourceTree = "<group>"; };
+		CA8900C913B6DA6F005ED51A /* PrivateMessageListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageListController.xib; sourceTree = "<group>"; };
+		CA8900CC13B6DAAD005ED51A /* PrivateMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageTableViewCell.h; sourceTree = "<group>"; };
+		CA8900CD13B6DAAD005ED51A /* PrivateMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageTableViewCell.m; sourceTree = "<group>"; };
+		CA8900CF13B6DACB005ED51A /* PrivateMessgaeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessgaeCell.xib; sourceTree = "<group>"; };
+		CA8900D113B6DB1E005ED51A /* PrivateMessageUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageUserController.h; sourceTree = "<group>"; };
+		CA8900D213B6DB1E005ED51A /* PrivateMessageUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageUserController.m; sourceTree = "<group>"; };
+		CA8900D313B6DB1E005ED51A /* PrivateMessageUserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageUserController.xib; sourceTree = "<group>"; };
+		CA8900D613B6DE19005ED51A /* PrivateMessageUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageUserTableViewCell.h; sourceTree = "<group>"; };
+		CA8900D713B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageUserTableViewCell.m; sourceTree = "<group>"; };
+		CA8900D913B6DE37005ED51A /* PrivateMessageUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageUserCell.xib; sourceTree = "<group>"; };
+		CA8900DF13B703F0005ED51A /* PrivateMessageControllerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageControllerUtils.h; sourceTree = "<group>"; };
+		CA8900E013B703F1005ED51A /* PrivateMessageControllerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageControllerUtils.m; sourceTree = "<group>"; };
+		CA8900E213B7047D005ED51A /* CreatePrivateMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePrivateMessageController.h; sourceTree = "<group>"; };
+		CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePrivateMessageController.m; sourceTree = "<group>"; };
+		CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePrivateMessageController.xib; sourceTree = "<group>"; };
 		CA933E9C137FE66C001E0D1E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CA967313137E4DEF0038CC44 /* PostListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostListController.h; sourceTree = "<group>"; };
 		CA967314137E4DEF0038CC44 /* PostListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostListController.m; sourceTree = "<group>"; };
@@ -1163,7 +1195,7 @@
 		8239C3FB125318140007CBBB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CAD19B31137A6FAB00A8817B /* Message */,
+				CA8900B213B6D98F005ED51A /* Message */,
 				CAD19B33137A6FAB00A8817B /* Post */,
 				CAD19B32137A6FAB00A8817B /* Place */,
 				CAD19B34137A6FAB00A8817B /* User */,
@@ -1179,10 +1211,10 @@
 		8239C3FC125318180007CBBB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CA8900C613B6DA6F005ED51A /* Message */,
 				CABC814713A1F5E6001CE1B8 /* Common */,
 				CAD19B0A137A6A3500A8817B /* Entry */,
 				CAD19B1A137A6A3500A8817B /* Register */,
-				CAD19B09137A69D700A8817B /* Message */,
 				CAAA41E6137CDC3B00FB7C25 /* Post */,
 				CAD19B08137A69B600A8817B /* Place */,
 			);
@@ -1342,6 +1374,43 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		CA8900B213B6D98F005ED51A /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				CA8900B313B6D98F005ED51A /* PrivateMessage.h */,
+				CA8900B413B6D98F005ED51A /* PrivateMessage.m */,
+				CA8900B513B6D98F005ED51A /* PrivateMessageManager.h */,
+				CA8900B613B6D98F005ED51A /* PrivateMessageManager.m */,
+				CA8900B713B6D98F005ED51A /* PrivateMessageUser.h */,
+				CA8900B813B6D98F005ED51A /* PrivateMessageUser.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		CA8900C613B6DA6F005ED51A /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				CA8900D113B6DB1E005ED51A /* PrivateMessageUserController.h */,
+				CA8900D213B6DB1E005ED51A /* PrivateMessageUserController.m */,
+				CA8900D313B6DB1E005ED51A /* PrivateMessageUserController.xib */,
+				CA8900C713B6DA6F005ED51A /* PrivateMessageListController.h */,
+				CA8900C813B6DA6F005ED51A /* PrivateMessageListController.m */,
+				CA8900C913B6DA6F005ED51A /* PrivateMessageListController.xib */,
+				CA8900CC13B6DAAD005ED51A /* PrivateMessageTableViewCell.h */,
+				CA8900CD13B6DAAD005ED51A /* PrivateMessageTableViewCell.m */,
+				CA8900CF13B6DACB005ED51A /* PrivateMessgaeCell.xib */,
+				CA8900D613B6DE19005ED51A /* PrivateMessageUserTableViewCell.h */,
+				CA8900D713B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m */,
+				CA8900D913B6DE37005ED51A /* PrivateMessageUserCell.xib */,
+				CA8900DF13B703F0005ED51A /* PrivateMessageControllerUtils.h */,
+				CA8900E013B703F1005ED51A /* PrivateMessageControllerUtils.m */,
+				CA8900E213B7047D005ED51A /* CreatePrivateMessageController.h */,
+				CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */,
+				CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		CA9E0935139CB7AF000B6FEE /* SNS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1424,9 +1493,6 @@
 				CA2A0170138E2FD2007EBEA9 /* FollowPostController.h */,
 				CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */,
 				CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */,
-				CA4005A3138F47CA009B5BF9 /* PrivateMessageListController.h */,
-				CA4005A4138F47CA009B5BF9 /* PrivateMessageListController.m */,
-				CA4005A5138F47CA009B5BF9 /* PrivateMessageListController.xib */,
 				CA4005A8138F584E009B5BF9 /* PostController.h */,
 				CA4005A9138F5850009B5BF9 /* PostController.m */,
 				CA4005AA138F5851009B5BF9 /* PostController.xib */,
@@ -1918,13 +1984,6 @@
 			path = Place;
 			sourceTree = "<group>";
 		};
-		CAD19B09137A69D700A8817B /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
 		CAD19B0A137A6A3500A8817B /* Entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -1963,13 +2022,6 @@
 				CA5C848913A9AB6400A22BB5 /* EnterPlaceAppController.xib */,
 			);
 			path = Register;
-			sourceTree = "<group>";
-		};
-		CAD19B31137A6FAB00A8817B /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		CAD19B32137A6FAB00A8817B /* Place */ = {
@@ -2405,7 +2457,6 @@
 				FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */,
 				CA2A016F138E2F87007EBEA9 /* NearbyPostController.xib in Resources */,
 				CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */,
-				CA4005A7138F47CA009B5BF9 /* PrivateMessageListController.xib in Resources */,
 				CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */,
 				CA6046761395D89B006C1D9F /* NearbyPlaceController.xib in Resources */,
 				CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */,
@@ -2426,6 +2477,11 @@
 				CA5C848B13A9AB6400A22BB5 /* EnterPlaceAppController.xib in Resources */,
 				CAD8EBD613A9E3A00092C2EC /* MoreTableViewCell.xib in Resources */,
 				CA4921DE13AAF55300744CCC /* SelectPlaceController.xib in Resources */,
+				CA8900CB13B6DA6F005ED51A /* PrivateMessageListController.xib in Resources */,
+				CA8900D013B6DACB005ED51A /* PrivateMessgaeCell.xib in Resources */,
+				CA8900D513B6DB1F005ED51A /* PrivateMessageUserController.xib in Resources */,
+				CA8900DA13B6DE37005ED51A /* PrivateMessageUserCell.xib in Resources */,
+				CA8900E613B70480005ED51A /* CreatePrivateMessageController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2580,7 +2636,6 @@
 				CA2A016A138E282A007EBEA9 /* AppManager.m in Sources */,
 				CA2A016E138E2F87007EBEA9 /* NearbyPostController.m in Sources */,
 				CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */,
-				CA4005A6138F47CA009B5BF9 /* PrivateMessageListController.m in Sources */,
 				CA4005AB138F5852009B5BF9 /* PostController.m in Sources */,
 				FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */,
 				CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */,
@@ -2617,6 +2672,15 @@
 				CA5C848A13A9AB6400A22BB5 /* EnterPlaceAppController.m in Sources */,
 				CAD8EBD513A9E3A00092C2EC /* MoreTableViewCell.m in Sources */,
 				CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */,
+				CA8900B913B6D98F005ED51A /* PrivateMessage.m in Sources */,
+				CA8900BA13B6D98F005ED51A /* PrivateMessageManager.m in Sources */,
+				CA8900BB13B6D98F005ED51A /* PrivateMessageUser.m in Sources */,
+				CA8900CA13B6DA6F005ED51A /* PrivateMessageListController.m in Sources */,
+				CA8900CE13B6DAAD005ED51A /* PrivateMessageTableViewCell.m in Sources */,
+				CA8900D413B6DB1F005ED51A /* PrivateMessageUserController.m in Sources */,
+				CA8900D813B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m in Sources */,
+				CA8900E113B703F1005ED51A /* PrivateMessageControllerUtils.m in Sources */,
+				CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@
 #import "PostControllerUtils.h"
 #import "PostTableViewCell.h"
 #import "MoreTableViewCell.h"
-
+#import "PrivateMessageControllerUtils.h"
 
 enum{
     SECTION_POST_ITSELF,
@@ -323,6 +323,38 @@ enum{
     }    
     
 }
+
+- (void)clickUserAvatarButton:(id)sender atIndexPath:(NSIndexPath*)indexPath
+{
+    switch (indexPath.section) {
+        case SECTION_POST_ITSELF:
+        {
+            [PrivateMessageControllerUtils showPrivateMessageController:post.userId  
+                                                           userNickName:post.userNickName
+                                                             userAvatar:post.userAvatar
+                                                         viewController:self];  
+        }
+            break;
+            
+        case SECTION_RELATED_POST:
+        {
+            if (indexPath.row >= [dataList count])
+                return;        
+            
+            NSDictionary* postDict = [dataList objectAtIndex:indexPath.row];
+            [PrivateMessageControllerUtils showPrivateMessageController:[ResultUtils userId:postDict] 
+                                                           userNickName:[ResultUtils nickName:postDict]
+                                                             userAvatar:[ResultUtils userAvatar:postDict]
+                                                         viewController:self];  
+        }
+            break;
+            
+        default:            
+            break;
+    }    
+    
+}
+
 
 #pragma Button Actions
 

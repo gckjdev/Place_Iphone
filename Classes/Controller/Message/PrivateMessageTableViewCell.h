@@ -13,4 +13,8 @@
     
 }
 
++ (NSString*)getCellIdentifier;
++ (PrivateMessageTableViewCell*)createCell;
++ (CGFloat)getCellHeight;
+
 @end

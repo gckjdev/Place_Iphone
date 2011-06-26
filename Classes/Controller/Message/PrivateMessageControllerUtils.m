@@ -7,8 +7,22 @@
 //
 
 #import "PrivateMessageControllerUtils.h"
-
+#import "CreatePrivateMessageController.h"
+#import "PPViewController.h"
 
 @implementation PrivateMessageControllerUtils
+
++ (void)showPrivateMessageController:(NSString*)userId 
+                        userNickName:(NSString*)nickName
+                          userAvatar:(NSString*)avatar
+                      viewController:(UIViewController*)superViewController
+{
+    CreatePrivateMessageController* controller = [[CreatePrivateMessageController alloc] init];
+    controller.messageUserId = userId;
+    controller.messageUserNickName = nickName;
+    controller.messageUserAvatar = avatar;
+    [superViewController.navigationController pushViewController:controller animated:YES];
+    [controller release];
+}
 
 @end
