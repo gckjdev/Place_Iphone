@@ -9,6 +9,7 @@
 #import "SendPrivateMessageRequest.h"
 #import "TimeUtils.h"
 #import "LocaleUtils.h"
+#import "ResultUtils.h"
 
 @implementation SendPrivateMessageInput
 
@@ -56,12 +57,16 @@
 @synthesize messageId;
 @synthesize imageURL;
 @synthesize createDate;
+@synthesize avatar;
+@synthesize nickName;
 
 - (void)dealloc
 {
 	[messageId release];
     [createDate release];
-    [imageURL release];    
+    [imageURL release];   
+    [avatar release];
+    [nickName release];
 	[super dealloc];	
 }
 
@@ -115,6 +120,9 @@
 			// TODO
             NSDictionary* dict = [obj dictionaryDataFromJSON:textData];
             obj.messageId = [dict objectForKey:PARA_MESSAGE_ID];
+            obj.nickName = [dict objectForKey:PARA_NICKNAME];
+            obj.avatar = [dict objectForKey:PARA_AVATAR];
+            obj.createDate = [ResultUtils createDate:dict];
 			NSLog(@"SendPrivateMessageRequest result=%d, data=%@", obj.resultCode, [obj description]);						
 			return YES;
 		}

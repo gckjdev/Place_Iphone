@@ -32,7 +32,7 @@
 	str = [str stringByAddQueryParameter:METHOD value:METHOD_GETMYMESSAGE];	
 	str = [str stringByAddQueryParameter:PARA_USERID value:userId];
 	str = [str stringByAddQueryParameter:PARA_APPID value:appId];
-	str = [str stringByAddQueryParameter:PARA_BEFORE_TIMESTAMP value:afterTimeStamp];
+	str = [str stringByAddQueryParameter:PARA_AFTER_TIMESTAMP value:afterTimeStamp];
 	str = [str stringByAddQueryParameter:PARA_MAX_COUNT intValue:maxCount];
 	
 	return str;

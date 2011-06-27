@@ -66,6 +66,11 @@ PlaceSNSService* GlobalGetSNSService()
     return [delegate snsService];    
 }
 
+NSString* GlobalGetPlaceAppId()
+{
+    return @"PLACE";
+}
+
 @implementation DipanAppDelegate
 
 @synthesize window;

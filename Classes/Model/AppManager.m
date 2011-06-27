@@ -13,7 +13,7 @@
 
 + (NSString*)getPlaceAppId
 {
-    return @"PLACE";
+    return GlobalGetPlaceAppId();
 }
 
 @end

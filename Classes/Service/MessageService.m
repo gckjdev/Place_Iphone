@@ -56,8 +56,8 @@
             if (output.resultCode == ERROR_SUCCESS){               
                 // save data locally
                 [PrivateMessageManager createOutMessage:toUserId 
-                                                 avatar:nil                     // TODO set avatar
-                                               nickName:nil 
+                                                 avatar:output.avatar  
+                                               nickName:output.nickName 
                                               messageId:output.messageId 
                                                 content:textContent 
                                              createDate:output.createDate];
@@ -82,10 +82,11 @@
     UserService* userService = GlobalGetUserService();
     NSString *userId = [userService userId];
     NSString *appId = [AppManager getPlaceAppId];
+    NSString *latestMessageId = [PrivateMessageManager getLatestMessageId];
     
 //    [viewController showActivityWithText:NSLS(@"kSendingMessage")];
     dispatch_async(workingQueue, ^{
-        GetPrivateMessageOutput* output = [GetPrivateMessageRequest send:SERVER_URL userId:userId appId:appId afterTimeStamp:@""];
+        GetPrivateMessageOutput* output = [GetPrivateMessageRequest send:SERVER_URL userId:userId appId:appId afterTimeStamp:latestMessageId];
         
         dispatch_async(dispatch_get_main_queue(), ^{
 //            [viewController hideActivity];

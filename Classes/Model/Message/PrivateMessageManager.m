@@ -120,7 +120,7 @@
 + (NSArray*)getAllMessageUser
 {
     CoreDataManager* dataManager = GlobalGetCoreDataManager();    
-    return [dataManager execute:@"getAllMessageUser" sortBy:@"latestModifyDate" ascending:YES];
+    return [dataManager execute:@"getAllMessageUser" sortBy:@"latestModifyDate" ascending:NO];
 }
 
 
@@ -131,7 +131,7 @@
                          forKey:@"MESSAGE_USER_ID" 
                           value:messageUserId 
                          sortBy:@"createDate" 
-                      ascending:YES];
+                      ascending:NO];
 }
 
 
@@ -153,6 +153,21 @@
 {
     CoreDataManager* dataManager = GlobalGetCoreDataManager();    
     return (PrivateMessageUser*)[dataManager execute:@"getMessageUserById" forKey:@"MESSAGE_USER_ID" value:messageUserId];
+}
+
++ (NSString*)getLatestMessageId
+{
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();    
+    NSArray* list = [dataManager execute:@"getLatestMessage" 
+                         sortBy:@"createDate" 
+                      ascending:NO];
+    
+    if ([list count] > 0){
+        return ((PrivateMessage*)[list objectAtIndex:0]).messageId;
+    }
+    else{
+        return nil;
+    }
 }
 
 @end

@@ -16,3 +16,5 @@
 + (NSString*)getPlaceAppId;
 
 @end
+
+extern NSString* GlobalGetPlaceAppId();

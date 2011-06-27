@@ -39,11 +39,15 @@
 	NSString	*messageId;
 	NSString	*imageURL;
     NSDate      *createDate;
+    NSString    *avatar;
+    NSString    *nickName;
 }
 
 @property (nonatomic, retain) NSString	  *messageId;
 @property (nonatomic, retain) NSString	  *imageURL;
 @property (nonatomic, retain) NSDate      *createDate;
+@property (nonatomic, retain) NSString    *avatar;
+@property (nonatomic, retain) NSString    *nickName;
 
 @end
 

@@ -39,4 +39,6 @@
 
 + (PrivateMessageUser*)getMessageUserById:(NSString*)messageUserId;
 
++ (NSString*)getLatestMessageId;
+
 @end
