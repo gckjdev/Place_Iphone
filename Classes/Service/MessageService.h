@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class PPViewController;
+@class PrivateMessage;
 
 @protocol MessageServiceDelegate <NSObject>
 
 - (void)downloadMessageFinish:(int)result;
+
+@optional
+- (void)deleteMessageFinish:(int)result;
 
 @end
 
@@ -26,6 +30,8 @@
 
 - (void)downloadNewMessage:(PPViewController<MessageServiceDelegate>*)viewController;
 
+- (void)deleteMessage:(PrivateMessage*)message
+       viewController:(PPViewController<MessageServiceDelegate>*)viewController;
 @end
 
 extern MessageService*   GlobalGetMessageService();

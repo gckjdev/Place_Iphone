@@ -48,13 +48,21 @@
 - (void)downloadMessageFinish:(int)result;
 {    
     if (result == ERROR_SUCCESS){
-        self.dataList = [PrivateMessageManager getAllMessageUser];
+        self.dataList = [PrivateMessageManager getAllMessageByUser:messageUserId];
         [self.dataTableView reloadData];
     }
     
     if ([self isReloading]){
         [self dataSourceDidFinishLoadingNewData];
     }
+}
+
+- (void)deleteMessageFinish:(int)result
+{
+    if (result == ERROR_SUCCESS){
+        self.dataList = [PrivateMessageManager getAllMessageByUser:messageUserId];
+        [self.dataTableView reloadData];
+    }    
 }
 
 - (void)requestPrivateMessageListFromServer:(BOOL)isRequestLastest
@@ -211,16 +219,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-    // tag_more_rows
-    if ([self isMoreRow:indexPath.row]){
-        [self.moreLoadingView startAnimating];
-        [self requestPrivateMessageListFromServer:NO];
-        return;
-    }
     
 	if (indexPath.row > [dataList count] - 1)
 		return;    
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row > [dataList count] - 1)
+		return;    
+
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // send delete request
+        MessageService *messageService = GlobalGetMessageService();        
+        PrivateMessage* message = [dataList objectAtIndex:indexPath.row];
+        [messageService deleteMessage:message viewController:self];
+	}	
 }
 
 - (void)clickReply:(id)sender

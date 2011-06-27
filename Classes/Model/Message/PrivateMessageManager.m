@@ -135,8 +135,11 @@
 }
 
 
-+ (BOOL)deleteMessage:(NSString*)messageId
++ (BOOL)deleteMessage:(PrivateMessage*)message
 {    
+    CoreDataManager* dataManager = GlobalGetCoreDataManager();    
+    [dataManager del:message];
+    [dataManager save];
     return YES;
 }
 

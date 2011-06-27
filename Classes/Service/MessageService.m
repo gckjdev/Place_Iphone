@@ -14,6 +14,7 @@
 #import "PrivateMessageManager.h"
 #import "PrivateMessage.h"
 #import "GetPrivateMessageRequest.h"
+#import "DeletePrivateMessageRequest.h"
 #import "ResultUtils.h"
 
 @implementation MessageService
@@ -134,5 +135,39 @@
 
 }
 
+- (void)deleteMessage:(PrivateMessage*)message
+       viewController:(PPViewController<MessageServiceDelegate>*)viewController
+{
+    UserService* userService = GlobalGetUserService();
+    NSString *userId = [userService userId];
+    NSString *appId = [AppManager getPlaceAppId];
+    
+    [viewController showActivityWithText:NSLS(@"kDeletingMessage")];
+    dispatch_async(workingQueue, ^{
+        DeletePrivateMessageOutput* output = [DeletePrivateMessageRequest send:SERVER_URL userId:userId appId:appId messageId:message.messageId];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [viewController hideActivity];
+            if (output.resultCode == ERROR_SUCCESS){                                               
+                // remove from DB                
+                [PrivateMessageManager deleteMessage:message];
+            }
+            else if (output.resultCode == ERROR_NETWORK){
+                [UIUtils alert:NSLS(@"kSystemFailure")];
+            }
+            else{
+                [UIUtils alert:NSLS(@"kUnknowFailure")];
+                // other error TBD
+            }
+            
+            if ([viewController respondsToSelector:@selector(deleteMessageFinish:)]){
+                [viewController deleteMessageFinish:output.resultCode];
+            }
+        });        
+        
+    });
+    
+
+}
 
 @end

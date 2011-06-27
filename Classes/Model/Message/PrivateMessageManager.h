@@ -33,7 +33,7 @@
 
 + (NSArray*)getAllMessageByUser:(NSString*)messageUserId;
 
-+ (BOOL)deleteMessage:(NSString*)messageId;
++ (BOOL)deleteMessage:(PrivateMessage*)message;
 
 + (PrivateMessage*)getMessageById:(NSString*)messageId;
 

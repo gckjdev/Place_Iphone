@@ -52,6 +52,7 @@
 		CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005AA138F5851009B5BF9 /* PostController.xib */; };
 		CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4921DB13AAF55300744CCC /* SelectPlaceController.m */; };
 		CA4921DE13AAF55300744CCC /* SelectPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */; };
+		CA498A9113B83015007993B8 /* DeletePrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA498A9013B83015007993B8 /* DeletePrivateMessageRequest.m */; };
 		CA5C848213A9948200A22BB5 /* AtMePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848013A9948200A22BB5 /* AtMePostController.m */; };
 		CA5C848313A9948200A22BB5 /* AtMePostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5C848113A9948200A22BB5 /* AtMePostController.xib */; };
 		CA5C848613A99BA900A22BB5 /* GetAtMePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848513A99BA900A22BB5 /* GetAtMePostRequest.m */; };
@@ -527,6 +528,8 @@
 		CA4921DA13AAF55300744CCC /* SelectPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlaceController.h; sourceTree = "<group>"; };
 		CA4921DB13AAF55300744CCC /* SelectPlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlaceController.m; sourceTree = "<group>"; };
 		CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlaceController.xib; sourceTree = "<group>"; };
+		CA498A8F13B83015007993B8 /* DeletePrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeletePrivateMessageRequest.h; sourceTree = "<group>"; };
+		CA498A9013B83015007993B8 /* DeletePrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeletePrivateMessageRequest.m; sourceTree = "<group>"; };
 		CA5C847F13A9948200A22BB5 /* AtMePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtMePostController.h; sourceTree = "<group>"; };
 		CA5C848013A9948200A22BB5 /* AtMePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtMePostController.m; sourceTree = "<group>"; };
 		CA5C848113A9948200A22BB5 /* AtMePostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AtMePostController.xib; sourceTree = "<group>"; };
@@ -1429,6 +1432,8 @@
 				CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */,
 				CA8900F113B72B04005ED51A /* GetPrivateMessageRequest.h */,
 				CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */,
+				CA498A8F13B83015007993B8 /* DeletePrivateMessageRequest.h */,
+				CA498A9013B83015007993B8 /* DeletePrivateMessageRequest.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -2699,6 +2704,7 @@
 				CA8900EA13B70E57005ED51A /* SendPrivateMessageRequest.m in Sources */,
 				CA8900ED13B71183005ED51A /* MessageService.m in Sources */,
 				CA8900F313B72B05005ED51A /* GetPrivateMessageRequest.m in Sources */,
+				CA498A9113B83015007993B8 /* DeletePrivateMessageRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
