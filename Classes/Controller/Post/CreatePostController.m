@@ -12,10 +12,9 @@
 #import "UserManager.h"
 #import "Post.h"
 #import "AppManager.h"
-#import "SinaService.h"
-#import "QQService.h"
 #import "UIImageUtil.h"
 #import "SelectPlaceController.h"
+#import "PostService.h"
 
 #define MAX_POST_TEXT_LEN 140
 
@@ -197,12 +196,19 @@ enum{
 // this shall be moved to a SyncSNSService
 - (void)syncSNS:(NSString*)textContent
 {
-    User* user = [UserManager getUser];
-    if (user.sinaAccessToken != nil && [user.sinaAccessToken length] > 0 && user.sinaAccessTokenSecret){
-        [SinaService createWeiboWith:textContent accessToken:user.sinaAccessToken tokenSecret:user.sinaAccessTokenSecret];
-    }
-    if (user.qqAccessToken != nil && [user.qqAccessToken length] > 0 && user.qqAccessTokenSecret){
-        [QQService createWeiboWith:textContent accessToken:user.qqAccessToken tokenSecret:user.qqAccessTokenSecret];        
+//    User* user = [UserManager getUser];
+//    if (user.sinaAccessToken != nil && [user.sinaAccessToken length] > 0 && user.sinaAccessTokenSecret){
+//        [SinaService createWeiboWith:textContent accessToken:user.sinaAccessToken tokenSecret:user.sinaAccessTokenSecret];
+//    }
+//    if (user.qqAccessToken != nil && [user.qqAccessToken length] > 0 && user.qqAccessTokenSecret){
+//        [QQService createWeiboWith:textContent accessToken:user.qqAccessToken tokenSecret:user.qqAccessTokenSecret];        
+//    }
+}
+
+- (void)createPostFinish:(int)result
+{
+    if (result == ERROR_SUCCESS){
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -215,59 +221,21 @@ enum{
        replyPostId:(NSString*)replyPostIdVal
 
 {
-    User* user = [UserManager getUser];
-    NSString* appId = [AppManager getPlaceAppId];
-    
+    PostService* postService = GlobalGetPostService();
+    [postService createPost:contentType 
+                textContent:textContent
+                   latitude:latitude 
+                  longitude:longitude                      
+               userLatitude:userLatitude 
+              userLongitude:userLongitude                            
+                    syncSNS:syncSNS 
+                    placeId:placeId
+                      image:image                      
+                  srcPostId:srcPostIdVal                  
+                replyPostId:replyPostIdVal                
+                  placeName:place.name                  
+             viewController:self];
         
-    [self showActivityWithText:NSLS(@"kCreatingPost")];
-    dispatch_async(workingQueue, ^{
-
-        // for test image upload
-        
-        
-        CreatePostOutput* output = [CreatePostRequest send:SERVER_URL 
-                                                    userId:user.userId 
-                                                     appId:appId 
-                                               contentType:contentType 
-                                               textContent:textContent 
-                                                  latitude:latitude 
-                                                 longitude:longitude 
-                                              userLatitude:userLatitude 
-                                             userLongitude:userLongitude 
-                                                   syncSNS:syncSNS 
-                                                   placeId:placeId
-                                                     image:image
-                                                 srcPostId:srcPostIdVal
-                                               replyPostId:replyPostIdVal];
-        
-        if (syncSNS){
-            [self syncSNS:textContent];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideActivity];
-            if (output.resultCode == ERROR_SUCCESS){               
-                // save post data locally
-                [PostManager createPost:output.postId placeId:placeId userId:user.userId textContent:textContent imageURL:output.imageURL contentType:contentType createDate:output.createDate longitude:longitude latitude:latitude userLongitude:userLongitude userLatitude:userLatitude totalView:output.totalView totalForward:output.totalForward totalQuote:output.totalQuote totalReply:output.totalReply totalRelated:0
-                           userNickName:user.nickName 
-                              placeName:place.name
-                              srcPostId:srcPostId
-                            replyPostId:replyPostId
-                             userAvatar:user.avatar
-                                 useFor:POST_FOR_PLACE];
-                
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-            else if (output.resultCode == ERROR_NETWORK){
-                [UIUtils alert:NSLS(@"kSystemFailure")];
-            }
-            else{
-                [UIUtils alert:NSLS(@"kUnknowFailure")];
-                // other error TBD
-            }
-        });        
-    });    
-    
 }
 
 - (int)getContentType

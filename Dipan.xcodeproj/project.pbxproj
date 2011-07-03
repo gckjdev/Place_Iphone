@@ -36,30 +36,19 @@
 		82454CD01254756500F9544F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82454CCF1254756500F9544F /* Localizable.strings */; };
 		82B52DB012548339003E64D0 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B52DAF12548339003E64D0 /* CoreAudio.framework */; };
 		82B52E001254838E003E64D0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B52DFF1254838E003E64D0 /* MediaPlayer.framework */; };
-		CA0A56BE137BAF1F003CD06C /* RegisterUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */; };
-		CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */; };
-		CA0C2722138409560097931C /* UserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C2721138409560097931C /* UserFollowPlaceRequest.m */; };
-		CA15FB43137CF7CA000D2457 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB42137CF7CA000D2457 /* Friend.m */; };
-		CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */; };
-		CA2A0164138E2432007EBEA9 /* GetUserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */; };
-		CA2A016A138E282A007EBEA9 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0169138E282A007EBEA9 /* AppManager.m */; };
 		CA2A016E138E2F87007EBEA9 /* NearbyPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A016C138E2F86007EBEA9 /* NearbyPostController.m */; };
 		CA2A016F138E2F87007EBEA9 /* NearbyPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2A016D138E2F86007EBEA9 /* NearbyPostController.xib */; };
 		CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */; };
 		CA2A0174138E2FD3007EBEA9 /* FollowPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */; };
-		CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */; };
 		CA4005AB138F5852009B5BF9 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4005A9138F5850009B5BF9 /* PostController.m */; };
 		CA4005AC138F5852009B5BF9 /* PostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4005AA138F5851009B5BF9 /* PostController.xib */; };
 		CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4921DB13AAF55300744CCC /* SelectPlaceController.m */; };
 		CA4921DE13AAF55300744CCC /* SelectPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */; };
-		CA498A9113B83015007993B8 /* DeletePrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA498A9013B83015007993B8 /* DeletePrivateMessageRequest.m */; };
 		CA5C848213A9948200A22BB5 /* AtMePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848013A9948200A22BB5 /* AtMePostController.m */; };
 		CA5C848313A9948200A22BB5 /* AtMePostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5C848113A9948200A22BB5 /* AtMePostController.xib */; };
-		CA5C848613A99BA900A22BB5 /* GetAtMePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848513A99BA900A22BB5 /* GetAtMePostRequest.m */; };
 		CA5C848A13A9AB6400A22BB5 /* EnterPlaceAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848813A9AB6400A22BB5 /* EnterPlaceAppController.m */; };
 		CA5C848B13A9AB6400A22BB5 /* EnterPlaceAppController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5C848913A9AB6400A22BB5 /* EnterPlaceAppController.xib */; };
 		CA5D43C8136A561E00B9ECF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D43C7136A561E00B9ECF2 /* AVFoundation.framework */; };
-		CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */; };
 		CA5D44DB136A63A200B9ECF2 /* libAdMob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D44B0136A63A200B9ECF2 /* libAdMob.a */; };
 		CA5D44DC136A63A300B9ECF2 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D44B3136A63A200B9ECF2 /* AdViewController.m */; };
 		CA5D44DD136A63A300B9ECF2 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D44B6136A63A200B9ECF2 /* CDataScanner.m */; };
@@ -85,16 +74,8 @@
 		CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6046781395D8AE006C1D9F /* FollowPlaceController.m */; };
 		CA60467B1395D8AE006C1D9F /* FollowPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */; };
 		CA60467E1395D8C0006C1D9F /* PlaceControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */; };
-		CA66BC30139C74C000FBA347 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA66BC2F139C74C000FBA347 /* UserService.m */; };
-		CA7C70A213811BC60030442D /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7C70A113811BC60030442D /* LocalDataService.m */; };
 		CA7F9CD6137D5B530033FE12 /* PlaceLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */; };
 		CA7F9CD7137D5B530033FE12 /* PlaceLocationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */; };
-		CA7F9CDA137D62000033FE12 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CD9137D62000033FE12 /* Place.m */; };
-		CA7F9CDD137D62340033FE12 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7F9CDC137D62340033FE12 /* PlaceManager.m */; };
-		CA86099C13A33DB200B00874 /* UpdateUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA86099B13A33DB100B00874 /* UpdateUserRequest.m */; };
-		CA8900B913B6D98F005ED51A /* PrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900B413B6D98F005ED51A /* PrivateMessage.m */; };
-		CA8900BA13B6D98F005ED51A /* PrivateMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900B613B6D98F005ED51A /* PrivateMessageManager.m */; };
-		CA8900BB13B6D98F005ED51A /* PrivateMessageUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900B813B6D98F005ED51A /* PrivateMessageUser.m */; };
 		CA8900CA13B6DA6F005ED51A /* PrivateMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900C813B6DA6F005ED51A /* PrivateMessageListController.m */; };
 		CA8900CB13B6DA6F005ED51A /* PrivateMessageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900C913B6DA6F005ED51A /* PrivateMessageListController.xib */; };
 		CA8900CE13B6DAAD005ED51A /* PrivateMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900CD13B6DAAD005ED51A /* PrivateMessageTableViewCell.m */; };
@@ -106,26 +87,15 @@
 		CA8900E113B703F1005ED51A /* PrivateMessageControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E013B703F1005ED51A /* PrivateMessageControllerUtils.m */; };
 		CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */; };
 		CA8900E613B70480005ED51A /* CreatePrivateMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */; };
-		CA8900EA13B70E57005ED51A /* SendPrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */; };
-		CA8900ED13B71183005ED51A /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900EC13B71182005ED51A /* MessageService.m */; };
-		CA8900F313B72B05005ED51A /* GetPrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */; };
 		CA933E9D137FE66C001E0D1E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA933E9C137FE66C001E0D1E /* CFNetwork.framework */; };
 		CA967316137E4DF00038CC44 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967314137E4DEF0038CC44 /* PostListController.m */; };
 		CA967317137E4DF00038CC44 /* PostListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA967315137E4DF00038CC44 /* PostListController.xib */; };
-		CA96731A137E59210038CC44 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CA967319137E59210038CC44 /* Post.m */; };
-		CA96731D137E593B0038CC44 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96731C137E593B0038CC44 /* PostManager.m */; };
-		CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */; };
 		CA9B40C413978E4000F16EA4 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */; };
 		CA9B40C61397D63700F16EA4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */; };
 		CA9E093B139CB7CB000B6FEE /* CommonSNSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E093A139CB7CB000B6FEE /* CommonSNSRequest.m */; };
 		CA9E093E139CB7E2000B6FEE /* SNSServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E093D139CB7E2000B6FEE /* SNSServiceHandler.m */; };
 		CA9E0941139CB803000B6FEE /* QQWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0940139CB803000B6FEE /* QQWeiboRequest.m */; };
 		CA9E0944139CB817000B6FEE /* SINAWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0943139CB817000B6FEE /* SINAWeiboRequest.m */; };
-		CA9E0947139CCC8D000B6FEE /* PlaceSNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */; };
-		CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA9E1FB51385247E009D1D4F /* Server_Interface.txt */; };
-		CA9E1FB913856FFC009D1D4F /* GetUserFollowPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */; };
-		CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */; };
-		CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2FB9A13826DBA00DE820F /* LocationService.m */; };
 		CAA6AB1213987F52009F26E3 /* touxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = CAA6AB1113987F52009F26E3 /* touxiang.png */; };
 		CAA6AB3013988A2A009F26E3 /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB1D13988A2A009F26E3 /* HJCircularBuffer.m */; };
 		CAA6AB3113988A2A009F26E3 /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6AB1F13988A2A009F26E3 /* HJManagedImageV.m */; };
@@ -270,8 +240,53 @@
 		CAAF030F137FE03200E56503 /* UIToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0184137FE03100E56503 /* UIToolBarCell.m */; };
 		CAAF0310137FE03200E56503 /* UIWebViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAF0186137FE03100E56503 /* UIWebViewUtil.m */; };
 		CAB2F05A125F4CA600593157 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2F059125F4CA600593157 /* AudioToolbox.framework */; };
-		CAC8B63F13A8ADAB00627367 /* GetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC8B63E13A8ADAB00627367 /* GetPlaceRequest.m */; };
-		CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */; };
+		CAB3D42513C0512C00F9DC02 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3B813C0512C00F9DC02 /* AppManager.m */; };
+		CAB3D42613C0512C00F9DC02 /* CommonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3BA13C0512C00F9DC02 /* CommonManager.m */; };
+		CAB3D42713C0512C00F9DC02 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3BB13C0512C00F9DC02 /* MainDataModel.xcdatamodeld */; };
+		CAB3D42813C0512C00F9DC02 /* PrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C013C0512C00F9DC02 /* PrivateMessage.m */; };
+		CAB3D42913C0512C00F9DC02 /* PrivateMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C213C0512C00F9DC02 /* PrivateMessageManager.m */; };
+		CAB3D42A13C0512C00F9DC02 /* PrivateMessageUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C413C0512C00F9DC02 /* PrivateMessageUser.m */; };
+		CAB3D42B13C0512C00F9DC02 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C713C0512C00F9DC02 /* Place.m */; };
+		CAB3D42C13C0512C00F9DC02 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C913C0512C00F9DC02 /* PlaceManager.m */; };
+		CAB3D42D13C0512C00F9DC02 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3CC13C0512C00F9DC02 /* Post.m */; };
+		CAB3D42E13C0512C00F9DC02 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3CE13C0512C00F9DC02 /* PostManager.m */; };
+		CAB3D42F13C0512C00F9DC02 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3D113C0512C00F9DC02 /* Friend.m */; };
+		CAB3D43013C0512C00F9DC02 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3D313C0512C00F9DC02 /* User.m */; };
+		CAB3D43113C0512C00F9DC02 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3D513C0512C00F9DC02 /* UserManager.m */; };
+		CAB3D43213C0512C00F9DC02 /* GetAppUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3D913C0512C00F9DC02 /* GetAppUpdateRequest.m */; };
+		CAB3D43313C0512C00F9DC02 /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3DD13C0512C00F9DC02 /* NetworkRequest.m */; };
+		CAB3D43413C0512C00F9DC02 /* ResultUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3E113C0512C00F9DC02 /* ResultUtils.m */; };
+		CAB3D43513C0512C00F9DC02 /* Server_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = CAB3D3E213C0512C00F9DC02 /* Server_Interface.txt */; };
+		CAB3D43613C0512C00F9DC02 /* DeletePrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3E613C0512C00F9DC02 /* DeletePrivateMessageRequest.m */; };
+		CAB3D43713C0512C00F9DC02 /* GetPrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3E813C0512C00F9DC02 /* GetPrivateMessageRequest.m */; };
+		CAB3D43813C0512C00F9DC02 /* SendPrivateMessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3EA13C0512C00F9DC02 /* SendPrivateMessageRequest.m */; };
+		CAB3D43913C0512C00F9DC02 /* CreatePlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3ED13C0512C00F9DC02 /* CreatePlaceRequest.m */; };
+		CAB3D43A13C0512C00F9DC02 /* GetNearbyPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3EF13C0512C00F9DC02 /* GetNearbyPlaceRequest.m */; };
+		CAB3D43B13C0512C00F9DC02 /* GetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3F113C0512C00F9DC02 /* GetPlaceRequest.m */; };
+		CAB3D43C13C0512C00F9DC02 /* GetUserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3F313C0512C00F9DC02 /* GetUserFollowPlaceRequest.m */; };
+		CAB3D43D13C0512C00F9DC02 /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3F513C0512C00F9DC02 /* GetUserPlaceRequest.m */; };
+		CAB3D43E13C0512C00F9DC02 /* UserFollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3F713C0512C00F9DC02 /* UserFollowPlaceRequest.m */; };
+		CAB3D43F13C0512C00F9DC02 /* UserUnfollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3F913C0512C00F9DC02 /* UserUnfollowPlaceRequest.m */; };
+		CAB3D44013C0512C00F9DC02 /* ActionOnPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3FC13C0512C00F9DC02 /* ActionOnPostRequest.m */; };
+		CAB3D44113C0512C00F9DC02 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3FE13C0512C00F9DC02 /* CreatePostRequest.m */; };
+		CAB3D44213C0512C00F9DC02 /* GetAtMePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40013C0512C00F9DC02 /* GetAtMePostRequest.m */; };
+		CAB3D44313C0512C00F9DC02 /* GetNearbyPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40213C0512C00F9DC02 /* GetNearbyPostRequest.m */; };
+		CAB3D44413C0512C00F9DC02 /* GetPlacePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40413C0512C00F9DC02 /* GetPlacePostRequest.m */; };
+		CAB3D44513C0512C00F9DC02 /* GetPostRelatedPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40613C0512C00F9DC02 /* GetPostRelatedPostRequest.m */; };
+		CAB3D44613C0512C00F9DC02 /* GetPublicTimelinePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40813C0512C00F9DC02 /* GetPublicTimelinePostRequest.m */; };
+		CAB3D44713C0512C00F9DC02 /* GetUserFollowPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40A13C0512C00F9DC02 /* GetUserFollowPostRequest.m */; };
+		CAB3D44813C0512C00F9DC02 /* BindUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40D13C0512C00F9DC02 /* BindUserRequest.m */; };
+		CAB3D44913C0512C00F9DC02 /* DeviceLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D40F13C0512C00F9DC02 /* DeviceLoginRequest.m */; };
+		CAB3D44A13C0512C00F9DC02 /* RegisterUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41113C0512C00F9DC02 /* RegisterUserRequest.m */; };
+		CAB3D44B13C0512C00F9DC02 /* UpdateUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41313C0512C00F9DC02 /* UpdateUserRequest.m */; };
+		CAB3D44C13C0512C00F9DC02 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41613C0512C00F9DC02 /* AppService.m */; };
+		CAB3D44D13C0512C00F9DC02 /* LocalDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41813C0512C00F9DC02 /* LocalDataService.m */; };
+		CAB3D44E13C0512C00F9DC02 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41A13C0512C00F9DC02 /* LocationService.m */; };
+		CAB3D44F13C0512C00F9DC02 /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41C13C0512C00F9DC02 /* MessageService.m */; };
+		CAB3D45013C0512C00F9DC02 /* PlaceSNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D41E13C0512C00F9DC02 /* PlaceSNSService.m */; };
+		CAB3D45113C0512C00F9DC02 /* PostService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D42013C0512C00F9DC02 /* PostService.m */; };
+		CAB3D45213C0512C00F9DC02 /* QQService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D42213C0512C00F9DC02 /* QQService.m */; };
+		CAB3D45313C0512C00F9DC02 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D42413C0512C00F9DC02 /* UserService.m */; };
 		CAD19B1E137A6A3500A8817B /* FeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B0C137A6A3500A8817B /* FeedbackController.m */; };
 		CAD19B1F137A6A3500A8817B /* FeedbackController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B0D137A6A3500A8817B /* FeedbackController.xib */; };
 		CAD19B20137A6A3500A8817B /* InfoMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B0F137A6A3500A8817B /* InfoMainController.m */; };
@@ -282,21 +297,11 @@
 		CAD19B25137A6A3500A8817B /* MyInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B16137A6A3500A8817B /* MyInfoController.xib */; };
 		CAD19B26137A6A3500A8817B /* PlaceMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B18137A6A3500A8817B /* PlaceMainController.m */; };
 		CAD19B27137A6A3500A8817B /* PlaceMainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD19B19137A6A3500A8817B /* PlaceMainController.xib */; };
-		CAD19B37137A6FAB00A8817B /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B36137A6FAB00A8817B /* UserManager.m */; };
-		CAD19B40137A6FFB00A8817B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19B3F137A6FFB00A8817B /* User.m */; };
-		CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19BB6137A812600A8817B /* NetworkRequest.m */; };
 		CAD8EBD513A9E3A00092C2EC /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8EBD313A9E3A00092C2EC /* MoreTableViewCell.m */; };
 		CAD8EBD613A9E3A00092C2EC /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD8EBD413A9E3A00092C2EC /* MoreTableViewCell.xib */; };
 		CAE4D0EF1397409A00D4B6BE /* PlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE4D0EE1397409A00D4B6BE /* PlaceTableViewCell.m */; };
 		CAE4D0F1139740C200D4B6BE /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE4D0F0139740C200D4B6BE /* PlaceTableViewCell.xib */; };
-		CAEE3AC3139A1CFC00EC7EE5 /* CommonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEE3AC2139A1CE800EC7EE5 /* CommonManager.m */; };
-		CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */; };
 		FB091A73139F4FF700C94292 /* PPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB091A72139F4FF600C94292 /* PPImageView.m */; };
-		FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB326BC313811BC80073368D /* GetUserPlaceRequest.m */; };
-		FB42F6EE13934C0D0053F0DC /* UserUnfollowPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */; };
-		FB42F6F113939DA10053F0DC /* BindUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB42F6F013939DA10053F0DC /* BindUserRequest.m */; };
-		FB46E8421388BAED00576C82 /* SinaService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46E8411388BAED00576C82 /* SinaService.m */; };
-		FB46E8451388D7AC00576C82 /* QQService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46E8441388D7AC00576C82 /* QQService.m */; };
 		FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */; };
 		FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB51D2CC13810DA8001D5AC5 /* RegisterController.m */; };
 		FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51D2CD13810DA8001D5AC5 /* RegisterController.xib */; };
@@ -309,7 +314,6 @@
 		FB52F3FA1388FA3100710F0C /* blueArrow_new.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3EE1388FA3100710F0C /* blueArrow_new.png */; };
 		FB52F3FB1388FA3100710F0C /* EGORefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3F01388FA3100710F0C /* EGORefresh.strings */; };
 		FB52F3FC1388FA3100710F0C /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB52F3F21388FA3100710F0C /* whiteArrow.png */; };
-		FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -500,41 +504,21 @@
 		82B52DFF1254838E003E64D0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Dipan-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dipan-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CA037C40139F46ED0095AA2A /* SNSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSConstants.h; sourceTree = "<group>"; };
-		CA0A56BC137BAF1F003CD06C /* RegisterUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequest.h; sourceTree = "<group>"; };
-		CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequest.m; sourceTree = "<group>"; };
-		CA0BFA8C1381538600A9633F /* GetPlacePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlacePostRequest.h; sourceTree = "<group>"; };
-		CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlacePostRequest.m; sourceTree = "<group>"; };
-		CA0C2720138409560097931C /* UserFollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFollowPlaceRequest.h; sourceTree = "<group>"; };
-		CA0C2721138409560097931C /* UserFollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFollowPlaceRequest.m; sourceTree = "<group>"; };
-		CA15FB41137CF7CA000D2457 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
-		CA15FB42137CF7CA000D2457 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
-		CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceRequest.h; sourceTree = "<group>"; };
-		CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceRequest.m; sourceTree = "<group>"; };
-		CA2A0162138E2432007EBEA9 /* GetUserFollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPlaceRequest.h; sourceTree = "<group>"; };
-		CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPlaceRequest.m; sourceTree = "<group>"; };
-		CA2A0168138E282A007EBEA9 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
-		CA2A0169138E282A007EBEA9 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		CA2A016B138E2F86007EBEA9 /* NearbyPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPostController.h; sourceTree = "<group>"; };
 		CA2A016C138E2F86007EBEA9 /* NearbyPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPostController.m; sourceTree = "<group>"; };
 		CA2A016D138E2F86007EBEA9 /* NearbyPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyPostController.xib; sourceTree = "<group>"; };
 		CA2A0170138E2FD2007EBEA9 /* FollowPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowPostController.h; sourceTree = "<group>"; };
 		CA2A0171138E2FD2007EBEA9 /* FollowPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowPostController.m; sourceTree = "<group>"; };
 		CA2A0172138E2FD3007EBEA9 /* FollowPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPostController.xib; sourceTree = "<group>"; };
-		CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
-		CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
 		CA4005A8138F584E009B5BF9 /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
 		CA4005A9138F5850009B5BF9 /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
 		CA4005AA138F5851009B5BF9 /* PostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostController.xib; sourceTree = "<group>"; };
 		CA4921DA13AAF55300744CCC /* SelectPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlaceController.h; sourceTree = "<group>"; };
 		CA4921DB13AAF55300744CCC /* SelectPlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlaceController.m; sourceTree = "<group>"; };
 		CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlaceController.xib; sourceTree = "<group>"; };
-		CA498A8F13B83015007993B8 /* DeletePrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeletePrivateMessageRequest.h; sourceTree = "<group>"; };
-		CA498A9013B83015007993B8 /* DeletePrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeletePrivateMessageRequest.m; sourceTree = "<group>"; };
 		CA5C847F13A9948200A22BB5 /* AtMePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtMePostController.h; sourceTree = "<group>"; };
 		CA5C848013A9948200A22BB5 /* AtMePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtMePostController.m; sourceTree = "<group>"; };
 		CA5C848113A9948200A22BB5 /* AtMePostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AtMePostController.xib; sourceTree = "<group>"; };
-		CA5C848413A99BA800A22BB5 /* GetAtMePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAtMePostRequest.h; sourceTree = "<group>"; };
-		CA5C848513A99BA900A22BB5 /* GetAtMePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAtMePostRequest.m; sourceTree = "<group>"; };
 		CA5C848713A9AB6400A22BB5 /* EnterPlaceAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterPlaceAppController.h; sourceTree = "<group>"; };
 		CA5C848813A9AB6400A22BB5 /* EnterPlaceAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterPlaceAppController.m; sourceTree = "<group>"; };
 		CA5C848913A9AB6400A22BB5 /* EnterPlaceAppController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterPlaceAppController.xib; sourceTree = "<group>"; };
@@ -588,25 +572,9 @@
 		CA6046791395D8AE006C1D9F /* FollowPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPlaceController.xib; sourceTree = "<group>"; };
 		CA60467C1395D8C0006C1D9F /* PlaceControllerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceControllerUtils.h; sourceTree = "<group>"; };
 		CA60467D1395D8C0006C1D9F /* PlaceControllerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceControllerUtils.m; sourceTree = "<group>"; };
-		CA66BC2E139C74C000FBA347 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
-		CA66BC2F139C74C000FBA347 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
-		CA7C70A013811BC60030442D /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
-		CA7C70A113811BC60030442D /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
 		CA7F9CD3137D5B530033FE12 /* PlaceLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceLocationController.h; sourceTree = "<group>"; };
 		CA7F9CD4137D5B530033FE12 /* PlaceLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceLocationController.m; sourceTree = "<group>"; };
 		CA7F9CD5137D5B530033FE12 /* PlaceLocationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceLocationController.xib; sourceTree = "<group>"; };
-		CA7F9CD8137D62000033FE12 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
-		CA7F9CD9137D62000033FE12 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
-		CA7F9CDB137D62340033FE12 /* PlaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceManager.h; sourceTree = "<group>"; };
-		CA7F9CDC137D62340033FE12 /* PlaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceManager.m; sourceTree = "<group>"; };
-		CA86099A13A33DB100B00874 /* UpdateUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserRequest.h; sourceTree = "<group>"; };
-		CA86099B13A33DB100B00874 /* UpdateUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserRequest.m; sourceTree = "<group>"; };
-		CA8900B313B6D98F005ED51A /* PrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessage.h; sourceTree = "<group>"; };
-		CA8900B413B6D98F005ED51A /* PrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessage.m; sourceTree = "<group>"; };
-		CA8900B513B6D98F005ED51A /* PrivateMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageManager.h; sourceTree = "<group>"; };
-		CA8900B613B6D98F005ED51A /* PrivateMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageManager.m; sourceTree = "<group>"; };
-		CA8900B713B6D98F005ED51A /* PrivateMessageUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageUser.h; sourceTree = "<group>"; };
-		CA8900B813B6D98F005ED51A /* PrivateMessageUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageUser.m; sourceTree = "<group>"; };
 		CA8900C713B6DA6F005ED51A /* PrivateMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageListController.h; sourceTree = "<group>"; };
 		CA8900C813B6DA6F005ED51A /* PrivateMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageListController.m; sourceTree = "<group>"; };
 		CA8900C913B6DA6F005ED51A /* PrivateMessageListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageListController.xib; sourceTree = "<group>"; };
@@ -624,22 +592,10 @@
 		CA8900E213B7047D005ED51A /* CreatePrivateMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePrivateMessageController.h; sourceTree = "<group>"; };
 		CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePrivateMessageController.m; sourceTree = "<group>"; };
 		CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePrivateMessageController.xib; sourceTree = "<group>"; };
-		CA8900E813B70E57005ED51A /* SendPrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPrivateMessageRequest.h; sourceTree = "<group>"; };
-		CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPrivateMessageRequest.m; sourceTree = "<group>"; };
-		CA8900EB13B71182005ED51A /* MessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageService.h; sourceTree = "<group>"; };
-		CA8900EC13B71182005ED51A /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageService.m; sourceTree = "<group>"; };
-		CA8900F113B72B04005ED51A /* GetPrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPrivateMessageRequest.h; sourceTree = "<group>"; };
-		CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPrivateMessageRequest.m; sourceTree = "<group>"; };
 		CA933E9C137FE66C001E0D1E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CA967313137E4DEF0038CC44 /* PostListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostListController.h; sourceTree = "<group>"; };
 		CA967314137E4DEF0038CC44 /* PostListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostListController.m; sourceTree = "<group>"; };
 		CA967315137E4DF00038CC44 /* PostListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostListController.xib; sourceTree = "<group>"; };
-		CA967318137E59210038CC44 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
-		CA967319137E59210038CC44 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
-		CA96731B137E593B0038CC44 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
-		CA96731C137E593B0038CC44 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
-		CA96B39E1390BD0F00503786 /* GetPostRelatedPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPostRelatedPostRequest.h; sourceTree = "<group>"; };
-		CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPostRelatedPostRequest.m; sourceTree = "<group>"; };
 		CA9B40C213978E3E00F16EA4 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
 		CA9B40C313978E3F00F16EA4 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		CA9B40C51397D63300F16EA4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
@@ -651,15 +607,6 @@
 		CA9E0940139CB803000B6FEE /* QQWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQWeiboRequest.m; sourceTree = "<group>"; };
 		CA9E0942139CB817000B6FEE /* SINAWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SINAWeiboRequest.h; sourceTree = "<group>"; };
 		CA9E0943139CB817000B6FEE /* SINAWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SINAWeiboRequest.m; sourceTree = "<group>"; };
-		CA9E0945139CCC8C000B6FEE /* PlaceSNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceSNSService.h; sourceTree = "<group>"; };
-		CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceSNSService.m; sourceTree = "<group>"; };
-		CA9E1FB51385247E009D1D4F /* Server_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Server_Interface.txt; sourceTree = "<group>"; };
-		CA9E1FB713856FFB009D1D4F /* GetUserFollowPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPostRequest.h; sourceTree = "<group>"; };
-		CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPostRequest.m; sourceTree = "<group>"; };
-		CA9E1FBA13857176009D1D4F /* GetNearbyPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPostRequest.h; sourceTree = "<group>"; };
-		CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPostRequest.m; sourceTree = "<group>"; };
-		CAA2FB9913826DB900DE820F /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
-		CAA2FB9A13826DBA00DE820F /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		CAA6AB1113987F52009F26E3 /* touxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang.png; sourceTree = "<group>"; };
 		CAA6AB1C13988A2A009F26E3 /* HJCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCircularBuffer.h; sourceTree = "<group>"; };
 		CAA6AB1D13988A2A009F26E3 /* HJCircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCircularBuffer.m; sourceTree = "<group>"; };
@@ -915,13 +862,105 @@
 		CAAFFFE4137FE03000E56503 /* SelectItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectItemViewController.h; sourceTree = "<group>"; };
 		CAAFFFE5137FE03000E56503 /* SelectItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectItemViewController.m; sourceTree = "<group>"; };
 		CAAFFFE6137FE03000E56503 /* SelectItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectItemViewController.xib; sourceTree = "<group>"; };
-		CAB2F048125F49E400593157 /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CAB2F059125F4CA600593157 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CAB3D3B713C0512C00F9DC02 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
+		CAB3D3B813C0512C00F9DC02 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
+		CAB3D3B913C0512C00F9DC02 /* CommonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonManager.h; sourceTree = "<group>"; };
+		CAB3D3BA13C0512C00F9DC02 /* CommonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonManager.m; sourceTree = "<group>"; };
+		CAB3D3BC13C0512C00F9DC02 /* MainDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		CAB3D3BD13C0512C00F9DC02 /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
+		CAB3D3BF13C0512C00F9DC02 /* PrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessage.h; sourceTree = "<group>"; };
+		CAB3D3C013C0512C00F9DC02 /* PrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessage.m; sourceTree = "<group>"; };
+		CAB3D3C113C0512C00F9DC02 /* PrivateMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageManager.h; sourceTree = "<group>"; };
+		CAB3D3C213C0512C00F9DC02 /* PrivateMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageManager.m; sourceTree = "<group>"; };
+		CAB3D3C313C0512C00F9DC02 /* PrivateMessageUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageUser.h; sourceTree = "<group>"; };
+		CAB3D3C413C0512C00F9DC02 /* PrivateMessageUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageUser.m; sourceTree = "<group>"; };
+		CAB3D3C613C0512C00F9DC02 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		CAB3D3C713C0512C00F9DC02 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		CAB3D3C813C0512C00F9DC02 /* PlaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceManager.h; sourceTree = "<group>"; };
+		CAB3D3C913C0512C00F9DC02 /* PlaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceManager.m; sourceTree = "<group>"; };
+		CAB3D3CB13C0512C00F9DC02 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		CAB3D3CC13C0512C00F9DC02 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		CAB3D3CD13C0512C00F9DC02 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
+		CAB3D3CE13C0512C00F9DC02 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
+		CAB3D3D013C0512C00F9DC02 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		CAB3D3D113C0512C00F9DC02 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		CAB3D3D213C0512C00F9DC02 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		CAB3D3D313C0512C00F9DC02 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		CAB3D3D413C0512C00F9DC02 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		CAB3D3D513C0512C00F9DC02 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		CAB3D3D813C0512C00F9DC02 /* GetAppUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAppUpdateRequest.h; sourceTree = "<group>"; };
+		CAB3D3D913C0512C00F9DC02 /* GetAppUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppUpdateRequest.m; sourceTree = "<group>"; };
+		CAB3D3DB13C0512C00F9DC02 /* InterfaceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceConstants.h; sourceTree = "<group>"; };
+		CAB3D3DC13C0512C00F9DC02 /* NetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequest.h; sourceTree = "<group>"; };
+		CAB3D3DD13C0512C00F9DC02 /* NetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRequest.m; sourceTree = "<group>"; };
+		CAB3D3DE13C0512C00F9DC02 /* NetworkRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequestParameter.h; sourceTree = "<group>"; };
+		CAB3D3DF13C0512C00F9DC02 /* NetworkRequestResultCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequestResultCode.h; sourceTree = "<group>"; };
+		CAB3D3E013C0512C00F9DC02 /* ResultUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultUtils.h; sourceTree = "<group>"; };
+		CAB3D3E113C0512C00F9DC02 /* ResultUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultUtils.m; sourceTree = "<group>"; };
+		CAB3D3E213C0512C00F9DC02 /* Server_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Server_Interface.txt; sourceTree = "<group>"; };
+		CAB3D3E313C0512C00F9DC02 /* VariableConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableConstants.h; sourceTree = "<group>"; };
+		CAB3D3E513C0512C00F9DC02 /* DeletePrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeletePrivateMessageRequest.h; sourceTree = "<group>"; };
+		CAB3D3E613C0512C00F9DC02 /* DeletePrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeletePrivateMessageRequest.m; sourceTree = "<group>"; };
+		CAB3D3E713C0512C00F9DC02 /* GetPrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPrivateMessageRequest.h; sourceTree = "<group>"; };
+		CAB3D3E813C0512C00F9DC02 /* GetPrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPrivateMessageRequest.m; sourceTree = "<group>"; };
+		CAB3D3E913C0512C00F9DC02 /* SendPrivateMessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPrivateMessageRequest.h; sourceTree = "<group>"; };
+		CAB3D3EA13C0512C00F9DC02 /* SendPrivateMessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPrivateMessageRequest.m; sourceTree = "<group>"; };
+		CAB3D3EC13C0512C00F9DC02 /* CreatePlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3ED13C0512C00F9DC02 /* CreatePlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3EE13C0512C00F9DC02 /* GetNearbyPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3EF13C0512C00F9DC02 /* GetNearbyPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3F013C0512C00F9DC02 /* GetPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3F113C0512C00F9DC02 /* GetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3F213C0512C00F9DC02 /* GetUserFollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3F313C0512C00F9DC02 /* GetUserFollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3F413C0512C00F9DC02 /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3F513C0512C00F9DC02 /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3F613C0512C00F9DC02 /* UserFollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFollowPlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3F713C0512C00F9DC02 /* UserFollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFollowPlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3F813C0512C00F9DC02 /* UserUnfollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnfollowPlaceRequest.h; sourceTree = "<group>"; };
+		CAB3D3F913C0512C00F9DC02 /* UserUnfollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUnfollowPlaceRequest.m; sourceTree = "<group>"; };
+		CAB3D3FB13C0512C00F9DC02 /* ActionOnPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionOnPostRequest.h; sourceTree = "<group>"; };
+		CAB3D3FC13C0512C00F9DC02 /* ActionOnPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionOnPostRequest.m; sourceTree = "<group>"; };
+		CAB3D3FD13C0512C00F9DC02 /* CreatePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePostRequest.h; sourceTree = "<group>"; };
+		CAB3D3FE13C0512C00F9DC02 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
+		CAB3D3FF13C0512C00F9DC02 /* GetAtMePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAtMePostRequest.h; sourceTree = "<group>"; };
+		CAB3D40013C0512C00F9DC02 /* GetAtMePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAtMePostRequest.m; sourceTree = "<group>"; };
+		CAB3D40113C0512C00F9DC02 /* GetNearbyPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyPostRequest.h; sourceTree = "<group>"; };
+		CAB3D40213C0512C00F9DC02 /* GetNearbyPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyPostRequest.m; sourceTree = "<group>"; };
+		CAB3D40313C0512C00F9DC02 /* GetPlacePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlacePostRequest.h; sourceTree = "<group>"; };
+		CAB3D40413C0512C00F9DC02 /* GetPlacePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlacePostRequest.m; sourceTree = "<group>"; };
+		CAB3D40513C0512C00F9DC02 /* GetPostRelatedPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPostRelatedPostRequest.h; sourceTree = "<group>"; };
+		CAB3D40613C0512C00F9DC02 /* GetPostRelatedPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPostRelatedPostRequest.m; sourceTree = "<group>"; };
+		CAB3D40713C0512C00F9DC02 /* GetPublicTimelinePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPublicTimelinePostRequest.h; sourceTree = "<group>"; };
+		CAB3D40813C0512C00F9DC02 /* GetPublicTimelinePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPublicTimelinePostRequest.m; sourceTree = "<group>"; };
+		CAB3D40913C0512C00F9DC02 /* GetUserFollowPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFollowPostRequest.h; sourceTree = "<group>"; };
+		CAB3D40A13C0512C00F9DC02 /* GetUserFollowPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFollowPostRequest.m; sourceTree = "<group>"; };
+		CAB3D40C13C0512C00F9DC02 /* BindUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindUserRequest.h; sourceTree = "<group>"; };
+		CAB3D40D13C0512C00F9DC02 /* BindUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindUserRequest.m; sourceTree = "<group>"; };
+		CAB3D40E13C0512C00F9DC02 /* DeviceLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLoginRequest.h; sourceTree = "<group>"; };
+		CAB3D40F13C0512C00F9DC02 /* DeviceLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLoginRequest.m; sourceTree = "<group>"; };
+		CAB3D41013C0512C00F9DC02 /* RegisterUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequest.h; sourceTree = "<group>"; };
+		CAB3D41113C0512C00F9DC02 /* RegisterUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequest.m; sourceTree = "<group>"; };
+		CAB3D41213C0512C00F9DC02 /* UpdateUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserRequest.h; sourceTree = "<group>"; };
+		CAB3D41313C0512C00F9DC02 /* UpdateUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserRequest.m; sourceTree = "<group>"; };
+		CAB3D41513C0512C00F9DC02 /* AppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppService.h; sourceTree = "<group>"; };
+		CAB3D41613C0512C00F9DC02 /* AppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppService.m; sourceTree = "<group>"; };
+		CAB3D41713C0512C00F9DC02 /* LocalDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataService.h; sourceTree = "<group>"; };
+		CAB3D41813C0512C00F9DC02 /* LocalDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataService.m; sourceTree = "<group>"; };
+		CAB3D41913C0512C00F9DC02 /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		CAB3D41A13C0512C00F9DC02 /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
+		CAB3D41B13C0512C00F9DC02 /* MessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageService.h; sourceTree = "<group>"; };
+		CAB3D41C13C0512C00F9DC02 /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageService.m; sourceTree = "<group>"; };
+		CAB3D41D13C0512C00F9DC02 /* PlaceSNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceSNSService.h; sourceTree = "<group>"; };
+		CAB3D41E13C0512C00F9DC02 /* PlaceSNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceSNSService.m; sourceTree = "<group>"; };
+		CAB3D41F13C0512C00F9DC02 /* PostService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostService.h; sourceTree = "<group>"; };
+		CAB3D42013C0512C00F9DC02 /* PostService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostService.m; sourceTree = "<group>"; };
+		CAB3D42113C0512C00F9DC02 /* QQService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQService.h; sourceTree = "<group>"; };
+		CAB3D42213C0512C00F9DC02 /* QQService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQService.m; sourceTree = "<group>"; };
+		CAB3D42313C0512C00F9DC02 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
+		CAB3D42413C0512C00F9DC02 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
 		CABC814813A1F5F8001CE1B8 /* ContollerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContollerConstants.h; sourceTree = "<group>"; };
-		CAC8B63D13A8ADAB00627367 /* GetPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPlaceRequest.h; sourceTree = "<group>"; };
-		CAC8B63E13A8ADAB00627367 /* GetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPlaceRequest.m; sourceTree = "<group>"; };
-		CACDAD5A13912EFB00AE48F4 /* ResultUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultUtils.h; sourceTree = "<group>"; };
-		CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultUtils.m; sourceTree = "<group>"; };
 		CAD19B0B137A6A3500A8817B /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
 		CAD19B0C137A6A3500A8817B /* FeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController.m; sourceTree = "<group>"; };
 		CAD19B0D137A6A3500A8817B /* FeedbackController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackController.xib; sourceTree = "<group>"; };
@@ -937,37 +976,14 @@
 		CAD19B17137A6A3500A8817B /* PlaceMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMainController.h; sourceTree = "<group>"; };
 		CAD19B18137A6A3500A8817B /* PlaceMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMainController.m; sourceTree = "<group>"; };
 		CAD19B19137A6A3500A8817B /* PlaceMainController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceMainController.xib; sourceTree = "<group>"; };
-		CAD19B35137A6FAB00A8817B /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
-		CAD19B36137A6FAB00A8817B /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
-		CAD19B3E137A6FFB00A8817B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		CAD19B3F137A6FFB00A8817B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		CAD19BB5137A812600A8817B /* NetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequest.h; sourceTree = "<group>"; };
-		CAD19BB6137A812600A8817B /* NetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRequest.m; sourceTree = "<group>"; };
-		CAD19BB7137A812600A8817B /* NetworkRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequestParameter.h; sourceTree = "<group>"; };
-		CAD19BB8137A812600A8817B /* NetworkRequestResultCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRequestResultCode.h; sourceTree = "<group>"; };
-		CAD19BCA137A832900A8817B /* VariableConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableConstants.h; sourceTree = "<group>"; };
 		CAD8EBD213A9E3A00092C2EC /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewCell.h; sourceTree = "<group>"; };
 		CAD8EBD313A9E3A00092C2EC /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewCell.m; sourceTree = "<group>"; };
 		CAD8EBD413A9E3A00092C2EC /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
 		CAE4D0ED1397409A00D4B6BE /* PlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewCell.h; sourceTree = "<group>"; };
 		CAE4D0EE1397409A00D4B6BE /* PlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewCell.m; sourceTree = "<group>"; };
 		CAE4D0F0139740C200D4B6BE /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
-		CAEE3AC1139A1CE600EC7EE5 /* CommonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonManager.h; sourceTree = "<group>"; };
-		CAEE3AC2139A1CE800EC7EE5 /* CommonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonManager.m; sourceTree = "<group>"; };
-		CAF26C12137EC6DE00E30001 /* CreatePostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePostRequest.h; sourceTree = "<group>"; };
-		CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePostRequest.m; sourceTree = "<group>"; };
 		FB091A71139F4FF600C94292 /* PPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPImageView.h; sourceTree = "<group>"; };
 		FB091A72139F4FF600C94292 /* PPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPImageView.m; sourceTree = "<group>"; };
-		FB326BC213811BC80073368D /* GetUserPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserPlaceRequest.h; sourceTree = "<group>"; };
-		FB326BC313811BC80073368D /* GetUserPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserPlaceRequest.m; sourceTree = "<group>"; };
-		FB42F6EC13934C0D0053F0DC /* UserUnfollowPlaceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUnfollowPlaceRequest.h; sourceTree = "<group>"; };
-		FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUnfollowPlaceRequest.m; sourceTree = "<group>"; };
-		FB42F6EF13939DA10053F0DC /* BindUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindUserRequest.h; sourceTree = "<group>"; };
-		FB42F6F013939DA10053F0DC /* BindUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindUserRequest.m; sourceTree = "<group>"; };
-		FB46E8401388BAED00576C82 /* SinaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SinaService.h; path = ../Controller/Register/SinaService.h; sourceTree = "<group>"; };
-		FB46E8411388BAED00576C82 /* SinaService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SinaService.m; path = ../Controller/Register/SinaService.m; sourceTree = "<group>"; };
-		FB46E8431388D7AC00576C82 /* QQService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQService.h; sourceTree = "<group>"; };
-		FB46E8441388D7AC00576C82 /* QQService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQService.m; sourceTree = "<group>"; };
 		FB51D2B61380D3D2001D5AC5 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
 		FB51D2B71380D3D2001D5AC5 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
 		FB51D2CB13810DA8001D5AC5 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
@@ -988,8 +1004,6 @@
 		FB52F3F21388FA3100710F0C /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		FB52F3F31388FA3100710F0C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
 		FB52F3F41388FA3100710F0C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EGORefresh.strings"; sourceTree = "<group>"; };
-		FBBDA05B138FEC4D00F16CFA /* DeviceLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLoginRequest.h; sourceTree = "<group>"; };
-		FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLoginRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1035,10 +1049,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CA7C709F13811BC60030442D /* Service */,
 				8239C3FC125318180007CBBB /* Controller */,
-				CAD19B7A137A756100A8817B /* Network */,
-				8239C3FB125318140007CBBB /* Model */,
 				FB51D2D01381106E001D5AC5 /* DipanAppDelegate.h */,
 				FB51D2D11381106E001D5AC5 /* DipanAppDelegate.m */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
@@ -1204,22 +1215,6 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
-		8239C3FB125318140007CBBB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CA8900B213B6D98F005ED51A /* Message */,
-				CAD19B33137A6FAB00A8817B /* Post */,
-				CAD19B32137A6FAB00A8817B /* Place */,
-				CAD19B34137A6FAB00A8817B /* User */,
-				CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */,
-				CA2A0168138E282A007EBEA9 /* AppManager.h */,
-				CA2A0169138E282A007EBEA9 /* AppManager.m */,
-				CAEE3AC1139A1CE600EC7EE5 /* CommonManager.h */,
-				CAEE3AC2139A1CE800EC7EE5 /* CommonManager.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8239C3FC125318180007CBBB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1367,40 +1362,6 @@
 			path = /3PP/Flurry/FlurryLib;
 			sourceTree = "<absolute>";
 		};
-		CA7C709F13811BC60030442D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				FB46E8401388BAED00576C82 /* SinaService.h */,
-				FB46E8411388BAED00576C82 /* SinaService.m */,
-				CA7C70A013811BC60030442D /* LocalDataService.h */,
-				CA7C70A113811BC60030442D /* LocalDataService.m */,
-				CAA2FB9913826DB900DE820F /* LocationService.h */,
-				CAA2FB9A13826DBA00DE820F /* LocationService.m */,
-				FB46E8431388D7AC00576C82 /* QQService.h */,
-				FB46E8441388D7AC00576C82 /* QQService.m */,
-				CA66BC2E139C74C000FBA347 /* UserService.h */,
-				CA66BC2F139C74C000FBA347 /* UserService.m */,
-				CA9E0945139CCC8C000B6FEE /* PlaceSNSService.h */,
-				CA9E0946139CCC8D000B6FEE /* PlaceSNSService.m */,
-				CA8900EB13B71182005ED51A /* MessageService.h */,
-				CA8900EC13B71182005ED51A /* MessageService.m */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		CA8900B213B6D98F005ED51A /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				CA8900B313B6D98F005ED51A /* PrivateMessage.h */,
-				CA8900B413B6D98F005ED51A /* PrivateMessage.m */,
-				CA8900B513B6D98F005ED51A /* PrivateMessageManager.h */,
-				CA8900B613B6D98F005ED51A /* PrivateMessageManager.m */,
-				CA8900B713B6D98F005ED51A /* PrivateMessageUser.h */,
-				CA8900B813B6D98F005ED51A /* PrivateMessageUser.m */,
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
 		CA8900C613B6DA6F005ED51A /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -1421,19 +1382,6 @@
 				CA8900E213B7047D005ED51A /* CreatePrivateMessageController.h */,
 				CA8900E313B7047E005ED51A /* CreatePrivateMessageController.m */,
 				CA8900E413B7047F005ED51A /* CreatePrivateMessageController.xib */,
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
-		CA8900E713B70E46005ED51A /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				CA8900E813B70E57005ED51A /* SendPrivateMessageRequest.h */,
-				CA8900E913B70E57005ED51A /* SendPrivateMessageRequest.m */,
-				CA8900F113B72B04005ED51A /* GetPrivateMessageRequest.h */,
-				CA8900F213B72B05005ED51A /* GetPrivateMessageRequest.m */,
-				CA498A8F13B83015007993B8 /* DeletePrivateMessageRequest.h */,
-				CA498A9013B83015007993B8 /* DeletePrivateMessageRequest.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1753,6 +1701,7 @@
 		CAAFFEC0137FE02E00E56503 /* Common_Iphone */ = {
 			isa = PBXGroup;
 			children = (
+				CAB3D3B513C0512C00F9DC02 /* PlaceCommon */,
 				CA9E0935139CB7AF000B6FEE /* SNS */,
 				CAAFFF05137FE03000E56503 /* AddressBookUtils */,
 				CAAFFF0A137FE03000E56503 /* Application */,
@@ -1977,6 +1926,213 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		CAB3D3B513C0512C00F9DC02 /* PlaceCommon */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3B613C0512C00F9DC02 /* Model */,
+				CAB3D3D613C0512C00F9DC02 /* Network */,
+				CAB3D41413C0512C00F9DC02 /* Service */,
+			);
+			path = PlaceCommon;
+			sourceTree = "<group>";
+		};
+		CAB3D3B613C0512C00F9DC02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3B713C0512C00F9DC02 /* AppManager.h */,
+				CAB3D3B813C0512C00F9DC02 /* AppManager.m */,
+				CAB3D3B913C0512C00F9DC02 /* CommonManager.h */,
+				CAB3D3BA13C0512C00F9DC02 /* CommonManager.m */,
+				CAB3D3BB13C0512C00F9DC02 /* MainDataModel.xcdatamodeld */,
+				CAB3D3BE13C0512C00F9DC02 /* Message */,
+				CAB3D3C513C0512C00F9DC02 /* Place */,
+				CAB3D3CA13C0512C00F9DC02 /* Post */,
+				CAB3D3CF13C0512C00F9DC02 /* User */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CAB3D3BE13C0512C00F9DC02 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3BF13C0512C00F9DC02 /* PrivateMessage.h */,
+				CAB3D3C013C0512C00F9DC02 /* PrivateMessage.m */,
+				CAB3D3C113C0512C00F9DC02 /* PrivateMessageManager.h */,
+				CAB3D3C213C0512C00F9DC02 /* PrivateMessageManager.m */,
+				CAB3D3C313C0512C00F9DC02 /* PrivateMessageUser.h */,
+				CAB3D3C413C0512C00F9DC02 /* PrivateMessageUser.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		CAB3D3C513C0512C00F9DC02 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3C613C0512C00F9DC02 /* Place.h */,
+				CAB3D3C713C0512C00F9DC02 /* Place.m */,
+				CAB3D3C813C0512C00F9DC02 /* PlaceManager.h */,
+				CAB3D3C913C0512C00F9DC02 /* PlaceManager.m */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
+		CAB3D3CA13C0512C00F9DC02 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3CB13C0512C00F9DC02 /* Post.h */,
+				CAB3D3CC13C0512C00F9DC02 /* Post.m */,
+				CAB3D3CD13C0512C00F9DC02 /* PostManager.h */,
+				CAB3D3CE13C0512C00F9DC02 /* PostManager.m */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		CAB3D3CF13C0512C00F9DC02 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3D013C0512C00F9DC02 /* Friend.h */,
+				CAB3D3D113C0512C00F9DC02 /* Friend.m */,
+				CAB3D3D213C0512C00F9DC02 /* User.h */,
+				CAB3D3D313C0512C00F9DC02 /* User.m */,
+				CAB3D3D413C0512C00F9DC02 /* UserManager.h */,
+				CAB3D3D513C0512C00F9DC02 /* UserManager.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		CAB3D3D613C0512C00F9DC02 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3D713C0512C00F9DC02 /* App */,
+				CAB3D3DA13C0512C00F9DC02 /* Common */,
+				CAB3D3E413C0512C00F9DC02 /* Message */,
+				CAB3D3EB13C0512C00F9DC02 /* Place */,
+				CAB3D3FA13C0512C00F9DC02 /* Post */,
+				CAB3D40B13C0512C00F9DC02 /* User */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CAB3D3D713C0512C00F9DC02 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3D813C0512C00F9DC02 /* GetAppUpdateRequest.h */,
+				CAB3D3D913C0512C00F9DC02 /* GetAppUpdateRequest.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CAB3D3DA13C0512C00F9DC02 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3DB13C0512C00F9DC02 /* InterfaceConstants.h */,
+				CAB3D3DC13C0512C00F9DC02 /* NetworkRequest.h */,
+				CAB3D3DD13C0512C00F9DC02 /* NetworkRequest.m */,
+				CAB3D3DE13C0512C00F9DC02 /* NetworkRequestParameter.h */,
+				CAB3D3DF13C0512C00F9DC02 /* NetworkRequestResultCode.h */,
+				CAB3D3E013C0512C00F9DC02 /* ResultUtils.h */,
+				CAB3D3E113C0512C00F9DC02 /* ResultUtils.m */,
+				CAB3D3E213C0512C00F9DC02 /* Server_Interface.txt */,
+				CAB3D3E313C0512C00F9DC02 /* VariableConstants.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CAB3D3E413C0512C00F9DC02 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3E513C0512C00F9DC02 /* DeletePrivateMessageRequest.h */,
+				CAB3D3E613C0512C00F9DC02 /* DeletePrivateMessageRequest.m */,
+				CAB3D3E713C0512C00F9DC02 /* GetPrivateMessageRequest.h */,
+				CAB3D3E813C0512C00F9DC02 /* GetPrivateMessageRequest.m */,
+				CAB3D3E913C0512C00F9DC02 /* SendPrivateMessageRequest.h */,
+				CAB3D3EA13C0512C00F9DC02 /* SendPrivateMessageRequest.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		CAB3D3EB13C0512C00F9DC02 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3EC13C0512C00F9DC02 /* CreatePlaceRequest.h */,
+				CAB3D3ED13C0512C00F9DC02 /* CreatePlaceRequest.m */,
+				CAB3D3EE13C0512C00F9DC02 /* GetNearbyPlaceRequest.h */,
+				CAB3D3EF13C0512C00F9DC02 /* GetNearbyPlaceRequest.m */,
+				CAB3D3F013C0512C00F9DC02 /* GetPlaceRequest.h */,
+				CAB3D3F113C0512C00F9DC02 /* GetPlaceRequest.m */,
+				CAB3D3F213C0512C00F9DC02 /* GetUserFollowPlaceRequest.h */,
+				CAB3D3F313C0512C00F9DC02 /* GetUserFollowPlaceRequest.m */,
+				CAB3D3F413C0512C00F9DC02 /* GetUserPlaceRequest.h */,
+				CAB3D3F513C0512C00F9DC02 /* GetUserPlaceRequest.m */,
+				CAB3D3F613C0512C00F9DC02 /* UserFollowPlaceRequest.h */,
+				CAB3D3F713C0512C00F9DC02 /* UserFollowPlaceRequest.m */,
+				CAB3D3F813C0512C00F9DC02 /* UserUnfollowPlaceRequest.h */,
+				CAB3D3F913C0512C00F9DC02 /* UserUnfollowPlaceRequest.m */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
+		CAB3D3FA13C0512C00F9DC02 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D3FB13C0512C00F9DC02 /* ActionOnPostRequest.h */,
+				CAB3D3FC13C0512C00F9DC02 /* ActionOnPostRequest.m */,
+				CAB3D3FD13C0512C00F9DC02 /* CreatePostRequest.h */,
+				CAB3D3FE13C0512C00F9DC02 /* CreatePostRequest.m */,
+				CAB3D3FF13C0512C00F9DC02 /* GetAtMePostRequest.h */,
+				CAB3D40013C0512C00F9DC02 /* GetAtMePostRequest.m */,
+				CAB3D40113C0512C00F9DC02 /* GetNearbyPostRequest.h */,
+				CAB3D40213C0512C00F9DC02 /* GetNearbyPostRequest.m */,
+				CAB3D40313C0512C00F9DC02 /* GetPlacePostRequest.h */,
+				CAB3D40413C0512C00F9DC02 /* GetPlacePostRequest.m */,
+				CAB3D40513C0512C00F9DC02 /* GetPostRelatedPostRequest.h */,
+				CAB3D40613C0512C00F9DC02 /* GetPostRelatedPostRequest.m */,
+				CAB3D40713C0512C00F9DC02 /* GetPublicTimelinePostRequest.h */,
+				CAB3D40813C0512C00F9DC02 /* GetPublicTimelinePostRequest.m */,
+				CAB3D40913C0512C00F9DC02 /* GetUserFollowPostRequest.h */,
+				CAB3D40A13C0512C00F9DC02 /* GetUserFollowPostRequest.m */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		CAB3D40B13C0512C00F9DC02 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D40C13C0512C00F9DC02 /* BindUserRequest.h */,
+				CAB3D40D13C0512C00F9DC02 /* BindUserRequest.m */,
+				CAB3D40E13C0512C00F9DC02 /* DeviceLoginRequest.h */,
+				CAB3D40F13C0512C00F9DC02 /* DeviceLoginRequest.m */,
+				CAB3D41013C0512C00F9DC02 /* RegisterUserRequest.h */,
+				CAB3D41113C0512C00F9DC02 /* RegisterUserRequest.m */,
+				CAB3D41213C0512C00F9DC02 /* UpdateUserRequest.h */,
+				CAB3D41313C0512C00F9DC02 /* UpdateUserRequest.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		CAB3D41413C0512C00F9DC02 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3D41513C0512C00F9DC02 /* AppService.h */,
+				CAB3D41613C0512C00F9DC02 /* AppService.m */,
+				CAB3D41713C0512C00F9DC02 /* LocalDataService.h */,
+				CAB3D41813C0512C00F9DC02 /* LocalDataService.m */,
+				CAB3D41913C0512C00F9DC02 /* LocationService.h */,
+				CAB3D41A13C0512C00F9DC02 /* LocationService.m */,
+				CAB3D41B13C0512C00F9DC02 /* MessageService.h */,
+				CAB3D41C13C0512C00F9DC02 /* MessageService.m */,
+				CAB3D41D13C0512C00F9DC02 /* PlaceSNSService.h */,
+				CAB3D41E13C0512C00F9DC02 /* PlaceSNSService.m */,
+				CAB3D41F13C0512C00F9DC02 /* PostService.h */,
+				CAB3D42013C0512C00F9DC02 /* PostService.m */,
+				CAB3D42113C0512C00F9DC02 /* QQService.h */,
+				CAB3D42213C0512C00F9DC02 /* QQService.m */,
+				CAB3D42313C0512C00F9DC02 /* UserService.h */,
+				CAB3D42413C0512C00F9DC02 /* UserService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		CABC814713A1F5E6001CE1B8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -2049,123 +2205,6 @@
 				CA5C848913A9AB6400A22BB5 /* EnterPlaceAppController.xib */,
 			);
 			path = Register;
-			sourceTree = "<group>";
-		};
-		CAD19B32137A6FAB00A8817B /* Place */ = {
-			isa = PBXGroup;
-			children = (
-				CA7F9CD8137D62000033FE12 /* Place.h */,
-				CA7F9CD9137D62000033FE12 /* Place.m */,
-				CA7F9CDB137D62340033FE12 /* PlaceManager.h */,
-				CA7F9CDC137D62340033FE12 /* PlaceManager.m */,
-			);
-			path = Place;
-			sourceTree = "<group>";
-		};
-		CAD19B33137A6FAB00A8817B /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				CA967318137E59210038CC44 /* Post.h */,
-				CA967319137E59210038CC44 /* Post.m */,
-				CA96731B137E593B0038CC44 /* PostManager.h */,
-				CA96731C137E593B0038CC44 /* PostManager.m */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		CAD19B34137A6FAB00A8817B /* User */ = {
-			isa = PBXGroup;
-			children = (
-				CAD19B3E137A6FFB00A8817B /* User.h */,
-				CAD19B3F137A6FFB00A8817B /* User.m */,
-				CAD19B35137A6FAB00A8817B /* UserManager.h */,
-				CAD19B36137A6FAB00A8817B /* UserManager.m */,
-				CA15FB41137CF7CA000D2457 /* Friend.h */,
-				CA15FB42137CF7CA000D2457 /* Friend.m */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		CAD19B7A137A756100A8817B /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				CAD19BB3137A812600A8817B /* Common */,
-				CAD19B87137A773C00A8817B /* Place */,
-				CA8900E713B70E46005ED51A /* Message */,
-				CAD19B88137A773C00A8817B /* Post */,
-				CAD19B8A137A773C00A8817B /* User */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		CAD19B87137A773C00A8817B /* Place */ = {
-			isa = PBXGroup;
-			children = (
-				FB326BC213811BC80073368D /* GetUserPlaceRequest.h */,
-				FB326BC313811BC80073368D /* GetUserPlaceRequest.m */,
-				CA15FB44137D1E86000D2457 /* CreatePlaceRequest.h */,
-				CA15FB45137D1E86000D2457 /* CreatePlaceRequest.m */,
-				CA37B23C1383B02B0029B6F6 /* GetNearbyPlaceRequest.h */,
-				CA37B23D1383B02B0029B6F6 /* GetNearbyPlaceRequest.m */,
-				CA0C2720138409560097931C /* UserFollowPlaceRequest.h */,
-				CA0C2721138409560097931C /* UserFollowPlaceRequest.m */,
-				CA2A0162138E2432007EBEA9 /* GetUserFollowPlaceRequest.h */,
-				CA2A0163138E2432007EBEA9 /* GetUserFollowPlaceRequest.m */,
-				FB42F6EC13934C0D0053F0DC /* UserUnfollowPlaceRequest.h */,
-				FB42F6ED13934C0D0053F0DC /* UserUnfollowPlaceRequest.m */,
-				CAC8B63D13A8ADAB00627367 /* GetPlaceRequest.h */,
-				CAC8B63E13A8ADAB00627367 /* GetPlaceRequest.m */,
-			);
-			path = Place;
-			sourceTree = "<group>";
-		};
-		CAD19B88137A773C00A8817B /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				CA0BFA8C1381538600A9633F /* GetPlacePostRequest.h */,
-				CA0BFA8D1381538600A9633F /* GetPlacePostRequest.m */,
-				CAF26C12137EC6DE00E30001 /* CreatePostRequest.h */,
-				CAF26C13137EC6DE00E30001 /* CreatePostRequest.m */,
-				CA9E1FB713856FFB009D1D4F /* GetUserFollowPostRequest.h */,
-				CA9E1FB813856FFB009D1D4F /* GetUserFollowPostRequest.m */,
-				CA9E1FBA13857176009D1D4F /* GetNearbyPostRequest.h */,
-				CA9E1FBB13857177009D1D4F /* GetNearbyPostRequest.m */,
-				CA96B39E1390BD0F00503786 /* GetPostRelatedPostRequest.h */,
-				CA96B39F1390BD0F00503786 /* GetPostRelatedPostRequest.m */,
-				CA5C848413A99BA800A22BB5 /* GetAtMePostRequest.h */,
-				CA5C848513A99BA900A22BB5 /* GetAtMePostRequest.m */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		CAD19B8A137A773C00A8817B /* User */ = {
-			isa = PBXGroup;
-			children = (
-				CA0A56BC137BAF1F003CD06C /* RegisterUserRequest.h */,
-				CA0A56BD137BAF1F003CD06C /* RegisterUserRequest.m */,
-				FBBDA05B138FEC4D00F16CFA /* DeviceLoginRequest.h */,
-				FBBDA05C138FEC4D00F16CFA /* DeviceLoginRequest.m */,
-				FB42F6EF13939DA10053F0DC /* BindUserRequest.h */,
-				FB42F6F013939DA10053F0DC /* BindUserRequest.m */,
-				CA86099A13A33DB100B00874 /* UpdateUserRequest.h */,
-				CA86099B13A33DB100B00874 /* UpdateUserRequest.m */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		CAD19BB3137A812600A8817B /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				CAD19BB5137A812600A8817B /* NetworkRequest.h */,
-				CAD19BB6137A812600A8817B /* NetworkRequest.m */,
-				CAD19BB7137A812600A8817B /* NetworkRequestParameter.h */,
-				CAD19BB8137A812600A8817B /* NetworkRequestResultCode.h */,
-				CAD19BCA137A832900A8817B /* VariableConstants.h */,
-				CA9E1FB51385247E009D1D4F /* Server_Interface.txt */,
-				CACDAD5A13912EFB00AE48F4 /* ResultUtils.h */,
-				CACDAD5B13912EFB00AE48F4 /* ResultUtils.m */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		CAD8EBD113A9E33F0092C2EC /* MoreTableViewCell */ = {
@@ -2469,7 +2508,6 @@
 				CAAF02A7137FE03200E56503 /* SpecialCharacters.txt in Resources */,
 				CAAF02C9137FE03200E56503 /* ReviewRequest.strings in Resources */,
 				FB51D2CF13810DA9001D5AC5 /* RegisterController.xib in Resources */,
-				CA9E1FB61385247E009D1D4F /* Server_Interface.txt in Resources */,
 				FB52F3F81388FA3100710F0C /* blackArrow.png in Resources */,
 				FB52F3F91388FA3100710F0C /* blueArrow.png in Resources */,
 				FB52F3FA1388FA3100710F0C /* blueArrow_new.png in Resources */,
@@ -2502,6 +2540,7 @@
 				CA8900D513B6DB1F005ED51A /* PrivateMessageUserController.xib in Resources */,
 				CA8900DA13B6DE37005ED51A /* PrivateMessageUserCell.xib in Resources */,
 				CA8900E613B70480005ED51A /* CreatePrivateMessageController.xib in Resources */,
+				CAB3D43513C0512C00F9DC02 /* Server_Interface.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2513,7 +2552,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				CA5D4427136A580200B9ECF2 /* MainDataModel.xcdatamodeld in Sources */,
 				CA5D44DC136A63A300B9ECF2 /* AdViewController.m in Sources */,
 				CA5D44DD136A63A300B9ECF2 /* CDataScanner.m in Sources */,
 				CA5D44DE136A63A300B9ECF2 /* CDataScanner_Extensions.m in Sources */,
@@ -2530,22 +2568,11 @@
 				CAD19B22137A6A3500A8817B /* InviteController.m in Sources */,
 				CAD19B24137A6A3500A8817B /* MyInfoController.m in Sources */,
 				CAD19B26137A6A3500A8817B /* PlaceMainController.m in Sources */,
-				CAD19B37137A6FAB00A8817B /* UserManager.m in Sources */,
-				CAD19B40137A6FFB00A8817B /* User.m in Sources */,
-				CAD19BB9137A812600A8817B /* NetworkRequest.m in Sources */,
-				CA0A56BE137BAF1F003CD06C /* RegisterUserRequest.m in Sources */,
 				CAAA41E4137CDBAA00FB7C25 /* CreatePlaceController.m in Sources */,
 				CAAA41EA137CDC6F00FB7C25 /* CreatePostController.m in Sources */,
 				CAAA41EF137CDE1800FB7C25 /* PostMainController.m in Sources */,
-				CA15FB43137CF7CA000D2457 /* Friend.m in Sources */,
-				CA15FB46137D1E86000D2457 /* CreatePlaceRequest.m in Sources */,
 				CA7F9CD6137D5B530033FE12 /* PlaceLocationController.m in Sources */,
-				CA7F9CDA137D62000033FE12 /* Place.m in Sources */,
-				CA7F9CDD137D62340033FE12 /* PlaceManager.m in Sources */,
 				CA967316137E4DF00038CC44 /* PostListController.m in Sources */,
-				CA96731A137E59210038CC44 /* Post.m in Sources */,
-				CA96731D137E593B0038CC44 /* PostManager.m in Sources */,
-				CAF26C14137EC6DE00E30001 /* CreatePostRequest.m in Sources */,
 				CAAF01BF137FE03200E56503 /* AddressBookUtils.m in Sources */,
 				CAAF01C8137FE03200E56503 /* CustomIndexView.m in Sources */,
 				CAAF01C9137FE03200E56503 /* EnhanceUIApplication.m in Sources */,
@@ -2639,29 +2666,12 @@
 				FB51D2B81380D3D2001D5AC5 /* OAuthCore.m in Sources */,
 				FB51D2CE13810DA9001D5AC5 /* RegisterController.m in Sources */,
 				FB51D2D21381106F001D5AC5 /* DipanAppDelegate.m in Sources */,
-				CA7C70A213811BC60030442D /* LocalDataService.m in Sources */,
-				FB326BC413811BC80073368D /* GetUserPlaceRequest.m in Sources */,
-				CA0BFA8E1381538600A9633F /* GetPlacePostRequest.m in Sources */,
-				CAA2FB9B13826DBA00DE820F /* LocationService.m in Sources */,
-				CA37B23E1383B02B0029B6F6 /* GetNearbyPlaceRequest.m in Sources */,
-				CA0C2722138409560097931C /* UserFollowPlaceRequest.m in Sources */,
-				CA9E1FB913856FFC009D1D4F /* GetUserFollowPostRequest.m in Sources */,
-				CA9E1FBC13857177009D1D4F /* GetNearbyPostRequest.m in Sources */,
-				FB46E8421388BAED00576C82 /* SinaService.m in Sources */,
-				FB46E8451388D7AC00576C82 /* QQService.m in Sources */,
 				FB52F3F51388FA3100710F0C /* PullToRefreshTableViewController.m in Sources */,
 				FB52F3F61388FA3100710F0C /* RootViewController.m in Sources */,
 				FB52F3F71388FA3100710F0C /* EGORefreshTableHeaderView.m in Sources */,
-				CA2A0164138E2432007EBEA9 /* GetUserFollowPlaceRequest.m in Sources */,
-				CA2A016A138E282A007EBEA9 /* AppManager.m in Sources */,
 				CA2A016E138E2F87007EBEA9 /* NearbyPostController.m in Sources */,
 				CA2A0173138E2FD3007EBEA9 /* FollowPostController.m in Sources */,
 				CA4005AB138F5852009B5BF9 /* PostController.m in Sources */,
-				FBBDA05D138FEC4D00F16CFA /* DeviceLoginRequest.m in Sources */,
-				CA96B3A01390BD0F00503786 /* GetPostRelatedPostRequest.m in Sources */,
-				CACDAD5C13912EFB00AE48F4 /* ResultUtils.m in Sources */,
-				FB42F6EE13934C0D0053F0DC /* UserUnfollowPlaceRequest.m in Sources */,
-				FB42F6F113939DA10053F0DC /* BindUserRequest.m in Sources */,
 				CA6046711395C41A006C1D9F /* PostControllerUtils.m in Sources */,
 				CA6046751395D89B006C1D9F /* NearbyPlaceController.m in Sources */,
 				CA60467A1395D8AE006C1D9F /* FollowPlaceController.m in Sources */,
@@ -2677,34 +2687,67 @@
 				CAA6AB3613988A2A009F26E3 /* HJMOUserBase.m in Sources */,
 				CAA6AB3713988A2A009F26E3 /* HJObjManager.m in Sources */,
 				CAA6AB3813988A2A009F26E3 /* HJWeakMutableArray.m in Sources */,
-				CAEE3AC3139A1CFC00EC7EE5 /* CommonManager.m in Sources */,
-				CA66BC30139C74C000FBA347 /* UserService.m in Sources */,
 				CA9E093B139CB7CB000B6FEE /* CommonSNSRequest.m in Sources */,
 				CA9E093E139CB7E2000B6FEE /* SNSServiceHandler.m in Sources */,
 				CA9E0941139CB803000B6FEE /* QQWeiboRequest.m in Sources */,
 				CA9E0944139CB817000B6FEE /* SINAWeiboRequest.m in Sources */,
-				CA9E0947139CCC8D000B6FEE /* PlaceSNSService.m in Sources */,
 				FB091A73139F4FF700C94292 /* PPImageView.m in Sources */,
-				CA86099C13A33DB200B00874 /* UpdateUserRequest.m in Sources */,
-				CAC8B63F13A8ADAB00627367 /* GetPlaceRequest.m in Sources */,
 				CA5C848213A9948200A22BB5 /* AtMePostController.m in Sources */,
-				CA5C848613A99BA900A22BB5 /* GetAtMePostRequest.m in Sources */,
 				CA5C848A13A9AB6400A22BB5 /* EnterPlaceAppController.m in Sources */,
 				CAD8EBD513A9E3A00092C2EC /* MoreTableViewCell.m in Sources */,
 				CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */,
-				CA8900B913B6D98F005ED51A /* PrivateMessage.m in Sources */,
-				CA8900BA13B6D98F005ED51A /* PrivateMessageManager.m in Sources */,
-				CA8900BB13B6D98F005ED51A /* PrivateMessageUser.m in Sources */,
 				CA8900CA13B6DA6F005ED51A /* PrivateMessageListController.m in Sources */,
 				CA8900CE13B6DAAD005ED51A /* PrivateMessageTableViewCell.m in Sources */,
 				CA8900D413B6DB1F005ED51A /* PrivateMessageUserController.m in Sources */,
 				CA8900D813B6DE1A005ED51A /* PrivateMessageUserTableViewCell.m in Sources */,
 				CA8900E113B703F1005ED51A /* PrivateMessageControllerUtils.m in Sources */,
 				CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */,
-				CA8900EA13B70E57005ED51A /* SendPrivateMessageRequest.m in Sources */,
-				CA8900ED13B71183005ED51A /* MessageService.m in Sources */,
-				CA8900F313B72B05005ED51A /* GetPrivateMessageRequest.m in Sources */,
-				CA498A9113B83015007993B8 /* DeletePrivateMessageRequest.m in Sources */,
+				CAB3D42513C0512C00F9DC02 /* AppManager.m in Sources */,
+				CAB3D42613C0512C00F9DC02 /* CommonManager.m in Sources */,
+				CAB3D42713C0512C00F9DC02 /* MainDataModel.xcdatamodeld in Sources */,
+				CAB3D42813C0512C00F9DC02 /* PrivateMessage.m in Sources */,
+				CAB3D42913C0512C00F9DC02 /* PrivateMessageManager.m in Sources */,
+				CAB3D42A13C0512C00F9DC02 /* PrivateMessageUser.m in Sources */,
+				CAB3D42B13C0512C00F9DC02 /* Place.m in Sources */,
+				CAB3D42C13C0512C00F9DC02 /* PlaceManager.m in Sources */,
+				CAB3D42D13C0512C00F9DC02 /* Post.m in Sources */,
+				CAB3D42E13C0512C00F9DC02 /* PostManager.m in Sources */,
+				CAB3D42F13C0512C00F9DC02 /* Friend.m in Sources */,
+				CAB3D43013C0512C00F9DC02 /* User.m in Sources */,
+				CAB3D43113C0512C00F9DC02 /* UserManager.m in Sources */,
+				CAB3D43213C0512C00F9DC02 /* GetAppUpdateRequest.m in Sources */,
+				CAB3D43313C0512C00F9DC02 /* NetworkRequest.m in Sources */,
+				CAB3D43413C0512C00F9DC02 /* ResultUtils.m in Sources */,
+				CAB3D43613C0512C00F9DC02 /* DeletePrivateMessageRequest.m in Sources */,
+				CAB3D43713C0512C00F9DC02 /* GetPrivateMessageRequest.m in Sources */,
+				CAB3D43813C0512C00F9DC02 /* SendPrivateMessageRequest.m in Sources */,
+				CAB3D43913C0512C00F9DC02 /* CreatePlaceRequest.m in Sources */,
+				CAB3D43A13C0512C00F9DC02 /* GetNearbyPlaceRequest.m in Sources */,
+				CAB3D43B13C0512C00F9DC02 /* GetPlaceRequest.m in Sources */,
+				CAB3D43C13C0512C00F9DC02 /* GetUserFollowPlaceRequest.m in Sources */,
+				CAB3D43D13C0512C00F9DC02 /* GetUserPlaceRequest.m in Sources */,
+				CAB3D43E13C0512C00F9DC02 /* UserFollowPlaceRequest.m in Sources */,
+				CAB3D43F13C0512C00F9DC02 /* UserUnfollowPlaceRequest.m in Sources */,
+				CAB3D44013C0512C00F9DC02 /* ActionOnPostRequest.m in Sources */,
+				CAB3D44113C0512C00F9DC02 /* CreatePostRequest.m in Sources */,
+				CAB3D44213C0512C00F9DC02 /* GetAtMePostRequest.m in Sources */,
+				CAB3D44313C0512C00F9DC02 /* GetNearbyPostRequest.m in Sources */,
+				CAB3D44413C0512C00F9DC02 /* GetPlacePostRequest.m in Sources */,
+				CAB3D44513C0512C00F9DC02 /* GetPostRelatedPostRequest.m in Sources */,
+				CAB3D44613C0512C00F9DC02 /* GetPublicTimelinePostRequest.m in Sources */,
+				CAB3D44713C0512C00F9DC02 /* GetUserFollowPostRequest.m in Sources */,
+				CAB3D44813C0512C00F9DC02 /* BindUserRequest.m in Sources */,
+				CAB3D44913C0512C00F9DC02 /* DeviceLoginRequest.m in Sources */,
+				CAB3D44A13C0512C00F9DC02 /* RegisterUserRequest.m in Sources */,
+				CAB3D44B13C0512C00F9DC02 /* UpdateUserRequest.m in Sources */,
+				CAB3D44C13C0512C00F9DC02 /* AppService.m in Sources */,
+				CAB3D44D13C0512C00F9DC02 /* LocalDataService.m in Sources */,
+				CAB3D44E13C0512C00F9DC02 /* LocationService.m in Sources */,
+				CAB3D44F13C0512C00F9DC02 /* MessageService.m in Sources */,
+				CAB3D45013C0512C00F9DC02 /* PlaceSNSService.m in Sources */,
+				CAB3D45113C0512C00F9DC02 /* PostService.m in Sources */,
+				CAB3D45213C0512C00F9DC02 /* QQService.m in Sources */,
+				CAB3D45313C0512C00F9DC02 /* UserService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2958,12 +3001,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CA5D4426136A580200B9ECF2 /* MainDataModel.xcdatamodeld */ = {
+		CAB3D3BB13C0512C00F9DC02 /* MainDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CAB2F048125F49E400593157 /* MainDataModel.xcdatamodel */,
+				CAB3D3BC13C0512C00F9DC02 /* MainDataModel 2.xcdatamodel */,
+				CAB3D3BD13C0512C00F9DC02 /* MainDataModel.xcdatamodel */,
 			);
-			currentVersion = CAB2F048125F49E400593157 /* MainDataModel.xcdatamodel */;
+			currentVersion = CAB3D3BD13C0512C00F9DC02 /* MainDataModel.xcdatamodel */;
 			path = MainDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

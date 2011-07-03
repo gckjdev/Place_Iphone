@@ -31,10 +31,29 @@
 #import "PlaceManager.h"
 #import "PlaceSNSService.h"
 #import "MessageService.h"
+#import "PostService.h"
+#import "AppService.h"
 
 #define kDbFileName			@"AppDB"
 
-extern MessageService*   GlobalGetMessageService()
+NSString* GlobalGetServerURL()
+{
+    return @"http://192.168.1.188:8000/api/i?";
+}
+
+AppService* GlobalGetAppService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    return [delegate appService];            
+}
+
+PostService* GlobalGetPostService()
+{
+    DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    return [delegate postService];        
+}
+
+MessageService*   GlobalGetMessageService()
 {
     DipanAppDelegate* delegate = (DipanAppDelegate*)[[UIApplication sharedApplication] delegate];    
     return [delegate messageService];    
@@ -66,6 +85,8 @@ PlaceSNSService* GlobalGetSNSService()
     return [delegate snsService];    
 }
 
+
+
 NSString* GlobalGetPlaceAppId()
 {
     return @"PLACE";
@@ -84,6 +105,8 @@ NSString* GlobalGetPlaceAppId()
 @synthesize enterController;
 @synthesize placeNameForRegistration;
 @synthesize messageService;
+@synthesize postService;
+@synthesize appService;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -179,6 +202,17 @@ void uncaughtExceptionHandler(NSException *exception) {
     self.snsService = [[PlaceSNSService alloc] init];
 }
 
+- (void)initPostService
+{
+    self.postService = [[PostService alloc] init];
+}
+
+- (void)initAppService
+{
+    self.appService = [[AppService alloc] init];
+}
+
+
 - (void)showViewByUserStatus
 {
     [userService checkDevice];    
@@ -200,6 +234,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self initUserService];
     [self initLocalDataService];       
     [self initMessageService];
+    [self initPostService];
+    [self initAppService];    
 
     [self showViewByUserStatus];
     
@@ -207,6 +243,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	// Ask For Review
 	[ReviewRequest startReviewRequest:kAppId appName:GlobalGetAppName() isTest:NO];
+    
+    [appService startAppUpdate];
 
     return YES;
 }
@@ -267,6 +305,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 	
 	[self initMobClick];
     [localDataService requestDataWhileEnterForeground];
+    
+    [appService startAppUpdate];
   
 }
 
@@ -463,6 +503,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     [snsService release];
     [placeNameForRegistration release];
     [messageService release];
+    [appService release];
+    [postService release];
 	
     [super dealloc];
 }
