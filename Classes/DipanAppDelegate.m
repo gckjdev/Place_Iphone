@@ -15,7 +15,6 @@
 #import "PPViewController.h"
 #import "TestPPViewController.h"
 #import "SelectItemViewController.h"
-#import "FlurryAPI.h"
 
 #import "MyInfoController.h"
 #import "InviteController.h"
@@ -150,24 +149,6 @@ NSString* GlobalGetPlaceAppId()
 	[controllers release];
 }
 
-void uncaughtExceptionHandler(NSException *exception) {
-    [FlurryAPI logError:@"Uncaught" message:@"Crash!" exception:exception];
-}
-
-- (void)initFlurry
-{
-	[FlurryAPI startSession:@"L82L9IVN6MYU1B42QJJL"];	// the ID shall be changed for each application
-	
-//	[FlurryAPI logEvent:@"EVENT_NAME"];
-//	[FlurryAPI logEvent:@"EVENT_NAME" withParameters:YOUR_NSDictionary];
-//	[FlurryAPI logEvent:@"EVENT_NAME" timed:YES];
-//	[FlurryAPI logError:@"ERROR_NAME" message:@"ERROR_MESSAGE" exception:e];
-//	[FlurryAPI setUserID:[[UIDevice currentDevice] uniqueIdentifier]];
-//	[FlurryAPI setAge:21];
-//	[FlurryAPI countPageViews:navigationController];
-//	[FlurryAPI countPageView];
-}
-
 - (void)initMobClick
 {
 	[MobClick setDelegate:self];
@@ -221,7 +202,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     	
 	NSLog(@"Application starts, launch option = %@", [launchOptions description]);	
-	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);	
 	
 	// Init Core Data
 	self.dataManager = [[CoreDataManager alloc] initWithDBName:kDbFileName dataModelName:nil];
