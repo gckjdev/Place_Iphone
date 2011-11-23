@@ -110,6 +110,7 @@
 		CA454814147BDCE80033111D /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CA454811147BDCE80033111D /* NSString+MD5Addition.m */; };
 		CA454815147BDCE80033111D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = CA454813147BDCE80033111D /* UIDevice+IdentifierAddition.m */; };
 		CA454818147BDD1E0033111D /* UINavigationBarExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CA454817147BDD1E0033111D /* UINavigationBarExt.m */; };
+		CA454820147BDDA00033111D /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA454819147BDDA00033111D /* MainDataModel.xcdatamodeld */; };
 		CA4921DD13AAF55300744CCC /* SelectPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4921DB13AAF55300744CCC /* SelectPlaceController.m */; };
 		CA4921DE13AAF55300744CCC /* SelectPlaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */; };
 		CA5C848213A9948200A22BB5 /* AtMePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5C848013A9948200A22BB5 /* AtMePostController.m */; };
@@ -283,7 +284,6 @@
 		CAB2F05A125F4CA600593157 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2F059125F4CA600593157 /* AudioToolbox.framework */; };
 		CAB3D42513C0512C00F9DC02 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3B813C0512C00F9DC02 /* AppManager.m */; };
 		CAB3D42613C0512C00F9DC02 /* CommonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3BA13C0512C00F9DC02 /* CommonManager.m */; };
-		CAB3D42713C0512C00F9DC02 /* MainDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3BB13C0512C00F9DC02 /* MainDataModel.xcdatamodeld */; };
 		CAB3D42813C0512C00F9DC02 /* PrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C013C0512C00F9DC02 /* PrivateMessage.m */; };
 		CAB3D42913C0512C00F9DC02 /* PrivateMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C213C0512C00F9DC02 /* PrivateMessageManager.m */; };
 		CAB3D42A13C0512C00F9DC02 /* PrivateMessageUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB3D3C413C0512C00F9DC02 /* PrivateMessageUser.m */; };
@@ -540,6 +540,12 @@
 		CA454813147BDCE80033111D /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		CA454816147BDD1E0033111D /* UINavigationBarExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarExt.h; sourceTree = "<group>"; };
 		CA454817147BDD1E0033111D /* UINavigationBarExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarExt.m; sourceTree = "<group>"; };
+		CA45481A147BDDA00033111D /* MainDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		CA45481B147BDDA00033111D /* MainDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
+		CA45481C147BDDA00033111D /* MainDataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 4.xcdatamodel"; sourceTree = "<group>"; };
+		CA45481D147BDDA00033111D /* MainDataModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 5.xcdatamodel"; sourceTree = "<group>"; };
+		CA45481E147BDDA00033111D /* MainDataModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 6.xcdatamodel"; sourceTree = "<group>"; };
+		CA45481F147BDDA00033111D /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CA4921DA13AAF55300744CCC /* SelectPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlaceController.h; sourceTree = "<group>"; };
 		CA4921DB13AAF55300744CCC /* SelectPlaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlaceController.m; sourceTree = "<group>"; };
 		CA4921DC13AAF55300744CCC /* SelectPlaceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlaceController.xib; sourceTree = "<group>"; };
@@ -839,8 +845,6 @@
 		CAB3D3B813C0512C00F9DC02 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		CAB3D3B913C0512C00F9DC02 /* CommonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonManager.h; sourceTree = "<group>"; };
 		CAB3D3BA13C0512C00F9DC02 /* CommonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonManager.m; sourceTree = "<group>"; };
-		CAB3D3BC13C0512C00F9DC02 /* MainDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MainDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
-		CAB3D3BD13C0512C00F9DC02 /* MainDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CAB3D3BF13C0512C00F9DC02 /* PrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessage.h; sourceTree = "<group>"; };
 		CAB3D3C013C0512C00F9DC02 /* PrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessage.m; sourceTree = "<group>"; };
 		CAB3D3C113C0512C00F9DC02 /* PrivateMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageManager.h; sourceTree = "<group>"; };
@@ -1884,7 +1888,7 @@
 				CAB3D3B813C0512C00F9DC02 /* AppManager.m */,
 				CAB3D3B913C0512C00F9DC02 /* CommonManager.h */,
 				CAB3D3BA13C0512C00F9DC02 /* CommonManager.m */,
-				CAB3D3BB13C0512C00F9DC02 /* MainDataModel.xcdatamodeld */,
+				CA454819147BDDA00033111D /* MainDataModel.xcdatamodeld */,
 				CAB3D3BE13C0512C00F9DC02 /* Message */,
 				CAB3D3C513C0512C00F9DC02 /* Place */,
 				CAB3D3CA13C0512C00F9DC02 /* Post */,
@@ -2486,7 +2490,6 @@
 				CA8900E513B70480005ED51A /* CreatePrivateMessageController.m in Sources */,
 				CAB3D42513C0512C00F9DC02 /* AppManager.m in Sources */,
 				CAB3D42613C0512C00F9DC02 /* CommonManager.m in Sources */,
-				CAB3D42713C0512C00F9DC02 /* MainDataModel.xcdatamodeld in Sources */,
 				CAB3D42813C0512C00F9DC02 /* PrivateMessage.m in Sources */,
 				CAB3D42913C0512C00F9DC02 /* PrivateMessageManager.m in Sources */,
 				CAB3D42A13C0512C00F9DC02 /* PrivateMessageUser.m in Sources */,
@@ -2598,6 +2601,7 @@
 				CA454814147BDCE80033111D /* NSString+MD5Addition.m in Sources */,
 				CA454815147BDCE80033111D /* UIDevice+IdentifierAddition.m in Sources */,
 				CA454818147BDD1E0033111D /* UINavigationBarExt.m in Sources */,
+				CA454820147BDDA00033111D /* MainDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2813,13 +2817,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CAB3D3BB13C0512C00F9DC02 /* MainDataModel.xcdatamodeld */ = {
+		CA454819147BDDA00033111D /* MainDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CAB3D3BC13C0512C00F9DC02 /* MainDataModel 2.xcdatamodel */,
-				CAB3D3BD13C0512C00F9DC02 /* MainDataModel.xcdatamodel */,
+				CA45481A147BDDA00033111D /* MainDataModel 2.xcdatamodel */,
+				CA45481B147BDDA00033111D /* MainDataModel 3.xcdatamodel */,
+				CA45481C147BDDA00033111D /* MainDataModel 4.xcdatamodel */,
+				CA45481D147BDDA00033111D /* MainDataModel 5.xcdatamodel */,
+				CA45481E147BDDA00033111D /* MainDataModel 6.xcdatamodel */,
+				CA45481F147BDDA00033111D /* MainDataModel.xcdatamodel */,
 			);
-			currentVersion = CAB3D3BD13C0512C00F9DC02 /* MainDataModel.xcdatamodel */;
+			currentVersion = CA45481F147BDDA00033111D /* MainDataModel.xcdatamodel */;
 			path = MainDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
